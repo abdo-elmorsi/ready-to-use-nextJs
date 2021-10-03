@@ -1,5 +1,5 @@
 import React from 'react'
-import {Row,Col,Image} from 'react-bootstrap'
+import {Row,Col, Dropdown, Image} from 'react-bootstrap'
 import Card from '../components/Card'
 
 //progressbar
@@ -10,11 +10,17 @@ import Progress from '../components/progress.js'
 
 //Count-up
 import CountUp from 'react-countup';
+
+//apexcharts
+import Chart from "react-apexcharts";
+
 export default function Dashboard() {
 
     return (
         <div>
             <Row>
+
+            {/* First section for map and active/disactive cars and drivers */}
                <Col lg="6">
                   <Row>
                      <Col md="6">
@@ -157,6 +163,78 @@ export default function Dashboard() {
                      </Card.Body>
                   </Card>
                </Col>
+
+               {/* second section for charts of vicheals status and average of vicheals usage */}
+               <Col md="12" xl="6">
+                                <div className="card">
+                                    <div className="card-header d-flex justify-content-between flex-wrap">
+                                        <div className="header-title">
+                                            <h4 className="card-title">Earnings</h4>            
+                                        </div>   
+                                        <Dropdown>
+                                            <Dropdown.Toggle as={Button} href="#" variant=" text-secondary" id="dropdownMenuButton1" aria-expanded="false">
+                                                This Week
+                                            </Dropdown.Toggle>
+                                            <Dropdown.Menu className=" dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                                                <li><Dropdown.Item href="#">This Week</Dropdown.Item></li>
+                                                <li><Dropdown.Item href="#">This Month</Dropdown.Item></li>
+                                                <li><Dropdown.Item href="#">This Year</Dropdown.Item></li>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </div>
+                                    <div className="card-body">
+                                        <div className="d-flex flex-wrap align-items-center justify-content-between">
+                                            <Chart className="col-md-8 col-lg-8" options={chart2.options} series={chart2.series} type="radialBar"   height="250"  />
+                                            <div className="d-grid gap col-md-4 col-lg-4">
+                                                <div className="d-flex align-items-start">
+                                                <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14" viewBox="0 0 24 24" fill="#3a57e8">
+                                                    <g>
+                                                        <circle cx="12" cy="12" r="8" fill="#3a57e8"></circle>
+                                                    </g>
+                                                </svg>
+                                                <div className="ms-3">
+                                                    <span className="text-secondary">Fashion</span>
+                                                    <h6>251K</h6>
+                                                </div>
+                                                </div>
+                                                <div className="d-flex align-items-start">
+                                                <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14" viewBox="0 0 24 24" fill="#4bc7d2">
+                                                    <g>
+                                                        <circle cx="12" cy="12" r="8" fill="#4bc7d2"></circle>
+                                                    </g>
+                                                </svg>
+                                                <div className="ms-3">
+                                                    <span className="text-secondary">Accessories</span>
+                                                    <h6>176K</h6>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col md="12" xl="6">
+                                <div className="card">
+                                    <div className="card-header d-flex justify-content-between flex-wrap">
+                                        <div className="header-title">
+                                            <h4 className="card-title">Conversions</h4>            
+                                        </div>
+                                        <Dropdown>
+                                            <Dropdown.Toggle as={Button} href="#" variant=" text-secondary" id="dropdownMenuButton3" aria-expanded="false">
+                                                This Week
+                                            </Dropdown.Toggle>
+                                            <Dropdown.Menu className="dropdown-menu-end" aria-labelledby="dropdownMenuButton3">
+                                                <li><Dropdown.Item href="#">This Week</Dropdown.Item></li>
+                                                <li><Dropdown.Item href="#">This Month</Dropdown.Item></li>
+                                                <li><Dropdown.Item href="#">This Year</Dropdown.Item></li>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </div>
+                                    <div className="card-body">
+                                        <Chart className="d-activity" options={chart3.options} series={chart3.series} type="bar"   height="230"  />
+                                    </div>
+                                </div>
+                            </Col>     
             </Row>
         
         </div>
