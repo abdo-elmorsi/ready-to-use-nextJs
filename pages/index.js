@@ -13,85 +13,6 @@ const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 // import Vector from "../components/maps/vector";
 export default function Home() {
-
-    const chart1 = {
-        options: {
-            chart: {
-                fontFamily: '"Inter", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-                toolbar: {
-                    show: false
-                },
-                sparkline: {
-                    enabled: false,
-                }
-            },
-            colors: ["#3a57e8", "#4bc7d2"],
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                curve: 'smooth',
-                width: 3,
-            },
-            yaxis: {
-                show: true,
-                labels: {
-                    show: true,
-                    minWidth: 19,
-                    maxWidth: 19,
-                    style: {
-                        colors: "#8A92A6",
-                    },
-                    offsetX: -5,
-                },
-            },
-            legend: {
-                show: false,
-            },
-            xaxis: {
-                labels: {
-                    minHeight: 22,
-                    maxHeight: 22,
-                    show: true,
-                    style: {
-                        colors: "#8A92A6",
-                    },
-                },
-                lines: {
-                    show: false  //or just here to disable only x axis grids
-                },
-                categories: ["Jan", "Feb", "Mar", "Apr", "Jun", "Jul", "Aug"]
-            },
-            grid: {
-                show: false,
-            },
-            fill: {
-                type: 'gradient',
-                gradient: {
-                    shade: 'dark',
-                    type: "vertical",
-                    shadeIntensity: 0,
-                    gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
-                    inverseColors: true,
-                    opacityFrom: .4,
-                    opacityTo: .1,
-                    stops: [0, 50, 80],
-                    colors: ["#3a57e8", "#4bc7d2"]
-                }
-            },
-            tooltip: {
-                enabled: true,
-            },
-        },
-        series: [{
-            name: 'total',
-            data: [94, 80, 94, 80, 94, 80, 94]
-        }, {
-            name: 'pipline',
-            data: [72, 60, 84, 60, 74, 60, 78]
-        }]
-    }
-    //chart2
     const chart2 = {
         options: {
             colors: ["#4bc7d2", "#3a57e8"],
@@ -183,22 +104,44 @@ export default function Home() {
             data: [40, 50, 55, 50, 30, 80, 30, 40, 50, 55]
         }]
     }
-    const state = {
-        options: {
-            chart: {
-                id: "basic-bar"
-            },
-            xaxis: {
-                categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
-            }
+    const Data_table = [
+        {
+            icon: 'edit',
+            groupName: 'WR Team',
+            vName: 'Ahmad Sirdah 5230 TGD',
+            fixType: 'غسل السيارة',
+            date: '2008/11/28',
         },
-        series: [
-            {
-                name: "series-1",
-                data: [30, 40, 45, 50, 49, 60, 70, 91]
-            }
-        ]
-    };
+        {
+            icon: 'edit',
+            groupName: 'WR Team',
+            vName: 'Ahmad Sirdah 5230 TGD',
+            fixType: 'غسل السيارة',
+            date: '2008/11/28',
+        },
+        {
+            icon: 'edit',
+            groupName: 'WR Team',
+            vName: 'Ahmad Sirdah 5230 TGD',
+            fixType: 'غسل السيارة',
+            date: '2008/11/28',
+        },
+        {
+            icon: 'edit',
+            groupName: 'WR Team',
+            vName: 'Ahmad Sirdah 5230 TGD',
+            fixType: 'غسل السيارة',
+            date: '2008/11/28',
+        },
+        {
+            icon: 'edit',
+            groupName: 'WR Team',
+            vName: 'Ahmad Sirdah 5230 TGD',
+            fixType: 'غسل السيارة',
+            date: '2008/11/28',
+        },
+    ]
+
     return (
         <div>
             <Row>
@@ -398,6 +341,49 @@ export default function Home() {
                                    height="230"/>
                         </div>
                     </div>
+                </Col>
+            </Row>
+
+
+
+            {/* table */}
+            <Row>
+                <Col sm="12">
+                    <Card>
+                        <Card.Header className="d-flex justify-content-between">
+                            <div className="header-title">
+                                <h4 className="card-title">خطط الصيانة القادمة</h4>
+                            </div>
+                        </Card.Header>
+                        <Card.Body>
+                            <div className="table-responsive">
+                                <table id="datatable" className="table table-striped" data-toggle="data-table">
+                                    <thead>
+                                    <tr>
+                                        <th className="text-center">#</th>
+                                        <th className="text-center">اسم المجموعة</th>
+                                        <th className="text-center">اسم المركبة</th>
+                                        <th className="text-center">نوع الصيانة</th>
+                                        <th  className="text-center">القيمة التالية</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {
+                                        Data_table.map((item) => (
+                                            <tr key={item.age}>
+                                                <td className="text-center">{item.icon}</td>
+                                                <td className="text-center">{item.groupName}</td>
+                                                <td className="text-center">{item.vName}</td>
+                                                <td className="text-center">{item.fixType}</td>
+                                                <td className="text-center">{item.date}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </Card.Body>
+                    </Card>
                 </Col>
             </Row>
         </div>
