@@ -1,16 +1,4 @@
-import React from 'react'
-import {Row,Col} from 'react-bootstrap'
-import Image from "next/image"
-import Card from '../components/Card'
 
-//progressbar
-import Progress from '../components/progress.js'
-
-// img
-import avatars1 from '../public/assets/images/avatars/01.png'
-
-//Count-up
-import CountUp from 'react-countup';
 export default function Dashboard() {
 
     return (
@@ -138,7 +126,7 @@ export default function Dashboard() {
                   <Card>
                      <Card.Body>
                         <div className="border-bottom text-center pb-3">
-                           <Image src={avatars1} alt="profile" className="img-fluid avatar-80 mb-4"/>
+                           <Image src="/assets/images/avatars/01.png" alt="profile" height="80px" width="80px" className="img-fluid avatar-80 mb-4"/>
                            <div>
                               <h5 className="mb-3">Bini Jets</h5>
                            </div>
