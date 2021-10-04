@@ -6,7 +6,7 @@ import Card from '../components/Card'
 import Progress from '../components/progress.js'
 //Count-up
 import CountUp from 'react-countup';
-import Vector from "../components/maps/vector";
+// import Vector from "../components/maps/vector";
 export default function Home() {
 
   return (
