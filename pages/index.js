@@ -6,6 +6,7 @@ import Card from '../components/Card'
 import Progress from '../components/progress.js'
 //Count-up
 import CountUp from 'react-countup';
+import Vector from "../components/maps/vector";
 export default function Home() {
 
   return (
@@ -133,12 +134,7 @@ export default function Home() {
                     <Card>
                         <Card.Body>
                             <div className="border-bottom text-center pb-3">
-                                <Image src="/assets/images/avatars/01.png" alt="profile" height="80px" width="80px" className="img-fluid avatar-80 mb-4"/>
-                                <div>
-                                    <h5 className="mb-3">Bini Jets</h5>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in arcu turpis. Nunc</p>
-                                <button type="button" className="btn btn-info mb-2">Assign</button>
+                                {/*<Vector />*/}
                             </div>
                             <div className="d-flex justify-content-between mt-3">
                                 <div>

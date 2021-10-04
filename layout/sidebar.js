@@ -51,16 +51,6 @@ const Sidebar = () => {
                                     </g>
                                 </g>
                             </svg>
-                            <style jsx>
-                                {`
-                                  @font-face {
-                                    font-family: "Trasandina--Light--Italic";
-                                    src: url("//db.onlinewebfonts.com/t/91fadd5c4d1cd26a3336362acabcf2d8.eot");
-                                    src: url("//db.onlinewebfonts.com/t/91fadd5c4d1cd26a3336362acabcf2d8.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/91fadd5c4d1cd26a3336362acabcf2d8.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/91fadd5c4d1cd26a3336362acabcf2d8.woff") format("woff"), url("//db.onlinewebfonts.com/t/91fadd5c4d1cd26a3336362acabcf2d8.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/91fadd5c4d1cd26a3336362acabcf2d8.svg#Trasandina") format("svg");
-                                  }
-
-                                `}
-                            </style>
                             <h4 className="logo-title"
                                 style={{fontFamily: 'Trasandina Medium Italic'}}>Safe<span
                                 style={{fontFamily: 'Trasandina Light Italic'}}>road</span></h4>
