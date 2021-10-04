@@ -1,17 +1,101 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+// Trasandina Medium Italic LOGO
+@font-face {
+  font-family: "Trasandina Medium Italic";
+  src: url("/assets/font/trasandina_medium/e0a98cebeded7317eb4e1d40cf483eb4.eot"); /* IE9*/
+  src: url("/assets/font/trasandina_medium/e0a98cebeded7317eb4e1d40cf483eb4.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("/assets/font/trasandina_medium/e0a98cebeded7317eb4e1d40cf483eb4.woff2") format("woff2"), /* chrome、firefox */
+  url("/assets/font/trasandina_medium/e0a98cebeded7317eb4e1d40cf483eb4.woff") format("woff"), /* chrome、firefox */
+  url("/assets/font/trasandina_medium/e0a98cebeded7317eb4e1d40cf483eb4.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("/assets/font/trasandina_medium/e0a98cebeded7317eb4e1d40cf483eb4.svg#Trasandina W03 Medium Italic") format("svg"); /* iOS 4.1- */
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+// Trasandina Light Italic LOGO
+@font-face {
+  font-family: "Trasandina Light Italic";
+  src: url("/assets/font/trasandina_light/91fadd5c4d1cd26a3336362acabcf2d8.eot"); /* IE9*/
+  src: url("/assets/font/trasandina_light/91fadd5c4d1cd26a3336362acabcf2d8.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("/assets/font/trasandina_light/91fadd5c4d1cd26a3336362acabcf2d8.woff2") format("woff2"), /* chrome、firefox */
+  url("/assets/font/trasandina_light/91fadd5c4d1cd26a3336362acabcf2d8.woff") format("woff"), /* chrome、firefox */
+  url("/assets/font/trasandina_light/91fadd5c4d1cd26a3336362acabcf2d8.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("/assets/font/trasandina_light/91fadd5c4d1cd26a3336362acabcf2d8.svg#Trasandina W03 Light Italic") format("svg"); /* iOS 4.1- */
 }
 
-* {
-  box-sizing: border-box;
-}
-@import "~bootstrap/scss/bootstrap";
+
+/*!
+*
+* Template: Hope-Ui - Responsive Bootstrap 5 Admin Dashboard Template
+* Author: iqonic.design
+* Design and Developed by: iqonic.design
+* NOTE: This file contains the styling for responsive Template.
+*
+*/
+
+@import "./scss/custom/helper/fonts";
+
+
+// Configuration
+@import "./scss/bootstrap/functions";
+// Variables
+@import "./scss/custom/variable";
+@import "./scss/custom/variables/index";
+@import "./scss/bootstrap/variables";
+
+@import "./scss/bootstrap/mixins";
+@import "./scss/bootstrap/utilities";
+
+// Custom Mixin And Helper
+@import "./scss/custom/helper/functions";
+@import "./scss/custom/helper/mixins";
+@import "./scss/custom/helper/reboot";
+
+// Layout & components
+@import "./scss/bootstrap/root";
+@import "./scss/bootstrap/reboot";
+@import "./scss/bootstrap/type";
+@import "./scss/bootstrap/images";
+@import "./scss/bootstrap/containers";
+@import "./scss/bootstrap/grid";
+@import "./scss/bootstrap/tables";
+@import "./scss/bootstrap/forms";
+@import "./scss/bootstrap/buttons";
+@import "./scss/bootstrap/transitions";
+@import "./scss/bootstrap/dropdown";
+@import "./scss/bootstrap/button-group";
+@import "./scss/bootstrap/nav";
+@import "./scss/bootstrap/navbar";
+@import "./scss/bootstrap/card";
+@import "./scss/bootstrap/accordion";
+@import "./scss/bootstrap/breadcrumb";
+@import "./scss/bootstrap/pagination";
+@import "./scss/bootstrap/badge";
+@import "./scss/bootstrap/alert";
+@import "./scss/bootstrap/progress";
+@import "./scss/bootstrap/list-group";
+@import "./scss/bootstrap/close";
+@import "./scss/bootstrap/toasts";
+@import "./scss/bootstrap/modal";
+@import "./scss/bootstrap/tooltip";
+@import "./scss/bootstrap/popover";
+@import "./scss/bootstrap/carousel";
+@import "./scss/bootstrap/spinners";
+@import "./scss/bootstrap/offcanvas";
+
+// Helpers
+@import "./scss/bootstrap/helpers";
+
+// Utilities
+@import "./scss/bootstrap/utilities/api";
+
+// // Extra Components and Utilities and plugins
+@import "./scss/custom/components/components";
+@import "./scss/custom/layout-style/index";
+@import "./scss/custom/helper/utilities";
+@import "./scss/custom/plugins/plugins";
+
+@import "./scss/custom/rtl/index";
+
+@import "./scss/custom/pages/auth/authentication";
+@import "./scss/custom/pages/kanban/kanban";
+@import "./scss/custom/pages/pricing/pricing";
+
+@import "./scss/custom/dark/index";
