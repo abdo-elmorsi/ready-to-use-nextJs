@@ -7,6 +7,46 @@ import Progress from '../components/progress.js'
 //Count-up
 import CountUp from 'react-countup';
 // import Vector from "../components/maps/vector";
+
+
+const Data_table = [
+    {
+       icon: 'edit',
+       groupName: 'WR Team',
+       vName: 'Ahmad Sirdah 5230 TGD',
+       fixType: 'غسل السيارة',
+       date: '2008/11/28',
+    },
+    {
+       icon: 'edit',
+       groupName: 'WR Team',
+       vName: 'Ahmad Sirdah 5230 TGD',
+       fixType: 'غسل السيارة',
+       date: '2008/11/28',
+    },
+    {
+       icon: 'edit',
+       groupName: 'WR Team',
+       vName: 'Ahmad Sirdah 5230 TGD',
+       fixType: 'غسل السيارة',
+       date: '2008/11/28',
+    },
+    {
+       icon: 'edit',
+       groupName: 'WR Team',
+       vName: 'Ahmad Sirdah 5230 TGD',
+       fixType: 'غسل السيارة',
+       date: '2008/11/28',
+    },
+    {
+       icon: 'edit',
+       groupName: 'WR Team',
+       vName: 'Ahmad Sirdah 5230 TGD',
+       fixType: 'غسل السيارة',
+       date: '2008/11/28',
+    },
+ ]
+ 
 export default function Home() {
 
   return (
@@ -151,6 +191,58 @@ export default function Home() {
                 </Col>
             </Row>
 
+
+        {/* table */}
+        <Row>
+             <Col sm="12">
+                <Card>
+                   <Card.Header className="d-flex justify-content-between">
+                      <div className="header-title">
+                         <h4 className="card-title">خطط الصيانة القادمة</h4>
+                      </div>
+                   </Card.Header>
+                   <Card.Body>
+                      <div className="table-responsive">
+                         <table id="datatable" className="table table-striped" data-toggle="data-table">
+                            <thead>
+                               <tr>
+                                  <th className="text-center">#</th>
+                                  <th className="text-center">اسم المجموعة</th>
+                                  <th className="text-center">اسم المركبة</th>
+                                  <th className="text-center">نوع الصيانة</th>
+                                  <th  className="text-center">القيمة التالية</th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                            { 
+                                  Data_table.map((item) => (
+                               <tr key={item.age}>
+                                  <td className="text-center">{item.icon}</td>
+                                  <td className="text-center">{item.groupName}</td>
+                                  <td className="text-center">{item.vName}</td>
+                                  <td className="text-center">{item.fixType}</td>
+                                  <td className="text-center">{item.date}</td>
+                               </tr>
+                                  ))}
+                            </tbody>
+                            
+                         </table>
+                      </div>
+                   </Card.Body>
+                </Card>
+             </Col>
+          </Row>
         </div>
   )
 }
+
+
+//  const TableData = () => {
+//      return (
+//        <>
+          
+//        </>
+//     )
+//  }
+ 
+//  export default TableData
