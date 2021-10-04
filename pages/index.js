@@ -18,35 +18,35 @@ const Data_table = [
        icon: 'edit',
        groupName: 'WR Team',
        vName: 'Ahmad Sirdah 5230 TGD',
-       fixType: 'غسل السيارة',
+       fixType: 'Vehicle Wash',
        date: '2008/11/28',
     },
     {
        icon: 'edit',
        groupName: 'WR Team',
        vName: 'Ahmad Sirdah 5230 TGD',
-       fixType: 'غسل السيارة',
+       fixType: 'Vehicle Wash',
        date: '2008/11/28',
     },
     {
        icon: 'edit',
        groupName: 'WR Team',
        vName: 'Ahmad Sirdah 5230 TGD',
-       fixType: 'غسل السيارة',
+       fixType: 'Vehicle Wash',
        date: '2008/11/28',
     },
     {
        icon: 'edit',
        groupName: 'WR Team',
        vName: 'Ahmad Sirdah 5230 TGD',
-       fixType: 'غسل السيارة',
+       fixType: 'Battery',
        date: '2008/11/28',
     },
     {
        icon: 'edit',
        groupName: 'WR Team',
        vName: 'Ahmad Sirdah 5230 TGD',
-       fixType: 'غسل السيارة',
+       fixType: 'Suspen',
        date: '2008/11/28',
     },
  ]
@@ -198,7 +198,7 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-center align-items-center">
                             <div className="header-title text-center">
-                                <h4 className="card-title ">افضل السائقين</h4>
+                                <h4 className="card-title ">Top Drivers</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -261,7 +261,7 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-center align-items-center">
                             <div className="header-title text-center">
-                                <h4 className="card-title ">اسوء السائقين</h4>
+                                <h4 className="card-title ">Worst Drivers</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -324,7 +324,7 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-center align-items-center">
                             <div className="header-title text-center">
-                                <h4 className="card-title ">افضل  اداء للمركبة</h4>
+                                <h4 className="card-title ">Top Utilized Vehicles</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -387,7 +387,7 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-center align-items-center">
                             <div className="header-title text-center">
-                                <h4 className="card-title ">اسوء اداء للمركبة</h4>
+                                <h4 className="card-title ">Worst Utilized Vehicles</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -456,19 +456,19 @@ export default function Home() {
                 <Card>
                    <Card.Header className="d-flex justify-content-between">
                       <div className="header-title">
-                         <h4 className="card-title">خطط الصيانة القادمة</h4>
+                         <h4 className="card-title">Next repair plans</h4>
                       </div>
                    </Card.Header>
                    <Card.Body>
                       <div className="table-responsive">
-                         <table id="datatable" className="table table-striped" data-toggle="data-table">
+                         <table id="datatable" className="table table-striped table-hover" data-toggle="data-table">
                             <thead>
                                <tr>
                                   <th className="text-center">#</th>
-                                  <th className="text-center">اسم المجموعة</th>
-                                  <th className="text-center">اسم المركبة</th>
-                                  <th className="text-center">نوع الصيانة</th>
-                                  <th  className="text-center">القيمة التالية</th>
+                                  <th className="text-center">Group name</th>
+                                  <th className="text-center">Vehicles name</th>
+                                  <th className="text-center">Maintenance Type</th>
+                                  <th  className="text-center">Next value</th>
                                </tr>
                             </thead>
                             <tbody>
@@ -493,14 +493,3 @@ export default function Home() {
         </div>
     )
 }
-
-
-//  const TableData = () => {
-//      return (
-//        <>
-          
-//        </>
-//     )
-//  }
- 
-//  export default TableData
