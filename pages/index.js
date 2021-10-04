@@ -1,11 +1,12 @@
 import React from 'react'
-import {Row,Col} from 'react-bootstrap'
+import {Row, Col} from 'react-bootstrap'
 import Image from "next/image"
 import Card from '../components/Card'
 //progressbar
 import Progress from '../components/progress.js'
 //Count-up
 import CountUp from 'react-countup';
+import Google from "../components/maps/google";
 // import Vector from "../components/maps/vector";
 
 
@@ -49,7 +50,7 @@ const Data_table = [
  
 export default function Home() {
 
-  return (
+    return (
         <div>
             <Row>
                 <Col lg="6">
@@ -61,7 +62,8 @@ export default function Home() {
                                         <div>
                                             <span><b>Revenue</b></span>
                                             <div className="mt-2">
-                                                <h2 className="counter">$<CountUp  start={12163} end={35000} duration={3} /></h2>
+                                                <h2 className="counter">$<CountUp start={12163} end={35000}
+                                                                                  duration={3}/></h2>
                                             </div>
                                         </div>
                                         <div>
@@ -77,7 +79,8 @@ export default function Home() {
                                         </div>
                                     </div>
                                     <div className="mt-3">
-                                        <Progress softcolors="primary" color="primary" className="shadow-none w-100" value={70} minvalue={0} maxvalue={100} style={{height: "6px"}} />
+                                        <Progress softcolors="primary" color="primary" className="shadow-none w-100"
+                                                  value={70} minvalue={0} maxvalue={100} style={{height: "6px"}}/>
                                     </div>
                                 </Card.Body>
                             </Card>
@@ -89,7 +92,8 @@ export default function Home() {
                                         <div>
                                             <span><b>Orders</b></span>
                                             <div className="mt-2">
-                                                <h2 className="counter"><CountUp  start={754} end={2500} duration={3}/></h2>
+                                                <h2 className="counter"><CountUp start={754} end={2500} duration={3}/>
+                                                </h2>
                                             </div>
                                         </div>
                                         <div>
@@ -105,7 +109,8 @@ export default function Home() {
                                         </div>
                                     </div>
                                     <div className="mt-3">
-                                        <Progress softcolors="warning" color="warning" className="shadow-none w-100" value={24} minvalue={0} maxvalue={100} style={{height: "6px"}} />
+                                        <Progress softcolors="warning" color="warning" className="shadow-none w-100"
+                                                  value={24} minvalue={0} maxvalue={100} style={{height: "6px"}}/>
                                     </div>
                                 </Card.Body>
                             </Card>
@@ -119,7 +124,8 @@ export default function Home() {
                                         <div>
                                             <span><b>Leads</b></span>
                                             <div className="mt-2">
-                                                <h2 className="counter">$<CountUp  start={12000} end={35000} duration={3}/></h2>
+                                                <h2 className="counter">$<CountUp start={12000} end={35000}
+                                                                                  duration={3}/></h2>
                                             </div>
                                         </div>
                                         <div>
@@ -135,7 +141,8 @@ export default function Home() {
                                         </div>
                                     </div>
                                     <div className="mt-3">
-                                        <Progress softcolors="danger" color="danger" className="shadow-none w-100" value={50} minvalue={0} maxvalue={100} style={{height: "6px"}} />
+                                        <Progress softcolors="danger" color="danger" className="shadow-none w-100"
+                                                  value={50} minvalue={0} maxvalue={100} style={{height: "6px"}}/>
                                     </div>
                                 </Card.Body>
                             </Card>
@@ -147,7 +154,7 @@ export default function Home() {
                                         <div>
                                             <span><b>Conversion</b></span>
                                             <div className="mt-2">
-                                                <h2 className="counter"><CountUp  start={4} end={35} duration={3}/>%</h2>
+                                                <h2 className="counter"><CountUp start={4} end={35} duration={3}/>%</h2>
                                             </div>
                                         </div>
                                         <div>
@@ -163,7 +170,8 @@ export default function Home() {
                                         </div>
                                     </div>
                                     <div className="mt-3">
-                                        <Progress softcolors="info" color="info" className="shadow-none w-100" value={30} minvalue={0} maxvalue={100} style={{height: "6px"}} />
+                                        <Progress softcolors="info" color="info" className="shadow-none w-100"
+                                                  value={30} minvalue={0} maxvalue={100} style={{height: "6px"}}/>
                                     </div>
                                 </Card.Body>
                             </Card>
@@ -174,17 +182,7 @@ export default function Home() {
                     <Card>
                         <Card.Body>
                             <div className="border-bottom text-center pb-3">
-                                {/*<Vector />*/}
-                            </div>
-                            <div className="d-flex justify-content-between mt-3">
-                                <div>
-                                    <h2 className="counter"><CountUp  start={784} end={4500} duration={3}/></h2>
-                                    <div>Operations</div>
-                                </div>
-                                <div>
-                                    <h2 className="mb-0">3.9</h2>
-                                    <div>Medical Rating</div>
-                                </div>
+                                <Google/>
                             </div>
                         </Card.Body>
                     </Card>
@@ -233,7 +231,7 @@ export default function Home() {
              </Col>
           </Row>
         </div>
-  )
+    )
 }
 
 
