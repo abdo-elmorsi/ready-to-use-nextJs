@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
+    "apexcharts": "^3.28.3",
     "bootstrap": "^5.1.0",
     "leaflet": "^1.7.1",
     "next": "11.1.2",

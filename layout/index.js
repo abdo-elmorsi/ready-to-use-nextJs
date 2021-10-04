@@ -30,7 +30,7 @@ const Layout = ({children}) => {
                     {children}
                     {/*<DefaultRouter />*/}
                 </div>
-                <Footer/>
+                {/*<Footer/>*/}
             </main>
             {/*<SettingOffcanvas/>*/}
         </>
