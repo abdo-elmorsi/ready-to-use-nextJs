@@ -9,7 +9,9 @@ import CountUp from 'react-countup';
 import Google from "../components/maps/google";
 //Chart
 import dynamic from "next/dynamic";
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
+import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
+
+const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
 
 // import Vector from "../components/maps/vector";
 export default function Home() {
@@ -104,43 +106,44 @@ export default function Home() {
             data: [40, 50, 55, 50, 30, 80, 30, 40, 50, 55]
         }]
     }
+
     const Data_table = [
         {
             icon: 'edit',
             groupName: 'WR Team',
             vName: 'Ahmad Sirdah 5230 TGD',
-            fixType: 'غسل السيارة',
+            fixType: 'Vehicle Wash',
             date: '2008/11/28',
         },
         {
             icon: 'edit',
             groupName: 'WR Team',
             vName: 'Ahmad Sirdah 5230 TGD',
-            fixType: 'غسل السيارة',
+            fixType: 'Vehicle Wash',
             date: '2008/11/28',
         },
         {
             icon: 'edit',
             groupName: 'WR Team',
             vName: 'Ahmad Sirdah 5230 TGD',
-            fixType: 'غسل السيارة',
+            fixType: 'Vehicle Wash',
             date: '2008/11/28',
         },
         {
             icon: 'edit',
             groupName: 'WR Team',
             vName: 'Ahmad Sirdah 5230 TGD',
-            fixType: 'غسل السيارة',
+            fixType: 'Battery',
             date: '2008/11/28',
         },
         {
             icon: 'edit',
             groupName: 'WR Team',
             vName: 'Ahmad Sirdah 5230 TGD',
-            fixType: 'غسل السيارة',
+            fixType: 'Suspen',
             date: '2008/11/28',
         },
-    ]
+    ];
 
     return (
         <div>
@@ -345,6 +348,359 @@ export default function Home() {
             </Row>
 
 
+            {/* cards for rates */}
+            <Row>
+                <Col lg="3">
+                    <Card>
+                        <Card.Header className="d-flex justify-content-center align-items-center">
+                            <div className="header-title text-center">
+                                <h4 className="card-title ">Top Drivers</h4>
+                            </div>
+                        </Card.Header>
+                        <Card.Body>
+                            <div
+                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
+                                <div className="pe-3">
+                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
+                                           height="50" alt="1"/>
+                                </div>
+                                <div>
+                                    <h6 className="mb-1">Firas Saleh</h6>
+                                    <div className="text-black-50 text-warning">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
+                                <div className="pe-3">
+                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
+                                           height="50" alt="1"/>
+                                </div>
+                                <div>
+                                    <h6 className="mb-1">Maaz FMB120</h6>
+                                    <div className="text-black-50 text-warning">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col lg="3">
+                    <Card>
+                        <Card.Header className="d-flex justify-content-center align-items-center">
+                            <div className="header-title text-center">
+                                <h4 className="card-title ">Worst Drivers</h4>
+                            </div>
+                        </Card.Header>
+                        <Card.Body>
+                            <div
+                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
+                                <div className="pe-3">
+                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
+                                           height="50" alt="1"/>
+                                </div>
+                                <div>
+                                    <h6 className="mb-1">Maaz FMB120</h6>
+                                    <div className="text-black-50 text-warning">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
+                                <div className="pe-3">
+                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
+                                           height="50" alt="1"/>
+                                </div>
+                                <div>
+                                    <h6 className="mb-1">Firas Saleh</h6>
+                                    <div className="text-black-50 text-warning">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col lg="3">
+                    <Card>
+                        <Card.Header className="d-flex justify-content-center align-items-center">
+                            <div className="header-title text-center">
+                                <h4 className="card-title ">Top Utilized Vehicles</h4>
+                            </div>
+                        </Card.Header>
+                        <Card.Body>
+                            <div
+                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
+                                <div className="pe-3">
+                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
+                                           height="50" alt="1"/>
+                                </div>
+                                <div>
+                                    <h6 className="mb-1">Driver name 1</h6>
+                                    <div className="text-black-50 text-warning">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
+                                <div className="pe-3">
+                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
+                                           height="50" alt="1"/>
+                                </div>
+                                <div>
+                                    <h6 className="mb-1">Driver name 2</h6>
+                                    <div className="text-black-50 text-warning">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col lg="3">
+                    <Card>
+                        <Card.Header className="d-flex justify-content-center align-items-center">
+                            <div className="header-title text-center">
+                                <h4 className="card-title ">Worst Utilized Vehicles</h4>
+                            </div>
+                        </Card.Header>
+                        <Card.Body>
+                            <div
+                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
+                                <div className="pe-3">
+                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
+                                           height="50" alt="1"/>
+                                </div>
+                                <div>
+                                    <h6 className="mb-1">Driver name 1</h6>
+                                    <div className="text-black-50 text-warning">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
+                                <div className="pe-3">
+                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
+                                           height="50" alt="1"/>
+                                </div>
+                                <div>
+                                    <h6 className="mb-1">Driver name 2</h6>
+                                    <div className="text-black-50 text-warning">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="orange">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                             viewBox="0 0 20 20" fill="gary">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </Card.Body>
+                    </Card>
+                </Col>
+
+
+            </Row>
 
             {/* table */}
             <Row>
@@ -352,19 +708,20 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-between">
                             <div className="header-title">
-                                <h4 className="card-title">خطط الصيانة القادمة</h4>
+                                <h4 className="card-title">Next repair plans</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
                             <div className="table-responsive">
-                                <table id="datatable" className="table table-striped" data-toggle="data-table">
+                                <table id="datatable" className="table table-striped table-hover"
+                                       data-toggle="data-table">
                                     <thead>
                                     <tr>
                                         <th className="text-center">#</th>
-                                        <th className="text-center">اسم المجموعة</th>
-                                        <th className="text-center">اسم المركبة</th>
-                                        <th className="text-center">نوع الصيانة</th>
-                                        <th  className="text-center">القيمة التالية</th>
+                                        <th className="text-center">Group name</th>
+                                        <th className="text-center">Vehicles name</th>
+                                        <th className="text-center">Maintenance Type</th>
+                                        <th className="text-center">Next value</th>
                                     </tr>
                                     </thead>
                                     <tbody>
