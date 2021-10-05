@@ -230,4 +230,4 @@ export default function PreventiveMaintenance() {
         </div>
       </Row>
     </div>
-  );
+  )}
