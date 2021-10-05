@@ -1,15 +1,15 @@
 import React from 'react'
-// import Card from '../Card'
-// import {Row,Col} from 'react-bootstrap'
+import Card from '../Card'
+import {Row,Col} from 'react-bootstrap'
 
 //leaflet
-// import Leaflet from '../leaflet';
+import Leaflet from '../leaflet';
 
 
 const Vector = () => {
     return (
         <>
-{/*
+
             <Row>
                 <Col lg="12">
                     <Card>
@@ -24,7 +24,7 @@ const Vector = () => {
                     </Card>
                 </Col>
             </Row>
-*/}
+
         </>
     )
 }

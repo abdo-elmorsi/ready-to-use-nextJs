@@ -1,6 +1,5 @@
 import React from 'react'
 
-import {Button} from 'react-bootstrap'
 //header
 import Header from './header'
 //subheader
@@ -8,29 +7,27 @@ import SubHeader from './sub-header'
 //sidebar
 import Sidebar from './sidebar'
 //footer
-import Footer from './footer'
-//default 
-// import DefaultRouter from '../../router/default-router'
+// import Footer from './footer'
 
-// import SettingOffcanvas from '../../components/partials/components/settingoffcanvas'
-// import Loader from '../../components/Loader'
+import Loader from '../components/Loader'
+import {useRouter} from "next/router";
 
 const Layout = ({children}) => {
-
+    let router = useRouter();
     return (
         <>
-            {/*<Loader/>*/}
+            <Loader/>
             <Sidebar/>
             <main className="main-content">
                 <div className="position-relative">
                     <Header/>
-                    <SubHeader/>
+                    {!router.pathname.includes('track') && (<SubHeader/>)}
                 </div>
                 <div className="conatiner-fluid content-inner mt-n5 py-0">
                     {children}
                     {/*<DefaultRouter />*/}
                 </div>
-                <Footer/>
+                {/*<Footer/>*/}
             </main>
             {/*<SettingOffcanvas/>*/}
         </>

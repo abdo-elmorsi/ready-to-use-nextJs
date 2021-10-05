@@ -6,6 +6,7 @@ import Image from 'next/image'
 
 
 const SubHeader = () => {
+
     return (
         <>
             <div className="iq-navbar-header" style={{height: "215px"}}>
@@ -14,8 +15,8 @@ const SubHeader = () => {
                         <Col md="12">
                             <div className="d-flex justify-content-between flex-wrap">
                                 <div>
-                                    <h1>Hello Devs!</h1>
-                                    <p>We are on a mission to help developers like you build successful projects for FREE.</p>
+                                    <h1>Dashboard</h1>
+                                    {/*<p>We are on a mission to help developers like you build successful projects for FREE.</p>*/}
                                 </div>
                                 <div className="d-flex align-items-center">
                                     {/*<Link to="" className="btn btn-link btn-soft-light">*/}

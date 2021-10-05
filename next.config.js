@@ -5,12 +5,17 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
-  exportPathMap: async function (
+
+  i18n: {
+    locales: ["ar", "en"],
+    defaultLocale: "ar",
+  },
+/*  exportPathMap: async function (
       defaultPathMap,
       { dev, dir, outDir, distDir, buildId }
   ) {
     return {
       '/': { page: '/' },
     }
-  },
+  },*/
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { Row, Col,Navbar,Container,Nav,NavDropdown,Dropdown, Button } from "react-bootstrap";
 import Card from "../components/Card";
@@ -231,4 +232,14 @@ export default function PreventiveMaintenance() {
       </Row>
     </div>
   );
+=======
+import React from 'react'
+
+export default function PreventiveMaintenance() {
+    return (
+        <div>
+
+        </div>
+    )
+>>>>>>> 8b1f909329866d4c966cd1ab6ae52ad2051ffaa7
 }
