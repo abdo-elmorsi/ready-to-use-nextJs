@@ -1,10 +1,13 @@
-import React from 'react'
-import Vector from "../components/maps/vector";
-
-export default function track() {
+import dynamic from "next/dynamic";
+const MapWithNoSSR = dynamic(() => import("../components/maps/vector"), {
+    ssr: false
+});
+const Track = () => {
     return (
-        <div>
-<Vector />
+        <div id="map" className="mt-5">
+            <MapWithNoSSR />
         </div>
     )
 }
+
+export default Track

@@ -1,11 +1,7 @@
 import React, {useEffect} from 'react'
 
 // import L from '../../node_modules/leaflet/dist/leaflet-src'
-// import L from '../node_modules/leaflet/dist/leaflet-src'
-import dynamic from "next/dynamic";
-
-const L = dynamic(() => import('../node_modules/leaflet/dist/leaflet-src'), {ssr: true});
-
+import L from '../node_modules/leaflet/dist/leaflet-src'
 import '../node_modules/leaflet/dist/leaflet.css'
 // img
 import Leaflet1 from '../public/assets/images/vectormap/cloudy.png';

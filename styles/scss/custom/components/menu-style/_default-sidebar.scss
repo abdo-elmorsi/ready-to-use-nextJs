@@ -6,7 +6,7 @@
     max-width: $navbar-vertical-width;
     top: 0;
     bottom: 0;
-    z-index: $zindex-general + 10;
+    z-index: $zindex-general + 1000;
     transition: $navbar-vertical-transition;
     background-color: $white;
     @if($navbar-vertical-shadow-enable == true) {
