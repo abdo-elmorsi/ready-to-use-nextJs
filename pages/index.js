@@ -9,15 +9,14 @@ import Progress from '../components/progress.js'
 import CountUp from 'react-countup';
 import Google from "../components/maps/google";
 //Chart
-import dynamic from "next/dynamic";
 import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
+import dynamic from "next/dynamic";
 
 const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
 
 // import Vector from "../components/maps/vector";
 export default function Home() {
     const chart1 = {
-
         series: [{
             name: 'Fuel Consumption',
             type: 'column',
@@ -46,10 +45,10 @@ export default function Home() {
                 enabledOnSeries: [1]
             },
             labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
-           /* xaxis: {
-                type: 'datetime'
-            },*/
-            colors: ["#3a57e8", "#4bc7d2"],
+            /* xaxis: {
+                 type: 'datetime'
+             },*/
+            colors: ["#246c66", "#3e84b8"],
 
             yaxis: [{
                 title: {
@@ -57,8 +56,8 @@ export default function Home() {
                 },
                 labels: {
                     show: true,
-                    minWidth: 40,
-                    maxWidth: 40,
+                    minWidth: 10,
+                    maxWidth: 10,
                     style: {
                         colors: "#8A92A6",
                     },
@@ -104,7 +103,7 @@ export default function Home() {
                     show: false
                 }
             },
-            colors: ["#3a57e8", "#4bc7d2"],
+            colors: ["#246c66", "#4bc7d2"],
             plotOptions: {
                 bar: {
                     horizontal: false,
@@ -163,6 +162,85 @@ export default function Home() {
         }, {
             name: 'Failed deals',
             data: [40, 50, 55, 50, 30]
+        }]
+    }
+    const chart4 = {
+        options: {
+            chart: {
+                fontFamily: '"Inter", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+                toolbar: {
+                    show: false
+                },
+                sparkline: {
+                    enabled: false,
+                }
+            },
+            colors: ["#3a84b8"],
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 3,
+            },
+            yaxis: {
+                show: true,
+                labels: {
+                    show: true,
+                    minWidth: 19,
+                    maxWidth: 19,
+                    style: {
+                        colors: "#8A92A6",
+                    },
+                    offsetX: -5,
+                },
+            },
+            legend: {
+                show: false,
+            },
+            xaxis: {
+                labels: {
+                    show: true,
+                    style: {
+                        colors: "#8A92A6",
+                        rotate: -45,
+                    },
+                },
+                lines: {
+                    show: false  //or just here to disable only x axis grids
+                },
+                categories: ["Change Engine Oil",
+                    "Change Vehicle Breaks",
+                    "Renew Vehicle License",
+                    "Vehicle Wash",
+                    "Change type",
+                    "Change Gear Oil",
+                    "Filter Change"]
+            },
+            grid: {
+                show: false,
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'dark',
+                    type: "vertical",
+                    shadeIntensity: 0,
+                    gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
+                    inverseColors: true,
+                    opacityFrom: .4,
+                    opacityTo: .1,
+                    stops: [0, 50, 80],
+                    colors: ["#3a84b8", "#246c66"]
+                }
+            },
+            tooltip: {
+                enabled: true,
+            },
+        },
+        series: [{
+            name: 'total',
+            data: [94, 80, 94, 80, 94, 80, 94]
         }]
     }
 
@@ -332,7 +410,7 @@ export default function Home() {
                     <div className="card">
                         <div className="card-header d-flex justify-content-between flex-wrap">
                             <div className="header-title">
-                                <h4 className="card-title">Vehicles Status</h4>
+                                <h4 className={"card-title " + Styles.head_title}>Vehicles Status</h4>
                             </div>
                         </div>
                         <div className="card-body">
@@ -423,27 +501,39 @@ export default function Home() {
                     <div className="card">
                         <div className="card-header d-flex justify-content-between flex-wrap">
                             <div className="header-title">
-                                <h4 className="card-title">Average Utilization</h4>
+                                <h4 className={"card-title " + Styles.head_title}>Average Utilization</h4>
                             </div>
                         </div>
                         <div className="card-body">
                             <Chart className="d-activity" options={chart3.options} series={chart3.series} type="bar"
-                                   height="230"/>
+                                   height="245"/>
                         </div>
                     </div>
                 </Col>
             </Row>
 
             <Row>
-                <Col md="12">
+                <Col md="6">
                     <div className="card">
                         <div className="card-header d-flex justify-content-between flex-wrap">
                             <div className="header-title">
-                                <h4 className="card-title">Overall Fuel Consumption</h4>
+                                <h4 className={"card-title " + Styles.head_title}>Overall Fuel Consumption</h4>
                             </div>
                         </div>
                         <div className="card-body">
                             <Chart options={chart1.options} series={chart1.series} type="line" height="245"/>
+                        </div>
+                    </div>
+                </Col>
+                <Col md="6">
+                    <div className="card">
+                        <div className="card-header d-flex justify-content-between flex-wrap">
+                            <div className="header-title">
+                                <h4 className={"card-title " + Styles.head_title}>Monthly Preventive Maintenance</h4>
+                            </div>
+                        </div>
+                        <div className="card-body">
+                            <Chart options={chart4.options} series={chart4.series} type="area" height="245"/>
                         </div>
                     </div>
                 </Col>
@@ -456,7 +546,7 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-center align-items-center">
                             <div className="header-title text-center">
-                                <h4 className="card-title ">Top Drivers</h4>
+                                <h4 className={"card-title " + Styles.head_title}>Top Drivers</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -467,7 +557,7 @@ export default function Home() {
                                            height="50" alt="1"/>
                                 </div>
                                 <div>
-                                    <h6 className="mb-1">Firas Saleh</h6>
+                                    <h6 className={"mb-1 " + Styles.name_size}>Firas Saleh</h6>
                                     <div className="text-black-50 text-warning">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
                                              viewBox="0 0 20 20" fill="orange">
@@ -505,7 +595,7 @@ export default function Home() {
                                            height="50" alt="1"/>
                                 </div>
                                 <div>
-                                    <h6 className="mb-1">Maaz FMB120</h6>
+                                    <h6 className={"mb-1 " + Styles.name_size}>Maaz FMB120</h6>
                                     <div className="text-black-50 text-warning">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
                                              viewBox="0 0 20 20" fill="orange">
@@ -543,7 +633,7 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-center align-items-center">
                             <div className="header-title text-center">
-                                <h4 className="card-title ">Worst Drivers</h4>
+                                <h4 className={"card-title " + Styles.head_title}>Worst Drivers</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -554,7 +644,7 @@ export default function Home() {
                                            height="50" alt="1"/>
                                 </div>
                                 <div>
-                                    <h6 className="mb-1">Maaz FMB120</h6>
+                                    <h6 className={"mb-1 " + Styles.name_size}>Maaz FMB120</h6>
                                     <div className="text-black-50 text-warning">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
                                              viewBox="0 0 20 20" fill="orange">
@@ -592,7 +682,7 @@ export default function Home() {
                                            height="50" alt="1"/>
                                 </div>
                                 <div>
-                                    <h6 className="mb-1">Firas Saleh</h6>
+                                    <h6 className={"mb-1 " + Styles.name_size}>Firas Saleh</h6>
                                     <div className="text-black-50 text-warning">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
                                              viewBox="0 0 20 20" fill="orange">
@@ -630,7 +720,7 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-center align-items-center">
                             <div className="header-title text-center">
-                                <h4 className="card-title ">Top Utilized Vehicles</h4>
+                                <h4 className={"card-title " + Styles.head_title}>Top Utilized Vehicles</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -641,7 +731,7 @@ export default function Home() {
                                            height="50" alt="1"/>
                                 </div>
                                 <div>
-                                    <h6 className="mb-1">Driver name 1</h6>
+                                    <h6 className={"mb-1 " + Styles.name_size}>Driver name 1</h6>
                                     <div className="text-black-50 text-warning">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
                                              viewBox="0 0 20 20" fill="orange">
@@ -679,7 +769,7 @@ export default function Home() {
                                            height="50" alt="1"/>
                                 </div>
                                 <div>
-                                    <h6 className="mb-1">Driver name 2</h6>
+                                    <h6 className={"mb-1 " + Styles.name_size}>Driver name 2</h6>
                                     <div className="text-black-50 text-warning">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
                                              viewBox="0 0 20 20" fill="orange">
@@ -717,7 +807,7 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-center align-items-center">
                             <div className="header-title text-center">
-                                <h4 className="card-title ">Worst Utilized Vehicles</h4>
+                                <h4 className={"card-title " + Styles.head_title}>Worst Utilized Vehicles</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -728,7 +818,7 @@ export default function Home() {
                                            height="50" alt="1"/>
                                 </div>
                                 <div>
-                                    <h6 className="mb-1">Driver name 1</h6>
+                                    <h6 className={"mb-1 " + Styles.name_size}>Driver name 1</h6>
                                     <div className="text-black-50 text-warning">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
                                              viewBox="0 0 20 20" fill="orange">
@@ -766,7 +856,7 @@ export default function Home() {
                                            height="50" alt="1"/>
                                 </div>
                                 <div>
-                                    <h6 className="mb-1">Driver name 2</h6>
+                                    <h6 className={"mb-1 " + Styles.name_size}>Driver name 2</h6>
                                     <div className="text-black-50 text-warning">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
                                              viewBox="0 0 20 20" fill="orange">
@@ -800,17 +890,14 @@ export default function Home() {
                         </Card.Body>
                     </Card>
                 </Col>
-
-
             </Row>
-
             {/* table */}
             <Row>
                 <Col sm="12">
                     <Card>
                         <Card.Header className="d-flex justify-content-between">
                             <div className="header-title">
-                                <h4 className="card-title">Next repair plans</h4>
+                                <h4 className={"card-title " + Styles.head_title}>Next repair plans</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -828,8 +915,8 @@ export default function Home() {
                                     </thead>
                                     <tbody>
                                     {
-                                        Data_table.map((item) => (
-                                            <tr key={item.age}>
+                                        Data_table.map((item, index) => (
+                                            <tr key={item.vName + index}>
                                                 <td className="text-center">{item.icon}</td>
                                                 <td className="text-center">{item.groupName}</td>
                                                 <td className="text-center">{item.vName}</td>

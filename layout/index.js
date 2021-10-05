@@ -8,13 +8,12 @@ import SubHeader from './sub-header'
 import Sidebar from './sidebar'
 //footer
 // import Footer from './footer'
-//default 
-// import DefaultRouter from '../../router/default-router'
 
 import Loader from '../components/Loader'
+import {useRouter} from "next/router";
 
 const Layout = ({children}) => {
-
+    let router = useRouter();
     return (
         <>
             <Loader/>
@@ -22,7 +21,7 @@ const Layout = ({children}) => {
             <main className="main-content">
                 <div className="position-relative">
                     <Header/>
-                    <SubHeader/>
+                    {!router.pathname.includes('track') && (<SubHeader/>)}
                 </div>
                 <div className="conatiner-fluid content-inner mt-n5 py-0">
                     {children}

@@ -1,15 +1,7 @@
 import React, {useEffect} from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
-// import VerticalNav from './vertical-nav'
+import VerticalNav from './vertical-nav'
 import Scrollbar from 'smooth-scrollbar'
-import Head from "next/head";
-// import SidebarDark from '../../components/settingoffcanvas'
-
-// export const SidebarDark =() =>{
-
-// }
-
 
 const Sidebar = () => {
 
@@ -90,7 +82,7 @@ const Sidebar = () => {
                 </div>
                 <div className="sidebar-body pt-0 data-scrollbar" data-scroll="1" id="my-scrollbar">
                     <div className="collapse navbar-collapse" id="sidebar">
-                        {/*<VerticalNav />*/}
+                        <VerticalNav />
                     </div>
                 </div>
                 <div className="sidebar-footer"/>

@@ -6,6 +6,7 @@ import Image from 'next/image'
 
 
 const SubHeader = () => {
+
     return (
         <>
             <div className="iq-navbar-header" style={{height: "215px"}}>
