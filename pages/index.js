@@ -2,6 +2,7 @@ import React from 'react'
 import {Row, Col, Dropdown, Button} from 'react-bootstrap'
 import Image from "next/image"
 import Card from '../components/Card'
+import Styles from '../styles/Dashboard.module.scss'
 //progressbar
 import Progress from '../components/progress.js'
 //Count-up
@@ -15,27 +16,85 @@ const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
 
 // import Vector from "../components/maps/vector";
 export default function Home() {
+    const chart1 = {
+
+        series: [{
+            name: 'Fuel Consumption',
+            type: 'column',
+            data: [1702, 131, 942, 852, 648, 835, 932, 1231, 1386, 84]
+        }, {
+            name: 'Mileage',
+            type: 'line',
+            data: [26391, 2034, 14608, 13219, 10085, 12955, 14478, 19081, 21490, 1303]
+        }],
+        options: {
+            chart: {
+                height: 350,
+                type: 'line',
+                toolbar: {
+                    show: false
+                },
+                sparkline: {
+                    enabled: false,
+                }
+            },
+            stroke: {
+                width: [0, 4]
+            },
+            dataLabels: {
+                enabled: true,
+                enabledOnSeries: [1]
+            },
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+           /* xaxis: {
+                type: 'datetime'
+            },*/
+            colors: ["#3a57e8", "#4bc7d2"],
+
+            yaxis: [{
+                title: {
+                    text: 'Fuel Consumption',
+                },
+                labels: {
+                    show: true,
+                    minWidth: 40,
+                    maxWidth: 40,
+                    style: {
+                        colors: "#8A92A6",
+                    },
+                    offsetX: 0,
+                },
+            }, {
+                opposite: true,
+                title: {
+                    text: 'Mileage'
+                }
+            }]
+        },
+
+
+    }
     const chart2 = {
         options: {
-            colors: ["#4bc7d2", "#3a57e8"],
+            colors: ["#c1c1c1", "#7668f2", "#272727", "#f05959", "#f2bf59", "#70ea6b"],
             plotOptions: {
                 radialBar: {
                     hollow: {
-                        margin: 10,
-                        size: "50%",
+                        margin: 2,
+                        size: "10%",
                     },
                     track: {
-                        margin: 10,
+                        margin: 5,
                         strokeWidth: '50%',
                     },
                     dataLabels: {
-                        show: false,
+                        show: true,
                     }
                 }
             },
-            labels: ['Apples', 'Oranges'],
+            labels: ['Apples', 'Oranges1', 'Oranges2', 'Oranges3', 'Oranges4', 'Oranges5'],
         },
-        series: [55, 75],
+        series: [55, 75, 33, 78, 65, 52],
     }
     const chart3 = {
         options: {
@@ -66,7 +125,7 @@ export default function Home() {
                 colors: ['transparent']
             },
             xaxis: {
-                categories: ['S', 'M', 'T', 'W', 'T', 'F', 'S', 'M', 'T', 'W'],
+                categories: ['2021-10-04', '2021-10-03', '2021-10-02', '2021-10-01', '2021-09-30'],
                 labels: {
                     minHeight: 20,
                     maxHeight: 20,
@@ -100,10 +159,10 @@ export default function Home() {
         },
         series: [{
             name: 'Successful deals',
-            data: [30, 50, 35, 60, 40, 60, 60, 30, 50, 35,]
+            data: [30, 50, 35, 60, 40]
         }, {
             name: 'Failed deals',
-            data: [40, 50, 55, 50, 30, 80, 30, 40, 50, 55]
+            data: [40, 50, 55, 50, 30]
         }]
     }
 
@@ -269,23 +328,12 @@ export default function Home() {
                 </Col>
             </Row>
             <Row>
-                <Col md="12" xl="6">
+                <Col md="12" xl="7">
                     <div className="card">
                         <div className="card-header d-flex justify-content-between flex-wrap">
                             <div className="header-title">
                                 <h4 className="card-title">Vehicles Status</h4>
                             </div>
-                            <Dropdown>
-                                <Dropdown.Toggle as={Button} href="#" variant=" text-secondary" id="dropdownMenuButton1"
-                                                 aria-expanded="false">
-                                    This Week
-                                </Dropdown.Toggle>
-                                <Dropdown.Menu className=" dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                                    <li><Dropdown.Item href="#">This Week</Dropdown.Item></li>
-                                    <li><Dropdown.Item href="#">This Month</Dropdown.Item></li>
-                                    <li><Dropdown.Item href="#">This Year</Dropdown.Item></li>
-                                </Dropdown.Menu>
-                            </Dropdown>
                         </div>
                         <div className="card-body">
                             <div className="d-flex flex-wrap align-items-center justify-content-between">
@@ -294,26 +342,76 @@ export default function Home() {
                                 <div className="d-grid gap col-md-4 col-lg-4">
                                     <div className="d-flex align-items-start">
                                         <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14"
-                                             viewBox="0 0 24 24" fill="#3a57e8">
+                                             viewBox="0 0 24 24" fill="#c1c1c1">
                                             <g>
-                                                <circle cx="12" cy="12" r="8" fill="#3a57e8"/>
+                                                <circle cx="12" cy="12" r="8" fill="#c1c1c1"/>
                                             </g>
                                         </svg>
                                         <div className="ms-3">
-                                            <span className="text-secondary">Fashion</span>
-                                            <h6>251K</h6>
+                                            <span className={"text-secondary " + Styles.label_sm}>Offline</span>
+                                            {/*<h6>251K</h6>*/}
                                         </div>
                                     </div>
                                     <div className="d-flex align-items-start">
                                         <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14"
-                                             viewBox="0 0 24 24" fill="#4bc7d2">
+                                             viewBox="0 0 24 24" fill="#7668f2">
                                             <g>
-                                                <circle cx="12" cy="12" r="8" fill="#4bc7d2"/>
+                                                <circle cx="12" cy="12" r="8" fill="#7668f2"/>
                                             </g>
                                         </svg>
                                         <div className="ms-3">
-                                            <span className="text-secondary">Accessories</span>
-                                            <h6>176K</h6>
+                                            <span className={"text-secondary " + Styles.label_sm}>Idling</span>
+                                            {/*<h6>176K</h6>*/}
+                                        </div>
+                                    </div>
+                                    <div className="d-flex align-items-start">
+                                        <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14"
+                                             viewBox="0 0 24 24" fill="#272727">
+                                            <g>
+                                                <circle cx="12" cy="12" r="8" fill="#272727"/>
+                                            </g>
+                                        </svg>
+                                        <div className="ms-3">
+                                            <span className={"text-secondary " + Styles.label_sm}>Running</span>
+                                            {/*<h6>176K</h6>*/}
+                                        </div>
+                                    </div>
+                                    <div className="d-flex align-items-start">
+                                        <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14"
+                                             viewBox="0 0 24 24" fill="#f05959">
+                                            <g>
+                                                <circle cx="12" cy="12" r="8" fill="#f05959"/>
+                                            </g>
+                                        </svg>
+                                        <div className="ms-3">
+                                            <span
+                                                className={"text-secondary " + Styles.label_sm}>Over Street Speed</span>
+                                            {/*<h6>176K</h6>*/}
+                                        </div>
+                                    </div>
+                                    <div className="d-flex align-items-start">
+                                        <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14"
+                                             viewBox="0 0 24 24" fill="#f2bf59">
+                                            <g>
+                                                <circle cx="12" cy="12" r="8" fill="#f2bf59"/>
+                                            </g>
+                                        </svg>
+                                        <div className="ms-3">
+                                            <span
+                                                className={"text-secondary " + Styles.label_sm}>Vehicle Disabled</span>
+                                            {/*<h6>176K</h6>*/}
+                                        </div>
+                                    </div>
+                                    <div className="d-flex align-items-start">
+                                        <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14"
+                                             viewBox="0 0 24 24" fill="#70ea6b">
+                                            <g>
+                                                <circle cx="12" cy="12" r="8" fill="#70ea6b"/>
+                                            </g>
+                                        </svg>
+                                        <div className="ms-3">
+                                            <span className={"text-secondary " + Styles.label_sm}>Vehicle Enabled</span>
+                                            {/*<h6>176K</h6>*/}
                                         </div>
                                     </div>
                                 </div>
@@ -321,27 +419,31 @@ export default function Home() {
                         </div>
                     </div>
                 </Col>
-                <Col md="12" xl="6">
+                <Col md="12" xl="5">
                     <div className="card">
                         <div className="card-header d-flex justify-content-between flex-wrap">
                             <div className="header-title">
                                 <h4 className="card-title">Average Utilization</h4>
                             </div>
-                            <Dropdown>
-                                <Dropdown.Toggle as={Button} href="#" variant=" text-secondary" id="dropdownMenuButton3"
-                                                 aria-expanded="false">
-                                    This Week
-                                </Dropdown.Toggle>
-                                <Dropdown.Menu className="dropdown-menu-end" aria-labelledby="dropdownMenuButton3">
-                                    <li><Dropdown.Item href="#">This Week</Dropdown.Item></li>
-                                    <li><Dropdown.Item href="#">This Month</Dropdown.Item></li>
-                                    <li><Dropdown.Item href="#">This Year</Dropdown.Item></li>
-                                </Dropdown.Menu>
-                            </Dropdown>
                         </div>
                         <div className="card-body">
                             <Chart className="d-activity" options={chart3.options} series={chart3.series} type="bar"
                                    height="230"/>
+                        </div>
+                    </div>
+                </Col>
+            </Row>
+
+            <Row>
+                <Col md="12">
+                    <div className="card">
+                        <div className="card-header d-flex justify-content-between flex-wrap">
+                            <div className="header-title">
+                                <h4 className="card-title">Overall Fuel Consumption</h4>
+                            </div>
+                        </div>
+                        <div className="card-body">
+                            <Chart options={chart1.options} series={chart1.series} type="line" height="245"/>
                         </div>
                     </div>
                 </Col>
