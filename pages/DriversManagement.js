@@ -138,24 +138,28 @@ export default function PreventiveMaintenance() {
       <Row>
         <Col sm="12">
           <Card>
-            <Card.Header className="d-flex justify-content-between">
-              <div className="header-title">
-                <h4 className="card-title">Preventive Maintenance</h4>
-              </div>
-            </Card.Header>
+            
             
             {/* table buttons start */}
-            
+            <Navbar expand="lg" className="navbar-light">
+                <div className="header-title col-6">
+                    <h4 className="card-title px-4">Driver Management</h4>
+                </div>
+                <Nav className=" me-auto mb-2 mb-lg-0 col-16">
+                    <Nav variant="pills">
+                        <Button variant="primary m-2 py-1">Add new driver</Button>
+                        <Button variant="primary m-2 py-1">add drivers bulk</Button>
+                    </Nav>
+                </Nav>
+
+            </Navbar>
             <Navbar expand="lg" className="navbar-light">
                 <Container fluid>
-                            <Nav className=" me-auto mb-2 mb-lg-0 d-flex justify-content-end col-12">
-                                    <Nav variant="pills">
-                                        <Button variant="primary m-2 py-1">Add Maintenance Plan</Button>
-                                        <Button variant="primary m-2 py-1">Delete Selected</Button>
-                                        <Button variant="primary m-2 py-1">View History</Button>
-                                        <Button variant="primary m-2 py-1">Export To Excel</Button>
-                                    </Nav>
-                            </Nav>
+                <Row>
+                
+                        
+                </Row>
+                    
                 </Container>
             </Navbar>
             <Navbar className="navbar-light rounded-1 " expand="lg">
