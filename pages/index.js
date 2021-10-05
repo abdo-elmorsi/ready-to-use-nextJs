@@ -1,16 +1,9 @@
-<<<<<<< HEAD
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import {Row, Col, Dropdown, Button} from 'react-bootstrap'
 import Image from "next/image";
 import Card from "../components/Card";
-
-=======
-import React from 'react'
-import {Row, Col, Dropdown, Button} from 'react-bootstrap'
-import Image from "next/image"
-import Card from '../components/Card'
 import Styles from '../styles/Dashboard.module.scss'
->>>>>>> 8b1f909329866d4c966cd1ab6ae52ad2051ffaa7
+
 //progressbar
 import Progress from "../components/progress.js";
 //Count-up
@@ -23,8 +16,6 @@ import dynamic from "next/dynamic";
 const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
 
 // import Vector from "../components/maps/vector";
-
-import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
 
 const Data_table = [
   {
