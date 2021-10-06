@@ -1,32 +1,21 @@
-import React from 'react'
-import Card from '../Card'
-import {Row,Col} from 'react-bootstrap'
-
-//leaflet
-import Leaflet from '../leaflet';
-
-
-const Vector = () => {
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import useWindowDimensions from "../../helpers/getWindowDimensions";
+const Map = () => {
+    const {heightWithoutNav} = useWindowDimensions();
     return (
-        <>
-
-            <Row>
-                <Col lg="12">
-                    <Card>
-                        <Card.Header className="d-flex justify-content-between">
-                            <div className="header-title">
-                                <h4 className="card-title">Vector</h4>
-                            </div>
-                        </Card.Header>
-                        <Card.Body>
-                            <Leaflet id="chart-map-column-04" className="custom-chart"/>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
-
-        </>
+        <MapContainer center={[51.505, -0.09]} zoom={15} scrollWheelZoom={true} style={{height: heightWithoutNav, width: "100%"}}>
+            <TileLayer
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[51.505, -0.09]}>
+                <Popup>
+                    A pretty CSS3 popup. <br /> Easily customizable.
+                </Popup>
+            </Marker>
+        </MapContainer>
     )
 }
 
-export default Vector
+export default Map
