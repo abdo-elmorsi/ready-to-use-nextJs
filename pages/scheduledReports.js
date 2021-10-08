@@ -15,6 +15,35 @@ export const Actions = ({ id }) => {
         </div>
     );
 };
+const Data_table = [
+    {
+        reportType: "Fuel Summary Report",
+        frequencyType: "Daily",
+        numberOfVehicles: "33",
+        numberOfUsers: "1",
+        additionalEmails: "ashraf@saferoad.com.sa",
+        additionalPhoneN: "01010754088",
+        description: "test test",
+    },
+    {
+        reportType: "Offline Vehicles Report",
+        frequencyType: "Daily",
+        numberOfVehicles: "64",
+        numberOfUsers: "2",
+        additionalEmails: "ashraf@saferoad.com.sa",
+        additionalPhoneN: "0101045658088",
+        description: "test test",
+    },
+    {
+        reportType: "Fuel Summary Report",
+        frequencyType: "Daily",
+        numberOfVehicles: "75",
+        numberOfUsers: "6",
+        additionalEmails: "ashraf@saferoad.com.sa",
+        additionalPhoneN: "01010548088",
+        description: "test test",
+    },
+];
 
 export default function ScheduledReports() {
     const [result, setResult] = useState([]);
@@ -83,221 +112,27 @@ export default function ScheduledReports() {
             cell: (row) => <Actions id={row.id} />,
         },
     ];
-    // const countPerPage = 10;
-    const [page, setPage] = useState(1);
-
-    const Data_table = [
-        {
-            reportType: "Fuel Summary Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "33",
-            numberOfUsers: "1",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010754088",
-            description: "test test",
-        },
-        {
-            reportType: "Offline Vehicles Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "64",
-            numberOfUsers: "2",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "0101045658088",
-            description: "test test",
-        },
-        {
-            reportType: "Fuel Summary Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "75",
-            numberOfUsers: "6",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010548088",
-            description: "test test",
-        },
-        {
-            reportType: "Offline Vehicles Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "87",
-            numberOfUsers: "3",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010808088",
-            description: "test test",
-        },
-        {
-            reportType: "samy sair",
-            frequencyType: "Daily",
-            numberOfVehicles: "75",
-            numberOfUsers: "6",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010548088",
-            description: "test test",
-        },
-        {
-            reportType: "Offline Vehicles Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "87",
-            numberOfUsers: "3",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010808088",
-            description: "test test",
-        },
-        {
-            reportType: "fady abdo",
-            frequencyType: "Daily",
-            numberOfVehicles: "75",
-            numberOfUsers: "6",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010548088",
-            description: "test test",
-        },
-        {
-            reportType: "Offline Vehicles Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "87",
-            numberOfUsers: "3",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010808088",
-            description: "test test",
-        },
-        {
-            reportType: "Fuel Summary Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "75",
-            numberOfUsers: "6",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010548088",
-            description: "test test",
-        },
-        {
-            reportType: "abdo test",
-            frequencyType: "Daily",
-            numberOfVehicles: "87",
-            numberOfUsers: "3",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010808088",
-            description: "test test",
-        },
-        {
-            reportType: "Fuel Summary Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "75",
-            numberOfUsers: "6",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010548088",
-            description: "test test",
-        },
-        {
-            reportType: "Offline Vehicles Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "87",
-            numberOfUsers: "3",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010808088",
-            description: "test test",
-        },
-        {
-            reportType: "Offline Vehicles Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "64",
-            numberOfUsers: "2",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "0101045658088",
-            description: "test test",
-        },
-        {
-            reportType: "Fuel Summary Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "75",
-            numberOfUsers: "6",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010548088",
-            description: "test test",
-        },
-        {
-            reportType: "Offline Vehicles Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "87",
-            numberOfUsers: "3",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010808088",
-            description: "test test",
-        },
-        {
-            reportType: "samy sair",
-            frequencyType: "Daily",
-            numberOfVehicles: "75",
-            numberOfUsers: "6",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010548088",
-            description: "test test",
-        },
-        {
-            reportType: "Offline Vehicles Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "87",
-            numberOfUsers: "3",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010808088",
-            description: "test test",
-        },
-        {
-            reportType: "fady abdo",
-            frequencyType: "Daily",
-            numberOfVehicles: "75",
-            numberOfUsers: "6",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010548088",
-            description: "test test",
-        },
-        {
-            reportType: "Offline Vehicles Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "87",
-            numberOfUsers: "3",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010808088",
-            description: "test test",
-        },
-        {
-            reportType: "Fuel Summary Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "75",
-            numberOfUsers: "6",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010548088",
-            description: "test test",
-        },
-        {
-            reportType: "abdo test",
-            frequencyType: "Daily",
-            numberOfVehicles: "87",
-            numberOfUsers: "3",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010808088",
-            description: "test test",
-        },
-        {
-            reportType: "Fuel Summary Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "75",
-            numberOfUsers: "6",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010548088",
-            description: "test test",
-        },
-        {
-            reportType: "Offline Vehicles Report",
-            frequencyType: "Daily",
-            numberOfVehicles: "87",
-            numberOfUsers: "3",
-            additionalEmails: "ashraf@saferoad.com.sa",
-            additionalPhoneN: "01010808088",
-            description: "test test",
-        },
-    ];
+    // const [users, setUsers] = useState([]);
+    // const [page, setPage] = useState(1);
+    // const countPerPage = 5;
+    // const getUserList = async () => {
+    //     await fetch(
+    //         `https://reqres.in/api/users?page=${page}&per_page=${countPerPage}&delay=1`
+    //     )
+    //         .then((response) => {
+    //             return response.json();
+    //         })
+    //         .then((myJson) => {
+    //             setUsers(myJson);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
+    // };
     useEffect(() => {
         setResult(Data_table);
-    }, [page]);
+        // getUserList();
+    }, []);
 
     return (
         <>
@@ -315,18 +150,18 @@ export default function ScheduledReports() {
                             <div className="d-flex justify-content-center justify-content-md-between flex-wrap">
                                 <div className="d-flex justify-content-end mb-4">
                                     <a href="#">
-                                        <Button variant="primary rounded-pill p-2">
+                                        <Button variant="primary p-2">
                                             Add Scheduled Report
                                         </Button>
                                     </a>
-                                    <Button variant="primary rounded-pill p-2 ms-2">
+                                    <Button variant="primary p-2 ms-2">
                                         Delete Selected
                                     </Button>
                                 </div>
-                                <Form.Floating className=" custom-form-floating custom-form-floating-sm form-group mb-3">
+                                <Form.Floating className="custom-form-floating custom-form-floating-sm form-group">
                                     <Form.Control
                                         ref={inputEl}
-                                        type="text"
+                                        type="search"
                                         className=""
                                         id="floatingInput5"
                                         placeholder="Place Holder"
@@ -342,16 +177,16 @@ export default function ScheduledReports() {
                                 columns={columns}
                                 highlightOnHover
                                 selectableRows
-                                pagination="true"
-                                subHeader
-                                data={result < 1 ? Data_table : result}
-                                paginationServer
-                                paginationTotalRows={Data_table.length}
-                                paginationPerPage={10}
-                                paginationComponentOptions={{
-                                    noRowsPerPage: false,
-                                }}
-                                onChangePage={(page) => setPage(page)}
+                                // subHeader
+                                data={inputEl < 1 ? Data_table : result}
+                                pagination
+                                // paginationServer
+                                // paginationTotalRows={users.total}
+                                // paginationPerPage={countPerPage}
+                                // paginationComponentOptions={{
+                                //     noRowsPerPage: false,
+                                // }}
+                                // onChangePage={(page) => setPage(page)}
                             />
                         </Card.Body>
                     </Card>
