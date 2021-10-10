@@ -19,7 +19,7 @@ const Layout = ({children}) => {
             <main className="main-content">
                 <div className="position-relative">
                     <Header/>
-                    {!router.pathname.includes('track') && (<SubHeader/>)}
+                    {!router.pathname.includes('track') && (<SubHeader pageName={router.pathname}/>)}
                 </div>
                 <div
                     className={"conatiner-fluid mt-n5 py-0 " + (!router.pathname.includes('track') && "content-inner")}>
