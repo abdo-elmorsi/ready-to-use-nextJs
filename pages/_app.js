@@ -20,6 +20,17 @@ function MyApp({Component, pageProps}) {
         router.events.on("routeChangeStart", handleStart);
         router.events.on("routeChangeComplete", handleComplete);
         router.events.on("routeChangeError", handleComplete);
+        const setSize = function () {
+            const docStyle = document.documentElement.style;
+            window.innerWidth < 766
+                ? docStyle.fontSize = `${(window.innerWidth * 0.0205).toFixed(1)}px`
+                : docStyle.fontSize = '16px';
+        }
+        console.error(window.innerWidth)
+        setSize();
+        window.addEventListener('resize', setSize);
+        window.addEventListener('orientationchange', setSize);
+
     }, [router]);
     return (
         <SSRProvider>

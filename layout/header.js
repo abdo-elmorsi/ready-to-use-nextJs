@@ -5,6 +5,8 @@ import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
 import Image from 'next/image'
 import Link from 'next/link'
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faGlobe} from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
 
@@ -30,7 +32,6 @@ const Header = () => {
                             </svg>
                         </i>
                     </div>
-
                     <Navbar.Toggle aria-controls="navbarSupportedContent">
                         <span className="navbar-toggler-icon">
                             <span className="navbar-toggler-bar bar1 mt-2"/>
@@ -39,8 +40,20 @@ const Header = () => {
                         </span>
                     </Navbar.Toggle>
                     <Navbar.Collapse id="navbarSupportedContent">
-                        <Nav as="ul" className="ms-auto navbar-list mb-2 mb-lg-0 d-flex align-items-center">
-                            <Dropdown as="li" className="nav-item">
+                        <Nav as="ul" className="ms-auto navbar-list mb-2 mb-lg-0 d-flex align-items-stretch">
+                            <Dropdown as="li" className="nav-item d-flex align-items-center">
+                                <Dropdown.Toggle variant="nav-link py-0"
+                                                 id="navbarDropdownLanguage"
+                                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <FontAwesomeIcon icon={faGlobe} size="lg"/>
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu className="dropdown-menu-end" aria-labelledby="navbarDropdownLanguage">
+                                    <Dropdown.Item href="/">Settings</Dropdown.Item>
+                                    <Dropdown.Divider/>
+                                    <Dropdown.Item href="/">Logout</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            <Dropdown as="li" className="nav-item d-flex align-items-center">
                                 <Dropdown.Toggle variant="nav-link d-flex align-items-center" id="mail-drop"
                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <svg width="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +93,7 @@ const Header = () => {
                                     </div>
                                 </Dropdown.Menu>
                             </Dropdown>
-                            <Dropdown as="li" className="nav-item">
+                            <Dropdown as="li" className="nav-item d-flex align-items-center">
                                 <Link href="/">
                                     <a className="nav-link">
                                         <svg width="24" viewBox="0 0 24 24" fill="none"
@@ -111,8 +124,6 @@ const Header = () => {
                                     <Dropdown.Item href="/">Logout</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-
-
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

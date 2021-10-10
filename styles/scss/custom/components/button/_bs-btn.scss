@@ -28,11 +28,11 @@
     transition: all 300ms ease-in-out;
   }
 
-  .btn-check:focus + &,
+/*  .btn-check:focus + &,
   &:focus {
     outline: 0;
     box-shadow: $btn-focus-box-shadow;
-  }
+  }*/
 
   .btn-check:checked + &,
   .btn-check:active + &,
