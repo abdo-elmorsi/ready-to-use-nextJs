@@ -5,6 +5,7 @@ import Layout from "../layout";
 import React, {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import Loader from "../components/Loader";
+import {SSRProvider} from '@react-aria/ssr'
 
 function MyApp({Component, pageProps}) {
     const router = useRouter();
@@ -21,12 +22,14 @@ function MyApp({Component, pageProps}) {
         router.events.on("routeChangeError", handleComplete);
     }, [router]);
     return (
+        <SSRProvider>
             <Provider store={store}>
-                <Loader loading={loading} />
+                <Loader loading={loading}/>
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>
             </Provider>
+        </SSRProvider>
     )
 }
 
