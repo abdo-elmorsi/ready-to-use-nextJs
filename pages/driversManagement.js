@@ -104,18 +104,6 @@ export default function DriversManagement() {
             setResult(Data_table);
         }
     };
-    // <th className="text-center">check</th>
-    // <th className="text-center">Display Name</th>
-    // <th className="text-center">Plate Number</th>
-    // <th className="text-center">Maintenance Type</th>
-    // <th className="text-center">Period Type</th>
-    // <th className="text-center">Start Value</th>
-    // <th className="text-center">Next Value</th>
-    // <th className="text-center">Recurring</th>
-    // <th className="text-center">Notify Period</th>
-    // <th className="text-center">Notify When Value</th>
-    // <th className="text-center">Overdue</th>
-    // <th className="text-center">action</th>
     const columns = [
         {
             name: "check",
@@ -219,35 +207,27 @@ export default function DriversManagement() {
             <Row>
                 <Col sm="12">
                     <Card>
-                        <Card.Header className="d-flex justify-content-between bg-primary">
-                            <div className="header-title mx-auto pb-3">
-                                <h4 className="card-title bg-primary text-white">
-                                    Driver Management
-                                </h4>
-                            </div>
-                        </Card.Header>
                         <Card.Body>
-                            {/* table buttons start */}
-                            <div className="d-flex justify-content-center justify-content-lg-between flex-wrap align-content-center">
-                                <Navbar expand="sm" className="navbar-light">
-                                    <Container fluid>
-                                        <Nav className="me-auto  d-flex justify-content-end align-items-start col-12">
-                                            <Nav variant="pills">
-                                                <Button variant="primary m-2 py-2">
-                                                    Add New Driver
-                                                </Button>
-                                                <Button variant="primary m-2 py-2">
-                                                    Add Divers Bulk
-                                                </Button>
-                                            </Nav>
-                                        </Nav>
-                                    </Container>
-                                </Navbar>
-                                <Form.Floating className="custom-form-floating custom-form-floating-sm">
+                            <div className="d-flex justify-content-center justify-content-md-between flex-wrap">
+                                <div className="d-flex justify-content-end mb-4">
+                                    <Button
+                                        variant="primary p-2"
+                                        style={{ fontSize: "13px" }}
+                                    >
+                                        Add New Driver
+                                    </Button>
+                                    <Button
+                                        variant="primary p-2 ms-2"
+                                        style={{ fontSize: "13px" }}
+                                    >
+                                        Add Drivers Bulk
+                                    </Button>
+                                </div>
+                                <Form.Floating className="custom-form-floating custom-form-floating-sm form-group">
                                     <Form.Control
                                         ref={inputEl}
                                         type="search"
-                                        className="mt-2"
+                                        className=""
                                         id="floatingInput5"
                                         placeholder="Place Holder"
                                         onChange={handleSearch}
