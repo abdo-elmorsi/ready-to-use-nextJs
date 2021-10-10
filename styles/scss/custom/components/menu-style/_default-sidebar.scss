@@ -58,12 +58,17 @@
                 .nav-link:not(.disabled) {
                     display: flex;
                     white-space: nowrap;
+                    align-items: center;
+                    line-height: 1.5;
                     span {
                         flex: 1;
                         transition: $navbar-vertical-transition;
                         margin-left: $spacer;
                         transform: translateX(0);
                         opacity: 1;
+                    }
+                    .item-name{
+                        font-size: .9rem;
                     }
                 }
                 .nav-link{

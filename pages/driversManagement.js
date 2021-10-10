@@ -88,7 +88,7 @@ const Data_table = [
     },
 ];
 
-export default function PreventiveMaintenance() {
+export default function DriversManagement() {
     const [result, setResult] = useState([]);
     const inputEl = useRef("");
     const handleSearch = () => {
