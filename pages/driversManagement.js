@@ -131,7 +131,7 @@ const Data_table = [
   },
 ];
 
-export default function PreventiveMaintenance() {
+export default function DriversManagement() {
   return (
     <div>
       {/* table */}

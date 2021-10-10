@@ -1,9 +1,5 @@
 import React from 'react'
 import {Row, Col, Container} from 'react-bootstrap'
-import Image from 'next/image'
-// import { Link } from 'react-router-dom'
-
-
 
 const SubHeader = () => {
 
@@ -33,7 +29,7 @@ const SubHeader = () => {
                 </Container>
                 {/* {{!-- rounded-bottom if not using animation --}} */}
                 <div className="iq-header-img">
-                    <img src="/assets/images/top-header.png" alt="header" className="img-fluid w-100 h-100 animated-scaleX"/>
+                    <img src="/assets/images/top-header.jpg" alt="header" className="img-fluid w-100 h-100 animated-scaleX"/>
                 </div>
             </div>
         </>
