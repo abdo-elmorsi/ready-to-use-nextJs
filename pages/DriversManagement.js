@@ -102,6 +102,11 @@ export default function PreventiveMaintenance() {
                             <Nav.Item>
                                 <Button variant="primary m-2 py-1">Add Drivers bulk</Button>
                             </Nav.Item>
+                            <form className="d-flex col-6">
+                                <input className="form-control me-2" type="search" placeholder="Search"
+                                        aria-label="Search"/>
+                                <button className="btn btn-primary" type="submit">Search</button>
+                             </form>
                             
                         </Nav>
                     </Navbar.Collapse>
