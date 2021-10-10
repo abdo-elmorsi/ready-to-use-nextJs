@@ -139,22 +139,19 @@ export default function ScheduledReports() {
             <Row>
                 <Col sm="12">
                     <Card>
-                        <Card.Header className="d-flex justify-content-between bg-primary">
-                            <div className="header-title mx-auto pb-3">
-                                <h4 className="card-title bg-primary text-white">
-                                    Schedule Reports
-                                </h4>
-                            </div>
-                        </Card.Header>
                         <Card.Body>
                             <div className="d-flex justify-content-center justify-content-md-between flex-wrap">
                                 <div className="d-flex justify-content-end mb-4">
-                                    <a href="#">
-                                        <Button variant="primary p-2">
-                                            Add Scheduled Report
-                                        </Button>
-                                    </a>
-                                    <Button variant="primary p-2 ms-2">
+                                    <Button
+                                        variant="primary p-2"
+                                        style={{ fontSize: "13px" }}
+                                    >
+                                        Add Scheduled Report
+                                    </Button>
+                                    <Button
+                                        variant="primary p-2 ms-2"
+                                        style={{ fontSize: "13px" }}
+                                    >
                                         Delete Selected
                                     </Button>
                                 </div>
