@@ -134,14 +134,14 @@ const VerticalNav = () => {
                     </Link>
                 </Accordion.Item>
                 <Accordion.Item as="li" eventKey="horizontal-menu" bsPrefix="nav-item">
-                    <Link href="/DriversManagement">
+                    <Link href="/driversManagement">
                         <a>
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
                                                   id="tooltip-right">Operate Driver</Tooltip>}>
                                 <div
-                                    className={`${router.pathname === '/DriversManagement' ? 'active' : ''} nav-link `}>
+                                    className={`${router.pathname === '/driversManagement' ? 'active' : ''} nav-link `}>
                                     <i className="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 64 51.2">
                                             <path fill="currentColor"

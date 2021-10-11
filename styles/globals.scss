@@ -68,3 +68,6 @@
 @import "./scss/custom/pages/pricing/pricing";
 
 @import "./scss/custom/dark/index";
+#nprogress .spinner {
+  display: none !important;
+}

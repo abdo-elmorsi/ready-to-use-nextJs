@@ -17,8 +17,11 @@ const SubHeader = ({pageName = ''}) => {
             case "/Reports":
                 setState('Reports');
                 break;
-            case "/DriversManagement":
+            case "/driversManagement":
                 setState('Drivers Management');
+                break;
+            case "/Management":
+                setState('Management');
                 break;
             default:
                 setState('');

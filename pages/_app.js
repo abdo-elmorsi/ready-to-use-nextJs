@@ -35,7 +35,7 @@ function MyApp({Component, pageProps}) {
         <SSRProvider>
             <Provider store={store}>
                 <NextNprogress
-                    color="#29D"
+                    color="#246c66"
                     startPosition={0.3}
                     stopDelayMs={200}
                     height={3}

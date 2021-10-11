@@ -46,9 +46,9 @@ const Header = () => {
                                     <FontAwesomeIcon icon={faGlobe} size="lg"/>
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu className="dropdown-menu-end" aria-labelledby="navbarDropdownLanguage">
-                                    <Dropdown.Item href="/">Settings</Dropdown.Item>
+                                    <Dropdown.Item href="/">Arabic</Dropdown.Item>
                                     <Dropdown.Divider/>
-                                    <Dropdown.Item href="/">Logout</Dropdown.Item>
+                                    <Dropdown.Item href="/">English</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                             <Dropdown as="li" className="nav-item d-flex align-items-center">
