@@ -299,7 +299,7 @@ export default function Home() {
                                             </div>
                                         </div>
                                         <div>
-                                            <span className="badge bg-primary">Monthly</span>
+                                            <span className="badge bg-primary p-2" style={{letterSpacing:"1.2px"}}>Monthly</span>
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-between mt-2">
@@ -329,7 +329,7 @@ export default function Home() {
                                             </div>
                                         </div>
                                         <div>
-                                            <span className="badge bg-warning">Anual</span>
+                                            <span className="badge bg-warning p-2" style={{letterSpacing:"1.2px"}}>Anual</span>
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-between mt-2">
@@ -368,7 +368,7 @@ export default function Home() {
                                             </div>
                                         </div>
                                         <div>
-                                            <span className="badge bg-danger">Today</span>
+                                            <span className="badge bg-danger p-2" style={{letterSpacing:"1.2px"}}>Today</span>
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-between mt-2">
