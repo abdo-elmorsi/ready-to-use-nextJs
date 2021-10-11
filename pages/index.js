@@ -1,5 +1,5 @@
 import React from 'react'
-import {Row, Col, Dropdown, Button} from 'react-bootstrap'
+import {Row, Col} from 'react-bootstrap'
 import Image from "next/image"
 import Card from '../components/Card'
 import Styles from '../styles/Dashboard.module.scss'
@@ -165,85 +165,78 @@ export default function Home() {
         }]
     }
     const chart4 = {
+        series: [{
+            name: 'Number of Vehicles',
+            data: [94, 80, 94, 80, 94, 80, 94]
+        }],
         options: {
             chart: {
-                fontFamily: '"Inter", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+                height: 245,
+                type: 'bar',
                 toolbar: {
                     show: false
                 },
                 sparkline: {
                     enabled: false,
+                },
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 10,
+                    columnWidth: '30%',
                 }
             },
-            colors: ["#3a84b8"],
             dataLabels: {
                 enabled: false
             },
             stroke: {
-                curve: 'smooth',
-                width: 3,
+                width: 2
             },
-            yaxis: {
-                show: true,
-                labels: {
-                    show: true,
-                    minWidth: 19,
-                    maxWidth: 19,
-                    style: {
-                        colors: "#8A92A6",
-                    },
-                    offsetX: -5,
-                },
+
+            grid: {
+                row: {
+                    colors: ['#fff', '#f2f2f2']
+                }
             },
-            legend: {
-                show: false,
-            },
+
             xaxis: {
                 labels: {
-                    show: true,
-                    style: {
-                        colors: "#8A92A6",
-                        rotate: -45,
-                    },
+                    minHeight: 100,
+                    rotate: -45,
                 },
-                lines: {
-                    show: false  //or just here to disable only x axis grids
-                },
-                categories: ["Change Engine Oil",
+                categories: [
+                    "Change Engine Oil",
                     "Change Vehicle Breaks",
                     "Renew Vehicle License",
                     "Vehicle Wash",
                     "Change type",
                     "Change Gear Oil",
-                    "Filter Change"]
+                    "Filter Change"
+                ],
+                tickPlacement: 'on'
             },
-            grid: {
-                show: false,
+            yaxis: {
+                title: {
+                    text: 'Number of Vehicles',
+                },
             },
             fill: {
                 type: 'gradient',
                 gradient: {
-                    shade: 'dark',
-                    type: "vertical",
-                    shadeIntensity: 0,
-                    gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
+                    shade: 'light',
+                    type: "horizontal",
+                    shadeIntensity: 0.25,
+                    gradientToColors: undefined,
                     inverseColors: true,
-                    opacityFrom: .4,
-                    opacityTo: .1,
-                    stops: [0, 50, 80],
-                    colors: ["#3a84b8", "#246c66"]
-                }
-            },
-            tooltip: {
-                enabled: true,
-            },
+                    opacityFrom: 0.85,
+                    opacityTo: 0.85,
+                    stops: [50, 0, 100]
+                },
+            }
         },
-        series: [{
-            name: 'total',
-            data: [94, 80, 94, 80, 94, 80, 94]
-        }]
-    }
 
+
+    }
     const Data_table = [
         {
             icon: 'edit',
@@ -306,7 +299,7 @@ export default function Home() {
                                             </div>
                                         </div>
                                         <div>
-                                            <span className="badge bg-primary">Monthly</span>
+                                            <span className="badge bg-primary p-2" style={{letterSpacing:"1.2px"}}>Monthly</span>
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-between mt-2">
@@ -336,7 +329,7 @@ export default function Home() {
                                             </div>
                                         </div>
                                         <div>
-                                            <span className="badge bg-warning">Anual</span>
+                                            <span className="badge bg-warning p-2" style={{letterSpacing:"1.2px"}}>Anual</span>
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-between mt-2">
@@ -375,7 +368,7 @@ export default function Home() {
                                             </div>
                                         </div>
                                         <div>
-                                            <span className="badge bg-danger">Today</span>
+                                            <span className="badge bg-danger p-2" style={{letterSpacing:"1.2px"}}>Today</span>
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-between mt-2">
@@ -533,7 +526,7 @@ export default function Home() {
                             </div>
                         </div>
                         <div className="card-body">
-                            <Chart options={chart4.options} series={chart4.series} type="area" height="245"/>
+                            <Chart options={chart4.options} series={chart4.series} type="bar" height="245"/>
                         </div>
                     </div>
                 </Col>

@@ -2,23 +2,27 @@ import React, {useEffect} from 'react'
 import Link from 'next/link'
 import VerticalNav from './vertical-nav'
 import Scrollbar from 'smooth-scrollbar'
+import {useSelector, useDispatch} from 'react-redux'
+import {sidebarMini, toggle} from '../store/reducer/toggleSidebar/toggle'
+import {useRouter} from "next/router";
 
 const Sidebar = () => {
-
+    const isActive = useSelector((state) => state.toggleMenu.value)
+    const dispatch = useDispatch()
+    const router = useRouter();
 
     useEffect(
         () => {
             Scrollbar.init(document.querySelector('#my-scrollbar'))
+            router.events.on("routeChangeComplete", () => dispatch(sidebarMini()));
         }
+        , [dispatch, router.events]
     )
-    const minisidebar = () => {
-        document.getElementsByTagName('ASIDE')[0].classList.toggle('sidebar-mini')
-    }
-
 
     return (
         <>
-            <aside className="sidebar sidebar-default navs-rounded-all {{ sidebarVariants }} sidebar-mini">
+            <aside
+                className={`sidebar sidebar-default navs-rounded-all {{ sidebarVariants }} ${isActive && 'sidebar-mini'}`}>
                 <div className="sidebar-header d-flex align-items-center justify-content-start">
                     <Link href="/">
                         <a className="navbar-brand">
@@ -69,7 +73,7 @@ const Sidebar = () => {
                         </a>
                     </Link>
                     <div className="sidebar-toggle shadow-lg" data-toggle="sidebar" data-active="true"
-                         onClick={minisidebar}>
+                         onClick={() => dispatch(toggle())}>
                         <i className="icon">
                             <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.25 12.2744L19.25 12.2744" stroke="currentColor" strokeWidth="1.5"
@@ -82,7 +86,7 @@ const Sidebar = () => {
                 </div>
                 <div className="sidebar-body pt-0 data-scrollbar" data-scroll="1" id="my-scrollbar">
                     <div className="collapse navbar-collapse" id="sidebar">
-                        <VerticalNav />
+                        <VerticalNav/>
                     </div>
                 </div>
                 <div className="sidebar-footer"/>
