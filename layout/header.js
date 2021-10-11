@@ -16,13 +16,12 @@ const Header = () => {
         <>
             <Navbar expand="lg" variant="light" className="nav iq-navbar">
                 <Container fluid className="navbar-inner">
-                    <Link href='/'>
-                        <a className="navbar-brand">
-                            <Image src="/assets/images/saferoad_logo_dark.svg" width="150" height="80px"/>
-                            {/*<h4 className="logo-title">Safe road</h4>*/}
-                        </a>
-                    </Link>
-                    <div className="sidebar-toggle" data-toggle="sidebar" data-active="true" onClick={() => dispatch(toggle())}>
+                    <div className="navbar-brand mx-5">
+                        <Image src="/assets/images/saferoad_logo_dark.svg" width="150" height="80px"/>
+                        {/*<h4 className="logo-title">Safe road</h4>*/}
+                    </div>
+                    <div className="sidebar-toggle" data-toggle="sidebar" data-active="true"
+                         onClick={() => dispatch(toggle())}>
                         <i className="icon">
                             <svg width="20px" height="20px" viewBox="0 0 24 24">
                                 <path fill="currentColor"
