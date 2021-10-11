@@ -4,8 +4,8 @@ import {Provider} from 'react-redux'
 import Layout from "../layout";
 import React, {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import Loader from "../components/Loader";
 import {SSRProvider} from '@react-aria/ssr'
+import NextNprogress from 'nextjs-progressbar';
 
 function MyApp({Component, pageProps}) {
     const router = useRouter();
@@ -34,7 +34,13 @@ function MyApp({Component, pageProps}) {
     return (
         <SSRProvider>
             <Provider store={store}>
-                <Loader loading={loading}/>
+                <NextNprogress
+                    color="#29D"
+                    startPosition={0.3}
+                    stopDelayMs={200}
+                    height={3}
+                    showOnShallow={true}
+                />
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>
