@@ -10,7 +10,7 @@ export const toggleSlice = createSlice({
             state.value = !state.value
         },
         sidebarMini: state => {
-            state.value = false
+            state.value = true
         }
     },
 })
