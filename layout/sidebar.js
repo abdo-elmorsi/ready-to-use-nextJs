@@ -2,23 +2,29 @@ import React, {useEffect} from 'react'
 import Link from 'next/link'
 import VerticalNav from './vertical-nav'
 import Scrollbar from 'smooth-scrollbar'
+import {useSelector, useDispatch} from 'react-redux'
+import {addClass, removeClass} from '../store/reducer/toggleSidebar/toggle'
 
 const Sidebar = () => {
-
-
+    const toggleClass = useSelector((state) => state.toggleMenu.value)
+    const dispatch = useDispatch()
     useEffect(
         () => {
             Scrollbar.init(document.querySelector('#my-scrollbar'))
         }
     )
     const minisidebar = () => {
-        document.getElementsByTagName('ASIDE')[0].classList.toggle('sidebar-mini')
+        if (!document.querySelector('.sidebar.sidebar-default.navs-rounded-all').classList.contains('sidebar-mini')) {
+            dispatch(addClass())
+        } else {
+            dispatch(removeClass())
+        }
     }
 
 
     return (
         <>
-            <aside className="sidebar sidebar-default navs-rounded-all {{ sidebarVariants }} sidebar-mini">
+            <aside className={`sidebar sidebar-default navs-rounded-all {{ sidebarVariants }} ${toggleClass}`}>
                 <div className="sidebar-header d-flex align-items-center justify-content-start">
                     <Link href="/">
                         <a className="navbar-brand">
@@ -82,7 +88,7 @@ const Sidebar = () => {
                 </div>
                 <div className="sidebar-body pt-0 data-scrollbar" data-scroll="1" id="my-scrollbar">
                     <div className="collapse navbar-collapse" id="sidebar">
-                        <VerticalNav />
+                        <VerticalNav/>
                     </div>
                 </div>
                 <div className="sidebar-footer"/>

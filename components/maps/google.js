@@ -1,7 +1,4 @@
 import React from 'react'
-import Card from '../Card'
-import {Row,Col} from 'react-bootstrap'
-
 
 const Google = () => {
     return (
