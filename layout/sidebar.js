@@ -3,20 +3,26 @@ import Link from 'next/link'
 import VerticalNav from './vertical-nav'
 import Scrollbar from 'smooth-scrollbar'
 import {useSelector, useDispatch} from 'react-redux'
-import {toggle} from '../store/reducer/toggleSidebar/toggle'
+import {sidebarMini, toggle} from '../store/reducer/toggleSidebar/toggle'
+import {useRouter} from "next/router";
 
 const Sidebar = () => {
     const isActive = useSelector((state) => state.toggleMenu.value)
     const dispatch = useDispatch()
+    const router = useRouter();
+
     useEffect(
         () => {
             Scrollbar.init(document.querySelector('#my-scrollbar'))
+            router.events.on("routeChangeComplete", () => dispatch(sidebarMini()));
         }
+        , [dispatch, router.events]
     )
 
     return (
         <>
-            <aside className={`sidebar sidebar-default navs-rounded-all {{ sidebarVariants }} ${isActive && 'sidebar-mini'}`}>
+            <aside
+                className={`sidebar sidebar-default navs-rounded-all {{ sidebarVariants }} ${isActive && 'sidebar-mini'}`}>
                 <div className="sidebar-header d-flex align-items-center justify-content-start">
                     <Link href="/">
                         <a className="navbar-brand">
