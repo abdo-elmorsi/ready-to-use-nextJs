@@ -67,9 +67,9 @@ const Map = () => {
                 <Popup>Hey ! I live here
                     {/*<button onClick={() => changePos([43.653225, -79.383186])}>change</button>*/}
                 </Popup>
-                <Tooltip>
+                {/*<Tooltip>
                     test Tooltip
-                </Tooltip>
+                </Tooltip>*/}
             </Marker>
 
         </MapContainer>

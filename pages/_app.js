@@ -26,7 +26,6 @@ function MyApp({Component, pageProps}) {
                 ? docStyle.fontSize = `${(window.innerWidth * 0.0205).toFixed(1)}px`
                 : docStyle.fontSize = '16px';
         }
-        console.error(window.innerWidth)
         setSize();
         window.addEventListener('resize', setSize);
         window.addEventListener('orientationchange', setSize);
