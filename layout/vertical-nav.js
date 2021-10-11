@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import {Accordion, useAccordionButton, AccordionContext, OverlayTrigger, Tooltip} from 'react-bootstrap'
 import Link from 'next/link'
 import {useRouter} from "next/router";
@@ -24,7 +24,7 @@ function CustomToggle({children, eventKey, onClick}) {
 
 const VerticalNav = () => {
     let router = useRouter();
-    const toggleClass = useSelector((state) => state.toggleMenu.value)
+    const isActive = useSelector((state) => state.toggleMenu.value)
 
     return (
         <>
@@ -34,9 +34,9 @@ const VerticalNav = () => {
                         <a>
                             <OverlayTrigger
                                 placement="right"
-                                overlay={<Tooltip style={{zIndex: 99999}} className={!toggleClass && 'd-none'}
+                                overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
                                                   id="tooltip-right">Dashboard</Tooltip>}>
-                                <a className={`${router.pathname === '/' ? 'active' : ''} nav-link`}>
+                                <div className={`${router.pathname === '/' ? 'active' : ''} nav-link`}>
                                     <i className="icon">
                                         <svg width="20" viewBox="0 0 24 24" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +49,7 @@ const VerticalNav = () => {
                                         </svg>
                                     </i>
                                     <span className="item-name">Dashboard</span>
-                                </a>
+                                </div>
                             </OverlayTrigger>
                         </a>
                     </Link>
@@ -60,9 +60,9 @@ const VerticalNav = () => {
                         <a>
                             <OverlayTrigger
                                 placement="right"
-                                overlay={<Tooltip style={{zIndex: 99999}} className={!toggleClass && 'd-none'}
+                                overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
                                                   id="tooltip-right">Track</Tooltip>}>
-                                <a className={`${router.pathname === '/track' ? 'active' : ''} nav-link `}>
+                                <div className={`${router.pathname === '/track' ? 'active' : ''} nav-link`}>
                                     <i className="icon">
                                         <svg width="20" viewBox="0 0 24 24" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +85,7 @@ const VerticalNav = () => {
                                     </i>
                                     <span className="item-name">Track</span>
 
-                                </a>
+                                </div>
                             </OverlayTrigger>
                         </a>
                     </Link>

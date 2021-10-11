@@ -1,18 +1,16 @@
 import React from 'react'
 import {Navbar, Container, Nav, Dropdown} from 'react-bootstrap'
 import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
-// import CustomToggle from '../components/dropdowns'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faGlobe} from '@fortawesome/free-solid-svg-icons'
+import {useDispatch} from "react-redux";
+import {toggle} from "../store/reducer/toggleSidebar/toggle";
 
 const Header = () => {
-
-    const minisidebar = () => {
-        document.getElementsByTagName('ASIDE')[0].classList.toggle('sidebar-mini')
-    }
+    const dispatch = useDispatch()
 
     return (
         <>
@@ -24,7 +22,7 @@ const Header = () => {
                             {/*<h4 className="logo-title">Safe road</h4>*/}
                         </a>
                     </Link>
-                    <div className="sidebar-toggle" data-toggle="sidebar" data-active="true" onClick={minisidebar}>
+                    <div className="sidebar-toggle" data-toggle="sidebar" data-active="true" onClick={() => dispatch(toggle())}>
                         <i className="icon">
                             <svg width="20px" height="20px" viewBox="0 0 24 24">
                                 <path fill="currentColor"
