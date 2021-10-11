@@ -9,28 +9,27 @@ import Sidebar from './sidebar'
 //footer
 // import Footer from './footer'
 
-import Loader from '../components/Loader'
 import {useRouter} from "next/router";
 
 const Layout = ({children}) => {
     let router = useRouter();
     return (
-        <>
-            <Loader/>
+        <div>
             <Sidebar/>
             <main className="main-content">
                 <div className="position-relative">
                     <Header/>
-                    {!router.pathname.includes('track') && (<SubHeader/>)}
+                    {!router.pathname.includes('track') && (<SubHeader pageName={router.pathname}/>)}
                 </div>
-                <div className={"conatiner-fluid mt-n5 py-0 " + (!router.pathname.includes('track') && "content-inner")}>
+                <div
+                    className={"conatiner-fluid mt-n5 py-0 " + (!router.pathname.includes('track') && "content-inner")}>
                     {children}
                     {/*<DefaultRouter />*/}
                 </div>
                 {/*<Footer/>*/}
             </main>
             {/*<SettingOffcanvas/>*/}
-        </>
+        </div>
     )
 }
 

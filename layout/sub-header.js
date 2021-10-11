@@ -1,12 +1,30 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Row, Col, Container} from 'react-bootstrap'
-import Image from 'next/image'
-// import { Link } from 'react-router-dom'
 
-
-
-const SubHeader = () => {
-
+const SubHeader = ({pageName = ''}) => {
+    const [state, setState] = useState('');
+    useEffect(_ => {
+        switch (pageName) {
+            case "/":
+                setState('Dashboard');
+                break;
+            case "/preventiveMaintenance":
+                setState('Preventive Maintenance');
+                break;
+            case "/scheduledReports":
+                setState('Scheduled Reports');
+                break;
+            case "/Reports":
+                setState('Reports');
+                break;
+            case "/DriversManagement":
+                setState('Drivers Management');
+                break;
+            default:
+                setState('');
+                break;
+        }
+    },[pageName])
     return (
         <>
             <div className="iq-navbar-header" style={{height: "215px"}}>
@@ -15,7 +33,7 @@ const SubHeader = () => {
                         <Col md="12">
                             <div className="d-flex justify-content-between flex-wrap">
                                 <div>
-                                    <h1>Dashboard</h1>
+                                    <h1>{state}</h1>
                                     {/*<p>We are on a mission to help developers like you build successful projects for FREE.</p>*/}
                                 </div>
                                 <div className="d-flex align-items-center">
@@ -33,7 +51,8 @@ const SubHeader = () => {
                 </Container>
                 {/* {{!-- rounded-bottom if not using animation --}} */}
                 <div className="iq-header-img">
-                    <img src="/assets/images/top-header.png" alt="header" className="img-fluid w-100 h-100 animated-scaleX"/>
+                    <img src="/assets/images/top-header.jpg" alt="header"
+                         className="img-fluid w-100 h-100 animated-scaleX"/>
                 </div>
             </div>
         </>

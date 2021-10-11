@@ -1,162 +1,262 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import DataTable from "react-data-table-component";
 import {
-  Row,
-  Col,
-  Navbar,
-  Container,
-  Nav,
-  NavDropdown,
-  Dropdown,
-  Button,
+    Row,
+    Col,
+    Navbar,
+    Form,
+    Container,
+    Nav,
+    Dropdown,
+    Button,
 } from "react-bootstrap";
 import Card from "../components/Card";
-
+export const Actions = ({ id }) => {
+    return (
+        <div className="d-flex  flex-column text-primary">
+            <u className="mb-1">reset</u>
+            <u className="mb-1">edit</u>
+            <u className="mb-1">delete</u>
+        </div>
+    );
+};
 const Data_table = [
-  {
-    name: "Demo Moaz",
-    phoneNumber: "0539448802",
-    email: "email@saferoad.com",
-    department: "By Fixed Date",
-    licenceNumber: "142666",
-    licenceEXP: "09/19/2021",
-    rfid: "Exist",
-    waslIntgeration: "yes",
-    action: "edit/del/locate driver/show/assigned vehicle",
-  },
-  {
-    name: "Demo Moaz",
-    phoneNumber: "0539448802",
-    email: "email@saferoad.com",
-    department: "By Fixed Date",
-    licenceNumber: "142666",
-    licenceEXP: "09/19/2021",
-    rfid: "Exist",
-    waslIntgeration: "yes",
-    action: "edit/del/locate driver/show/assigned vehicle",
-  },
-  {
-    name: "Demo Moaz",
-    phoneNumber: "0539448802",
-    email: "email@saferoad.com",
-    department: "By Fixed Date",
-    licenceNumber: "142666",
-    licenceEXP: "09/19/2021",
-    rfid: "Exist",
-    waslIntgeration: "yes",
-    action: "edit/del/locate driver/show/assigned vehicle",
-  },
-  {
-    name: "Demo Moaz",
-    phoneNumber: "0539448802",
-    email: "email@saferoad.com",
-    department: "By Fixed Date",
-    licenceNumber: "142666",
-    licenceEXP: "09/19/2021",
-    rfid: "Exist",
-    waslIntgeration: "yes",
-    action: "edit/del/locate driver/show/assigned vehicle",
-  },
+    {
+        check: "check",
+        name: "Demo Moaz",
+        plateNumber: "358480085000471",
+        mainType: "Vechile Wash",
+        periodTyoe: "By Fixed Date",
+        startValue: "09/26/2021",
+        nextValue: "09/19/2021",
+        recurring: "Exist",
+        notifyPeriod: "Value",
+        notifyWhenValue: "0",
+        overdue: "yes",
+    },
+    {
+        check: "check",
+        name: "Demo Moaz",
+        plateNumber: "358480085000471",
+        mainType: "Vechile Wash",
+        periodTyoe: "By Fixed Date",
+        startValue: "09/26/2021",
+        nextValue: "09/19/2021",
+        recurring: "Exist",
+        notifyPeriod: "Value",
+        notifyWhenValue: "0",
+        overdue: "yes",
+    },
+    {
+        check: "check",
+        name: "Demo Moaz",
+        plateNumber: "358480085000471",
+        mainType: "Vechile Wash",
+        periodTyoe: "By Fixed Date",
+        startValue: "09/26/2021",
+        nextValue: "09/19/2021",
+        recurring: "Exist",
+        notifyPeriod: "Value",
+        notifyWhenValue: "0",
+        overdue: "yes",
+    },
+    {
+        check: "check",
+        name: "Demo Moaz",
+        plateNumber: "358480085000471",
+        mainType: "Vechile Wash",
+        periodTyoe: "By Fixed Date",
+        startValue: "09/26/2021",
+        nextValue: "09/19/2021",
+        recurring: "Exist",
+        notifyPeriod: "Value",
+        notifyWhenValue: "0",
+        overdue: "yes",
+    },
+    {
+        check: "check",
+        name: "Demo Moaz",
+        plateNumber: "358480085000471",
+        mainType: "Vechile Wash",
+        periodTyoe: "By Fixed Date",
+        startValue: "09/26/2021",
+        nextValue: "09/19/2021",
+        recurring: "Exist",
+        notifyPeriod: "Value",
+        notifyWhenValue: "0",
+        overdue: "yes",
+    },
 ];
 
-export default function PreventiveMaintenance() {
-  return (
-    <div>
-      {/* table */}
-      <Row>
-        <Col sm="12">
-          <Card>
-            <Card.Header className="d-flex justify-content-between">
-              <div className="header-title">
-                <h4 className="card-title">Driver Management</h4>
-              </div>
-            </Card.Header>
-            
-            {/* /////////////////////////////////////////////////////////////// */}
-        <Navbar className="navbar-light rounded-1 mt-2" expand="lg" >
-            <Container fluid>
-                <Navbar.Brand className="navbar-brand" to="#">
-                     <Dropdown>
-                         show  <Dropdown.Toggle as={Button} className=" bg-primary" size="lg" type="button" id="dropdownMenuButtonSM">
-                        10
-                        </Dropdown.Toggle> entries
-                            <Dropdown.Menu aria-labelledby="dropdownMenuButtonSM">
-                                <Dropdown.Item href="#">10</Dropdown.Item>
-                                <Dropdown.Item href="#">25</Dropdown.Item>
-                                <Dropdown.Item href="#">50</Dropdown.Item>
-                                <Dropdown.Item href="#">100</Dropdown.Item>
-                            </Dropdown.Menu>
-                    </Dropdown> 
-                </Navbar.Brand>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbar-2" aria-controls="navbar-2" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+export default function DriversManagement() {
+    const [result, setResult] = useState([]);
+    const inputEl = useRef("");
+    const handleSearch = () => {
+        if (inputEl.current.value !== "") {
+            const newData = Data_table.filter((item) => {
+                return Object.values(item)
+                    .join(" ")
+                    .toLocaleLowerCase()
+                    .includes(inputEl.current.value.toLocaleLowerCase());
+            });
+            setResult(newData);
+        } else {
+            setResult(Data_table);
+        }
+    };
+    const columns = [
+        {
+            name: "check",
+            selector: (row) => row.check,
+            sortable: true,
+            // center: true
+        },
+        {
+            name: "Display Name",
+            selector: (row) => row.name,
+            sortable: true,
+            // center: true
+        },
+        {
+            name: "Plate Number",
+            selector: (row) => row.plateNumber,
+            sortable: true,
+            // center: true,
+        },
+        {
+            name: "Maintenance Type",
+            selector: (row) => row.mainType,
+            sortable: true,
+            // center: true,
+        },
+        {
+            name: "Period Type",
+            selector: (row) => row.periodTyoe,
+            sortable: true,
+            // center: true,
+        },
+        {
+            name: "Start Value",
+            selector: (row) => row.startValue,
+            sortable: true,
+            // center: true,
+        },
+        {
+            name: "Next Value",
+            selector: (row) => row.nextValue,
+            sortable: true,
+            // center: true,
+        },
+        {
+            name: "Recurring",
+            selector: (row) => row.recurring,
+            sortable: true,
+            // center: true,
+        },
+        {
+            name: "Notify Period",
+            selector: (row) => row.notifyPeriod,
+            sortable: true,
+            // center: true,
+        },
+        {
+            name: "Notify When Value",
+            selector: (row) => row.notifyWhenValue,
+            sortable: true,
+            // center: true,
+        },
+        {
+            name: "Overdue",
+            selector: (row) => row.overdue,
+            sortable: true,
+            // center: true,
+        },
+        {
+            name: "Actions",
+            // sortable: true,
+            // center: true,
+            reorder: true,
+            cell: (row) => <Actions id={row.id} />,
+        },
+    ];
+    // const [users, setUsers] = useState([]);
+    // const [page, setPage] = useState(1);
+    // const countPerPage = 5;
+    // const getUserList = async () => {
+    //     await fetch(
+    //         `https://reqres.in/api/users?page=${page}&per_page=${countPerPage}&delay=1`
+    //     )
+    //         .then((response) => {
+    //             return response.json();
+    //         })
+    //         .then((myJson) => {
+    //             setUsers(myJson);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
+    // };
+    useEffect(() => {
+        setResult(Data_table);
+        // getUserList();
+    }, []);
 
-               
-                    <Navbar.Collapse className="collapse" id="navbar-2">
-                        <Nav className=" ms-auto mb-2 mb-lg-0">
-                            <Nav.Item>
-                                <Button variant="primary m-2 py-1">Add New Driver</Button>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Button variant="primary m-2 py-1">Add Drivers bulk</Button>
-                            </Nav.Item>
-                            <form className="d-flex col-6">
-                                <input className="form-control me-2" type="search" placeholder="Search"
-                                        aria-label="Search"/>
-                                <button className="btn btn-primary" type="submit">Search</button>
-                             </form>
-                            
-                        </Nav>
-                    </Navbar.Collapse>
-            </Container>
-        </Navbar>
-            {/* /////////////////////////////////////////////////////////////// */}
-
-            {/* table buttons end */}
-            <Card.Body>
-              <div className="table-responsive">
-                <table
-                  id="datatable"
-                  className="table table-striped table-hover table-bordered"
-                  data-toggle="data-table"
-                >
-                  <thead>
-                    <tr>
-                      <th className="text-center">Full Name</th>
-                      <th className="text-center">Phone number</th>
-                      <th className="text-center">Email</th>
-                      <th className="text-center">Department</th>
-                      <th className="text-center">Licence number</th>
-                      <th className="text-center">Licence expiration date</th>
-                      <th className="text-center">RFID</th>
-                      <th className="text-center">WASL integration</th>
-                      <th className="text-center">action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {Data_table.map((item) => (
-                      <tr key={item.name}>
-                        <td className="text-center">{item.name}</td>
-                        <td className="text-center">{item.phoneNumber}</td>
-                        <td className="text-center">{item.email}</td>
-                        <td className="text-center">{item.department}</td>
-                        <td className="text-center">{item.licenceNumber}</td>
-                        <td className="text-center">{item.licenceEXP}</td>
-                        <td className="text-center">{item.rfid}</td>
-                        <td className="text-center">{item.waslIntgeration}</td>
-                        <td className="text-center">{item.action}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </Card.Body>
-          </Card>
-        </Col>
-        <div className="col-12 mb-5">Showing 1 to 10 of 10 entries</div>
-      </Row>
-    </div>
-  );
+    return (
+        <div>
+            {/* table */}
+            <Row>
+                <Col sm="12">
+                    <Card>
+                        <Card.Body>
+                            <div className="d-flex justify-content-center justify-content-md-between flex-wrap">
+                                <div className="d-flex justify-content-end mb-4">
+                                    <Button
+                                        variant="primary p-2"
+                                        style={{ fontSize: "13px" }}
+                                    >
+                                        Add New Driver
+                                    </Button>
+                                    <Button
+                                        variant="primary p-2 ms-2"
+                                        style={{ fontSize: "13px" }}
+                                    >
+                                        Add Drivers Bulk
+                                    </Button>
+                                </div>
+                                <Form.Floating className="custom-form-floating custom-form-floating-sm form-group">
+                                    <Form.Control
+                                        ref={inputEl}
+                                        type="search"
+                                        className=""
+                                        id="floatingInput5"
+                                        placeholder="Place Holder"
+                                        onChange={handleSearch}
+                                    />
+                                    <label htmlFor="floatingInput">
+                                        serach
+                                    </label>
+                                </Form.Floating>
+                            </div>
+                            <DataTable
+                                // title="Schedule Reports"
+                                columns={columns}
+                                highlightOnHover
+                                selectableRows
+                                // subHeader
+                                data={inputEl < 1 ? Data_table : result}
+                                pagination
+                                // paginationServer
+                                // paginationTotalRows={users.total}
+                                // paginationPerPage={countPerPage}
+                                // paginationComponentOptions={{
+                                //     noRowsPerPage: false,
+                                // }}
+                                // onChangePage={(page) => setPage(page)}
+                            />
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+        </div>
+    );
 }
