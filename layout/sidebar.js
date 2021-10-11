@@ -3,28 +3,20 @@ import Link from 'next/link'
 import VerticalNav from './vertical-nav'
 import Scrollbar from 'smooth-scrollbar'
 import {useSelector, useDispatch} from 'react-redux'
-import {addClass, removeClass} from '../store/reducer/toggleSidebar/toggle'
+import {toggle} from '../store/reducer/toggleSidebar/toggle'
 
 const Sidebar = () => {
-    const toggleClass = useSelector((state) => state.toggleMenu.value)
+    const isActive = useSelector((state) => state.toggleMenu.value)
     const dispatch = useDispatch()
     useEffect(
         () => {
             Scrollbar.init(document.querySelector('#my-scrollbar'))
         }
     )
-    const minisidebar = () => {
-        if (!document.querySelector('.sidebar.sidebar-default.navs-rounded-all').classList.contains('sidebar-mini')) {
-            dispatch(addClass())
-        } else {
-            dispatch(removeClass())
-        }
-    }
-
 
     return (
         <>
-            <aside className={`sidebar sidebar-default navs-rounded-all {{ sidebarVariants }} ${toggleClass}`}>
+            <aside className={`sidebar sidebar-default navs-rounded-all {{ sidebarVariants }} ${isActive && 'sidebar-mini'}`}>
                 <div className="sidebar-header d-flex align-items-center justify-content-start">
                     <Link href="/">
                         <a className="navbar-brand">
@@ -75,7 +67,7 @@ const Sidebar = () => {
                         </a>
                     </Link>
                     <div className="sidebar-toggle shadow-lg" data-toggle="sidebar" data-active="true"
-                         onClick={minisidebar}>
+                         onClick={() => dispatch(toggle())}>
                         <i className="icon">
                             <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.25 12.2744L19.25 12.2744" stroke="currentColor" strokeWidth="1.5"

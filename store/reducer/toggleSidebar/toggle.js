@@ -3,19 +3,19 @@ import {createSlice} from '@reduxjs/toolkit'
 export const toggleSlice = createSlice({
     name: 'toggleMenu',
     initialState: {
-        value: 'sidebar-mini',
+        value: true,
     },
     reducers: {
-        addClass: (state) => {
-            state.value = 'sidebar-mini'
+        toggle: state => {
+            state.value = !state.value
         },
-        removeClass: (state) => {
-            state.value = ''
-        },
+        sidebarMini: state => {
+            state.value = false
+        }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const {addClass, removeClass} = toggleSlice.actions
+export const {toggle, sidebarMini} = toggleSlice.actions
 
 export default toggleSlice.reducer
