@@ -1,7 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
-
-import Card from "../components/Card";
+import { Row, Col, Card } from "react-bootstrap";
 
 export default function Reports() {
     return (

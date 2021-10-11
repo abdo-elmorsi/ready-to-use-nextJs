@@ -5,8 +5,8 @@ import {
     Col,
     Form,
     Button,
+    Card
 } from "react-bootstrap";
-import Card from "../components/Card";
 export const Actions = ({ id }) => {
     return (
         <div className="d-flex  flex-column text-primary">

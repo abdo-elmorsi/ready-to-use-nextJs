@@ -3,14 +3,10 @@ import DataTable from "react-data-table-component";
 import {
     Row,
     Col,
-    Navbar,
+    Card,
     Form,
-    Container,
-    Nav,
-    Dropdown,
     Button,
 } from "react-bootstrap";
-import Card from "../components/Card";
 export const Actions = ({ id }) => {
     return (
         <div className="d-flex  flex-column text-primary">

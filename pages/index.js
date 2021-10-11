@@ -1,7 +1,6 @@
 import React from 'react'
-import {Row, Col} from 'react-bootstrap'
+import {Row, Col, Card} from 'react-bootstrap'
 import Image from "next/image"
-import Card from '../components/Card'
 import Styles from '../styles/Dashboard.module.scss'
 //progressbar
 import Progress from '../components/progress.js'
