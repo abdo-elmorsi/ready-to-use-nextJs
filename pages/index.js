@@ -12,7 +12,7 @@ import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
 import dynamic from "next/dynamic";
 
 const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
-// translation
+// translation ##################################
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 export async function getStaticProps({ locale }) {
     return {
@@ -21,6 +21,7 @@ export async function getStaticProps({ locale }) {
         },
     };
 }
+// translation ##################################
 // import Vector from "../components/maps/vector";
 export default function Home() {
     const chart1 = {
