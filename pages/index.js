@@ -12,7 +12,15 @@ import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
 import dynamic from "next/dynamic";
 
 const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
-
+// translation
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['main'])),
+        },
+    };
+}
 // import Vector from "../components/maps/vector";
 export default function Home() {
     const chart1 = {
