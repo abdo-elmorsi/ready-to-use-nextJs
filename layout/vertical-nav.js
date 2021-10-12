@@ -39,7 +39,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">Dashboard</Tooltip>}>
+                                                  id="tooltip-right">{t("main:Dashboard")}</Tooltip>}>
                                 <div className={`${router.pathname === '/' ? 'active' : ''} nav-link`}>
                                     <i className="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" viewBox="0 0 64 56.01">
@@ -59,7 +59,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">Track</Tooltip>}>
+                                                  id="tooltip-right">{t("main:Track")}</Tooltip>}>
                                 <div className={`${router.pathname === '/track' ? 'active' : ''} nav-link`}>
                                     <i className="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" viewBox="0 0 64 56.89">
@@ -79,7 +79,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">Preventive Maintenance</Tooltip>}>
+                                                  id="tooltip-right">{t("main:Preventive_Maintenance")}</Tooltip>}>
                                 <div
                                     className={`${router.pathname === '/preventiveMaintenance' ? 'active' : ''} nav-link `}>
                                     <i className="icon">
@@ -100,7 +100,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">Reports</Tooltip>}>
+                                                  id="tooltip-right">{t("main:Reports")}</Tooltip>}>
                                 <div className={`${router.pathname === '/Reports' ? 'active' : ''} nav-link `}>
                                     <i className="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23"
@@ -121,7 +121,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">Scheduled Reports</Tooltip>}>
+                                                  id="tooltip-right">{t("main:Scheduled_Reports")}</Tooltip>}>
                                 <div className={`${router.pathname === '/scheduledReports' ? 'active' : ''} nav-link `}>
                                     <i className="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23"
@@ -143,7 +143,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">Operate Driver</Tooltip>}>
+                                                  id="tooltip-right">{t("main:Operate_Driver")}</Tooltip>}>
                                 <div
                                     className={`${router.pathname === '/driversManagement' ? 'active' : ''} nav-link `}>
                                     <i className="icon">
@@ -165,7 +165,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">Management</Tooltip>}>
+                                                  id="tooltip-right">{t("main:Management")}</Tooltip>}>
                                 <div className={`${router.pathname === '/Management' ? 'active' : ''} nav-link `}>
                                     <i className="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 64 51.21">

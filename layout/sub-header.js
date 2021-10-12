@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {Row, Col, Container} from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 
 const SubHeader = ({pageName = ''}) => {
+    const { t } = useTranslation();
+
     const [state, setState] = useState('');
     useEffect(_ => {
         switch (pageName) {
@@ -9,16 +12,16 @@ const SubHeader = ({pageName = ''}) => {
                 setState('Dashboard');
                 break;
             case "/preventiveMaintenance":
-                setState('Preventive Maintenance');
+                setState('Preventive_Maintenance');
                 break;
             case "/scheduledReports":
-                setState('Scheduled Reports');
+                setState('Scheduled_Reports');
                 break;
             case "/Reports":
                 setState('Reports');
                 break;
             case "/driversManagement":
-                setState('Drivers Management');
+                setState('Drivers_Management');
                 break;
             case "/Management":
                 setState('Management');
@@ -36,7 +39,7 @@ const SubHeader = ({pageName = ''}) => {
                         <Col md="12">
                             <div className="d-flex justify-content-between flex-wrap">
                                 <div>
-                                    <h1>{state}</h1>
+                                    <h1>{t(`main:${state}`)}</h1>
                                     {/*<p>We are on a mission to help developers like you build successful projects for FREE.</p>*/}
                                 </div>
                                 <div className="d-flex align-items-center">

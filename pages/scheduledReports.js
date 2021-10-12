@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import DataTable from "react-data-table-component";
-
 export const Actions = ({ id }) => {
     return (
         <div className="d-flex  flex-column text-primary">
@@ -191,3 +190,13 @@ export default function ScheduledReports() {
         </>
     );
 }
+// translation ##################################
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['main'])),
+        },
+    };
+}
+// translation ##################################

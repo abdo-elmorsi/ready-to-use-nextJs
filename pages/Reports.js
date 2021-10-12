@@ -1,6 +1,5 @@
 import React from "react";
 import { Row, Col, Card } from "react-bootstrap";
-
 export default function Reports() {
     return (
         <>
@@ -14,3 +13,13 @@ export default function Reports() {
         </>
     );
 }
+// translation ##################################
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['main'])),
+        },
+    };
+}
+// translation ##################################
