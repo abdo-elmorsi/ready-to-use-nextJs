@@ -1,13 +1,32 @@
-import {MapContainer, TileLayer, Marker, Popup, LayersControl, Tooltip} from "react-leaflet";
+import {MapContainer, TileLayer, Marker, Popup, LayersControl, Tooltip, useMap} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 import useWindowDimensions from "../../helpers/getWindowDimensions";
-import {useState} from "react";
+import {useRef, useState} from "react";
+import RoutineMachine from "./RoutineMachine";
+import * as ELG from "esri-leaflet-geocoder";
+const points1 = [
+    [33.52001088075479, 36.26829385757446],
+    [33.50546582848033, 36.29547681726967]
+];
 const Map = () => {
     const {heightWithoutNav} = useWindowDimensions();
     const [map, setMap] = useState(null);
+    const rMachine = useRef();
+    function Geocoder({ address }) {
+        const map = useMap();
 
+        ELG.geocode()
+            .text(address)
+            .run((err, results, response) => {
+                console.log(results);
+                // const { lat, lng } = results.results[0].latlng;
+                // map.setView([lat, lng], 12);
+            });
+
+        return null;
+    }
     const changePos = (pos) => {
         if (map) {
             setTimeout(_ => {
@@ -71,6 +90,8 @@ const Map = () => {
                     test Tooltip
                 </Tooltip>*/}
             </Marker>
+            <RoutineMachine ref={rMachine} waypoints={points1} />
+            {/*<Geocoder address="giza" />*/}
 
         </MapContainer>
     );
