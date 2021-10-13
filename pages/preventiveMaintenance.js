@@ -280,6 +280,7 @@ export default function PreventiveMaintenance() {
         </div>
     );
 }
+
 // translation ##################################
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 export async function getStaticProps({ locale }) {
