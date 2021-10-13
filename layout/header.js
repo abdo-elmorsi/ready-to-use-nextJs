@@ -11,10 +11,10 @@ import {toggle} from "../store/reducer/toggleSidebar/toggle";
 import { useRouter } from 'next/router'
 
 // translation
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next';
 const Header = () => {
     const dispatch = useDispatch()
-    const { t } = useTranslation();
+    const { t } = useTranslation("main");
 
     return (
         <>
@@ -49,9 +49,9 @@ const Header = () => {
                                     <FontAwesomeIcon icon={faGlobe} size="lg"/>
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu className="dropdown-menu-end" aria-labelledby="navbarDropdownLanguage">
-                                    <Dropdown.Item>{t("main:Arabic")}</Dropdown.Item>
+                                    <Dropdown.Item>{t("Arabic")}</Dropdown.Item>
                                     <Dropdown.Divider/>
-                                    <Dropdown.Item>{t('main:English')}</Dropdown.Item>
+                                    <Dropdown.Item>{t('English')}</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                             <Dropdown as="li" className="nav-item d-flex align-items-center">
@@ -71,7 +71,7 @@ const Header = () => {
                                     <div className="card shadow-none m-0">
                                         <div className="card-header d-flex justify-content-between bg-primary py-3">
                                             <div className="header-title">
-                                                <h5 className="mb-0 text-white">{t('main:All_Message')}</h5>
+                                                <h5 className="mb-0 text-white">{t('All_Message')}</h5>
                                             </div>
                                         </div>
                                         <div className="card-body p-0 ">
@@ -120,9 +120,9 @@ const Header = () => {
                                     </div>
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu className="dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <Dropdown.Item href="/">{t('main:Settings')}</Dropdown.Item>
+                                    <Dropdown.Item href="/">{t('Settings')}</Dropdown.Item>
                                     <Dropdown.Divider/>
-                                    <Dropdown.Item href="/">{t("main:Logout")}</Dropdown.Item>
+                                    <Dropdown.Item href="/">{t("Logout")}</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </Nav>

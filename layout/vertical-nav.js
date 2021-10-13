@@ -4,7 +4,7 @@ import Link from 'next/link'
 import {useRouter} from "next/router";
 import {useSelector} from "react-redux";
 // translation
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next';
 
 function CustomToggle({children, eventKey, onClick}) {
 
@@ -26,7 +26,7 @@ function CustomToggle({children, eventKey, onClick}) {
 
 const VerticalNav = () => {
     let router = useRouter();
-    const { t } = useTranslation();
+    const { t } = useTranslation("main");
 
     const isActive = useSelector((state) => state.toggleMenu.value)
 
@@ -39,7 +39,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">{t("main:Dashboard")}</Tooltip>}>
+                                                  id="tooltip-right">{t("Dashboard")}</Tooltip>}>
                                 <div className={`${router.pathname === '/' ? 'active' : ''} nav-link`}>
                                     <i className="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" viewBox="0 0 64 56.01">
@@ -47,7 +47,7 @@ const VerticalNav = () => {
                                                   d="M63.63,24.65,56,18.42V8.74A.76.76,0,0,0,55.25,8h-2.5a.76.76,0,0,0-.75.75v6.42L34.52.89a4,4,0,0,0-5.05,0L.37,24.65a1,1,0,0,0-.15,1.4L1.49,27.6a1,1,0,0,0,1.4.15L8,23.58V54a2,2,0,0,0,2,2H26a2,2,0,0,0,2-2V38l8,0V54a2,2,0,0,0,2,2l16,0a2,2,0,0,0,2-2V23.58l5.11,4.17a1,1,0,0,0,1.4-.14l1.27-1.55a1,1,0,0,0-.15-1.41ZM52,52h0L40,52V36a2,2,0,0,0-2-2L26,34a2,2,0,0,0-2,2h0V52H12V20.31L32,4,52,20.31Z"/>
                                         </svg>
                                     </i>
-                                    <span className="item-name">{t("main:Dashboard")}</span>
+                                    <span className="item-name">{t("Dashboard")}</span>
                                 </div>
                             </OverlayTrigger>
                         </a>
@@ -59,7 +59,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">{t("main:Track")}</Tooltip>}>
+                                                  id="tooltip-right">{t("Track")}</Tooltip>}>
                                 <div className={`${router.pathname === '/track' ? 'active' : ''} nav-link`}>
                                     <i className="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" viewBox="0 0 64 56.89">
@@ -67,7 +67,7 @@ const VerticalNav = () => {
                                                   d="M62.22,17.78a1.76,1.76,0,0,0-.66.13l-18.89,7h0l-1.14-.4c2.58-3.88,4.69-7.91,4.69-10.82C46.22,6.12,39.85,0,32,0S17.78,6.12,17.78,13.67a12.08,12.08,0,0,0,1.15,4.52L2.24,24A3.54,3.54,0,0,0,0,27.3V55.11a1.78,1.78,0,0,0,1.78,1.78,1.76,1.76,0,0,0,.66-.13l18.89-7,19.11,6.74a7.13,7.13,0,0,0,4.45,0l16.87-5.87A3.55,3.55,0,0,0,64,47.37V19.56A1.78,1.78,0,0,0,62.22,17.78ZM19.56,46.64l-16,5.92L3.4,27.35l16.16-5.62ZM32,3.56c5.88,0,10.67,4.53,10.67,10.11,0,3-4.24,9.88-10.67,17.42-6.43-7.54-10.67-14.42-10.67-17.42C21.33,8.09,26.12,3.56,32,3.56Zm8.89,49.35L23.11,46.63V25.42a108.18,108.18,0,0,0,7.52,9.52,1.82,1.82,0,0,0,2.74,0c1.41-1.61,3.74-4.34,6-7.44l1.49.53V52.91Zm3.55,0V28l16-5.91.15,25.2Z"/>
                                         </svg>
                                     </i>
-                                    <span className="item-name">{t("main:Track")}</span>
+                                    <span className="item-name">{t("Track")}</span>
                                 </div>
                             </OverlayTrigger>
                         </a>
@@ -79,7 +79,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">{t("main:Preventive_Maintenance")}</Tooltip>}>
+                                                  id="tooltip-right">{t("Preventive_Maintenance")}</Tooltip>}>
                                 <div
                                     className={`${router.pathname === '/preventiveMaintenance' ? 'active' : ''} nav-link `}>
                                     <i className="icon">
@@ -88,7 +88,7 @@ const VerticalNav = () => {
                                                   d="M62.82,48.69,47.27,33.12a10,10,0,0,0-12.58-1.26L24,21.17V12L8,0,0,8,12,24h9.17L31.86,34.69a10,10,0,0,0,1.28,12.58L48.7,62.84a4,4,0,0,0,5.65,0l8.49-8.49a4,4,0,0,0,0-5.66ZM20,19.76V20H14L5.29,8.37,8.37,5.29,20,14ZM51.51,60,36,44.44A6,6,0,1,1,44.44,36L60,51.51ZM8,54a2,2,0,1,0,2-2A2,2,0,0,0,8,54ZM34.6,8.36A14.72,14.72,0,0,1,45.07,4a15,15,0,0,1,2.59.22L39,12.9l1.72,10.37L51.11,25l8.66-8.66a14.7,14.7,0,0,1-7.88,15.75l3,2.95a18,18,0,0,0,3.62-2.82,18.68,18.68,0,0,0,5-17.91A3.37,3.37,0,0,0,61,11.86a3.43,3.43,0,0,0-3.34.88l-8,8-5.52-.92-.93-5.53,8-8A3.41,3.41,0,0,0,49.66.57a18.74,18.74,0,0,0-17.9,5A18.25,18.25,0,0,0,28,11v8.47l2.76,2.76A14.72,14.72,0,0,1,34.6,8.36Zm-21.23,50a5.64,5.64,0,0,1-7.77,0,5.52,5.52,0,0,1,0-7.78L23.86,32.35,21,29.52,2.77,47.79A9.5,9.5,0,0,0,9.49,64a9.41,9.41,0,0,0,6.71-2.79L28.92,48.5A14.53,14.53,0,0,1,27,44.77Z"/>
                                         </svg>
                                     </i>
-                                    <span className="item-name">{t("main:Preventive_Maintenance")}</span>
+                                    <span className="item-name">{t("Preventive_Maintenance")}</span>
                                 </div>
                             </OverlayTrigger>
                         </a>
@@ -100,7 +100,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">{t("main:Reports")}</Tooltip>}>
+                                                  id="tooltip-right">{t("Reports")}</Tooltip>}>
                                 <div className={`${router.pathname === '/Reports' ? 'active' : ''} nav-link `}>
                                     <i className="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23"
@@ -109,7 +109,7 @@ const VerticalNav = () => {
                                                   d="M17,40H15a1,1,0,0,0-1,1V53a1,1,0,0,0,1,1h2a1,1,0,0,0,1-1V41A1,1,0,0,0,17,40Zm8-12H23a1,1,0,0,0-1,1V53a1,1,0,0,0,1,1h2a1,1,0,0,0,1-1V29A1,1,0,0,0,25,28Zm5,9V53a1,1,0,0,0,1,1h2a1,1,0,0,0,1-1V37a1,1,0,0,0-1-1H31A1,1,0,0,0,30,37ZM46.24,12.25,35.75,1.76A6,6,0,0,0,31.52,0H6A6,6,0,0,0,0,6V58a6,6,0,0,0,6,6H42a6,6,0,0,0,6-6V16.5a6,6,0,0,0-1.76-4.25ZM32,4.07a2,2,0,0,1,.93.53L43.41,15.08a2,2,0,0,1,.53.93H32ZM44,58a2,2,0,0,1-2,2H6a2,2,0,0,1-2-2V6A2,2,0,0,1,6,4H28V17a3,3,0,0,0,3,3H44Z"/>
                                         </svg>
                                     </i>
-                                    <span className="item-name">{t("main:Reports")}</span>
+                                    <span className="item-name">{t("Reports")}</span>
                                 </div>
                             </OverlayTrigger>
                         </a>
@@ -121,7 +121,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">{t("main:Scheduled_Reports")}</Tooltip>}>
+                                                  id="tooltip-right">{t("Scheduled_Reports")}</Tooltip>}>
                                 <div className={`${router.pathname === '/scheduledReports' ? 'active' : ''} nav-link `}>
                                     <i className="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23"
@@ -131,7 +131,7 @@ const VerticalNav = () => {
 
                                         </svg>
                                     </i>
-                                    <span className="item-name">{t("main:Scheduled_Reports")}</span>
+                                    <span className="item-name">{t("Scheduled_Reports")}</span>
                                 </div>
                             </OverlayTrigger>
                         </a>
@@ -143,7 +143,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">{t("main:Operate_Driver")}</Tooltip>}>
+                                                  id="tooltip-right">{t("Operate_Driver")}</Tooltip>}>
                                 <div
                                     className={`${router.pathname === '/driversManagement' ? 'active' : ''} nav-link `}>
                                     <i className="icon">
@@ -153,7 +153,7 @@ const VerticalNav = () => {
 
                                         </svg>
                                     </i>
-                                    <span className="item-name">{t("main:Operate_Driver")}</span>
+                                    <span className="item-name">{t("Operate_Driver")}</span>
                                 </div>
                             </OverlayTrigger>
                         </a>
@@ -165,7 +165,7 @@ const VerticalNav = () => {
                             <OverlayTrigger
                                 placement="right"
                                 overlay={<Tooltip style={{zIndex: 99999}} className={!isActive && 'd-none'}
-                                                  id="tooltip-right">{t("main:Management")}</Tooltip>}>
+                                                  id="tooltip-right">{t("Management")}</Tooltip>}>
                                 <div className={`${router.pathname === '/Management' ? 'active' : ''} nav-link `}>
                                     <i className="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 64 51.21">
@@ -174,7 +174,7 @@ const VerticalNav = () => {
 
                                         </svg>
                                     </i>
-                                    <span className="item-name">{t("main:Management")}</span>
+                                    <span className="item-name">{t("Management")}</span>
                                 </div>
                             </OverlayTrigger>
                         </a>

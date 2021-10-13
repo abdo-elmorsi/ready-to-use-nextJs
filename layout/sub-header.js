@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import {Row, Col, Container} from 'react-bootstrap'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next';
 
 const SubHeader = ({pageName = ''}) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation("main");
 
     const [state, setState] = useState('');
     useEffect(_ => {
@@ -39,7 +39,7 @@ const SubHeader = ({pageName = ''}) => {
                         <Col md="12">
                             <div className="d-flex justify-content-between flex-wrap">
                                 <div>
-                                    <h1>{t(`main:${state}`)}</h1>
+                                    <h1>{t(state)}</h1>
                                     {/*<p>We are on a mission to help developers like you build successful projects for FREE.</p>*/}
                                 </div>
                                 <div className="d-flex align-items-center">
