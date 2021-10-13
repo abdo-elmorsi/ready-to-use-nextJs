@@ -4,9 +4,10 @@ import {Provider} from 'react-redux'
 import Layout from "../layout";
 import React, {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import {SSRProvider} from '@react-aria/ssr'
+import SSRProvider from 'react-bootstrap/SSRProvider';
 import NextNprogress from 'nextjs-progressbar';
 import { appWithTranslation } from 'next-i18next';
+import {ThemeProvider} from "react-bootstrap";
 
 function MyApp({Component, pageProps}) {
     const router = useRouter();
@@ -33,6 +34,7 @@ function MyApp({Component, pageProps}) {
 
     }, [router]);
     return (
+        <ThemeProvider>
         <SSRProvider>
             <Provider store={store}>
                 <NextNprogress
@@ -47,6 +49,7 @@ function MyApp({Component, pageProps}) {
                 </Layout>
             </Provider>
         </SSRProvider>
+        </ThemeProvider>
     )
 }
 

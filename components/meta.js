@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-export const Meta = ({title, keywords, description}) => {
+export const Meta = ({title = 'Saferoad', keywords = '', description = ''}) => {
     return (
         <Head>
             <meta name='viewport' content='width=device-width,initial-scale=1'/>

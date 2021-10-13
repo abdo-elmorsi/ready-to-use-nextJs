@@ -592,7 +592,7 @@ export default function Home() {
                 </Col>
             </Row>
             <Row>
-                <Col md="6">
+                <Col lg="6">
                     <div className="card">
                         <div className="card-header d-flex justify-content-between flex-wrap">
                             <div className="header-title">
@@ -604,7 +604,7 @@ export default function Home() {
                         </div>
                     </div>
                 </Col>
-                <Col md="6">
+                <Col lg="6">
                     <div className="card">
                         <div className="card-header d-flex justify-content-between flex-wrap">
                             <div className="header-title">
