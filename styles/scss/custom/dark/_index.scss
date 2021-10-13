@@ -42,5 +42,10 @@
 
     // Layouts
     @import "./layout-style/boxed";
-    
+    .apexcharts-pie-label, .apexcharts-datalabels, .apexcharts-datalabel, .apexcharts-datalabel-label, .apexcharts-datalabel-value{
+        fill: #bfc9e3 !important;
+    }
+    .apexcharts-legend-text {
+        color: #bfc9e3 !important;
+    }
 }
