@@ -26,6 +26,9 @@ const SubHeader = ({pageName = ''}) => {
             case "/Management":
                 setState('Management');
                 break;
+            case "/Setting":
+                setState('Setting');
+                break;
             default:
                 setState('');
                 break;

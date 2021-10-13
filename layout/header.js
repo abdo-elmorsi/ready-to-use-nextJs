@@ -120,7 +120,7 @@ const Header = () => {
                                     </div>
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu className="dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <Dropdown.Item href="/">{t('Settings')}</Dropdown.Item>
+                                    <Dropdown.Item href="/Setting">{t('Settings')}</Dropdown.Item>
                                     <Dropdown.Divider/>
                                     <Dropdown.Item href="/">{t("Logout")}</Dropdown.Item>
                                 </Dropdown.Menu>
