@@ -13,7 +13,6 @@ import dynamic from "next/dynamic";
 
 const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
 
-// import Vector from "../components/maps/vector";
 export default function Home() {
     const chart1 = {
         series: [{
@@ -72,53 +71,15 @@ export default function Home() {
 
 
     }
-/*
-    const chart2 = {
+    /*
+        const chart2 = {
 
-        series: [55, 75, 33, 78, 65, 52],
-        options: {
-            chart: {
-                height: 350,
-                type: 'radialBar',
-            },
-            colors: [
-                "#c1c1c1",
-                "#7668f2",
-                "#272727",
-                "#f05959",
-                "#f2bf59",
-                "#70ea6b"],
-            labels: [
-                'Offline',
-                'Idling',
-                'Running',
-                'Over Street Speed',
-                'Vehicle Disabled',
-                'Vehicle Enabled'
-            ],
-
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                width: 0,
-                colors: ['#ffffff00'],
-            },
-            legend: {
-                position: 'right',
-                labels: {
-                    colors: [
-                        "#c1c1c1",
-                        "#7668f2",
-                        "#272727",
-                        "#f05959",
-                        "#f2bf59",
-                        "#70ea6b"],
-                    useSeriesColors: false
+            series: [55, 75, 33, 78, 65, 52],
+            options: {
+                chart: {
+                    height: 350,
+                    type: 'radialBar',
                 },
-            },
-            fill: {
-                opacity: 1,
                 colors: [
                     "#c1c1c1",
                     "#7668f2",
@@ -126,46 +87,84 @@ export default function Home() {
                     "#f05959",
                     "#f2bf59",
                     "#70ea6b"],
-            },
-            yaxis: {
-                show: false
-            },
-            plotOptions: {
-                polarArea: {
-                    rings: {
-                        strokeWidth: 0
-                    },
-                    spokes: {
-                        strokeWidth: 0
-                    },
-                }
-            },
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 200
-                    },
-                    legend: {
-                        position: 'right',
-                        labels: {
-                            colors: [
-                                "#c1c1c1",
-                                "#7668f2",
-                                "#272727",
-                                "#f05959",
-                                "#f2bf59",
-                                "#70ea6b"],
-                            useSeriesColors: false
-                        },
-                    },
-                }
-            }]
-        },
-    }
-*/
+                labels: [
+                    'Offline',
+                    'Idling',
+                    'Running',
+                    'Over Street Speed',
+                    'Vehicle Disabled',
+                    'Vehicle Enabled'
+                ],
 
-    const chart2 ={
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    width: 0,
+                    colors: ['#ffffff00'],
+                },
+                legend: {
+                    position: 'right',
+                    labels: {
+                        colors: [
+                            "#c1c1c1",
+                            "#7668f2",
+                            "#272727",
+                            "#f05959",
+                            "#f2bf59",
+                            "#70ea6b"],
+                        useSeriesColors: false
+                    },
+                },
+                fill: {
+                    opacity: 1,
+                    colors: [
+                        "#c1c1c1",
+                        "#7668f2",
+                        "#272727",
+                        "#f05959",
+                        "#f2bf59",
+                        "#70ea6b"],
+                },
+                yaxis: {
+                    show: false
+                },
+                plotOptions: {
+                    polarArea: {
+                        rings: {
+                            strokeWidth: 0
+                        },
+                        spokes: {
+                            strokeWidth: 0
+                        },
+                    }
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                colors: [
+                                    "#c1c1c1",
+                                    "#7668f2",
+                                    "#272727",
+                                    "#f05959",
+                                    "#f2bf59",
+                                    "#70ea6b"],
+                                useSeriesColors: false
+                            },
+                        },
+                    }
+                }]
+            },
+        }
+    */
+
+    const chart2 = {
 
         series: [55, 75, 33, 78, 65, 52],
         options: {
@@ -236,7 +235,7 @@ export default function Home() {
                     useSeriesColors: false,
                     colors: ['#585858']
                 },
-                formatter: function(seriesName, opts) {
+                formatter: function (seriesName, opts) {
                     return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
                 },
                 markers: {
@@ -553,11 +552,9 @@ export default function Home() {
                     </Row>
                 </Col>
                 <Col lg="6">
-                    <Card>
-                        <Card.Body>
-                            <div className="text-center pb-3">
-                                <Google/>
-                            </div>
+                    <Card style={{height: "calc(100% - 2rem)"}}>
+                        <Card.Body className="p-0 position-relative">
+                            <Google/>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -571,8 +568,8 @@ export default function Home() {
                             </div>
                         </div>
                         <div className="card-body">
-                                <Chart  options={chart2.options} series={chart2.series}
-                                       type="radialBar" height="245"/>
+                            <Chart options={chart2.options} series={chart2.series}
+                                   type="radialBar" height="245"/>
                         </div>
                     </div>
                 </Col>
@@ -590,7 +587,6 @@ export default function Home() {
                     </div>
                 </Col>
             </Row>
-
             <Row>
                 <Col md="6">
                     <div className="card">
@@ -617,8 +613,6 @@ export default function Home() {
                     </div>
                 </Col>
             </Row>
-
-
             {/* cards for rates */}
             <Row>
                 <Col lg="3">

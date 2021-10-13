@@ -30,7 +30,7 @@ const SubHeader = ({pageName = ''}) => {
     },[pageName])
     return (
         <>
-            <div className="iq-navbar-header" style={{height: "215px"}}>
+            <div className="iq-navbar-header" style={{height: "153px"}}>
                 <Container fluid className=" iq-container">
                     <Row>
                         <Col md="12">
