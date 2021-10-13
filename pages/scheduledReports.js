@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 
-import Card from "../components/Card";
 export const Actions = ({ id }) => {
     return (
         <div className="d-flex  flex-column text-primary">

@@ -6,7 +6,6 @@ import React, {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {SSRProvider} from '@react-aria/ssr'
 import NextNprogress from 'nextjs-progressbar';
-
 function MyApp({Component, pageProps}) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);

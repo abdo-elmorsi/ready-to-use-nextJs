@@ -1,7 +1,6 @@
 import React from 'react'
-import {Row, Col} from 'react-bootstrap'
+import {Row, Col, Card} from 'react-bootstrap'
 import Image from "next/image"
-import Card from '../components/Card'
 import Styles from '../styles/Dashboard.module.scss'
 //progressbar
 import Progress from '../components/progress.js'
@@ -73,27 +72,189 @@ export default function Home() {
 
 
     }
+/*
     const chart2 = {
+
+        series: [55, 75, 33, 78, 65, 52],
         options: {
-            colors: ["#c1c1c1", "#7668f2", "#272727", "#f05959", "#f2bf59", "#70ea6b"],
+            chart: {
+                height: 350,
+                type: 'radialBar',
+            },
+            colors: [
+                "#c1c1c1",
+                "#7668f2",
+                "#272727",
+                "#f05959",
+                "#f2bf59",
+                "#70ea6b"],
+            labels: [
+                'Offline',
+                'Idling',
+                'Running',
+                'Over Street Speed',
+                'Vehicle Disabled',
+                'Vehicle Enabled'
+            ],
+
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                width: 0,
+                colors: ['#ffffff00'],
+            },
+            legend: {
+                position: 'right',
+                labels: {
+                    colors: [
+                        "#c1c1c1",
+                        "#7668f2",
+                        "#272727",
+                        "#f05959",
+                        "#f2bf59",
+                        "#70ea6b"],
+                    useSeriesColors: false
+                },
+            },
+            fill: {
+                opacity: 1,
+                colors: [
+                    "#c1c1c1",
+                    "#7668f2",
+                    "#272727",
+                    "#f05959",
+                    "#f2bf59",
+                    "#70ea6b"],
+            },
+            yaxis: {
+                show: false
+            },
+            plotOptions: {
+                polarArea: {
+                    rings: {
+                        strokeWidth: 0
+                    },
+                    spokes: {
+                        strokeWidth: 0
+                    },
+                }
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            colors: [
+                                "#c1c1c1",
+                                "#7668f2",
+                                "#272727",
+                                "#f05959",
+                                "#f2bf59",
+                                "#70ea6b"],
+                            useSeriesColors: false
+                        },
+                    },
+                }
+            }]
+        },
+    }
+*/
+
+    const chart2 ={
+
+        series: [55, 75, 33, 78, 65, 52],
+        options: {
+            chart: {
+                height: 245,
+                type: 'radialBar',
+            },
             plotOptions: {
                 radialBar: {
-                    hollow: {
-                        margin: 2,
-                        size: "10%",
-                    },
+                    offsetY: 0,
+                    startAngle: 0,
+                    endAngle: 360,
                     track: {
+                        show: true,
+                        startAngle: undefined,
+                        endAngle: undefined,
+                        background: '#ddd',
+                        strokeWidth: '97%',
+                        opacity: .2,
                         margin: 5,
-                        strokeWidth: '50%',
+                        dropShadow: {
+                            enabled: false
+                        }
+                    },
+
+                    hollow: {
+                        margin: 5,
+                        size: '30%',
+                        background: 'transparent',
+                        image: undefined,
                     },
                     dataLabels: {
-                        show: true,
+                        colors: ['#585858'],
+                        name: {
+                            show: false,
+                        },
+                        value: {
+                            fontSize: '1.5rem',
+                            show: true,
+                            offsetY: 9,
+                            color: '#585858',
+
+                        }
                     }
                 }
             },
-            labels: ['Offline', 'Idling', 'Running', 'Over Street Speed', 'Vehicle Disabled', 'Vehicle Enabled', 'Average Utilization'],
+            colors: [
+                "#c1c1c1",
+                "#7668f2",
+                "#272727",
+                "#f05959",
+                "#f2bf59",
+                "#70ea6b"],
+            labels: [
+                'Offline',
+                'Idling',
+                'Running',
+                'Over Street Speed',
+                'Vehicle Disabled',
+                'Vehicle Enabled'
+            ],
+            legend: {
+                show: true,
+                floating: false,
+                fontSize: '15rem',
+                position: 'right',
+                labels: {
+                    useSeriesColors: false,
+                    colors: ['#585858']
+                },
+                formatter: function(seriesName, opts) {
+                    return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+                },
+                markers: {
+                    size: 0
+                },
+                itemMargin: {
+                    vertical: 3
+                }
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }]
         },
-        series: [55, 75, 33, 78, 65, 52],
     }
     const chart3 = {
         options: {
@@ -299,7 +460,8 @@ export default function Home() {
                                             </div>
                                         </div>
                                         <div>
-                                            <span className="badge bg-primary p-2" style={{letterSpacing:"1.2px"}}>Monthly</span>
+                                            <span className="badge bg-primary p-2"
+                                                  style={{letterSpacing: "1.2px"}}>Monthly</span>
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-between mt-2">
@@ -329,7 +491,8 @@ export default function Home() {
                                             </div>
                                         </div>
                                         <div>
-                                            <span className="badge bg-warning p-2" style={{letterSpacing:"1.2px"}}>Anual</span>
+                                            <span className="badge bg-warning p-2"
+                                                  style={{letterSpacing: "1.2px"}}>Anual</span>
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-between mt-2">
@@ -368,7 +531,8 @@ export default function Home() {
                                             </div>
                                         </div>
                                         <div>
-                                            <span className="badge bg-danger p-2" style={{letterSpacing:"1.2px"}}>Today</span>
+                                            <span className="badge bg-danger p-2"
+                                                  style={{letterSpacing: "1.2px"}}>Today</span>
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-between mt-2">
@@ -399,7 +563,7 @@ export default function Home() {
                 </Col>
             </Row>
             <Row>
-                <Col md="12" xl="7">
+                <Col md="12" xl="6">
                     <div className="card">
                         <div className="card-header d-flex justify-content-between flex-wrap">
                             <div className="header-title">
@@ -407,90 +571,12 @@ export default function Home() {
                             </div>
                         </div>
                         <div className="card-body">
-                            <div className="d-flex flex-wrap align-items-center justify-content-between">
-                                <Chart className="col-md-8 col-lg-8" options={chart2.options} series={chart2.series}
-                                       type="radialBar" height="250"/>
-                                <div className="d-grid gap col-md-4 col-lg-4">
-                                    <div className="d-flex align-items-start">
-                                        <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14"
-                                             viewBox="0 0 24 24" fill="#c1c1c1">
-                                            <g>
-                                                <circle cx="12" cy="12" r="8" fill="#c1c1c1"/>
-                                            </g>
-                                        </svg>
-                                        <div className="ms-3">
-                                            <span className={"text-secondary " + Styles.label_sm}>Offline</span>
-                                            {/*<h6>251K</h6>*/}
-                                        </div>
-                                    </div>
-                                    <div className="d-flex align-items-start">
-                                        <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14"
-                                             viewBox="0 0 24 24" fill="#7668f2">
-                                            <g>
-                                                <circle cx="12" cy="12" r="8" fill="#7668f2"/>
-                                            </g>
-                                        </svg>
-                                        <div className="ms-3">
-                                            <span className={"text-secondary " + Styles.label_sm}>Idling</span>
-                                            {/*<h6>176K</h6>*/}
-                                        </div>
-                                    </div>
-                                    <div className="d-flex align-items-start">
-                                        <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14"
-                                             viewBox="0 0 24 24" fill="#272727">
-                                            <g>
-                                                <circle cx="12" cy="12" r="8" fill="#272727"/>
-                                            </g>
-                                        </svg>
-                                        <div className="ms-3">
-                                            <span className={"text-secondary " + Styles.label_sm}>Running</span>
-                                            {/*<h6>176K</h6>*/}
-                                        </div>
-                                    </div>
-                                    <div className="d-flex align-items-start">
-                                        <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14"
-                                             viewBox="0 0 24 24" fill="#f05959">
-                                            <g>
-                                                <circle cx="12" cy="12" r="8" fill="#f05959"/>
-                                            </g>
-                                        </svg>
-                                        <div className="ms-3">
-                                            <span
-                                                className={"text-secondary " + Styles.label_sm}>Over Street Speed</span>
-                                            {/*<h6>176K</h6>*/}
-                                        </div>
-                                    </div>
-                                    <div className="d-flex align-items-start">
-                                        <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14"
-                                             viewBox="0 0 24 24" fill="#f2bf59">
-                                            <g>
-                                                <circle cx="12" cy="12" r="8" fill="#f2bf59"/>
-                                            </g>
-                                        </svg>
-                                        <div className="ms-3">
-                                            <span
-                                                className={"text-secondary " + Styles.label_sm}>Vehicle Disabled</span>
-                                            {/*<h6>176K</h6>*/}
-                                        </div>
-                                    </div>
-                                    <div className="d-flex align-items-start">
-                                        <svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="14"
-                                             viewBox="0 0 24 24" fill="#70ea6b">
-                                            <g>
-                                                <circle cx="12" cy="12" r="8" fill="#70ea6b"/>
-                                            </g>
-                                        </svg>
-                                        <div className="ms-3">
-                                            <span className={"text-secondary " + Styles.label_sm}>Vehicle Enabled</span>
-                                            {/*<h6>176K</h6>*/}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <Chart  options={chart2.options} series={chart2.series}
+                                       type="radialBar" height="245"/>
                         </div>
                     </div>
                 </Col>
-                <Col md="12" xl="5">
+                <Col md="12" xl="6">
                     <div className="card">
                         <div className="card-header d-flex justify-content-between flex-wrap">
                             <div className="header-title">
