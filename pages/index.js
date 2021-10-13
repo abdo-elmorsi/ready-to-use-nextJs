@@ -169,7 +169,6 @@ export default function Home() {
         series: [55, 75, 33, 78, 65, 52],
         options: {
             chart: {
-                height: 245,
                 type: 'radialBar',
             },
             plotOptions: {
@@ -569,7 +568,7 @@ export default function Home() {
                         </div>
                         <div className="card-body">
                             <Chart options={chart2.options} series={chart2.series}
-                                   type="radialBar" height="245"/>
+                                   type="radialBar" height="300"/>
                         </div>
                     </div>
                 </Col>
