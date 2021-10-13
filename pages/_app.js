@@ -6,6 +6,8 @@ import React, {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {SSRProvider} from '@react-aria/ssr'
 import NextNprogress from 'nextjs-progressbar';
+import { appWithTranslation } from 'next-i18next';
+
 function MyApp({Component, pageProps}) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
@@ -48,4 +50,5 @@ function MyApp({Component, pageProps}) {
     )
 }
 
-export default MyApp
+// export default MyApp
+export default appWithTranslation(MyApp);

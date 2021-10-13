@@ -1,17 +1,14 @@
 // const { i18n } = require('./next-i18next.config');
-const path = require('path')
-
+const path = require("path");
 
 module.exports = {
     reactStrictMode: true,
     sassOptions: {
-        includePaths: [path.join(__dirname, 'styles')],
+        includePaths: [path.join(__dirname, "styles")],
     },
-    // i18n,
-
     i18n: {
-        locales: ["ar", "en"],
-        defaultLocale: "ar",
+        defaultLocale: "en",
+        locales: ["en", "ar"],
     },
     /*  exportPathMap: async function (
           defaultPathMap,
@@ -21,4 +18,4 @@ module.exports = {
           '/': { page: '/' },
         }
       },*/
-}
+};

@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import DataTable from "react-data-table-component";
+
+// translation
+import { useTranslation } from 'next-i18next';
+
 import {
     Row,
     Col,
@@ -85,6 +89,8 @@ const Data_table = [
 ];
 
 export default function PreventiveMaintenance() {
+    const { t } = useTranslation("preventiveMaintenance");
+
     const [result, setResult] = useState([]);
     const inputEl = useRef("");
     const handleSearch = () => {
@@ -211,28 +217,30 @@ export default function PreventiveMaintenance() {
                                         className="mb-2 mb-md-0"
                                         style={{ fontSize: "13px" }}
                                     >
-                                        Add Maintenance Plan
+                                        {t("Add_Maintenance_Plan")}
                                     </Button>
                                     <Button
                                         variant="primary p-2 ms-2"
                                         className="mb-2 mb-md-0"
                                         style={{ fontSize: "13px" }}
                                     >
-                                        Delete Selected
+                                        {t("Delete_Selected")}
                                     </Button>
                                     <Button
                                         variant="primary p-2 ms-2"
                                         className="mb-2 mb-md-0"
                                         style={{ fontSize: "13px" }}
                                     >
-                                        View History
+                                        
+                                        {t("View_History")}
                                     </Button>
                                     <Button
                                         variant="primary p-2 ms-2"
                                         className="mb-2 mb-md-0"
                                         style={{ fontSize: "13px" }}
                                     >
-                                        Export To Excel
+                                        
+                                        {t("Export_To_Excel")}
                                     </Button>
                                 </div>
                                 <Form.Floating className="custom-form-floating custom-form-floating-sm form-group">
@@ -245,7 +253,7 @@ export default function PreventiveMaintenance() {
                                         onChange={handleSearch}
                                     />
                                     <label htmlFor="floatingInput">
-                                        serach
+                                        {t("main:serach")}
                                     </label>
                                 </Form.Floating>
                             </div>
@@ -272,3 +280,14 @@ export default function PreventiveMaintenance() {
         </div>
     );
 }
+
+// translation ##################################
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['preventiveMaintenance','main'])),
+        },
+    };
+}
+// translation ##################################

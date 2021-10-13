@@ -3,6 +3,8 @@ import { Row, Col, Card } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 
+// translation
+import { useTranslation } from 'next-i18next';
 export const Actions = ({ id }) => {
     return (
         <div className="d-flex  flex-column text-primary">
@@ -45,6 +47,8 @@ const Data_table = [
 ];
 
 export default function ScheduledReports() {
+    const { t } = useTranslation("scheduledReports");
+
     const [result, setResult] = useState([]);
     const inputEl = useRef("");
     const handleSearch = () => {
@@ -145,13 +149,13 @@ export default function ScheduledReports() {
                                         variant="primary p-2"
                                         style={{ fontSize: "13px" }}
                                     >
-                                        Add Scheduled Report
+                                        {t("Add_Scheduled_Report")}
                                     </Button>
                                     <Button
                                         variant="primary p-2 ms-2"
                                         style={{ fontSize: "13px" }}
                                     >
-                                        Delete Selected
+                                        {t("preventiveMaintenance:Delete_Selected")}
                                     </Button>
                                 </div>
                                 <Form.Floating className="custom-form-floating custom-form-floating-sm form-group">
@@ -164,7 +168,7 @@ export default function ScheduledReports() {
                                         onChange={handleSearch}
                                     />
                                     <label htmlFor="floatingInput">
-                                        serach
+                                        {t("main:serach")}
                                     </label>
                                 </Form.Floating>
                             </div>
@@ -191,3 +195,13 @@ export default function ScheduledReports() {
         </>
     );
 }
+// translation ##################################
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['scheduledReports','main','preventiveMaintenance'])),
+        },
+    };
+}
+// translation ##################################

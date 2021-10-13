@@ -11,9 +11,14 @@ import Google from "../components/maps/google";
 import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
 import dynamic from "next/dynamic";
 
-const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
+// translation
+import { useTranslation } from 'next-i18next';
 
+const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
+// import Vector from "../components/maps/vector";
 export default function Home() {
+
+    const { t } = useTranslation("Dashboard");
     const chart1 = {
         series: [{
             name: 'Fuel Consumption',
@@ -444,14 +449,14 @@ export default function Home() {
                                 <Card.Body>
                                     <div className="d-flex justify-content-between">
                                         <div>
-                                            <span><b>Active Vehicles</b></span>
+                                            <span><b>{t("Active_Vehicles")}</b></span>
                                             <div className="mt-2">
                                                 <h2 className="counter"><CountUp start={0} end={12}
                                                                                  duration={1}/></h2>
                                             </div>
                                         </div>
                                         <div>
-                                            <span><b>Total Vehicles</b></span>
+                                            <span><b>{t("Total_Vehicles")}</b></span>
                                             <div className="mt-2">
                                                 <h2 className="counter"><CountUp start={0} end={15}
                                                                                  duration={1}/></h2>
@@ -464,7 +469,7 @@ export default function Home() {
                                     </div>
                                     <div className="d-flex justify-content-between mt-2">
                                         <div>
-                                            <span>Percentage</span>
+                                            <span>{t("Percentage")}</span>
                                         </div>
                                         <div>
                                             <span>35%</span>
@@ -482,7 +487,7 @@ export default function Home() {
                                 <Card.Body>
                                     <div className="d-flex justify-content-between">
                                         <div>
-                                            <span><b>Offline Vehicles</b></span>
+                                            <span><b>{t("Offline_Vehicles")}</b></span>
                                             <div className="mt-2">
                                                 <h2 className="counter"><CountUp start={0} end={10} duration={1}/>
                                                 </h2>
@@ -495,7 +500,7 @@ export default function Home() {
                                     </div>
                                     <div className="d-flex justify-content-between mt-2">
                                         <div>
-                                            <span>Percentage</span>
+                                            <span>{t("Percentage")}</span>
                                         </div>
                                         <div>
                                             <span>24%</span>
@@ -513,14 +518,14 @@ export default function Home() {
                                 <Card.Body>
                                     <div className="d-flex justify-content-between">
                                         <div>
-                                            <span><b>Active Drivers</b></span>
+                                            <span><b>{t("Active_Drivers")}</b></span>
                                             <div className="mt-2">
                                                 <h2 className="counter"><CountUp start={0} end={15}
                                                                                  duration={1}/></h2>
                                             </div>
                                         </div>
                                         <div>
-                                            <span><b>Total Drivers</b></span>
+                                            <span><b>{t("Total_Drivers")}</b></span>
                                             <div className="mt-2">
                                                 <h2 className="counter"><CountUp
                                                     start={0}
@@ -535,7 +540,7 @@ export default function Home() {
                                     </div>
                                     <div className="d-flex justify-content-between mt-2">
                                         <div>
-                                            <span>Percentage</span>
+                                            <span>{t("Percentage")}</span>
                                         </div>
                                         <div>
                                             <span>50%</span>
@@ -563,7 +568,7 @@ export default function Home() {
                     <div className="card">
                         <div className="card-header d-flex justify-content-between flex-wrap">
                             <div className="header-title">
-                                <h4 className={"card-title " + Styles.head_title}>Vehicles Status</h4>
+                                <h4 className={"card-title " + Styles.head_title}>{t("Vehicles_Status")}</h4>
                             </div>
                         </div>
                         <div className="card-body">
@@ -576,7 +581,7 @@ export default function Home() {
                     <div className="card">
                         <div className="card-header d-flex justify-content-between flex-wrap">
                             <div className="header-title">
-                                <h4 className={"card-title " + Styles.head_title}>Average Utilization</h4>
+                                <h4 className={"card-title " + Styles.head_title}>{t("Average_Utilization")}</h4>
                             </div>
                         </div>
                         <div className="card-body">
@@ -591,7 +596,7 @@ export default function Home() {
                     <div className="card">
                         <div className="card-header d-flex justify-content-between flex-wrap">
                             <div className="header-title">
-                                <h4 className={"card-title " + Styles.head_title}>Overall Fuel Consumption</h4>
+                                <h4 className={"card-title " + Styles.head_title}>{t("Overall_Fuel_Consumption")}</h4>
                             </div>
                         </div>
                         <div className="card-body">
@@ -603,7 +608,7 @@ export default function Home() {
                     <div className="card">
                         <div className="card-header d-flex justify-content-between flex-wrap">
                             <div className="header-title">
-                                <h4 className={"card-title " + Styles.head_title}>Monthly Preventive Maintenance</h4>
+                                <h4 className={"card-title " + Styles.head_title}>{t("Monthly_Preventive_Maintenance")}</h4>
                             </div>
                         </div>
                         <div className="card-body">
@@ -618,7 +623,7 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-center align-items-center">
                             <div className="header-title text-center">
-                                <h4 className={"card-title " + Styles.head_title}>Top Drivers</h4>
+                                <h4 className={"card-title " + Styles.head_title}>{t("Top_Drivers")}</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -705,7 +710,7 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-center align-items-center">
                             <div className="header-title text-center">
-                                <h4 className={"card-title " + Styles.head_title}>Worst Drivers</h4>
+                                <h4 className={"card-title " + Styles.head_title}>{t("Worst_Drivers")}</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -792,7 +797,7 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-center align-items-center">
                             <div className="header-title text-center">
-                                <h4 className={"card-title " + Styles.head_title}>Top Utilized Vehicles</h4>
+                                <h4 className={"card-title " + Styles.head_title}>{t("Top_Utilized_Vehicles")}</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -879,7 +884,7 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-center align-items-center">
                             <div className="header-title text-center">
-                                <h4 className={"card-title " + Styles.head_title}>Worst Utilized Vehicles</h4>
+                                <h4 className={"card-title " + Styles.head_title}>{t("Worst_Utilized_Vehicles")}</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -969,7 +974,7 @@ export default function Home() {
                     <Card>
                         <Card.Header className="d-flex justify-content-between">
                             <div className="header-title">
-                                <h4 className={"card-title " + Styles.head_title}>Next repair plans</h4>
+                                <h4 className={"card-title " + Styles.head_title}>{t("Next_repair_plans")}</h4>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -978,11 +983,9 @@ export default function Home() {
                                        data-toggle="data-table">
                                     <thead>
                                     <tr>
-                                        <th className="text-center">#</th>
-                                        <th className="text-center">Group name</th>
-                                        <th className="text-center">Vehicles name</th>
-                                        <th className="text-center">Maintenance Type</th>
-                                        <th className="text-center">Next value</th>
+                                        {["#","Group name","Vehicles name","Maintenance Type","Next value"].map((ele,i) => 
+                                            (<th key={i} className="text-center">{ele}</th>)
+                                        )}
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -1007,3 +1010,13 @@ export default function Home() {
         </div>
     )
 }
+// translation ##################################
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['Dashboard','main'])),
+        },
+    };
+}
+// translation ##################################

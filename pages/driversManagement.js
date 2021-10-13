@@ -7,6 +7,9 @@ import {
     Form,
     Button,
 } from "react-bootstrap";
+// translation
+import { useTranslation } from 'next-i18next';
+
 export const Actions = ({ id }) => {
     return (
         <div className="d-flex  flex-column text-primary">
@@ -85,6 +88,8 @@ const Data_table = [
 ];
 
 export default function DriversManagement() {
+    const { t } = useTranslation("driversManagement");
+
     const [result, setResult] = useState([]);
     const inputEl = useRef("");
     const handleSearch = () => {
@@ -210,13 +215,13 @@ export default function DriversManagement() {
                                         variant="primary p-2"
                                         style={{fontSize: "13px"}}
                                     >
-                                        Add New Driver
+                                        {t("Add_New_Driver")}
                                     </Button>
                                     <Button
                                         variant="primary p-2 ms-2"
                                         style={{fontSize: "13px"}}
                                     >
-                                        Add Drivers Bulk
+                                        {t("Add_Drivers_Bulk")}
                                     </Button>
                                 </div>
                                 <Form.Floating className="custom-form-floating custom-form-floating-sm form-group">
@@ -229,7 +234,7 @@ export default function DriversManagement() {
                                         onChange={handleSearch}
                                     />
                                     <label htmlFor="floatingInput">
-                                        serach
+                                        {t("main:serach")}
                                     </label>
                                 </Form.Floating>
                             </div>
@@ -256,3 +261,13 @@ export default function DriversManagement() {
         </div>
     );
 }
+// translation ##################################
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['driversManagement','main'])),
+        },
+    };
+}
+// translation ##################################
