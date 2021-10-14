@@ -17,7 +17,7 @@ export default function Reports() {
       <Row className="">
         <Col lg="6" className="mb-3">
           <Card className="h-100">
-            <Card.Body>
+            <Card.Body className="pb-0">
               <Row>
                 <Col
                   xs="3"
@@ -42,10 +42,10 @@ export default function Reports() {
 
                 <Col xs="9">
                   <h4 className="mb-3">Manage Your Accounts</h4>
-                  <p className="py-2">
+                  <p className="mb-3">
                     To manage your Accounts and add new accounts click here.
                   </p>
-                  <Button variant="primary" className="p-2">
+                  <Button variant="primary" className="p-2 shadow-none">
                     Manage Accounts
                   </Button>
                 </Col>
@@ -56,7 +56,7 @@ export default function Reports() {
 
         <Col lg="6" className="mb-3">
           <Card className="h-100">
-            <Card.Body>
+            <Card.Body className="pb-0">
               <Row>
                 <Col
                   xs="3"
@@ -81,11 +81,11 @@ export default function Reports() {
 
                 <Col xs="9">
                   <h4 className="mb-3">Manage Your Users</h4>
-                  <p className="py-2">
-                    To manage your Users, Add new Users, Manage `User's Vehicles
+                  <p className="mb-3">
+                    To manage your Users, Add new Users, Manage User&#39;s Vehicles
                     and Edit Users Role please click here.
                   </p>
-                  <Button variant="primary" className="p-2">
+                  <Button variant="primary" className="p-2 shadow-none">
                     Manage Users
                   </Button>
                 </Col>
@@ -96,7 +96,7 @@ export default function Reports() {
 
         <Col lg="6" className="mb-3">
           <Card className="h-100">
-            <Card.Body>
+            <Card.Body className="pb-0">
               <Row>
                 <Col
                   xs="3"
@@ -121,10 +121,10 @@ export default function Reports() {
 
                 <Col xs="9">
                   <h4 className="mb-3">Manage Your Vehicles</h4>
-                  <p className="py-2">
+                  <p className="mb-3">
                     To manage your Vehicles please click here.
                   </p>
-                  <Button variant="primary" className="p-2">
+                  <Button variant="primary" className="p-2 shadow-none">
                     Manage Vehicle
                   </Button>
                 </Col>
@@ -135,7 +135,7 @@ export default function Reports() {
 
         <Col lg="6" className="mb-3">
           <Card className="h-100">
-            <Card.Body>
+            <Card.Body className="pb-0">
               <Row>
                 <Col
                   xs="3"
@@ -160,11 +160,11 @@ export default function Reports() {
 
                 <Col xs="9">
                   <h4 className="mb-3">Manage Your Devices</h4>
-                  <p className="py-2">
+                  <p className="mb-3">
                     To manage your devices and assign devices to your vehicle
                     please click here.
                   </p>
-                  <Button variant="primary" className="p-2">
+                  <Button variant="primary" className="p-2 shadow-none">
                     Manage Device
                   </Button>
                 </Col>
@@ -175,7 +175,7 @@ export default function Reports() {
 
         <Col lg="6" className="mb-3">
           <Card className="h-100">
-            <Card.Body>
+            <Card.Body className="pb-0">
               <Row>
                 <Col
                   xs="3"
@@ -200,10 +200,10 @@ export default function Reports() {
 
                 <Col xs="9">
                   <h4 className="mb-3">Manage Your SIM Cards</h4>
-                  <p className="py-2">
+                  <p className="mb-3">
                     To manage your SIMCards please click here.
                   </p>
-                  <Button variant="primary" className="p-2">
+                  <Button variant="primary" className="p-2 shadow-none">
                     Manage SIM Cards
                   </Button>
                 </Col>
@@ -214,7 +214,7 @@ export default function Reports() {
 
         <Col lg="6" className="mb-3">
           <Card className="h-100">
-            <Card.Body>
+            <Card.Body className="pb-0">
               <Row>
                 <Col
                   xs="3"
@@ -239,11 +239,11 @@ export default function Reports() {
 
                 <Col xs="9">
                   <h4 className="mb-3">Manage Your Drivers</h4>
-                  <p className="py-2">
+                  <p className="mb-3">
                     To manage your drivers and assign drivers to your vehicle
                     please click here.
                   </p>
-                  <Button variant="primary" className="p-2">
+                  <Button variant="primary" className="p-2 shadow-none">
                     Manage Drivers
                   </Button>
                 </Col>
@@ -254,7 +254,7 @@ export default function Reports() {
 
         <Col lg="6" className="mb-3">
           <Card className="h-100">
-            <Card.Body>
+            <Card.Body className="pb-0">
               <Row>
                 <Col
                   xs="3"
@@ -279,11 +279,11 @@ export default function Reports() {
 
                 <Col xs="9">
                   <h4 className="mb-3">Manage Your Groups</h4>
-                  <p className="py-2">
+                  <p className="mb-3">
                     To manage your drivers and assign drivers to your vehicle
                     please click here.
                   </p>
-                  <Button variant="primary" className="p-2">
+                  <Button variant="primary" className="p-2 shadow-none">
                     Manage Groups
                   </Button>
                 </Col>
@@ -294,7 +294,7 @@ export default function Reports() {
 
         <Col lg="6" className="mb-3">
           <Card className="h-100">
-            <Card.Body>
+            <Card.Body className="pb-0">
               <Row>
                 <Col
                   xs="3"
@@ -319,10 +319,10 @@ export default function Reports() {
 
                 <Col xs="9">
                   <h4 className="mb-3">Manage Your Send Commands</h4>
-                  <p className="py-2">
+                  <p className="mb-3">
                     To manage your Commands please click here.
                   </p>
-                  <Button variant="primary" className="p-2">
+                  <Button variant="primary" className="p-2 shadow-none">
                     Manage Commands
                   </Button>
                 </Col>
