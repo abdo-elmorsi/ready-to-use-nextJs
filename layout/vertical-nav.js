@@ -130,9 +130,9 @@ const VerticalNav = () => {
                     </Link>
                 </Accordion.Item>
                 <Accordion.Item as="li" eventKey="horizontal-menu" bsPrefix="nav-item">
-                    <Link href="/Management">
+                    <Link href="/management">
                         <a>
-                            <div className={`${router.pathname === '/Management' ? 'active' : ''} nav-link `}>
+                            <div className={`${router.pathname === '/management' ? 'active' : ''} nav-link `}>
                                 <i className="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 64 51.21">
                                         <path fill="currentColor"

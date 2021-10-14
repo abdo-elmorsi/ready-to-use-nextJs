@@ -1,13 +1,6 @@
 import React from "react";
 import {Row, Col, Card, Button} from "react-bootstrap";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {
-    faUsers,
-    faCar,
-    faUsersCog,
-    faSimCard,
-    faRouter,
-} from "@fortawesome/free-solid-svg-icons";
+import Link from 'next/link';
 
 // import Card from "../components/Card";
 export default function Reports() {
@@ -44,9 +37,15 @@ export default function Reports() {
                                     <p className="mb-3 fs-6">
                                         To manage your Accounts and add new accounts click here.
                                     </p>
-                                    <Button variant="primary" className="p-2 shadow-none">
-                                        Manage Accounts
-                                    </Button>
+                                    <Link href="/management/account-management/[id]"
+                                          as={`/management/account-management/${22}`}>
+                                        <a className="p-2">
+                                            <Button variant="primary" className="p-2">
+                                                Manage Accounts
+                                            </Button>
+                                        </a>
+                                    </Link>
+
                                 </Col>
                             </Row>
                         </Card.Body>
@@ -84,7 +83,7 @@ export default function Reports() {
                                         To manage your Users, Add new Users, Manage User&#39;s Vehicles
                                         and Edit Users Role please click here.
                                     </p>
-                                    <Button variant="primary" className="p-2 shadow-none">
+                                    <Button variant="primary" className="p-2">
                                         Manage Users
                                     </Button>
                                 </Col>
@@ -123,7 +122,7 @@ export default function Reports() {
                                     <p className="mb-3 fs-6">
                                         To manage your Vehicles please click here.
                                     </p>
-                                    <Button variant="primary" className="p-2 shadow-none">
+                                    <Button variant="primary" className="p-2">
                                         Manage Vehicle
                                     </Button>
                                 </Col>
@@ -163,7 +162,7 @@ export default function Reports() {
                                         To manage your devices and assign devices to your vehicle
                                         please click here.
                                     </p>
-                                    <Button variant="primary" className="p-2 shadow-none">
+                                    <Button variant="primary" className="p-2">
                                         Manage Device
                                     </Button>
                                 </Col>
@@ -202,7 +201,7 @@ export default function Reports() {
                                     <p className="mb-3 fs-6">
                                         To manage your SIMCards please click here.
                                     </p>
-                                    <Button variant="primary" className="p-2 shadow-none">
+                                    <Button variant="primary" className="p-2">
                                         Manage SIM Cards
                                     </Button>
                                 </Col>
@@ -242,7 +241,7 @@ export default function Reports() {
                                         To manage your drivers and assign drivers to your vehicle
                                         please click here.
                                     </p>
-                                    <Button variant="primary" className="p-2 shadow-none">
+                                    <Button variant="primary" className="p-2">
                                         Manage Drivers
                                     </Button>
                                 </Col>
@@ -282,7 +281,7 @@ export default function Reports() {
                                         To manage your drivers and assign drivers to your vehicle
                                         please click here.
                                     </p>
-                                    <Button variant="primary" className="p-2 shadow-none">
+                                    <Button variant="primary" className="p-2">
                                         Manage Groups
                                     </Button>
                                 </Col>
@@ -321,7 +320,7 @@ export default function Reports() {
                                     <p className="mb-3 fs-6">
                                         To manage your Commands please click here.
                                     </p>
-                                    <Button variant="primary" className="p-2 shadow-none">
+                                    <Button variant="primary" className="p-2">
                                         Manage Commands
                                     </Button>
                                 </Col>

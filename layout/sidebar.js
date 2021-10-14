@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react'
-import Link from 'next/link'
 import VerticalNav from './vertical-nav'
 import Scrollbar from 'smooth-scrollbar'
 import {useSelector, useDispatch} from 'react-redux'
