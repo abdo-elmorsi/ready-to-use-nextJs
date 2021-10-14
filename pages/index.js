@@ -11,10 +11,13 @@ import Google from "../components/maps/google";
 import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
 import dynamic from "next/dynamic";
 
-
+// stars component
 import Stars from "../components/Stars"
+// dashboardProgress component
+import DashboardProgress from "../components/dashboardProgress"
 // translation
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
 // import Vector from "../components/maps/vector";
@@ -449,109 +452,42 @@ export default function Home() {
                         <Col md="12">
                             <Card>
                                 <Card.Body>
-                                    <div className="d-flex justify-content-between">
-                                        <div>
-                                            <span><b>{t("Active_Vehicles")}</b></span>
-                                            <div className="mt-2">
-                                                <h2 className="counter"><CountUp start={0} end={12}
-                                                                                 duration={1}/></h2>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <span><b>{t("Total_Vehicles")}</b></span>
-                                            <div className="mt-2">
-                                                <h2 className="counter"><CountUp start={0} end={15}
-                                                                                 duration={1}/></h2>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <span className="badge bg-primary p-2"
-                                                  style={{letterSpacing: "1.2px"}}>Monthly</span>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex justify-content-between mt-2">
-                                        <div>
-                                            <span>{t("Percentage")}</span>
-                                        </div>
-                                        <div>
-                                            <span>35%</span>
-                                        </div>
-                                    </div>
-                                    <div className="mt-3">
-                                        <Progress softcolors="primary" color="primary" className="shadow-none w-100"
-                                                  value={70} minvalue={0} maxvalue={100} style={{height: "6px"}}/>
-                                    </div>
+                                    <DashboardProgress 
+                                        name={["Active_Vehicles","Total_Vehicles"]}
+                                        countStart={[0,0]}
+                                        countEnd={[12,15]}
+                                        dateType={"Monthly"}
+                                        progresCount={35}
+                                        color={"primary"}
+                                    />
                                 </Card.Body>
                             </Card>
                         </Col>
                         <Col md="12">
                             <Card>
                                 <Card.Body>
-                                    <div className="d-flex justify-content-between">
-                                        <div>
-                                            <span><b>{t("Offline_Vehicles")}</b></span>
-                                            <div className="mt-2">
-                                                <h2 className="counter"><CountUp start={0} end={10} duration={1}/>
-                                                </h2>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <span className="badge bg-warning p-2"
-                                                  style={{letterSpacing: "1.2px"}}>Anual</span>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex justify-content-between mt-2">
-                                        <div>
-                                            <span>{t("Percentage")}</span>
-                                        </div>
-                                        <div>
-                                            <span>24%</span>
-                                        </div>
-                                    </div>
-                                    <div className="mt-3">
-                                        <Progress softcolors="warning" color="warning" className="shadow-none w-100"
-                                                  value={24} minvalue={0} maxvalue={100} style={{height: "6px"}}/>
-                                    </div>
+                                    <DashboardProgress 
+                                        name={["Offline_Vehicles"]}
+                                        countStart={[0]}
+                                        countEnd={[10]}
+                                        dateType={"Anual"}
+                                        progresCount={24}
+                                        color={"warning"}
+                                    />
                                 </Card.Body>
                             </Card>
                         </Col>
                         <Col md="12">
                             <Card>
                                 <Card.Body>
-                                    <div className="d-flex justify-content-between">
-                                        <div>
-                                            <span><b>{t("Active_Drivers")}</b></span>
-                                            <div className="mt-2">
-                                                <h2 className="counter"><CountUp start={0} end={15}
-                                                                                 duration={1}/></h2>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <span><b>{t("Total_Drivers")}</b></span>
-                                            <div className="mt-2">
-                                                <h2 className="counter"><CountUp
-                                                    start={0}
-                                                    end={40}
-                                                    duration={1}/></h2>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <span className="badge bg-danger p-2"
-                                                  style={{letterSpacing: "1.2px"}}>Today</span>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex justify-content-between mt-2">
-                                        <div>
-                                            <span>{t("Percentage")}</span>
-                                        </div>
-                                        <div>
-                                            <span>50%</span>
-                                        </div>
-                                    </div>
-                                    <div className="mt-3">
-                                        <Progress softcolors="danger" color="danger" className="shadow-none w-100"
-                                                  value={50} minvalue={0} maxvalue={100} style={{height: "6px"}}/>
-                                    </div>
+                                <DashboardProgress 
+                                        name={["Active_Drivers","Total_Drivers"]}
+                                        countStart={[0,0]}
+                                        countEnd={[15,40]}
+                                        dateType={"Today"}
+                                        progresCount={50}
+                                        color={"danger"}
+                                    />
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -575,7 +511,7 @@ export default function Home() {
                         </div>
                         <div className="card-body">
                             <Chart options={chart2.options} series={chart2.series}
-                                   type="radialBar" height="300"/>
+                                type="radialBar" height="300"/>
                         </div>
                     </div>
                 </Col>
@@ -588,7 +524,7 @@ export default function Home() {
                         </div>
                         <div className="card-body">
                             <Chart className="d-activity" options={chart3.options} series={chart3.series} type="bar"
-                                   height="245"/>
+                                height="245"/>
                         </div>
                     </div>
                 </Col>
@@ -629,9 +565,8 @@ export default function Home() {
                             </div>
                         </Card.Header>
                         <Card.Body>
-                            <Stars name="Firas Saleh" imgSrc={avatars1} imgAlt={"one"} orange={3} black={2} />
-                            <Stars name="Maaz FMB120" imgSrc={avatars1} imgAlt={"tow"} orange={3} black={2} />
-
+                            <Stars name="Firas Saleh" imgSrc={avatars1} imgAlt={"one"} starsCount={1} />
+                            <Stars name="Maaz FMB120" imgSrc={avatars1} imgAlt={"tow"} starsCount={2} />
                         </Card.Body>
                     </Card>
                 </Col>
@@ -643,82 +578,8 @@ export default function Home() {
                             </div>
                         </Card.Header>
                         <Card.Body>
-                            <div
-                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
-                                <div className="pe-3">
-                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
-                                           height="50" alt="1"/>
-                                </div>
-                                <div>
-                                    <h6 className={"mb-1 " + Styles.name_size}>Maaz FMB120</h6>
-                                    <div className="text-black-50 text-warning">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="gary">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="gary">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
-                                <div className="pe-3">
-                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
-                                           height="50" alt="1"/>
-                                </div>
-                                <div>
-                                    <h6 className={"mb-1 " + Styles.name_size}>Firas Saleh</h6>
-                                    <div className="text-black-50 text-warning">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="gary">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="gary">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <Stars name="Maaz FMB120" imgSrc={avatars1} imgAlt={"one"} starsCount={3} />
+                            <Stars name="Firas Saleh" imgSrc={avatars1} imgAlt={"tow"} starsCount={4} />
                         </Card.Body>
                     </Card>
                 </Col>
@@ -730,82 +591,8 @@ export default function Home() {
                             </div>
                         </Card.Header>
                         <Card.Body>
-                            <div
-                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
-                                <div className="pe-3">
-                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
-                                           height="50" alt="1"/>
-                                </div>
-                                <div>
-                                    <h6 className={"mb-1 " + Styles.name_size}>Driver name 1</h6>
-                                    <div className="text-black-50 text-warning">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="gary">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="gary">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
-                                <div className="pe-3">
-                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
-                                           height="50" alt="1"/>
-                                </div>
-                                <div>
-                                    <h6 className={"mb-1 " + Styles.name_size}>Driver name 2</h6>
-                                    <div className="text-black-50 text-warning">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="gary">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="gary">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <Stars name="Driver name 1" imgSrc={avatars1} imgAlt={"one"} starsCount={5} />
+                            <Stars name="Driver name 2" imgSrc={avatars1} imgAlt={"tow"} starsCount={1} />
                         </Card.Body>
                     </Card>
                 </Col>
@@ -817,82 +604,8 @@ export default function Home() {
                             </div>
                         </Card.Header>
                         <Card.Body>
-                            <div
-                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
-                                <div className="pe-3">
-                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
-                                           height="50" alt="1"/>
-                                </div>
-                                <div>
-                                    <h6 className={"mb-1 " + Styles.name_size}>Driver name 1</h6>
-                                    <div className="text-black-50 text-warning">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="gary">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="gary">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
-                                <div className="pe-3">
-                                    <Image src={avatars1} className="rounded-circle bg-soft-primary p-1" width="50"
-                                           height="50" alt="1"/>
-                                </div>
-                                <div>
-                                    <h6 className={"mb-1 " + Styles.name_size}>Driver name 2</h6>
-                                    <div className="text-black-50 text-warning">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="orange">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="gary">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                                             viewBox="0 0 20 20" fill="gary">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <Stars name="Driver name 1" imgSrc={avatars1} imgAlt={"one"} starsCount={2} />
+                            <Stars name="Driver name 2" imgSrc={avatars1} imgAlt={"tow"} starsCount={3} />
                         </Card.Body>
                     </Card>
                 </Col>
@@ -909,7 +622,7 @@ export default function Home() {
                         <Card.Body>
                             <div className="table-responsive">
                                 <table id="datatable" className="table table-striped table-hover"
-                                       data-toggle="data-table">
+                                        data-toggle="data-table">
                                     <thead>
                                     <tr>
                                         {["#","Group name","Vehicles name","Maintenance Type","Next value"].map((ele,i) => 
@@ -929,7 +642,6 @@ export default function Home() {
                                             </tr>
                                         ))}
                                     </tbody>
-
                                 </table>
                             </div>
                         </Card.Body>
@@ -940,7 +652,6 @@ export default function Home() {
     )
 }
 // translation ##################################
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 export async function getStaticProps({ locale }) {
     return {
         props: {

@@ -9,6 +9,7 @@ import {
 } from "react-bootstrap";
 // translation
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export const Actions = ({ id }) => {
     return (
@@ -262,7 +263,6 @@ export default function DriversManagement() {
     );
 }
 // translation ##################################
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 export async function getStaticProps({ locale }) {
     return {
         props: {

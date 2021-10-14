@@ -1,7 +1,12 @@
-import React, { useState } from "react";
-import { Row, Col, Form, Card } from "react-bootstrap";
+import React from "react";
+import { Row, Col, Form, Card,Button } from "react-bootstrap";
 import Image from "next/image";
+// translation
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 const Setting = () => {
+    const { t } = useTranslation("setting");
     return (
         <>
             <div>
@@ -13,84 +18,128 @@ const Setting = () => {
                                 <Form id="form" className="text-center mt-3">
                                     <fieldset>
                                         <div className="form-card text-start">
-                                            <h3 className="mb-4">image:</h3>
-                                            <div className="row">
-                                                <div className="col-6">
+                                            <div className="row px-5 ">
+                                                <div className="col-md-6 d-flex justify-content-between flex-column">
+                                                    <h3 className="mb-4">
+                                                        {t("image")}
+                                                    </h3>
                                                     <div className="row">
                                                         <div className="col-12 d-flex justify-content-center">
-                                                            <div className="rounded-circle overflow-hidden">
-                                                                <Image
-                                                                    src="/assets/images/avatars/01.png"
-                                                                    width="120"
-                                                                    height="120px"
-                                                                    alt="image"
+                                                            <div
+                                                                className="rounded-circle overflow-hidden mb-2"
+                                                                style={{
+                                                                    width: "120px",
+                                                                    height: "120px",
+                                                                    position:
+                                                                        "relative",
+                                                                }}
+                                                            >
+                                                                <label
+                                                                    htmlFor="upload"
+                                                                    style={{
+                                                                        cursor: "pointer",
+                                                                    }}
+                                                                >
+                                                                    <Image
+                                                                        src="/assets/images/avatars/01.png"
+                                                                        width="120"
+                                                                        height="120"
+                                                                        alt="image"
+                                                                    />
+                                                                </label>
+                                                                <input
+                                                                    id="upload"
+                                                                    type="file"
+                                                                    style={{
+                                                                        display:
+                                                                            "none",
+                                                                    }}
                                                                 />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button
+                                                    <Button
                                                         type="button"
                                                         name="next"
-                                                        className="btn btn-primary next action-button mt-5"
+                                                        className="btn btn-primary next action-button float-start px-4 py-1 shadow-none"
                                                         value="submit"
                                                     >
-                                                        submit
-                                                    </button>
+                                                        {t("change image")}
+                                                    </Button>
                                                 </div>
-                                                <div className="col-6">
+                                                <div className="col-md-6 mt-5 mt-md-0  d-flex justify-content-between flex-column">
                                                     <h3 className="mb-4">
-                                                        Password:
+                                                        {t("Password")}
                                                     </h3>
-                                                    <div className="row">
-																												<div className="col-md-6">
+                                                    <div className="row ">
+                                                        <div className="col-12">
                                                             <Form.Floating className="custom-form-floating custom-form-floating-sm form-group">
                                                                 <Form.Control
+                                                                    className="py-2 mb-4 mb-md-0"
                                                                     type="password"
-                                                                    className=""
-                                                                    id="floatingInput5"
+                                                                    id="old"
                                                                     placeholder="Place Holder"
                                                                 />
-                                                                <label htmlFor="floatingInput">
-                                                                    Old
+                                                                <label
+                                                                    htmlFor="floatingInput"
+                                                                    style={{
+                                                                        fontSize:
+                                                                            "13px",
+                                                                    }}
+                                                                >
+                                                                    {t("Old")}
                                                                 </label>
                                                             </Form.Floating>
                                                         </div>
-																												<div className="col-md-6">
+                                                        <div className="col-12">
                                                             <Form.Floating className="custom-form-floating custom-form-floating-sm form-group">
                                                                 <Form.Control
+                                                                    className="py-2 mb-4 mb-md-0"
                                                                     type="password"
-                                                                    className=""
-                                                                    id="floatingInput5"
+                                                                    id="new"
                                                                     placeholder="Place Holder"
                                                                 />
-                                                                <label htmlFor="floatingInput">
-                                                                    New
+                                                                <label
+                                                                    htmlFor="floatingInput"
+                                                                    style={{
+                                                                        fontSize:
+                                                                            "13px",
+                                                                    }}
+                                                                >
+                                                                    {t("New")}
                                                                 </label>
                                                             </Form.Floating>
                                                         </div>
-                                                        <div className="col-md-6">
+                                                        <div className="col-12">
                                                             <Form.Floating className="custom-form-floating custom-form-floating-sm form-group">
                                                                 <Form.Control
+                                                                    className="py-2 mb-4 mb-md-0"
                                                                     type="password"
-                                                                    className=""
-                                                                    id="floatingInput5"
+                                                                    id="confirm new"
                                                                     placeholder="Place Holder"
                                                                 />
-                                                                <label htmlFor="floatingInput">
-                                                                    Confirm
-                                                                    Password
+                                                                <label
+                                                                    htmlFor="floatingInput"
+                                                                    style={{
+                                                                        fontSize:
+                                                                            "13px",
+                                                                    }}
+                                                                >
+                                                                    {t(
+                                                                        "Confirm_Password"
+                                                                    )}
                                                                 </label>
                                                             </Form.Floating>
                                                         </div>
                                                     </div>
-                                                    <button
+                                                    <Button
                                                         type="button"
                                                         name="next"
-                                                        className="btn btn-primary next action-button float-end"
+                                                        className="btn btn-primary next action-button float-start px-4 py-1 shadow-none"
                                                         value="submit"
                                                     >
-                                                        submit
-                                                    </button>
+                                                        {t("change password")}
+                                                    </Button>
                                                 </div>
                                             </div>
                                         </div>
@@ -108,11 +157,10 @@ const Setting = () => {
 export default Setting;
 
 // translation ##################################
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["main"])),
+            ...(await serverSideTranslations(locale, ["setting"])),
         },
     };
 }

@@ -61,7 +61,7 @@ const SubHeader = ({pageName = ''}) => {
                 {/* {{!-- rounded-bottom if not using animation --}} */}
                 <div className="iq-header-img">
                     <img src="/assets/images/top-header.jpg" alt="header"
-                         className="img-fluid w-100 h-100 animated-scaleX"/>
+                        className="img-fluid w-100 h-100 animated-scaleX"/>
                 </div>
             </div>
         </>

@@ -3,6 +3,7 @@ import DataTable from "react-data-table-component";
 
 // translation
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import {
     Row,
@@ -282,7 +283,6 @@ export default function PreventiveMaintenance() {
 }
 
 // translation ##################################
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 export async function getStaticProps({ locale }) {
     return {
         props: {

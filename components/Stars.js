@@ -2,7 +2,8 @@ import React from "react";
 import Image from "next/image";
 import Styles from "../styles/Dashboard.module.scss";
 
-function Stars({ name, imgSrc, imgAlt, orange, black }) {
+function Stars({ name = "name", imgSrc, imgAlt = "image alt", starsCount = 3 }) {
+    const starsBlack = 5 - starsCount;
     return (
         <div>
             <div className="d-flex justify-content-start align-items-center border border-1 border-light rounded-1  mb-3 p-2">
@@ -18,12 +19,12 @@ function Stars({ name, imgSrc, imgAlt, orange, black }) {
                 <div>
                     <h6 className={"mb-1 " + Styles.name_size}>{name}</h6>
                     <div className="text-black-50 text-warning">
-                        {[1, 2, 3].map((ora, i) => {
+                        {new Array(starsCount).fill({}).map((ora, i) => {
                             return (
                                 <svg
                                     key={i}
                                     xmlns="http://www.w3.org/2000/svg"
-                                    width="20px"
+                                    width="1.277rem"
                                     height="20px"
                                     viewBox="0 0 20 20"
                                     fill="orange"
@@ -32,12 +33,12 @@ function Stars({ name, imgSrc, imgAlt, orange, black }) {
                                 </svg>
                             );
                         })}
-                        {[1, 2].map((bla, i) => {
+                        {new Array(starsBlack).fill({}).map((bla, i) => {
                             return (
                                 <svg
                                     key={i}
                                     xmlns="http://www.w3.org/2000/svg"
-                                    width="20px"
+                                    width="1.277rem"
                                     height="20px"
                                     viewBox="0 0 20 20"
                                     fill="gary"
