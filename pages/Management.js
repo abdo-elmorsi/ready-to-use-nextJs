@@ -40,7 +40,7 @@ export default function Reports() {
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-3">Manage Your Accounts</h4>
+                                    <h4 className="mb-2">Manage Your Accounts</h4>
                                     <p className="mb-3 fs-6">
                                         To manage your Accounts and add new accounts click here.
                                     </p>
@@ -79,7 +79,7 @@ export default function Reports() {
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-3">Manage Your Users</h4>
+                                    <h4 className="mb-2">Manage Your Users</h4>
                                     <p className="mb-3 fs-6">
                                         To manage your Users, Add new Users, Manage User&#39;s Vehicles
                                         and Edit Users Role please click here.
@@ -116,11 +116,10 @@ export default function Reports() {
                                             d="M120.81 248c-25.96 0-44.8 16.8-44.8 39.95 0 23.15 18.84 39.95 44.8 39.95l10.14.1c39.21 0 45.06-20.1 45.06-32.08-.01-24.68-31.1-47.92-55.2-47.92zm10.14 56c-3.51 0-7.02-.1-10.14-.1-12.48 0-20.8-6.38-20.8-15.95s8.32-15.95 20.8-15.95 31.2 14.36 31.2 23.93c0 7.17-10.54 8.07-21.06 8.07zm260.24-56c-24.1 0-55.19 23.24-55.19 47.93 0 11.98 5.85 32.08 45.06 32.08l10.14-.1c25.96 0 44.8-16.8 44.8-39.95-.01-23.16-18.85-39.96-44.81-39.96zm0 55.9c-3.12 0-6.63.1-10.14.1-10.53 0-21.06-.9-21.06-8.07 0-9.57 18.72-23.93 31.2-23.93s20.8 6.38 20.8 15.95-8.32 15.95-20.8 15.95zm114.8-140.94c-7.34-11.88-20.06-18.97-34.03-18.97H422.3l-8.07-24.76C403.5 86.29 372.8 64 338.17 64H173.83c-34.64 0-65.33 22.29-76.06 55.22l-8.07 24.76H40.04c-13.97 0-26.69 7.09-34.03 18.97s-8 26.42-1.75 38.91l5.78 11.61c3.96 7.88 9.92 14.09 17 18.55-6.91 11.74-11.03 25.32-11.03 39.97V400c0 26.47 21.53 48 48 48h16c26.47 0 48-21.53 48-48v-16H384v16c0 26.47 21.53 48 48 48h16c26.47 0 48-21.53 48-48V271.99c0-14.66-4.12-28.23-11.03-39.98 7.09-4.46 13.04-10.68 17-18.57l5.78-11.56c6.24-12.5 5.58-27.05-1.76-38.92zM128.2 129.14C134.66 109.32 153 96 173.84 96h164.33c20.84 0 39.18 13.32 45.64 33.13l20.47 62.85H107.73l20.47-62.84zm-89.53 70.02l-5.78-11.59c-1.81-3.59-.34-6.64.34-7.78.87-1.42 2.94-3.8 6.81-3.8h39.24l-6.45 19.82a80.69 80.69 0 0 0-23.01 11.29c-4.71-1-8.94-3.52-11.15-7.94zM96.01 400c0 8.83-7.19 16-16 16h-16c-8.81 0-16-7.17-16-16v-16h48v16zm367.98 0c0 8.83-7.19 16-16 16h-16c-8.81 0-16-7.17-16-16v-16h48v16zm0-80.01v32H48.01v-80c0-26.47 21.53-48 48-48h319.98c26.47 0 48 21.53 48 48v48zm15.12-132.41l-5.78 11.55c-2.21 4.44-6.44 6.97-11.15 7.97-6.94-4.9-14.69-8.76-23.01-11.29l-6.45-19.82h39.24c3.87 0 5.94 2.38 6.81 3.8.69 1.14 2.16 4.18.34 7.79z"
                                         />
                                     </svg>
-                                    {" "}
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-3">Manage Your Vehicles</h4>
+                                    <h4 className="mb-2">Manage Your Vehicles</h4>
                                     <p className="mb-3 fs-6">
                                         To manage your Vehicles please click here.
                                     </p>
@@ -159,7 +158,7 @@ export default function Reports() {
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-3">Manage Your Devices</h4>
+                                    <h4 className="mb-2">Manage Your Devices</h4>
                                     <p className="mb-3 fs-6">
                                         To manage your devices and assign devices to your vehicle
                                         please click here.
@@ -196,11 +195,10 @@ export default function Reports() {
                                             d="M64 240v160c0 26.5 21.5 48 48 48h160c26.5 0 48-21.5 48-48V240c0-26.5-21.5-48-48-48H112c-26.5 0-48 21.5-48 48zm152 24h-48v-40h48v40zm72 0h-40v-40h24c8.8 0 16 7.2 16 16v24zm-40 112h40v24c0 8.8-7.2 16-16 16h-24v-40zm-80 0h48v40h-48v-40zm-72 0h40v40h-24c-8.8 0-16-7.2-16-16v-24zm0-80h192v48H96v-48zm0-56c0-8.8 7.2-16 16-16h24v40H96v-24zM0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V128L256 0H64C28.7 0 0 28.7 0 64zm32 0c0-17.6 14.4-32 32-32h178.7L352 141.3V448c0 17.6-14.4 32-32 32H64c-17.6 0-32-14.4-32-32V64z"
                                         />
                                     </svg>
-                                    {" "}
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-3">Manage Your SIM Cards</h4>
+                                    <h4 className="mb-2">Manage Your SIM Cards</h4>
                                     <p className="mb-3 fs-6">
                                         To manage your SIMCards please click here.
                                     </p>
@@ -236,11 +234,10 @@ export default function Reports() {
                                             d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm0-224c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96zm406.6 204.1l-34.7-34.7c-6.3-6.3-14.5-9.4-22.8-9.4-8.2 0-16.5 3.1-22.8 9.4L327.8 424l-7.6 68.2c-1.2 10.7 7.2 19.8 17.7 19.8.7 0 1.3 0 2-.1l68.2-7.6 222.5-222.5c12.5-12.7 12.5-33.1 0-45.7zM393.3 473.7l-39.4 4.5 4.4-39.5 156.9-156.9 35 35-156.9 156.9zm179.5-179.5l-35-35L573 224h.1l.2.1 34.7 35-35.2 35.1zM134.4 320c19.6 0 39.1 16 89.6 16 50.4 0 70-16 89.6-16 20.7 0 39.9 6.3 56 16.9l22.8-22.8c-22.2-16.2-49.3-26-78.8-26-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h243.5c-2.8-7.4-4.1-15.4-3.2-23.4l1-8.6H48c-8.8 0-16-7.2-16-16v-41.6C32 365.9 77.9 320 134.4 320z"
                                         />
                                     </svg>
-                                    {" "}
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-3">Manage Your Drivers</h4>
+                                    <h4 className="mb-2">Manage Your Drivers</h4>
                                     <p className="mb-3 fs-6">
                                         To manage your drivers and assign drivers to your vehicle
                                         please click here.
@@ -280,7 +277,7 @@ export default function Reports() {
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-3">Manage Your Groups</h4>
+                                    <h4 className="mb-2">Manage Your Groups</h4>
                                     <p className="mb-3 fs-6">
                                         To manage your drivers and assign drivers to your vehicle
                                         please click here.
@@ -320,7 +317,7 @@ export default function Reports() {
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-3">Manage Your Send Commands</h4>
+                                    <h4 className="mb-2">Manage Your Send Commands</h4>
                                     <p className="mb-3 fs-6">
                                         To manage your Commands please click here.
                                     </p>
