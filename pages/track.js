@@ -1,7 +1,10 @@
 import dynamic from "next/dynamic";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 const MapWithNoSSR = dynamic(() => import("../components/maps/vector"), {
     ssr: false,
 });
+
 const Track = () => {
     return (
         <div id="map" className="mt-5">
@@ -12,7 +15,7 @@ const Track = () => {
 
 export default Track;
 // translation ##################################
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 export async function getStaticProps({ locale }) {
     return {
         props: {
