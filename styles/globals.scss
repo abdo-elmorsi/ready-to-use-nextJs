@@ -67,6 +67,11 @@
 @import "./scss/custom/pages/kanban/kanban";
 @import "./scss/custom/pages/pricing/pricing";
 
+
+
+.cls-logo-1{fill:url(#linear-gradient);}
+.cls-logo-2{fill:#272727;}
+
 @import "./scss/custom/dark/index";
 #nprogress .spinner {
   display: none !important;
