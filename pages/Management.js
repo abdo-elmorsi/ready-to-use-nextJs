@@ -16,8 +16,8 @@ export default function Reports() {
             <Row className="">
                 <Col lg="6" className="mb-3">
                     <Card className="h-100">
-                        <Card.Body className="pb-0">
-                            <Row>
+                        <Card.Body className="py-1">
+                            <Row className="align-items-center justify-content-center h-100">
                                 <Col
                                     xs="3"
                                     className="d-flex align-items-center justify-item-center"
@@ -55,8 +55,8 @@ export default function Reports() {
 
                 <Col lg="6" className="mb-3">
                     <Card className="h-100">
-                        <Card.Body className="pb-0">
-                            <Row>
+                        <Card.Body className="py-1">
+                            <Row className="align-items-center justify-content-center h-100">
                                 <Col
                                     xs="3"
                                     className="d-flex align-items-center justify-item-center"
@@ -95,8 +95,8 @@ export default function Reports() {
 
                 <Col lg="6" className="mb-3">
                     <Card className="h-100">
-                        <Card.Body className="pb-0">
-                            <Row>
+                        <Card.Body className="py-1">
+                            <Row className="align-items-center justify-content-center h-100">
                                 <Col
                                     xs="3"
                                     className="d-flex align-items-center justify-item-center"
@@ -135,8 +135,8 @@ export default function Reports() {
 
                 <Col lg="6" className="mb-3">
                     <Card className="h-100">
-                        <Card.Body className="pb-0">
-                            <Row>
+                        <Card.Body className="py-1">
+                            <Row className="align-items-center justify-content-center h-100">
                                 <Col
                                     xs="3"
                                     className="d-flex align-items-center justify-item-center"
@@ -175,8 +175,8 @@ export default function Reports() {
 
                 <Col lg="6" className="mb-3">
                     <Card className="h-100">
-                        <Card.Body className="pb-0">
-                            <Row>
+                        <Card.Body className="py-1">
+                            <Row className="align-items-center justify-content-center h-100">
                                 <Col
                                     xs="3"
                                     className="d-flex align-items-center justify-item-center"
@@ -215,8 +215,8 @@ export default function Reports() {
 
                 <Col lg="6" className="mb-3">
                     <Card className="h-100">
-                        <Card.Body className="pb-0">
-                            <Row>
+                        <Card.Body className="py-1">
+                            <Row className="align-items-center justify-content-center h-100">
                                 <Col
                                     xs="3"
                                     className="d-flex align-items-center justify-item-center m-auto"
@@ -256,8 +256,8 @@ export default function Reports() {
 
                 <Col lg="6" className="mb-3">
                     <Card className="h-100">
-                        <Card.Body className="pb-0">
-                            <Row>
+                        <Card.Body className="py-1">
+                            <Row className="align-items-center justify-content-center h-100">
                                 <Col
                                     xs="3"
                                     className="d-flex align-items-center justify-item-center"
@@ -296,8 +296,8 @@ export default function Reports() {
 
                 <Col lg="6" className="mb-3">
                     <Card className="h-100">
-                        <Card.Body className="pb-0">
-                            <Row>
+                        <Card.Body className="py-1">
+                            <Row className="align-items-center justify-content-center h-100">
                                 <Col
                                     xs="3"
                                     className="d-flex align-items-center justify-item-center"
