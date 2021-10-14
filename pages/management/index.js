@@ -45,7 +45,6 @@ export default function Reports() {
                                             </Button>
                                         </a>
                                     </Link>
-
                                 </Col>
                             </Row>
                         </Card.Body>
