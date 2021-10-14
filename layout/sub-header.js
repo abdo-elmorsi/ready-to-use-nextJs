@@ -23,11 +23,14 @@ const SubHeader = ({pageName = ''}) => {
             case "/driversManagement":
                 setState('Drivers_Management');
                 break;
-            case "/Management":
+            case "/management":
                 setState('Management');
                 break;
             case "/Setting":
                 setState('Setting');
+                break;
+            case "/management/account-management/[id]":
+                setState('Account_Management');
                 break;
             default:
                 setState('');

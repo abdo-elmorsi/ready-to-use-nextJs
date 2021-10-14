@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react'
-import Link from 'next/link'
 import VerticalNav from './vertical-nav'
 import Scrollbar from 'smooth-scrollbar'
 import {useSelector, useDispatch} from 'react-redux'
@@ -22,7 +21,7 @@ const Sidebar = () => {
     return (
         <>
             <aside
-                className={`sidebar sidebar-default navs-rounded-all {{ sidebarVariants }} ${isActive && 'sidebar-mini'}`}>
+                className={`sidebar sidebar-default navs-rounded-all sidebar-hover {{ sidebarVariants }} ${isActive && 'sidebar-mini'}`}>
                 <div className="sidebar-header d-flex align-items-center justify-content-start">
                     <div className="navbar-brand">
                         <svg width="30" xmlns="http://www.w3.org/2000/svg"

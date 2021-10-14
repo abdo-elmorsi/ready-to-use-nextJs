@@ -10,12 +10,11 @@ import Sidebar from './sidebar'
 // import Footer from './footer'
 
 import {useRouter} from "next/router";
-import {ThemeProvider} from "react-bootstrap";
 
 const Layout = ({children}) => {
     let router = useRouter();
     return (
-        <ThemeProvider>
+        <>
             <Sidebar/>
             <main className="main-content">
                 <div className="position-relative">
@@ -29,7 +28,7 @@ const Layout = ({children}) => {
                 </div>
                 {/*<Footer/>*/}
             </main>
-        </ThemeProvider>
+        </>
     )
 }
 

@@ -64,11 +64,11 @@
   .btn-#{$color} {
     @include button-variant($value, $value);
     @if $enable-shadows == true {
-      box-shadow: $btn-box-color-shadow rgba($value, $btn-box-shadow-tint);
+      box-shadow: $btn-box-color-shadow rgba($gray-900, $btn-box-shadow-tint);
     }
     &:hover {
       @if $enable-shadows == true {
-        box-shadow: $btn-box-color-shadow rgba($value, $btn-box-shadow-tint), $btn-box-color-shadow-hover rgba($value, $btn-box-shadow-shade);
+        box-shadow: $btn-box-color-shadow rgba($gray-900, $btn-box-shadow-tint), $btn-box-color-shadow-hover rgba($gray-900, $btn-box-shadow-shade);
       }
     }
   }
