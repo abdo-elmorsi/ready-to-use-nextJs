@@ -354,14 +354,14 @@ export default function Home() {
                 enabled: false
             },
             stroke: {
-                width: 2
+                width: 0
             },
 
-            grid: {
+            /*grid: {
                 row: {
                     colors: ['#fff', '#f2f2f2']
                 }
-            },
+            },*/
 
             xaxis: {
                 labels: {
@@ -385,12 +385,13 @@ export default function Home() {
                 },
             },
             fill: {
+                colors: ["#246c66"],
                 type: 'gradient',
                 gradient: {
                     shade: 'light',
                     type: "horizontal",
                     shadeIntensity: 0.25,
-                    gradientToColors: undefined,
+                    gradientToColors: [ "#4bc7d2"],
                     inverseColors: true,
                     opacityFrom: 0.85,
                     opacityTo: 0.85,
