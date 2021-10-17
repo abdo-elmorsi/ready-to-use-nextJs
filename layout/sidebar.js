@@ -23,7 +23,7 @@ const Sidebar = () => {
             <aside
                 className={`sidebar sidebar-default navs-rounded-all sidebar-hover {{ sidebarVariants }} ${isActive && 'sidebar-mini'}`}>
                 <div className="sidebar-header d-flex align-items-center justify-content-start">
-                    <div className="navbar-brand">
+                    <a className="navbar-brand">
                         <svg width="30" xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 30 30">
                             <defs>
@@ -60,7 +60,7 @@ const Sidebar = () => {
                             <path
                                 d="M77.54,16.68h-1l.13-1.37a8.77,8.77,0,0,1-1.89,1.15,4.87,4.87,0,0,1-2,.44,2.9,2.9,0,0,1-2.51-1.2,4.29,4.29,0,0,1-.57-3.23l.43-2.92a5.11,5.11,0,0,1,1.74-3.24A5.17,5.17,0,0,1,75.31,5.1a8.11,8.11,0,0,1,1.27.12,5,5,0,0,1,1.4.41L78.8.23H80Zm-4.34-.9A4.44,4.44,0,0,0,75,15.32a6.11,6.11,0,0,0,1.68-1.13L77.8,6.77a6.32,6.32,0,0,0-2.66-.56,3.62,3.62,0,0,0-2.58.93,4.17,4.17,0,0,0-1.23,2.49l-.41,2.75a3.6,3.6,0,0,0,.33,2.49A2.13,2.13,0,0,0,73.2,15.78Z"/>
                         </svg>
-                    </div>
+                    </a>
                     <div className="sidebar-toggle shadow-lg" data-toggle="sidebar" data-active="true"
                          onClick={() => dispatch(toggle())}>
                         <i className="icon">
