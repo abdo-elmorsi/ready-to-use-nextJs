@@ -175,6 +175,7 @@ export default function Home() {
         options: {
             chart: {
                 type: 'radialBar',
+                redrawOnParentResize: true
             },
             plotOptions: {
                 radialBar: {
@@ -246,7 +247,7 @@ export default function Home() {
                     size: 0
                 },
                 itemMargin: {
-                    vertical: 3
+                    vertical: 5
                 }
             },
             responsive: [{
@@ -391,7 +392,7 @@ export default function Home() {
                     shade: 'light',
                     type: "horizontal",
                     shadeIntensity: 0.25,
-                    gradientToColors: [ "#4bc7d2"],
+                    gradientToColors: ["#4bc7d2"],
                     inverseColors: true,
                     opacityFrom: 0.85,
                     opacityTo: 0.85,
@@ -574,7 +575,7 @@ export default function Home() {
                         </div>
                         <div className="card-body">
                             <Chart options={chart2.options} series={chart2.series}
-                                   type="radialBar" height="300"/>
+                                   type="radialBar" height="240"/>
                         </div>
                     </div>
                 </Col>
