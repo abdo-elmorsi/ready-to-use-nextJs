@@ -1,5 +1,6 @@
 import React from "react";
-import { Row, Col, Card } from "react-bootstrap";
+import {Row, Col, Card, Tabs, Tab} from "react-bootstrap";
+
 export default function Reports() {
     return (
         <>

@@ -33,19 +33,18 @@ export default function Reports() {
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-2">Manage Your Accounts</h4>
+                                    <h5 className="mb-2">Manage Your Accounts</h5>
                                     <p className="mb-3 fs-6">
                                         To manage your Accounts and add new accounts click here.
                                     </p>
                                     <Link href="/management/account-management/[id]"
                                           as={`/management/account-management/${22}`}>
-                                        <a className="p-2">
+                                        <a>
                                             <Button variant="primary" className="p-2">
                                                 Manage Accounts
                                             </Button>
                                         </a>
                                     </Link>
-
                                 </Col>
                             </Row>
                         </Card.Body>
@@ -78,7 +77,7 @@ export default function Reports() {
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-2">Manage Your Users</h4>
+                                    <h5 className="mb-2">Manage Your Users</h5>
                                     <p className="mb-3 fs-6">
                                         To manage your Users, Add new Users, Manage User&#39;s Vehicles
                                         and Edit Users Role please click here.
@@ -118,7 +117,7 @@ export default function Reports() {
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-2">Manage Your Vehicles</h4>
+                                    <h5 className="mb-2">Manage Your Vehicles</h5>
                                     <p className="mb-3 fs-6">
                                         To manage your Vehicles please click here.
                                     </p>
@@ -157,7 +156,7 @@ export default function Reports() {
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-2">Manage Your Devices</h4>
+                                    <h5 className="mb-2">Manage Your Devices</h5>
                                     <p className="mb-3 fs-6">
                                         To manage your devices and assign devices to your vehicle
                                         please click here.
@@ -197,7 +196,7 @@ export default function Reports() {
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-2">Manage Your SIM Cards</h4>
+                                    <h5 className="mb-2">Manage Your SIM Cards</h5>
                                     <p className="mb-3 fs-6">
                                         To manage your SIMCards please click here.
                                     </p>
@@ -236,7 +235,7 @@ export default function Reports() {
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-2">Manage Your Drivers</h4>
+                                    <h5 className="mb-2">Manage Your Drivers</h5>
                                     <p className="mb-3 fs-6">
                                         To manage your drivers and assign drivers to your vehicle
                                         please click here.
@@ -276,7 +275,7 @@ export default function Reports() {
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-2">Manage Your Groups</h4>
+                                    <h5 className="mb-2">Manage Your Groups</h5>
                                     <p className="mb-3 fs-6">
                                         To manage your drivers and assign drivers to your vehicle
                                         please click here.
@@ -316,7 +315,7 @@ export default function Reports() {
                                 </Col>
 
                                 <Col xs="9">
-                                    <h4 className="mb-2">Manage Your Send Commands</h4>
+                                    <h5 className="mb-2">Manage Your Send Commands</h5>
                                     <p className="mb-3 fs-6">
                                         To manage your Commands please click here.
                                     </p>

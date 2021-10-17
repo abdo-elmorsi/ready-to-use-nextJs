@@ -222,42 +222,7 @@ const Map = () => {
             zoomControl={false}
             style={{height: heightWithoutNav, width: "100%"}}>
 
-            <LayersControl position="bottomright">
-                <LayersControl.BaseLayer checked name="Saferoad">
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">Saferoad</a>'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                </LayersControl.BaseLayer>
 
-                <LayersControl.BaseLayer name="Hot">
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">Saferoad</a>'
-                        url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
-                    />
-                </LayersControl.BaseLayer>
-
-                <LayersControl.BaseLayer name="Dark">
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">Saferoad</a>'
-                        url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
-                    />
-                </LayersControl.BaseLayer>
-
-                <LayersControl.BaseLayer name="Black & White">
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">Saferoad</a>'
-                        url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
-                    />
-                </LayersControl.BaseLayer>
-
-                <LayersControl.BaseLayer name="France">
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">Saferoad</a>'
-                        url="https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
-                    />
-                </LayersControl.BaseLayer>
-            </LayersControl>
 
             {/*<Marker position={[24.726875, 46.710461]} draggable={true} animate={true}>*/}
             {/*    <Popup>Hey ! I live here*/}
@@ -269,13 +234,16 @@ const Map = () => {
             {/*    </Tooltip>*!/*/}
             {/*</Marker>*/}
             {/*{show && <RoutineMachine ref={rMachine} waypoints={[[24.726875, 46.710461], [33.50546582848033, 36.29547681726967]]}/>}*/}
-            {/*<Geocoder address="giza" />*/}
+            <Geocoder address="giza" />
 {/*<LocationMarker />*/}
             <ZoomControl position="topleft" />
 
-            <GeoJSON attribution="&copy; credits due..." data={json} />
+            {/*<GeoJSON attribution="&copy; credits due..." data={json} />*/}
 
         </MapContainer>
     );
 };
+const x = () => {
+  // return
+}
 export default Map;
