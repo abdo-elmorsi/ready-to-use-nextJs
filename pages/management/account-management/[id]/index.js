@@ -45,72 +45,72 @@ const AccountManagement = () => {
     <>
       <Row>
 
-      <Col md="6" xl="3">
-               <Card>
-                  <Card.Body>
-                     <div className="d-flex justify-content-between align-itmes-center">
-                        <div>
+      <Col md="6" xl="3" className="mb-3">
+               <Card className="h-100">
+                  <Card.Body className="d-flex justify-content-center align-items-center">
+                     <div className="d-flex justify-content-between align-itmes-center w-100">
+                        <div className="d-flex justify-content-center align-items-center">
                            <div className="p-3 rounded bg-soft-primary">
-                           <FontAwesomeIcon className="fa-4x" icon={faUsers} size="lg"/>
+                           <FontAwesomeIcon className="fa-2x" icon={faUsers} size="lg"/>
                            </div>
                         </div>
-                        <div className="d-flex flex-column align-items-center justify-content-center">
+                        <div className="d-flex flex-column align-items-center justify-content-center ps-3">
                         <h1 className="counter"><CountUp  start={0} end={115} duration={2} /></h1>
-                           <p className="mb-0">Total Accounts</p>
+                           <p className="mb-0 text-center">Total Accounts</p>
                         </div>
                      </div>
                   </Card.Body>
                </Card>
             </Col>
 
-      <Col md="6" xl="3">
-               <Card>
-                  <Card.Body>
-                     <div className="d-flex justify-content-between align-itmes-center">
-                        <div>
-                           <div className="p-3 rounded bg-soft-primary">
-                           <FontAwesomeIcon className="fa-4x" icon={faUsers} size="lg"/>
+      <Col md="6" xl="3" className="mb-3">
+               <Card className="h-100">
+                  <Card.Body className="d-flex justify-content-center align-items-center">
+                     <div className="d-flex justify-content-between align-itmes-center w-100">
+                        <div className="d-flex justify-content-center align-items-center">
+                           <div className="p-3 rounded bg-soft-success">
+                           <FontAwesomeIcon className="fa-2x" icon={faUsers} size="lg"/>
                            </div>
                         </div>
-                        <div className="d-flex flex-column align-items-center justify-content-center">
+                        <div className="d-flex flex-column align-items-center justify-content-center ps-3">
                         <h1 className="counter"><CountUp  start={0} end={2} duration={2} /></h1>
-                           <p className="mb-0">Active Accounts</p>
+                           <p className="mb-0 text-center">Active Accounts</p>
                         </div>
                      </div>
                   </Card.Body>
                </Card>
             </Col>
 
-      <Col md="6" xl="3">
-               <Card>
-                  <Card.Body>
-                     <div className="d-flex justify-content-between align-itmes-center">
-                        <div>
-                           <div className="p-3 rounded bg-soft-primary">
-                           <FontAwesomeIcon className="fa-4x" icon={faPlug} size="lg"/>
+      <Col md="6" xl="3" className="mb-3">
+               <Card className="h-100">
+                  <Card.Body className="d-flex justify-content-center align-items-center">
+                     <div className="d-flex justify-content-between align-itmes-center w-100">
+                        <div className="d-flex justify-content-center align-items-center">
+                           <div className="p-3 rounded bg-soft-warning">
+                           <FontAwesomeIcon className="fa-2x" icon={faPlug} size="lg"/>
                            </div>
                         </div>
-                        <div className="d-flex flex-column align-items-center justify-content-center">
+                        <div className="d-flex flex-column align-items-center justify-content-center ps-3">
                         <h1 className="counter"><CountUp  start={0} end={0} duration={2} /></h1>
-                           <p className="mb-0">Suspended Accounts</p>
+                           <p className="mb-0 text-center">Suspended Accounts</p>
                         </div>
                      </div>
                   </Card.Body>
                </Card>
             </Col>
 
-      <Col md="6" xl="3">
-               <Card>
-                  <Card.Body>
-                     <div className="d-flex justify-content-between align-itmes-center">
-                        <div>
-                           <div className="p-3 rounded bg-soft-primary">
-                           <FontAwesomeIcon className="fa-4x" icon={faUsersCog} size="lg"/>
+      <Col md="6" xl="3" className="mb-3">
+               <Card className="h-100">
+                  <Card.Body className="d-flex justify-content-center align-items-center">
+                     <div className="d-flex justify-content-between align-itmes-center w-100">
+                        <div className="d-flex justify-content-center align-items-center">
+                           <div className="p-3 rounded bg-soft-info">
+                           <FontAwesomeIcon className="fa-2x" icon={faUsersCog} size="lg"/>
                            </div>
                         </div>
-                        <div className="d-flex flex-column align-items-center justify-content-center">
+                        <div className="d-flex flex-column align-items-center justify-content-center ps-3">
                         <h1 className="counter"><CountUp  start={0} end={1} duration={2} /></h1>
-                           <p className="mb-0">Distributor Accounts</p>
+                           <p className="mb-0 text-center">Distributor Accounts</p>
                         </div>
                      </div>
                   </Card.Body>
@@ -125,7 +125,7 @@ const AccountManagement = () => {
         
         <Row className="g-3">
             <Col sm="12">
-               <Card>
+               <Card className="h-100">
                   <nav className="navbar navbar-dark navbar-lg shadow rounded p-3">
                       <h3>Manage Accounts</h3> 
                   </nav>
@@ -176,7 +176,7 @@ const AccountManagement = () => {
 
             {/* ================== second table  ===================== */}
             <Col sm="12">
-               <Card>
+               <Card className="h-100">
                   <Card.Header className="d-flex justify-content-between">
                      <div className="w-100 header-title d-flex justify-content-between align-items-center p-3">
                      <div>

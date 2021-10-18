@@ -29,6 +29,18 @@ const SubHeader = ({pageName = ''}) => {
             case "/management/account-management/[id]":
                 setState('Account_Management');
                 break;
+            case "/management/account-management/AccountWizard":
+                setState('Add_Account');
+                break;
+            case "/management/account-management/CreateAdminUser":
+                setState('Create_Administrator_User');
+                break;
+            case "/management/account-management/SubScription":
+                setState('Add_SubScription');
+                break;
+            case "/management/account-management/Confirmation":
+                setState('Confirmation');
+                break;
             default:
                 setState('');
                 break;
