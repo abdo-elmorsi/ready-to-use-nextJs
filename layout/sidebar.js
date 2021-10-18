@@ -6,7 +6,7 @@ import {sidebarMini, toggle} from '../store/reducer/toggleSidebar/toggle'
 import {useRouter} from "next/router";
 
 const Sidebar = () => {
-    const isActive = useSelector((state) => state.toggleMenu.value)
+    const isActiveSideBar = useSelector((state) => state.toggleMenu.value)
     const dispatch = useDispatch()
     const router = useRouter();
 
@@ -21,7 +21,7 @@ const Sidebar = () => {
     return (
         <>
             <aside
-                className={`sidebar sidebar-default navs-rounded-all sidebar-hover {{ sidebarVariants }} ${isActive && 'sidebar-mini'}`}>
+                className={`sidebar sidebar-default navs-rounded-all sidebar-hover {{ sidebarVariants }} ${isActiveSideBar && 'sidebar-mini'}`}>
                 <div className="sidebar-header d-flex align-items-center justify-content-start">
                     <a className="navbar-brand">
                         <svg width="30" xmlns="http://www.w3.org/2000/svg"

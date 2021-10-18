@@ -22,7 +22,7 @@ const Layout = ({children}) => {
                     {!router.pathname.includes('track') && (<SubHeader pageName={router.pathname}/>)}
                 </div>
                 <div
-                    className={"conatiner-fluid mt-n5 py-0 " + (!router.pathname.includes('track') && "content-inner")}>
+                    className={"position-relative mt-n5 py-0 " + (!router.pathname.includes('track') && "content-inner")}>
                     {children}
                     {/*<DefaultRouter />*/}
                 </div>

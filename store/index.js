@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import ToggleSlice from './reducer/toggleSidebar/toggle'
+import ToggleMenuSlice from './reducer/toggleSidebar/toggle'
+import ToggleDarkModeSlice from './reducer/toggleDarkMode/toggle'
 
 export default configureStore({
     reducer: {
-        toggleMenu: ToggleSlice,
+        toggleMenu: ToggleMenuSlice,
+        toggleMode: ToggleDarkModeSlice,
     },
 })

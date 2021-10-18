@@ -20,7 +20,7 @@ class MyDocument extends Document {
                     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
                         rel="stylesheet"/>
                 </Head>
-                <body className="dark">
+                <body>
                 <Main/>
                 <NextScript/>
                 </body>

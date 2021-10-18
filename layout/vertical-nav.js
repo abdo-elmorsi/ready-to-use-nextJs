@@ -2,7 +2,6 @@ import React, {useContext} from 'react'
 import {Accordion, useAccordionButton, AccordionContext, OverlayTrigger, Tooltip} from 'react-bootstrap'
 import Link from 'next/link'
 import {useRouter} from "next/router";
-import {useSelector} from "react-redux";
 // translation
 import {useTranslation} from 'next-i18next';
 
@@ -27,9 +26,6 @@ function CustomToggle({children, eventKey, onClick}) {
 const VerticalNav = () => {
     let router = useRouter();
     const {t} = useTranslation("main");
-
-    const isActive = useSelector((state) => state.toggleMenu.value)
-
     return (
         <>
             <Accordion as="ul" className="navbar-nav iq-main-menu">
