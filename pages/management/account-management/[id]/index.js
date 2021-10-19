@@ -1,9 +1,34 @@
 
 import { Row, Col, Card, Button, Form } from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faUsers, faPlug, faUsersCog } from '@fortawesome/free-solid-svg-icons'
+import {faUsers, faPlug, faUsersCog,faPen, faCar, faSquare,faUserEdit   } from '@fortawesome/free-solid-svg-icons'
 import CountUp from "react-countup";
 
+// function returns buttons for table actions
+const tableLinks = function(){
+   return(
+     <div>
+       <button className="btn btn-outline-light m-1">
+         <FontAwesomeIcon className="pe-2" icon={faCar} size="lg"/>
+         Manage Vehicles</button>
+       <button className="btn btn-outline-light m-1">
+         <FontAwesomeIcon className="pe-2" icon={faUsers} size="lg"/>
+        Manage users</button>
+       <button className="btn btn-outline-light m-1">
+         <FontAwesomeIcon className="pe-2" icon={faPen} size="lg"/>
+       Edit supscirption</button>
+       <button className="btn btn-outline-light m-1">
+         <FontAwesomeIcon className="pe-2" icon={faSquare} size="lg"/>
+       suspend</button>
+     </div>
+   )
+ }
+
+//  second table action btn
+const completeBtn = <button className="btn btn-outline-light m-1">
+<FontAwesomeIcon className="pe-2" icon={faUserEdit} size="lg"/> Complete Account </button>;
+
+// first date Table
 const Data_table = [
   {
       accName: "Demo Moaz",
@@ -11,7 +36,7 @@ const Data_table = [
       parent: "SafeRoad All",
       status:"active",
       reseller: "Undistributed",
-      action: "buttons here",
+      action: tableLinks(),
   },
   {
       accName: "Demo Moaz",
@@ -19,7 +44,7 @@ const Data_table = [
       parent: "SafeRoad All",
       status:"active",
       reseller: "Undistributed",
-      action: "buttons here",
+      action: tableLinks(),
   },
   {
       accName: "Demo Moaz",
@@ -27,7 +52,7 @@ const Data_table = [
       parent: "SafeRoad All",
       status:"active",
       reseller: "Undistributed",
-      action: "buttons here",
+      action: tableLinks(),
   },
   {
       accName: "Demo Moaz",
@@ -35,9 +60,45 @@ const Data_table = [
       parent: "SafeRoad All",
       status:"active",
       reseller: "Undistributed",
-      action: "buttons here",
+      action: tableLinks(),
   },
 ];
+// second date Table
+const Data_table2 = [
+  {
+      accName: "Demo Moaz",
+      billing: "09/26/2021",
+      parent: "SafeRoad All",
+      status:"active",
+      reseller: "Undistributed",
+      action: completeBtn,
+  },
+  {
+      accName: "Demo Moaz",
+      billing: "09/26/2021",
+      parent: "SafeRoad All",
+      status:"active",
+      reseller: "Undistributed",
+      action: completeBtn,
+  },
+  {
+      accName: "Demo Moaz",
+      billing: "09/26/2021",
+      parent: "SafeRoad All",
+      status:"active",
+      reseller: "Undistributed",
+      action: completeBtn,
+  },
+  {
+      accName: "Demo Moaz",
+      billing: "09/26/2021",
+      parent: "SafeRoad All",
+      status:"active",
+      reseller: "Undistributed",
+      action: completeBtn,
+  },
+];
+
 
 
 const AccountManagement = () => {
@@ -204,7 +265,7 @@ const AccountManagement = () => {
                            </thead>
                            <tbody>
                            { 
-                                 Data_table.map((item) => (
+                                 Data_table2.map((item) => (
                               <tr key={Math.floor(Math.random() * 100)}>
                                  <td>{item.accName}</td>
                                  <td>{item.billing}</td>

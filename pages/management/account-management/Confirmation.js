@@ -48,17 +48,11 @@ const Confirmation = ()=> {
                             </Form.Group>
                             </Col>
                           </Row>
-                          
-
+ 
                           <Row className="border border-light rounded p-3 mb-3">
                             <h4>Subscriptions List</h4>
                             <p className="p-3 rounded lead text-end">Total Price : 0</p>
                           </Row>
-
-                          
-
-                          
-
                       </Form>
 
                       <div className="mt-5 d-flex justify-content-end">

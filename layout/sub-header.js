@@ -41,6 +41,18 @@ const SubHeader = ({pageName = ''}) => {
             case "/management/account-management/Confirmation":
                 setState('Confirmation');
                 break;
+            case "/management/account-management/manageUsers":
+                setState('Manage_Users');
+                break;
+            case "/management/account-management/SelectUserRole":
+                setState('Select_User_Role');
+                break;
+            case "/management/account-management/CutomizePermissions":
+                setState('Cutomize_Permissions');
+                break;
+            case "/management/account-management/EditUser":
+                setState('Edit_User_Info');
+                break;
             default:
                 setState('');
                 break;
