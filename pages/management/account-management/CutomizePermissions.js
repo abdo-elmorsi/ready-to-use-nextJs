@@ -31,15 +31,15 @@ let featuesList1 = ["All","Track Replay","Show Live Locations","Show Land Marks"
 
 const CreateSubscriptionsList = SubScriptionsList.map( item => {
   return(
-    <>
-        <ListGroup.Item action type="button" >• {item}</ListGroup.Item>
+    <>  
+      <div className="text-start p-2 mb-2 cursor">{item}</div>
     </>
   )
 })
 const test2 = featuesList1.map( item => {
   return(
     <>
-       <Form.Check className="d-block form-group">
+       <Form.Check className="form-group">
           <Form.Check.Input className="me-2"  type="checkbox" defaultValue={item} id={item.split(" ").join()}/>
           <Form.Check.Label  htmlFor={item.split(" ").join()}>
           {item}
@@ -125,15 +125,21 @@ const CutomizePermissions = () =>{
                           <Row>
                             <Col xm="6" className="h-100">
                                 <h5 className="mb-3">Subscriptions</h5>
-                                <ListGroup as="ul" className="">
-                                    <ListGroup.Item  className="border-none">{CreateSubscriptionsList}</ListGroup.Item>
-                                </ListGroup>
+                                <ul className="list-group list-group-flush">
+                                    {CreateSubscriptionsList}
+                                </ul>
                             </Col>
                             <Col xm="6" className="">
-                                <h5 className="mb-3">Functions</h5>
-                                <ListGroup as="ul" >
-                                    <ListGroup.Item>{test2}</ListGroup.Item>
-                                </ListGroup>
+                                <Card>
+                                  <Card.Body>
+                                    <h5 className="mb-3">Functions</h5>
+                                    <Form>
+                                      <ListGroup as="ul" >
+                                          <ListGroup.Item>{test2}</ListGroup.Item>
+                                      </ListGroup>
+                                    </Form>
+                                  </Card.Body>
+                                </Card>
                             </Col>
                           </Row>
                       </Row>
