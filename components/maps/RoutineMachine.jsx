@@ -1,9 +1,25 @@
 import L from "leaflet";
-import { createControlComponent } from "@react-leaflet/core";
+import {createControlComponent} from "@react-leaflet/core";
 import "leaflet-routing-machine";
 import "leaflet/dist/leaflet.css";
+import {useState} from "react";
+import {useMapEvents} from "react-leaflet";
 
-const createRoutineMachineLayer = ({ waypoints }) => {
+const CreateRoutineMachineLayer = ({waypoints}) => {
+
+    const [positionOne, setPositionOne] = useState(null);
+    const [positionTwo, setPositionTwo] = useState(null);
+
+    useMapEvents({
+        click: (e) => {
+            if (!positionOne) {
+                setPositionOne(e.latlng);
+            }
+
+            setPositionTwo(e.latlng);
+        },
+    });
+
     const instance = L.Routing.control({
         waypoints,
         lineOptions: {
@@ -20,6 +36,6 @@ const createRoutineMachineLayer = ({ waypoints }) => {
     return instance;
 };
 
-const RoutingMachine = createControlComponent(createRoutineMachineLayer);
+const RoutingMachine = createControlComponent(CreateRoutineMachineLayer);
 
 export default RoutingMachine;
