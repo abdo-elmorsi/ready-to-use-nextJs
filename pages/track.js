@@ -15,7 +15,6 @@ const Track = () => {
 
 export default Track;
 // translation ##################################
-
 export async function getStaticProps({ locale }) {
     return {
         props: {

@@ -1,13 +1,11 @@
-import React from "react";
-<<<<<<< HEAD
-import {Row, Col, Card, Tabs, Tab} from "react-bootstrap";
-
-=======
+import React  from "react";
 import { Row, Col, Card } from "react-bootstrap";
+
 // translation
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
->>>>>>> 28a427898b7f76f45bead968530fbb8d6e564b57
+
+// import Card from "../components/Card";
 export default function Reports() {
     const { t } = useTranslation("main");
 
@@ -16,7 +14,7 @@ export default function Reports() {
             <Row>
                 <Col sm="12">
                     <Card>
-                        <Card.Body>{t("Reports")}</Card.Body>
+                        <Card.Body>{t("Management")}</Card.Body>
                     </Card>
                 </Col>
             </Row>
