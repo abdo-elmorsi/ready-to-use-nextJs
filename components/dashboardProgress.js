@@ -48,7 +48,7 @@ const DashboardProgress = ({
             </div>
             <div className="d-flex justify-content-between mt-2">
                 <div>
-                    <span>{"Percentage"}</span>
+                    <span>{t("Percentage")}</span>
                 </div>
                 <div>
                     <span>{progresCount}%</span>

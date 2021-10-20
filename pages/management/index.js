@@ -3,6 +3,7 @@ import { Row, Col, Card, Button } from "react-bootstrap";
 import Link from "next/link";
 // translation
 import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 // import Card from "../components/Card";
 const Component = ({
@@ -273,8 +274,6 @@ export default function Management() {
     );
 }
 // translation ##################################
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
 export async function getStaticProps({ locale }) {
     return {
         props: {

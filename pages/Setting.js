@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Form, Card,Button } from "react-bootstrap";
+import { Row, Col, Form, Card, Button } from "react-bootstrap";
 import Image from "next/image";
 // translation
 import { useTranslation } from "next-i18next";
@@ -160,7 +160,7 @@ export default Setting;
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["setting"])),
+            ...(await serverSideTranslations(locale, ["setting", "main"])),
         },
     };
 }

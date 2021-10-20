@@ -23,7 +23,6 @@ export const Actions = ({ id }) => {
 };
 const Data_table = [
     {
-        check: "check",
         name: "Demo Moaz",
         plateNumber: "358480085000471",
         mainType: "Vechile Wash",
@@ -36,7 +35,6 @@ const Data_table = [
         overdue: "yes",
     },
     {
-        check: "check",
         name: "Demo Moaz",
         plateNumber: "358480085000471",
         mainType: "Vechile Wash",
@@ -49,7 +47,6 @@ const Data_table = [
         overdue: "yes",
     },
     {
-        check: "check",
         name: "Demo Moaz",
         plateNumber: "358480085000471",
         mainType: "Vechile Wash",
@@ -62,7 +59,6 @@ const Data_table = [
         overdue: "yes",
     },
     {
-        check: "check",
         name: "Demo Moaz",
         plateNumber: "358480085000471",
         mainType: "Vechile Wash",
@@ -75,7 +71,6 @@ const Data_table = [
         overdue: "yes",
     },
     {
-        check: "check",
         name: "Demo Moaz",
         plateNumber: "358480085000471",
         mainType: "Vechile Wash",
@@ -108,12 +103,6 @@ export default function PreventiveMaintenance() {
         }
     };
     const columns = [
-        {
-            name: "check",
-            selector: (row) => row.check,
-            sortable: true,
-            // center: true
-        },
         {
             name: "Display Name",
             selector: (row) => row.name,
