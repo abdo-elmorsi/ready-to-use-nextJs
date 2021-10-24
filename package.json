@@ -13,6 +13,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
+    "@minoru/react-dnd-treeview": "^1.5.9",
     "@react-leaflet/core": "^1.1.1",
     "@reduxjs/toolkit": "^1.6.1",
     "apexcharts": "^3.28.3",
@@ -35,9 +36,7 @@
     "react-leaflet": "^3.2.1",
     "react-redux": "^7.2.5",
     "redux": "^4.1.1",
-    "sass": "^1.42.1",
     "sass": "~1.32.12",
-
     "smooth-scrollbar": "^8.6.3",
     "styled-components": "^5.3.1",
     "vanillajs-datepicker": "^1.1.4"
