@@ -85,6 +85,8 @@ const Setting = () => {
                                                                     style={{
                                                                         fontSize:
                                                                             "13px",
+                                                                        background:
+                                                                            "transparent",
                                                                     }}
                                                                 >
                                                                     {t("Old")}
@@ -96,7 +98,7 @@ const Setting = () => {
                                                                 <Form.Control
                                                                     className="py-2 mb-4 mb-md-0"
                                                                     type="password"
-                                                                    id="new"
+                                                                    id="floatingInput5"
                                                                     placeholder="Place Holder"
                                                                 />
                                                                 <label
@@ -104,6 +106,8 @@ const Setting = () => {
                                                                     style={{
                                                                         fontSize:
                                                                             "13px",
+                                                                        background:
+                                                                            "transparent",
                                                                     }}
                                                                 >
                                                                     {t("New")}
@@ -123,6 +127,8 @@ const Setting = () => {
                                                                     style={{
                                                                         fontSize:
                                                                             "13px",
+                                                                        background:
+                                                                            "transparent",
                                                                     }}
                                                                 >
                                                                     {t(

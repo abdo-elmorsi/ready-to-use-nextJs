@@ -243,7 +243,7 @@ export default function PreventiveMaintenance() {
                                         onChange={handleSearch}
                                     />
                                     <label htmlFor="floatingInput">
-                                        {t("main:serach")}
+                                        {t("main:search")}
                                     </label>
                                 </Form.Floating>
                             </div>

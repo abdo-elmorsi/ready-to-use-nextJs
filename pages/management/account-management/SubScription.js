@@ -4,6 +4,8 @@ import { Row, Col, Card, Form, FormCheck} from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMapMarked, faHistory, faBell,faCar,faCalendarAlt ,faClock ,  faTachometerAlt, faMapMarkerAlt, faCogs, faUsers, faUsersCog, faCertificate,faUsersSlash,faCog,faListUl,faClipboardList, faLaptop, faTools, faDollarSign } from '@fortawesome/free-solid-svg-icons'
 import AccountManagement from './[id]/index';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 
 
 const subScription = ()=> {
@@ -622,4 +624,13 @@ const subScription = ()=> {
   )
 }
 export default  subScription
-  
+
+// translation ##################################
+export async function getStaticProps({ locale }) {
+  return {
+      props: {
+          ...(await serverSideTranslations(locale, ['main'])),
+      },
+  };
+}
+// translation ##################################
