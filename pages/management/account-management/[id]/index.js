@@ -1,39 +1,49 @@
 import { Row, Col, Card, Button, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUsers, faPlug, faUsersCog } from "@fortawesome/free-solid-svg-icons";
+import {
+    faUsers,
+    faPlug,
+    faUsersCog,
+    faPen,
+    faCar,
+    faSquare,
+    faUserEdit,
+} from "@fortawesome/free-solid-svg-icons";
 import CountUp from "react-countup";
-// translation
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-const Component = ({ icon, title, end }) => {
-   const { t } = useTranslation("Management");
+// function returns buttons for table actions
+const tableLinks = function () {
     return (
-        <Col md="6" xl="3">
-            <Card>
-                <Card.Body>
-                    <div className="d-flex justify-content-between align-itmes-center">
-                        <div>
-                            <div className="p-3 rounded bg-soft-primary">
-                                <FontAwesomeIcon
-                                    className="fa-4x"
-                                    icon={icon}
-                                    size="lg"
-                                />
-                            </div>
-                        </div>
-                        <div className="d-flex flex-column align-items-center justify-content-center">
-                            <h1 className="counter">
-                                <CountUp start={0} end={end} duration={1} />
-                            </h1>
-                            <p className="mb-0">{t(title)}</p>
-                        </div>
-                    </div>
-                </Card.Body>
-            </Card>
-        </Col>
+        <div>
+            <button className="btn btn-outline-light m-1">
+                <FontAwesomeIcon className="pe-2" icon={faCar} size="lg" />
+                Manage Vehicles
+            </button>
+            <button className="btn btn-outline-light m-1">
+                <FontAwesomeIcon className="pe-2" icon={faUsers} size="lg" />
+                Manage users
+            </button>
+            <button className="btn btn-outline-light m-1">
+                <FontAwesomeIcon className="pe-2" icon={faPen} size="lg" />
+                Edit supscirption
+            </button>
+            <button className="btn btn-outline-light m-1">
+                <FontAwesomeIcon className="pe-2" icon={faSquare} size="lg" />
+                suspend
+            </button>
+        </div>
     );
 };
+
+//  second table action btn
+const completeBtn = (
+    <button className="btn btn-outline-light m-1">
+        <FontAwesomeIcon className="pe-2" icon={faUserEdit} size="lg" />{" "}
+        Complete Account{" "}
+    </button>
+);
+
+// first date Table
 const Data_table = [
     {
         accName: "Demo Moaz",
@@ -41,7 +51,7 @@ const Data_table = [
         parent: "SafeRoad All",
         status: "active",
         reseller: "Undistributed",
-        action: "buttons here",
+        action: tableLinks(),
     },
     {
         accName: "Demo Moaz",
@@ -49,7 +59,7 @@ const Data_table = [
         parent: "SafeRoad All",
         status: "active",
         reseller: "Undistributed",
-        action: "buttons here",
+        action: tableLinks(),
     },
     {
         accName: "Demo Moaz",
@@ -57,7 +67,7 @@ const Data_table = [
         parent: "SafeRoad All",
         status: "active",
         reseller: "Undistributed",
-        action: "buttons here",
+        action: tableLinks(),
     },
     {
         accName: "Demo Moaz",
@@ -65,30 +75,175 @@ const Data_table = [
         parent: "SafeRoad All",
         status: "active",
         reseller: "Undistributed",
-        action: "buttons here",
+        action: tableLinks(),
+    },
+];
+// second date Table
+const Data_table2 = [
+    {
+        accName: "Demo Moaz",
+        billing: "09/26/2021",
+        parent: "SafeRoad All",
+        status: "active",
+        reseller: "Undistributed",
+        action: completeBtn,
+    },
+    {
+        accName: "Demo Moaz",
+        billing: "09/26/2021",
+        parent: "SafeRoad All",
+        status: "active",
+        reseller: "Undistributed",
+        action: completeBtn,
+    },
+    {
+        accName: "Demo Moaz",
+        billing: "09/26/2021",
+        parent: "SafeRoad All",
+        status: "active",
+        reseller: "Undistributed",
+        action: completeBtn,
+    },
+    {
+        accName: "Demo Moaz",
+        billing: "09/26/2021",
+        parent: "SafeRoad All",
+        status: "active",
+        reseller: "Undistributed",
+        action: completeBtn,
     },
 ];
 
 const AccountManagement = () => {
-   const { t } = useTranslation("Management");
     return (
         <>
             <Row>
-                <Component title="Total_Accounts" end={115} icon={faUsers} />
-                <Component title="Active_Accounts" end={2} icon={faUsers} />
-                <Component title="Suspended_Accounts" end={0} icon={faPlug} />
-                <Component
-                    title="Distributor_Accounts"
-                    end={5}
-                    icon={faUsersCog}
-                />
+                <Col md="6" xl="3" className="mb-3">
+                    <Card className="h-100">
+                        <Card.Body className="d-flex justify-content-center align-items-center">
+                            <div className="d-flex justify-content-between align-itmes-center w-100">
+                                <div className="d-flex justify-content-center align-items-center">
+                                    <div className="p-3 rounded bg-soft-primary">
+                                        <FontAwesomeIcon
+                                            className="fa-2x"
+                                            icon={faUsers}
+                                            size="lg"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="d-flex flex-column align-items-center justify-content-center ps-3">
+                                    <h1 className="counter">
+                                        <CountUp
+                                            start={0}
+                                            end={115}
+                                            duration={2}
+                                        />
+                                    </h1>
+                                    <p className="mb-0 text-center">
+                                        Total Accounts
+                                    </p>
+                                </div>
+                            </div>
+                        </Card.Body>
+                    </Card>
+                </Col>
+
+                <Col md="6" xl="3" className="mb-3">
+                    <Card className="h-100">
+                        <Card.Body className="d-flex justify-content-center align-items-center">
+                            <div className="d-flex justify-content-between align-itmes-center w-100">
+                                <div className="d-flex justify-content-center align-items-center">
+                                    <div className="p-3 rounded bg-soft-success">
+                                        <FontAwesomeIcon
+                                            className="fa-2x"
+                                            icon={faUsers}
+                                            size="lg"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="d-flex flex-column align-items-center justify-content-center ps-3">
+                                    <h1 className="counter">
+                                        <CountUp
+                                            start={0}
+                                            end={2}
+                                            duration={2}
+                                        />
+                                    </h1>
+                                    <p className="mb-0 text-center">
+                                        Active Accounts
+                                    </p>
+                                </div>
+                            </div>
+                        </Card.Body>
+                    </Card>
+                </Col>
+
+                <Col md="6" xl="3" className="mb-3">
+                    <Card className="h-100">
+                        <Card.Body className="d-flex justify-content-center align-items-center">
+                            <div className="d-flex justify-content-between align-itmes-center w-100">
+                                <div className="d-flex justify-content-center align-items-center">
+                                    <div className="p-3 rounded bg-soft-warning">
+                                        <FontAwesomeIcon
+                                            className="fa-2x"
+                                            icon={faPlug}
+                                            size="lg"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="d-flex flex-column align-items-center justify-content-center ps-3">
+                                    <h1 className="counter">
+                                        <CountUp
+                                            start={0}
+                                            end={0}
+                                            duration={2}
+                                        />
+                                    </h1>
+                                    <p className="mb-0 text-center">
+                                        Suspended Accounts
+                                    </p>
+                                </div>
+                            </div>
+                        </Card.Body>
+                    </Card>
+                </Col>
+
+                <Col md="6" xl="3" className="mb-3">
+                    <Card className="h-100">
+                        <Card.Body className="d-flex justify-content-center align-items-center">
+                            <div className="d-flex justify-content-between align-itmes-center w-100">
+                                <div className="d-flex justify-content-center align-items-center">
+                                    <div className="p-3 rounded bg-soft-info">
+                                        <FontAwesomeIcon
+                                            className="fa-2x"
+                                            icon={faUsersCog}
+                                            size="lg"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="d-flex flex-column align-items-center justify-content-center ps-3">
+                                    <h1 className="counter">
+                                        <CountUp
+                                            start={0}
+                                            end={1}
+                                            duration={2}
+                                        />
+                                    </h1>
+                                    <p className="mb-0 text-center">
+                                        Distributor Accounts
+                                    </p>
+                                </div>
+                            </div>
+                        </Card.Body>
+                    </Card>
+                </Col>
             </Row>
             <Row>
                 <Row className="g-3">
                     <Col sm="12">
-                        <Card>
+                        <Card className="h-100">
                             <nav className="navbar navbar-dark navbar-lg shadow rounded p-3">
-                                <h3>{t("Manage_Accounts")}</h3>
+                                <h3>Manage Accounts</h3>
                             </nav>
                             <Card.Header className="d-flex justify-content-between">
                                 <div className="w-100 header-title d-flex justify-content-between align-items-center p-3">
@@ -131,8 +286,12 @@ const AccountManagement = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {Data_table.map((item, i) => (
-                                                <tr key={i}>
+                                            {Data_table.map((item) => (
+                                                <tr
+                                                    key={Math.floor(
+                                                        Math.random() * 100
+                                                    )}
+                                                >
                                                     <td>{item.accName}</td>
                                                     <td>{item.billing}</td>
                                                     <td>{item.parent}</td>
@@ -153,7 +312,7 @@ const AccountManagement = () => {
 
                     {/* ================== second table  ===================== */}
                     <Col sm="12">
-                        <Card>
+                        <Card className="h-100">
                             <Card.Header className="d-flex justify-content-between">
                                 <div className="w-100 header-title d-flex justify-content-between align-items-center p-3">
                                     <div>
@@ -190,8 +349,12 @@ const AccountManagement = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {Data_table.map((item, i) => (
-                                                <tr key={i}>
+                                            {Data_table2.map((item) => (
+                                                <tr
+                                                    key={Math.floor(
+                                                        Math.random() * 100
+                                                    )}
+                                                >
                                                     <td>{item.accName}</td>
                                                     <td>{item.billing}</td>
                                                     <td>{item.parent}</td>
@@ -216,8 +379,3 @@ const AccountManagement = () => {
 };
 
 export default AccountManagement;
-export const getServerSideProps = async ({ locale }) => ({
-    props: {
-        ...(await serverSideTranslations(locale, ["Management","main"])),
-    },
-});

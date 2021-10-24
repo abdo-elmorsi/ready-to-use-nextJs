@@ -8,12 +8,8 @@ const AccountWizard = ()=> {
       <Col>
                <Card>
                   <Card.Body>
-                      <div className="header-title">
-                        <h4 className="card-title">Create Administrator User</h4>
-                      </div>
-               
                       <Form className="mt-5">
-                          <Row>
+                          <Row className="border border-light rounded p-3 mb-3">
                             <Col lg="6">
                              <Form.Group className="form-group">
                               <Form.Label  htmlFor="firstName">First Name </Form.Label>
@@ -29,8 +25,7 @@ const AccountWizard = ()=> {
                             
 
                           </Row>
-                          <hr className="my-3" />
-                          <Row>
+                          <Row className="border border-light rounded p-3 mb-3">
                             <Col lg="6">
                              <Form.Group className="form-group">
                               <Form.Label  htmlFor="userName">User Name </Form.Label>
@@ -38,9 +33,8 @@ const AccountWizard = ()=> {
                             </Form.Group>
                             </Col>
                           </Row>
-                          <hr className="my-3" />
 
-                          <Row>
+                          <Row className="border border-light rounded p-3 mb-3">
                             <Col lg="6">
                               <Form.Group className="form-group">
                                 <Form.Label  htmlFor="emailAddress">Email</Form.Label>

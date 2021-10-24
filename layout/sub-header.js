@@ -32,6 +32,33 @@ const SubHeader = ({pageName = ''}) => {
             case "/management/account-management/[id]":
                 setState('Account_Management');
                 break;
+            case "/management/account-management/AccountWizard":
+                setState('Add_Account');
+                break;
+            case "/management/account-management/CreateAdminUser":
+                setState('Create_Administrator_User');
+                break;
+            case "/management/account-management/SubScription":
+                setState('Add_SubScription');
+                break;
+            case "/management/account-management/Confirmation":
+                setState('Confirmation');
+                break;
+            case "/management/account-management/manageUsers":
+                setState('Manage_Users');
+                break;
+            case "/management/account-management/SelectUserRole":
+                setState('Select_User_Role');
+                break;
+            case "/management/account-management/CutomizePermissions":
+                setState('Cutomize_Permissions');
+                break;
+            case "/management/account-management/EditUser":
+                setState('Edit_User_Info');
+                break;
+            case "/management/VehicleManagment":
+                setState('Vehicle_Managment');
+                break;
             default:
                 setState('');
                 break;
