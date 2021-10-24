@@ -69,7 +69,7 @@ const VehicleManagment = () => {
                         <h5 className="mb-0 text-center">Inactive Vehicles</h5>
                     </div>
                   </div>
-                    <span className="text-center">Vehicles that didn't send any data for more than one minute.</span>
+                    <span className="text-center">{`Vehicles that didn't send any data for more than one minute.`}</span>
               </Card.Body>
             </Card>
           </Col>
