@@ -89,3 +89,36 @@ input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
 
+.tree_root {
+  .rst__node{
+    height: 25px !important;
+  }
+  .rst__moveHandle, .rst__loadingHandle{
+    background-color: transparent;
+    border: none;
+    width: 17px;
+    height: 17px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .rst__collapseButton, .rst__expandButton{
+    width: 10px;
+    height: 10px;
+  }
+  .rst__rowContents{
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none;
+    border-radius: 0;
+    .rst__rowTitle{
+      font-size: 12px;
+    }
+  }
+  .rst__rowWrapper{
+    padding: 0;
+  }
+  .rstcustom__node {
+    height: 100% !important;
+  }
+
+}
