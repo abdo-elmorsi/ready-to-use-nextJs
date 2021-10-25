@@ -115,7 +115,7 @@ const AccountWizard = ()=> {
                             <Col lg="6">
                               <Form.Group className="form-group">
                                 <Form.Label  htmlFor="Commercial">{t("Commercial_Record_Number")}</Form.Label>
-                                <Form.Control type="bumber"  id="Commercial"/>
+                                <Form.Control type="number"  id="Commercial"/>
                               </Form.Group>
                             </Col>
                             <Col lg="6">
@@ -178,7 +178,7 @@ const AccountWizard = ()=> {
     </>
   )
 }
-export default  AccountWizard
+export default AccountWizard;
 
 // translation ##################################
 export async function getStaticProps({ locale }) {
