@@ -3,6 +3,7 @@ import DataTable from "react-data-table-component";
 
 // translation
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import {
     Row,
@@ -22,7 +23,6 @@ export const Actions = ({ id }) => {
 };
 const Data_table = [
     {
-        check: "check",
         name: "Demo Moaz",
         plateNumber: "358480085000471",
         mainType: "Vechile Wash",
@@ -35,7 +35,6 @@ const Data_table = [
         overdue: "yes",
     },
     {
-        check: "check",
         name: "Demo Moaz",
         plateNumber: "358480085000471",
         mainType: "Vechile Wash",
@@ -48,7 +47,6 @@ const Data_table = [
         overdue: "yes",
     },
     {
-        check: "check",
         name: "Demo Moaz",
         plateNumber: "358480085000471",
         mainType: "Vechile Wash",
@@ -61,7 +59,6 @@ const Data_table = [
         overdue: "yes",
     },
     {
-        check: "check",
         name: "Demo Moaz",
         plateNumber: "358480085000471",
         mainType: "Vechile Wash",
@@ -74,7 +71,6 @@ const Data_table = [
         overdue: "yes",
     },
     {
-        check: "check",
         name: "Demo Moaz",
         plateNumber: "358480085000471",
         mainType: "Vechile Wash",
@@ -107,12 +103,6 @@ export default function PreventiveMaintenance() {
         }
     };
     const columns = [
-        {
-            name: "check",
-            selector: (row) => row.check,
-            sortable: true,
-            // center: true
-        },
         {
             name: "Display Name",
             selector: (row) => row.name,
@@ -253,7 +243,7 @@ export default function PreventiveMaintenance() {
                                         onChange={handleSearch}
                                     />
                                     <label htmlFor="floatingInput">
-                                        {t("main:serach")}
+                                        {t("main:search")}
                                     </label>
                                 </Form.Floating>
                             </div>
@@ -282,7 +272,6 @@ export default function PreventiveMaintenance() {
 }
 
 // translation ##################################
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 export async function getStaticProps({ locale }) {
     return {
         props: {
