@@ -6,7 +6,7 @@ import MenuTree from "../tree/menu-tree";
 
 const WidgetMenu = () => {
     const [state, setState] = useState(false);
-    const isActiveDarkMode = useSelector((state) => state.toggleMode.value)
+    const config = useSelector((state) => state.config);
 
     useEffect(
         () => {
@@ -16,7 +16,7 @@ const WidgetMenu = () => {
     )
     return (
 
-        <aside className={`${!isActiveDarkMode && Styles.dark}`}>
+        <aside className={`${config.darkMode && Styles.dark}`}>
             <nav className={`${Styles.nav} ${state && Styles.active} rounded shadow-lg pt-5 overflow-hidden`}>
                 <div className="sidebar-body pt-0 data-scrollbar" data-scroll="1" id="menu-scrollbar">
                     <div className={`${Styles.nav__item} ${state && Styles.active}`}>

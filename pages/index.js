@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Row, Col, Card} from 'react-bootstrap'
 import Image from "next/image"
 import Styles from '../styles/Dashboard.module.scss'
@@ -10,15 +10,14 @@ import Google from "../components/maps/google";
 //Chart
 import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
 import dynamic from "next/dynamic";
-
 // translation
-import { useTranslation } from 'next-i18next';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
 // import Vector from "../components/maps/vector";
 export default function Home() {
-
-    const { t } = useTranslation("Dashboard");
+    const {t} = useTranslation("Dashboard");
     const chart1 = {
         series: [{
             name: 'Fuel Consumption',
@@ -985,7 +984,7 @@ export default function Home() {
                                        data-toggle="data-table">
                                     <thead>
                                     <tr>
-                                        {["#","Group name","Vehicles name","Maintenance Type","Next value"].map((ele,i) => 
+                                        {["#", "Group name", "Vehicles name", "Maintenance Type", "Next value"].map((ele, i) =>
                                             (<th key={i} className="text-center">{ele}</th>)
                                         )}
                                     </tr>
@@ -1012,13 +1011,14 @@ export default function Home() {
         </div>
     )
 }
+
 // translation ##################################
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({locale}) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['Dashboard','main'])),
+            ...(await serverSideTranslations(locale, ['Dashboard', 'main'])),
         },
     };
 }
+
 // translation ##################################

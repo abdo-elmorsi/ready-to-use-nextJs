@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Navbar, Container, Nav, Dropdown} from 'react-bootstrap'
 import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
 import Image from 'next/image'
@@ -8,18 +8,31 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faGlobe} from '@fortawesome/free-solid-svg-icons'
 import {useDispatch, useSelector} from "react-redux";
 import {toggle} from "../store/reducer/toggleSidebar/toggle";
-import {darkMode} from "../store/reducer/toggleDarkMode/toggle";
+import {darkMode, changeLanguage} from "../store/reducer/config/config";
 
 // translation
 import {useTranslation} from 'next-i18next';
 
 const Header = () => {
     const dispatch = useDispatch()
-    const isActiveDarkMode = useSelector((state) => state.toggleMode.value)
+    const config = useSelector((state) => state.config);
+
     const {t} = useTranslation("main");
+    useEffect(_ => {
+            config.darkMode
+                ? document.body.classList.add('dark')
+                : document.body.classList.remove('dark')
+        }, [config.darkMode]
+    )
+    ;
     const toggleDarkMode = () => {
         dispatch(darkMode())
         document.body.classList.toggle('dark')
+    }
+    const handleLanguage = (e) => {
+        e.target.id === 'ar'
+            ? dispatch(changeLanguage('ar'))
+            : dispatch(changeLanguage('en'));
     }
     return (
         <>
@@ -82,7 +95,7 @@ const Header = () => {
                         <Nav as="ul" className="ms-auto navbar-list my-2 my-lg-0 d-flex align-items-stretch">
                             <Dropdown as="li" className="nav-item d-flex align-items-center">
                                 <button onClick={toggleDarkMode} className="bg-transparent border-0 mx-2">
-                                    {isActiveDarkMode ? (<div className="moon">
+                                    {config.darkMode ? (<div className="moon">
                                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                                  viewBox="0 0 499.712 499.712" width="22">
                                                 <path fill="#FFD93B" d="M146.88,375.528c126.272,0,228.624-102.368,228.624-228.64c0-55.952-20.16-107.136-53.52-146.88
@@ -152,10 +165,11 @@ const Header = () => {
                                                  role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <FontAwesomeIcon icon={faGlobe} size="lg"/>
                                 </Dropdown.Toggle>
-                                <Dropdown.Menu className="dropdown-menu-end" aria-labelledby="navbarDropdownLanguage">
-                                    <Dropdown.Item>{t("Arabic")}</Dropdown.Item>
+                                <Dropdown.Menu onClick={handleLanguage} className="dropdown-menu-end"
+                                               aria-labelledby="navbarDropdownLanguage">
+                                    <Dropdown.Item id="ar">{t("Arabic")}</Dropdown.Item>
                                     <Dropdown.Divider/>
-                                    <Dropdown.Item>{t('English')}</Dropdown.Item>
+                                    <Dropdown.Item id="en">{t('English')}</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                             <Dropdown as="li" className="nav-item d-flex align-items-center">
