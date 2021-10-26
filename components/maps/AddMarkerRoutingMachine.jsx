@@ -37,7 +37,7 @@ const AddMarkerRoutingMachine = () => {
                 <button onClick={clearMarker}>clear</button>
             </Popup></Marker>}
             {(positionTwo !== null && positionOne !== null) &&
-            <RoutineMachine position="bottomright" waypoints={[positionOne, positionTwo]}/>}
+            <RoutineMachine waypoints={[positionOne, positionTwo]}/>}
         </>
     );
 };

@@ -14,7 +14,6 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 import useWindowDimensions from "../../helpers/getWindowDimensions";
 import {useRef, useState} from "react";
-import RoutineMachine from "./RoutineMachine";
 import * as ELG from "esri-leaflet-geocoder";
 import WidgetMenu from "./widget-menu";
 import AddMarker from "./AddMarker";
@@ -138,7 +137,7 @@ const Map = () => {
                 {/*  Components  */}
                 <AddMarkerRoutingMachine/>
             </MapContainer>
-            {/*<WidgetMenu/>*/}
+            <WidgetMenu/>
 
         </>
     );
