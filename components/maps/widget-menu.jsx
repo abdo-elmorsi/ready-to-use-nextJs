@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Styles from '../../styles/WidgetMenu.module.scss';
 import {useSelector} from "react-redux";
 import Scrollbar from "smooth-scrollbar";
-import MenuTree from "../tree/menu-tree";
+// import MenuTree from "../tree/menu-tree";
 
 const WidgetMenu = () => {
     const [state, setState] = useState(false);
@@ -40,7 +40,7 @@ const WidgetMenu = () => {
                         </div>
                     </div>
                     <div className={`${Styles.nav__item} ${state && Styles.active}`}>
-                        <MenuTree />
+                        {/*<MenuTree />*/}
                     </div>
                 </div>
             </nav>
