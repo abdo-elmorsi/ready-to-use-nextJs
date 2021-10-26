@@ -39,7 +39,7 @@ const SubHeader = ({pageName = ''}) => {
                 setState('Create_Administrator_User');
                 break;
             case "/management/account-management/SubScription":
-                setState('Add_SubScription');
+                setState('Add_Subscription');
                 break;
             case "/management/account-management/Confirmation":
                 setState('Confirmation');

@@ -1,196 +1,232 @@
-import { Row, Col, Card, Button, Form } from "react-bootstrap";
+import React from "react";
+import {Row, Col, Card, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faUserEdit, faPen, faCar,faLock} from '@fortawesome/free-solid-svg-icons'
+import {faUserEdit, faPen, faCar, faLock} from '@fortawesome/free-solid-svg-icons'
+// translation
+import {useTranslation} from "next-i18next";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
-const tableLinks = function(){
-  return(
-    <div>
-      <button className="btn btn-outline-light m-1">
-        <FontAwesomeIcon className="pe-2" icon={faUserEdit} size="lg"/>
-        user role</button>
-      <button className="btn btn-outline-light m-1">
-        <FontAwesomeIcon className="pe-2" icon={faPen} size="lg"/>
-       user info</button>
-      <button className="btn btn-outline-light m-1">
-        <FontAwesomeIcon className="pe-2" icon={faCar} size="lg"/>
-      manage vehicles</button>
-      <button className="btn btn-outline-light m-1">
-        <FontAwesomeIcon className="pe-2" icon={faLock} size="lg"/>
-      reset password</button>
-    </div>
-  )
+const TableLinks = function () {
+    const {t} = useTranslation("Management")
+    return (
+        <div>
+            <button className="btn btn-outline-primary m-1">
+                <FontAwesomeIcon className="pe-2" icon={faUserEdit} size="lg"/>
+                {t("user_role")}
+            </button>
+            <button className="btn btn-outline-primary m-1">
+                <FontAwesomeIcon className="pe-2" icon={faPen} size="lg"/>
+                {t("user_info")}
+            </button>
+            <button className="btn btn-outline-primary m-1">
+                <FontAwesomeIcon className="pe-2" icon={faCar} size="lg"/>
+                {t("manage_vehicles")}
+            </button>
+            <button className="btn btn-outline-primary m-1">
+                <FontAwesomeIcon className="pe-2" icon={faLock} size="lg"/>
+                {t("reset_password")}
+            </button>
+        </div>
+    )
 }
 
-const completeBtn = <button className="btn btn-outline-light m-1">
-<FontAwesomeIcon className="pe-2" icon={faUserEdit} size="lg"/> Complete User Creation </button>;
+const CompleteBtn = () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const {t} = useTranslation("Management")
+    return (
+        <button className="btn btn-outline-primary m-1">
+            <FontAwesomeIcon className="pe-2" icon={faUserEdit} size="lg"/>
+            {t("Complete_User_Creation")}
+        </button>
+    )
+}
 
 const Data_table = [
-  {
-      fullname: "Ahmad Jaber",
-      username: "a.jaber2020",
-      email: "a.hantash@saferoad.com.sa",
-      status:"active",
-      action: tableLinks(),
-  },
-  {
-      fullname: "Ahmad Jaber",
-      username: "a.jaber2020",
-      email: "a.hantash@saferoad.com.sa",
-      status:"active",
-      action: tableLinks(),
-  },
-  {
-      fullname: "Ahmad Jaber",
-      username: "a.jaber2020",
-      email: "a.hantash@saferoad.com.sa",
-      status:"active",
-      action: tableLinks(),
-  },
-  {
-      fullname: "Ahmad Jaber",
-      username: "a.jaber2020",
-      email: "a.hantash@saferoad.com.sa",
-      status:"active",
-      action: tableLinks(),
-  },
+    {
+        fullName: "Ahmad Jaber",
+        username: "a.jaber2020",
+        email: "a.hantash@saferoad.com.sa",
+        status: "active",
+        action: < TableLinks/>,
+    },
+    {
+        fullName: "Ahmad Jaber",
+        username: "a.jaber2020",
+        email: "a.hantash@saferoad.com.sa",
+        status: "active",
+        action: < TableLinks/>,
+    },
+    {
+        fullName: "Ahmad Jaber",
+        username: "a.jaber2020",
+        email: "a.hantash@saferoad.com.sa",
+        status: "active",
+        action: < TableLinks/>,
+    },
+    {
+        fullName: "Ahmad Jaber",
+        username: "a.jaber2020",
+        email: "a.hantash@saferoad.com.sa",
+        status: "active",
+        action: < TableLinks/>,
+    },
 ];
 
 const Data_table2 = [
-  {
-      fullname: "Ahmad Jaber",
-      username: "a.jaber2020",
-      email: "a.hantash@saferoad.com.sa",
-      status:"active",
-      action: completeBtn,
-  },
-  {
-      fullname: "Ahmad Jaber",
-      username: "a.jaber2020",
-      email: "a.hantash@saferoad.com.sa",
-      status:"active",
-      action: completeBtn,
-  },
-  {
-      fullname: "Ahmad Jaber",
-      username: "a.jaber2020",
-      email: "a.hantash@saferoad.com.sa",
-      status:"active",
-      action: completeBtn,
-  },
-  {
-      fullname: "Ahmad Jaber",
-      username: "a.jaber2020",
-      email: "a.hantash@saferoad.com.sa",
-      status:"active",
-      action: completeBtn,
-  },
+    {
+        fullName: "Ahmad Jaber",
+        username: "a.jaber2020",
+        email: "a.hantash@saferoad.com.sa",
+        status: "active",
+        action: <CompleteBtn/>,
+    },
+    {
+        fullName: "Ahmad Jaber",
+        username: "a.jaber2020",
+        email: "a.hantash@saferoad.com.sa",
+        status: "active",
+        action: <CompleteBtn/>,
+    },
+    {
+        fullName: "Ahmad Jaber",
+        username: "a.jaber2020",
+        email: "a.hantash@saferoad.com.sa",
+        status: "active",
+        action: <CompleteBtn/>,
+    },
+    {
+        fullName: "Ahmad Jaber",
+        username: "a.jaber2020",
+        email: "a.hantash@saferoad.com.sa",
+        status: "active",
+        action: <CompleteBtn/>,
+    },
 ];
 
 
 const manageUsers = () => {
-  return (
-    <>
-      
-      <Row>
-        
-        <Row className="g-3">
-            <Col sm="12">
-               <Card className="h-100">
-                  <nav className="navbar navbar-dark navbar-lg shadow rounded p-3">
-                      <h3>Manage Users</h3> 
-                  </nav>
-                  <Card.Header className="d-flex justify-content-between">
-                     <div className="w-100 header-title d-flex justify-content-between align-items-center p-3">
-                     <div>
-                     <button type="button" className="btn btn-primary  px-3 py-2 me-3 ">Add Account</button>
-                     </div>
-                      <Form.Floating className=" custom-form-floating-sm form-group m-0">
-                        <Form.Control type="email" className="" id="floatingInput6"  placeholder="Place Holder"/>
-                        <label htmlFor="floatingInput">Search</label>
-                      </Form.Floating>
-                      
-                     </div>
-                  </Card.Header>
-                  <Card.Body>
-                     <div className="table-responsive">
-                        <table id="datatable" className="table table-striped text-center" data-toggle="data-table">
-                           <thead>
-                              <tr>
-                                 <th>Full Name</th>
-                                 <th>User Name</th>
-                                 <th>E-mail</th>
-                                 <th>Status</th>
-                                 <th>Action</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                           { 
-                                 Data_table.map((item) => (
-                              <tr key={Math.floor(Math.random() * 100)}>
-                                 <td>{item.fullname}</td>
-                                 <td>{item.username}</td>
-                                 <td>{item.email}</td>
-                                 <td>{item.status}</td>
-                                 <td>{item.action}</td>
-                              </tr>
-                                 ))}
-                           </tbody>
-                        </table>
-                        <p className="lead text-warning text-end">pagination here</p>
-                      </div>
-                  </Card.Body>
-               </Card>
-            </Col>
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const {t} = useTranslation("Management")
+    return (
+        <>
+            <Row>
+                <Row className="g-3">
+                    <Col sm="12">
+                        <Card className="h-100">
+                            <nav className="navbar navbar-dark navbar-lg shadow rounded p-3">
+                                <h3>{t("Manage_Users")}</h3>
+                            </nav>
+                            <Card.Header className="d-flex justify-content-between">
+                                <div
+                                    className="w-100 header-title d-flex justify-content-between align-items-center p-3">
+                                    <div>
+                                        <button type="button"
+                                                className="btn btn-primary  px-3 py-2 me-3 ">{t("Add_Account")}
+                                        </button>
+                                    </div>
+                                    <Form.Floating className=" custom-form-floating-sm form-group m-0">
+                                        <Form.Control type="email" className="" id="floatingInput6"
+                                                      placeholder="Place Holder"/>
+                                        <label htmlFor="floatingInput">{t("main:search")}</label>
+                                    </Form.Floating>
 
-            {/* ================== second table  ===================== */}
-            <Col sm="12">
-               <Card className="h-100">
-                  <Card.Header className="d-flex justify-content-between">
-                     <div className="w-100 header-title d-flex justify-content-between align-items-center p-3">
-                     <div>
-                      <h3>Manage Incompleted Users</h3>
-                     </div>
-                      <Form.Floating className=" custom-form-floating-sm form-group m-0">
-                        <Form.Control type="email" className="" id="floatingInput6"  placeholder="Place Holder"/>
-                        <label htmlFor="floatingInput">Search</label>
-                      </Form.Floating>
-                      
-                     </div>
-                  </Card.Header>
-                  <Card.Body>
-                     <div className="table-responsive">
-                        <table id="datatable" className="table table-striped text-center" data-toggle="data-table">
-                           <thead>
-                              <tr>
-                                 <th>Account Name</th>
-                                 <th> User Name </th>
-                                 <th>E-mail</th>
-                                 <th>Status</th>
-                                 <th>Action</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                           { 
-                                 Data_table2.map((item) => (
-                              <tr key={Math.floor(Math.random() * 100)}>
-                                 <td>{item.fullname}</td>
-                                 <td>{item.username}</td>
-                                 <td>{item.email}</td>
-                                 <td>{item.status}</td>
-                                 <td>{item.action}</td>
-                              </tr>
-                                 ))}
-                           </tbody>
-                        </table>
-                        <p className="lead text-warning text-end">pagination here</p>
-                      </div>
-                  </Card.Body>
-               </Card>
-            </Col>
-         </Row>
-      </Row>
-    </>
-  );
+                                </div>
+                            </Card.Header>
+                            <Card.Body>
+                                <div className="table-responsive">
+                                    <table id="datatable" className="table table-striped text-center"
+                                           data-toggle="data-table">
+                                        <thead>
+                                        <tr>
+                                            {["Full_Name", "User_Name", "E-mail", "Status", "Actions"].map((ele) => {
+                                                return (
+                                                    <th key={ele}>{t(ele)}</th>
+                                                )
+                                            })}
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {
+                                            Data_table.map((item, i) => (
+                                                <tr key={i}>
+                                                    <td>{item.fullName}</td>
+                                                    <td>{item.username}</td>
+                                                    <td>{item.email}</td>
+                                                    <td>{item.status}</td>
+                                                    <td>{item.action}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                    <p className="lead text-warning text-end">pagination here</p>
+                                </div>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+
+                    {/* ================== second table  ===================== */}
+                    <Col sm="12">
+                        <Card className="h-100">
+                            <Card.Header className="d-flex justify-content-between">
+                                <div
+                                    className="w-100 header-title d-flex justify-content-between align-items-center p-3">
+                                    <div>
+                                        <h3>{t("Manage_Incompleted_Users")}</h3>
+                                    </div>
+                                    <Form.Floating className=" custom-form-floating-sm form-group m-0">
+                                        <Form.Control type="email" className="" id="floatingInput6"
+                                                      placeholder="Place Holder"/>
+                                        <label htmlFor="floatingInput">{t("main:search")}</label>
+                                    </Form.Floating>
+
+                                </div>
+                            </Card.Header>
+                            <Card.Body>
+                                <div className="table-responsive">
+                                    <table id="datatable" className="table table-striped text-center"
+                                           data-toggle="data-table">
+                                        <thead>
+                                        <tr>
+                                            {["Account_Name", "User_Name", "E-mail", "Status", "Actions"].map((ele) => {
+                                                return (
+                                                    <th key={ele}>{t(ele)}</th>
+                                                )
+                                            })}
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {
+                                            Data_table2.map((item, i) => (
+                                                <tr key={i}>
+                                                    <td>{item.fullName}</td>
+                                                    <td>{item.username}</td>
+                                                    <td>{item.email}</td>
+                                                    <td>{item.status}</td>
+                                                    <td>{item.action}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                    <p className="lead text-warning text-end">pagination here</p>
+                                </div>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Row>
+        </>
+    );
 };
 
 export default manageUsers;
+
+// translation ##################################
+export async function getStaticProps({locale}) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ["Management", "main"])),
+        },
+    };
+}
+
+// translation ##################################
