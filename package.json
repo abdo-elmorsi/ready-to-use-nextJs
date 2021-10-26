@@ -38,6 +38,7 @@
     "react-leaflet": "^3.2.1",
     "react-redux": "^7.2.5",
     "react-select": "^5.1.0",
+    "react-sortable-tree": "^2.8.0",
     "redux": "^4.1.1",
     "sass": "~1.32.12",
     "smooth-scrollbar": "^8.6.3",

@@ -175,10 +175,7 @@ const vehicleType = [
   { value:"Truck", label:"Truck" },
   { value:"Sport", label:"Sport" },
 ]
-const uniqueKey = (arr) =>{
-  for(let i = 0; i < arr.length; i++)
-  return i
-}
+
 
 const AddVehicleInfo = () =>{
   return(
@@ -187,7 +184,7 @@ const AddVehicleInfo = () =>{
         <Card>
           <Card.Body>
             <Row className=" d-flex justify-content-center">
-              <Col md="9">
+              <Col md="8">
                 <Card className="shadow-none">
                     <Card.Body>
                         
