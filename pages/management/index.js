@@ -28,7 +28,7 @@ const Component = ({
                         <Col xs="9">
                             <h5 className="mb-2">{t(head)}</h5>
                             <p className="mb-3 fs-6">{t(desc)}</p>
-                            <Link href={`${link}/${[id]}`} as={`${link}/${id}`}>
+                            <Link href={`${link}/${id}`} as={`${link}/${id}`}>
                                 <a>
                                     <Button variant="primary" className="p-2">
                                         {t(

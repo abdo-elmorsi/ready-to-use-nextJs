@@ -1,11 +1,9 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Navbar, Container, Nav, Dropdown} from 'react-bootstrap'
 import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faGlobe} from '@fortawesome/free-solid-svg-icons'
 import {useDispatch, useSelector} from "react-redux";
 import {toggle} from "../store/reducer/toggleSidebar/toggle";
 import {darkMode, changeLanguage} from "../store/reducer/config/config";
@@ -19,27 +17,58 @@ import {useTranslation} from 'next-i18next';
 const Header = () => {
     const router = useRouter()
     const dispatch = useDispatch()
-    const config = useSelector((state) => state.config);
+    const {config, toggleMenu} = useSelector((state) => state);
 
-    const {t} = useTranslation("main");
+    const {i18n, t} = useTranslation("main");
+    const {locale} = router;
     useEffect(_ => {
             config.darkMode
                 ? document.body.classList.add('dark')
-                : document.body.classList.remove('dark')
+                : document.body.classList.remove('dark');
+
         }, [config.darkMode]
-    )
-    ;
+    );
+
     const toggleDarkMode = () => {
         dispatch(darkMode())
         document.body.classList.toggle('dark')
     }
-    const handleLanguage = (e) => {
-        // console.log(router.locale)
-        // console.log(e.target.id)
-        e.target.id === 'ar'
-            ? dispatch(changeLanguage('ar'))
-            : dispatch(changeLanguage('en'));
-        router.replace(router.pathname, router.pathname, {locale: e.target.id == "en" ? "ar" : "en"})
+    const [state, setState] = useState(config.language);
+    // window.onscroll = function ()  {
+    //     if (document.getElementById('navbarSupportedContent').classList.contains('show')) {
+    //         document.querySelector('.navbar-toggler').classList.add('collapsed');
+    //         document.getElementById('navbarSupportedContent').classList.remove('show');
+    //         console.log("close");
+    //     }
+    //     console.log("close");
+    // }
+    const [icon, setIcon] = useState(false)
+    const handleToggleMenu = () => {
+        setIcon(!icon);
+        const Do = document.querySelectorAll('.iq-navbar-header, .content-inner');
+        const eve = function (e) {
+            document.querySelector('.navbar-toggler').classList.add('collapsed');
+            document.getElementById('navbarSupportedContent').classList.remove('show');
+            Do.forEach(e => {
+                setIcon(!icon);
+
+                e.removeEventListener("click", eve)
+            })
+        }
+        Do.forEach(e => {
+            e.addEventListener("click", eve)
+        })
+    }
+    const handleLanguage = async (e) => {
+        if (state == 'en') {
+            await i18n.changeLanguage("ar");
+            dispatch(changeLanguage('ar'));
+            setState("ar");
+        } else {
+            await i18n.changeLanguage("en");
+            dispatch(changeLanguage('en'));
+            setState("en");
+        }
     }
     return (
         <>
@@ -91,11 +120,32 @@ const Header = () => {
                             </svg>
                         </i>
                     </div>
-                    <Navbar.Toggle aria-controls="navbarSupportedContent">
+                    <Navbar.Toggle aria-controls="navbarSupportedContent" onClick={handleToggleMenu}>
                         <span className="navbar-toggler-icon">
-                            <span className="navbar-toggler-bar bar1 mt-2"/>
-                            <span className="navbar-toggler-bar bar2"/>
-                            <span className="navbar-toggler-bar bar3"/>
+                            {!icon ?
+                                (
+                                    <div>
+                                        <span className="navbar-toggler-bar bar1 mt-2"/>
+                                        <span className="navbar-toggler-bar bar2"/>
+                                        <span className="navbar-toggler-bar bar3"/>
+                                    </div>
+                                ) :
+                                (
+                                    <div className="d-flex justify-content-center align-items-center h-100">
+                                        <span className="navbar-toggler-bar position-absolute  one"/>
+                                        <span className="navbar-toggler-bar position-absolute  tow"/>
+                                        <style jsx>{`
+                                          .one {
+                                            transform: rotate(45deg);
+                                          }
+
+                                          .tow {
+                                            transform: rotate(-45deg);
+                                          }
+                                        `}</style>
+                                    </div>
+                                )}
+
                         </span>
                     </Navbar.Toggle>
                     <Navbar.Collapse id="navbarSupportedContent">
@@ -222,16 +272,14 @@ const Header = () => {
                             {/*    </Link>*/}
                             {/*</Dropdown>*/}
                             <Dropdown as="li" className="nav-item d-flex align-items-center">
-                                {router.locale === "en" ? (
-                                    <button className={`border-0 bg-transparent ${config.darkMode  ? "text-white":""}`} id={"en"} onClick={(e) => handleLanguage(e)}>
+                                {state === "ar" ? (
+                                    <button className={`border-0 bg-transparent ${config.darkMode ? "text-white" : ""}`}
+                                            id={"en"} onClick={(e) => handleLanguage(e)}>
                                         <img id="en" src={"https://flagcdn.com/us.svg"} width={"25px"} alt={"en"}/>
-                                        {" "}
-                                        en
                                     </button>) : (
-                                    <button className={`border-0 bg-transparent ${config.darkMode  ? "text-white":""}`} id={"ar"} onClick={(e) => handleLanguage(e)}>
+                                    <button className={`border-0 bg-transparent ${config.darkMode ? "text-white" : ""}`}
+                                            id={"ar"} onClick={(e) => handleLanguage(e)}>
                                         <img id="ar" src={"https://flagcdn.com/sa.svg"} width={"25px"} alt={"ar"}/>
-                                        {" "}
-                                        ar
                                     </button>)}
                             </Dropdown>
                             <Dropdown as="li" className="nav-item">
