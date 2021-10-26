@@ -18,6 +18,7 @@ import RoutineMachine from "./RoutineMachine";
 import * as ELG from "esri-leaflet-geocoder";
 import WidgetMenu from "./widget-menu";
 import AddMarker from "./AddMarker";
+import AddMarkerRoutingMachine from "./AddMarkerRoutingMachine";
 
 function LocationMarker() {
     const [position, setPosition] = useState(null)
@@ -43,7 +44,7 @@ function LocationMarker() {
 const Map = () => {
     const {heightWithoutNav} = useWindowDimensions();
     const [map, setMap] = useState(null);
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(true);
     const rMachine = useRef();
 
     function Geocoder({address}) {
@@ -116,28 +117,28 @@ const Map = () => {
                     </LayersControl.BaseLayer>
                 </LayersControl>
 
-                <Marker position={[24.726875, 46.710461]} draggable={true} animate={true}>
+                {/*<Marker position={[24.726875, 46.710461]} draggable={true} animate={true}>
                     <Popup>Hey ! I live here
-                        {/*<button onClick={() => changePos([43.653225, -79.383186])}>change</button>*/}
+                        <button onClick={() => changePos([43.653225, -79.383186])}>change</button>
                         <button onClick={() => setShow(!show)}>show</button>
                     </Popup>
-                    {/*<Tooltip>
+                    <Tooltip>
                     test Tooltip
-                </Tooltip>*/}
-                </Marker>
-                {/*{show &&*/}
+                </Tooltip>
+                </Marker>*/}
+               {/* {show &&
 
-                {/*     <RoutineMachine ref={rMachine}
-                                     waypoints={[[24.726875, 46.710461], [33.50546582848033, 36.29547681726967]]}/>*/}
-                {/*}*/}
+                <RoutineMachine ref={rMachine}
+                                waypoints={[[24.726875, 46.710461], [33.50546582848033, 36.29547681726967]]}/>
+                }*/}
                 <Geocoder address="giza"/>
                 {/*<LocationMarker/>*/}
                 <ZoomControl position="topleft"/>
 
                 {/*  Components  */}
-                <AddMarker/>
+                <AddMarkerRoutingMachine/>
             </MapContainer>
-            <WidgetMenu/>
+            {/*<WidgetMenu/>*/}
 
         </>
     );

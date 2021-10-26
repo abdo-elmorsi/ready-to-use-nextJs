@@ -1,32 +1,16 @@
 import L from "leaflet";
 import {createControlComponent} from "@react-leaflet/core";
-import "leaflet-routing-machine";
 import "leaflet/dist/leaflet.css";
-import {useState} from "react";
-import {useMapEvents} from "react-leaflet";
-
+import "leaflet-routing-machine";
 const CreateRoutineMachineLayer = ({waypoints}) => {
-
-    const [positionOne, setPositionOne] = useState(null);
-    const [positionTwo, setPositionTwo] = useState(null);
-
-    useMapEvents({
-        click: (e) => {
-            if (!positionOne) {
-                setPositionOne(e.latlng);
-            }
-
-            setPositionTwo(e.latlng);
-        },
-    });
 
     const instance = L.Routing.control({
         waypoints,
         lineOptions: {
-            // styles: [{ color: "#6FA1EC", weight: 4 }]
+            styles: [{ color: "#6FA1EC", weight: 4 }]
         },
         show: false,
-        addWaypoints: true,
+        addWaypoints: false,
         routeWhileDragging: true,
         draggableWaypoints: true,
         fitSelectedRoutes: true,
