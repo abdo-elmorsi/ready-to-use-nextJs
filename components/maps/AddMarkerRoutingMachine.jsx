@@ -17,7 +17,6 @@ const AddMarkerRoutingMachine = () => {
                 setPositionTwo([e.latlng.lat, e.latlng.lng]);
                 setShowMarker(false)
             }
-            console.error(positionTwo)
         },
     });
     const clearMarker = () => {
@@ -36,8 +35,7 @@ const AddMarkerRoutingMachine = () => {
             {(positionTwo !== null && showMarker) && <Marker position={positionTwo}><Popup>
                 <button onClick={clearMarker}>clear</button>
             </Popup></Marker>}
-            {(positionTwo !== null && positionOne !== null) &&
-            <RoutineMachine waypoints={[positionOne, positionTwo]}/>}
+            {(positionTwo !== null && positionOne !== null) && <RoutineMachine waypoints={[positionOne, positionTwo]}/>}
         </>
     );
 };

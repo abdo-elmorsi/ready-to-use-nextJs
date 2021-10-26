@@ -1,4 +1,3 @@
-/*
 import React, {useEffect, useState} from 'react';
 import SortableTree, {addNodeUnderParent, changeNodeAtPath} from 'react-sortable-tree';
 import FileExplorerTheme from 'react-sortable-tree-theme-file-explorer'
@@ -70,7 +69,7 @@ const MenuTree = () => {
             )
         }}/>, node.isDirectory ? '📁' : '🚚']
 
-        /!* const rmButton = (
+        /* const rmButton = (
              <input
                  key="select"
                  type="checkbox"
@@ -85,7 +84,7 @@ const MenuTree = () => {
                      )
                  }}
              />
-         )*!/
+         )*/
     }
 
     return (
@@ -112,4 +111,4 @@ const MenuTree = () => {
         </div>
     );
 }
-export default MenuTree;*/
+export default MenuTree;

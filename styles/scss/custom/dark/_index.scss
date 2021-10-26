@@ -58,4 +58,20 @@
     .rst__lineHalfHorizontalRight::before, .rst__lineFullVertical::after, .rst__lineHalfVerticalTop::after, .rst__lineHalfVerticalBottom::after{
         background-color: white;
     }
+
+
+    .leaflet-control-container {
+        .leaflet-routing-icon {
+            margin-right: 5px;
+            background-color: wheat;
+        }
+        .leaflet-routing-alt tr:hover {
+            background-color: #394158;
+        }
+        .leaflet-routing-alternatives-container {
+            background-color: rgb(21 24 36 / 90%);;
+            box-shadow: 0 10px 30px 0 rgb(4 12 12 / 5%) !important;
+        }
+
+    }
 }
