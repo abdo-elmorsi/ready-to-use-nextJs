@@ -176,7 +176,7 @@ const VehicleManagment = () => {
                       <div className="d-flex flex-column justify-content-between align-itmes-center w-100 mb-3">
                         <div className="d-flex justify-content-center align-items-center mb-3">
                             <div className={item.bgColor}>
-                            <FontAwesomeIcon className="fa-2x" icon={item.icon} size="lg"/>
+                            <FontAwesomeIcon  className={`fa-2x p-3 rounded bg-soft-${primary}`} size="lg"/>
                             </div>
                         </div>
                         <div className="d-flex align-items-center justify-content-between ps-2 w-100">
