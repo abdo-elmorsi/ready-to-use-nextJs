@@ -278,12 +278,6 @@ const AddVehicleInfo = () =>{
                                   <Form.Check.Label htmlFor="HaveRelay">HaveRelay</Form.Check.Label>
                                 </Form.Check>
                               </Col>
-                              
-                              
-
-                              
-                              
-                              
                             </Row>
 
                             <Row className=" rounded p-3 mb-3">

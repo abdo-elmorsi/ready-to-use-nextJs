@@ -9,37 +9,37 @@ const EditUser = () =>{
 
   return(
     <>
-      <Row>
-        <Col>
           <Card>
             <Card.Body>
+              <Row className=" d-flex justify-content-center mb-5"> 
+              <Col lg="8">
                 <Form className="mt-5">
-                  <Row className="border border-light rounded p-3 mb-3">
-                    <Col lg="6">
+                  <Row className="p-3 mb-3">
+                    <Col md="6">
                       <Form.Group className="form-group">
                       <Form.Label  htmlFor="firstName">{t("First_Name")}</Form.Label>
                       <Form.Control type="text"  id="firstName" defaultValue=" Ahmed"/>
                     </Form.Group>
                     </Col>
-                    <Col lg="6">
+                    <Col md="6">
                       <Form.Group className="form-group">
                       <Form.Label  htmlFor="lastName">{t("Last_Name")}</Form.Label>
                       <Form.Control type="text"  id="lastName" defaultValue="Jaber"/>
                     </Form.Group>
                     </Col>
-                    <Col lg="6">
+                    <Col md="12">
                       <Form.Group className="form-group">
                       <Form.Label  htmlFor="userName">{t("User_Name")}</Form.Label>
                       <Form.Control type="text"  id="userName" defaultValue="a.Jaber2020"/>
                     </Form.Group>
                     </Col>
-                    <Col lg="6">
+                    <Col md="6">
                       <Form.Group className="form-group">
                       <Form.Label  htmlFor="email">{t("E-mail")}</Form.Label>
                       <Form.Control type="text"  id="email" defaultValue="a.Jaber@gmail.com"/>
                     </Form.Group>
                     </Col>
-                    <Col lg="6">
+                    <Col md="6">
                       <Form.Group className="form-group">
                       <Form.Label  htmlFor="phoneNumber">{t("Phone_Number")}</Form.Label>
                       <Form.Control type="number"  id="phoneNumber" defaultValue="966123456789"/>
@@ -52,10 +52,10 @@ const EditUser = () =>{
                   <button className="btn btn-primary px-3 py-2 ms-3">{t("Submit")}</button>
                   <button className="btn btn-primary px-3 py-2 ms-3">{t("Cancel")}</button>
                 </div>
+                </Col>
+                </Row>
             </Card.Body>
           </Card>  
-        </Col>
-      </Row>
     </>
   )
 }

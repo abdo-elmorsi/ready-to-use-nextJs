@@ -9,113 +9,104 @@ const SelectUserRole = () => {
     const {t} = useTranslation("Management")
     return (
         <>
-            <Row>
                 <Card>
                     <Card.Body>
-                        <Row>
-                            <Col lg="4" md="6" className="mb-3">
-                                <Card className="border-bottom border-4 border-0 border-primary">
-                                    <Card.Body className="d-flex justify-content-start align-items-center">
-                                        <div>
-                                            <Form.Check className="mb-3 form-check">
-                                                <FormCheck.Input type="checkbox" className="me-3 p-2"
-                                                                 id="exampleCheck1"/>
-                                                <FormCheck.Label className="h4"
-                                                                 htmlFor="exampleCheck1">{t("Admin")}</FormCheck.Label>
-                                            </Form.Check>
-                                            <span>text deisciption here...</span>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col lg="4" md="6" className="mb-3">
-                                <Card className="border-bottom border-4 border-0 border-primary">
-                                    <Card.Body className="d-flex justify-content-start align-items-center">
-                                        <div>
-                                            <Form.Check className="mb-3 form-check">
-                                                <FormCheck.Input type="checkbox" className="me-3 p-2"
-                                                                 id="exampleCheck1"/>
-                                                <FormCheck.Label className="h4"
-                                                                 htmlFor="exampleCheck1">{t("Account_Manager")}</FormCheck.Label>
-                                            </Form.Check>
-                                            <span>text deisciption here...</span>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col lg="4" md="6" className="mb-3">
-                                <Card className="border-bottom border-4 border-0 border-primary">
-                                    <Card.Body className="d-flex justify-content-start align-items-center">
-                                        <div>
-                                            <Form.Check className="mb-3 form-check">
-                                                <FormCheck.Input type="checkbox" className="me-3 p-2"
-                                                                 id="exampleCheck1"/>
-                                                <FormCheck.Label className="h4"
-                                                                 htmlFor="exampleCheck1">{t("User")}</FormCheck.Label>
-                                            </Form.Check>
-                                            <span>text deisciption here...</span>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col lg="4" md="6" className="mb-3">
-                                <Card className="border-bottom border-4 border-0 border-primary">
-                                    <Card.Body className="d-flex justify-content-start align-items-center">
-                                        <div>
-                                            <Form.Check className="mb-3 form-check">
-                                                <FormCheck.Input type="checkbox" className="me-3 p-2"
-                                                                 id="exampleCheck1"/>
-                                                <FormCheck.Label className="h4"
-                                                                 htmlFor="exampleCheck1">{t("Sales")}</FormCheck.Label>
-                                            </Form.Check>
-                                            <span>text deisciption here...</span>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col lg="4" md="6" className="mb-3">
-                                <Card className="border-bottom border-4 border-0 border-primary">
-                                    <Card.Body className="d-flex justify-content-start align-items-center">
-                                        <div>
-                                            <Form.Check className="mb-3 form-check">
-                                                <FormCheck.Input type="checkbox" className="me-3 p-2"
-                                                                 id="exampleCheck1"/>
-                                                <FormCheck.Label className="h4" htmlFor="exampleCheck1">
-                                                    {t("Account_Admin")}
-                                                </FormCheck.Label>
-                                            </Form.Check>
-                                            <span>text deisciption here...</span>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col lg="4" md="6" className="mb-3">
-                                <Card className="border-bottom border-4 border-0 border-primary">
-                                    <Card.Body className="d-flex justify-content-start align-items-center">
-                                        <div>
-                                            <Form.Check className="mb-3 form-check">
-                                                <FormCheck.Input type="checkbox" className="me-3 p-2"
-                                                                 id="exampleCheck1"/>
-                                                <FormCheck.Label className="h4"
-                                                                 htmlFor="exampleCheck1">{t("Reporting")}</FormCheck.Label>
-                                            </Form.Check>
-                                            <span>text deisciption here...</span>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
+                        <Row className=" d-flex justify-content-center my-5"> 
+                            <Col md="8">
+                                <Row>
+                                    <Col  md="6" className="mb-3">
+                                        <Card className="border-bottom border-4 border-0 border-primary">
+                                            <Card.Body className="d-flex justify-content-start align-items-center">
+                                                <div>
+                                                    <Form.Check className="mb-3 form-check">
+                                                        <FormCheck.Input type="radio" name="userRole" className="me-3 p-2" id="admin"/>
+                                                        <FormCheck.Label className="h4" htmlFor="admin">{t("Admin")}</FormCheck.Label>
+                                                    </Form.Check>
+                                                    <span>text deisciption here...</span>
+                                                </div>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                    <Col  md="6" className="mb-3">
+                                        <Card className="border-bottom border-4 border-0 border-primary">
+                                            <Card.Body className="d-flex justify-content-start align-items-center">
+                                                <div>
+                                                    <Form.Check className="mb-3 form-check">
+                                                        <FormCheck.Input type="radio" name="userRole" className="me-3 p-2" id="accountManager"/>
+                                                        <FormCheck.Label className="h4" htmlFor="accountManager">{t("Account_Manager")}</FormCheck.Label>
+                                                    </Form.Check>
+                                                    <span>text deisciption here...</span>
+                                                </div>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                    <Col  md="6" className="mb-3">
+                                        <Card className="border-bottom border-4 border-0 border-primary">
+                                            <Card.Body className="d-flex justify-content-start align-items-center">
+                                                <div>
+                                                    <Form.Check className="mb-3 form-check">
+                                                        <FormCheck.Input type="radio" name="userRole" className="me-3 p-2" id="user"/>
+                                                        <FormCheck.Label className="h4" htmlFor="user">{t("User")}</FormCheck.Label>
+                                                    </Form.Check>
+                                                    <span>text deisciption here...</span>
+                                                </div>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                    <Col  md="6" className="mb-3">
+                                        <Card className="border-bottom border-4 border-0 border-primary">
+                                            <Card.Body className="d-flex justify-content-start align-items-center">
+                                                <div>
+                                                    <Form.Check className="mb-3 form-check">
+                                                        <FormCheck.Input type="radio" name="userRole" className="me-3 p-2" id="sales"/>
+                                                        <FormCheck.Label className="h4" htmlFor="sales">{t("Sales")}</FormCheck.Label>
+                                                    </Form.Check>
+                                                    <span>text deisciption here...</span>
+                                                </div>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                    <Col  md="6" className="mb-3">
+                                        <Card className="border-bottom border-4 border-0 border-primary">
+                                            <Card.Body className="d-flex justify-content-start align-items-center">
+                                                <div>
+                                                    <Form.Check className="mb-3 form-check">
+                                                        <FormCheck.Input type="radio" name="userRole" className="me-3 p-2" id="accountAdmin"/>
+                                                        <FormCheck.Label className="h4" htmlFor="accountAdmin">
+                                                            {t("Account_Admin")}
+                                                        </FormCheck.Label>
+                                                    </Form.Check>
+                                                    <span>text deisciption here...</span>
+                                                </div>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                    <Col  md="6" className="mb-3">
+                                        <Card className="border-bottom border-4 border-0 border-primary">
+                                            <Card.Body className="d-flex justify-content-start align-items-center">
+                                                <div>
+                                                    <Form.Check className="mb-3 form-check">
+                                                        <FormCheck.Input type="radio" name="userRole" className="me-3 p-2" id="reporting"/>
+                                                        <FormCheck.Label className="h4" htmlFor="reporting">{t("Reporting")}</FormCheck.Label>
+                                                    </Form.Check>
+                                                    <span>text deisciption here...</span>
+                                                </div>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
 
-                        </Row>
-                        <Row>
-                            <div className="mt-5 d-flex justify-content-end">
-                                <button className="btn btn-primary px-3 py-2 ms-3">{t("Back")}</button>
-                                <button className="btn btn-primary px-3 py-2 ms-3">{t("Next")}</button>
-                                <button className="btn btn-primary px-3 py-2 ms-3">{t("Cancel")}</button>
-                            </div>
-                        </Row>
+                                </Row>
+                                <Row>
+                                    <div className="mt-5 d-flex justify-content-end">
+                                        <button className="btn btn-primary px-3 py-2 ms-3">{t("Back")}</button>
+                                        <button className="btn btn-primary px-3 py-2 ms-3">{t("Next")}</button>
+                                        <button className="btn btn-primary px-3 py-2 ms-3">{t("Cancel")}</button>
+                                    </div>
+                                </Row>
+                        </Col>
+                    </Row>
                     </Card.Body>
                 </Card>
-            </Row>
         </>
     )
 }
