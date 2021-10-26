@@ -55,4 +55,7 @@
     }
     .cls-logo-1{fill:url(#linear-gradient);}
     .cls-logo-2{fill:#fff;}
+    .rst__lineHalfHorizontalRight::before, .rst__lineFullVertical::after, .rst__lineHalfVerticalTop::after, .rst__lineHalfVerticalBottom::after{
+        background-color: white;
+    }
 }

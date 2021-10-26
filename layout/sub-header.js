@@ -26,6 +26,9 @@ const SubHeader = ({pageName = ''}) => {
             case "/management":
                 setState('Management');
                 break;
+            case "/Setting":
+                setState('Setting');
+                break;
             case "/management/account-management/[id]":
                 setState('Account_Management');
                 break;
@@ -91,7 +94,7 @@ const SubHeader = ({pageName = ''}) => {
                 {/* {{!-- rounded-bottom if not using animation --}} */}
                 <div className="iq-header-img">
                     <img src="/assets/images/top-header.jpg" alt="header"
-                         className="img-fluid w-100 h-100 animated-scaleX"/>
+                        className="img-fluid w-100 h-100 animated-scaleX"/>
                 </div>
             </div>
         </>

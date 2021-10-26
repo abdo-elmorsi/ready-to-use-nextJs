@@ -5,6 +5,8 @@ import DataTable from "react-data-table-component";
 
 // translation
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 export const Actions = ({ id }) => {
     return (
         <div className="d-flex  flex-column text-primary">
@@ -168,7 +170,7 @@ export default function ScheduledReports() {
                                         onChange={handleSearch}
                                     />
                                     <label htmlFor="floatingInput">
-                                        {t("main:serach")}
+                                        {t("main:search")}
                                     </label>
                                 </Form.Floating>
                             </div>
@@ -196,7 +198,6 @@ export default function ScheduledReports() {
     );
 }
 // translation ##################################
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 export async function getStaticProps({ locale }) {
     return {
         props: {
