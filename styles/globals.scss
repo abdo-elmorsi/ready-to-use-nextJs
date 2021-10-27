@@ -1,6 +1,4 @@
-
 @import "./scss/custom/helper/fonts";
-
 
 // Configuration
 @import "./scss/bootstrap/functions";
@@ -68,9 +66,13 @@
 @import "./scss/custom/pages/pricing/pricing";
 
 
+.cls-logo-1 {
+  fill: url(#linear-gradient);
+}
 
-.cls-logo-1{fill:url(#linear-gradient);}
-.cls-logo-2{fill:#272727;}
+.cls-logo-2 {
+  fill: #272727;
+}
 
 @import "./scss/custom/dark/index";
 #nprogress .spinner {
@@ -80,20 +82,21 @@
 // remove input type number arrows
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
+  -moz-appearance: textfield; /* Firefox */
 }
 
 .tree_root {
-  .rst__node{
+  .rst__node {
     height: 25px !important;
   }
-  .rst__moveHandle, .rst__loadingHandle{
+
+  .rst__moveHandle, .rst__loadingHandle {
     background-color: transparent;
     border: none;
     width: 17px;
@@ -101,24 +104,58 @@ input[type=number] {
     border-radius: 0;
     box-shadow: none;
   }
-  .rst__collapseButton, .rst__expandButton{
+
+  .rst__collapseButton, .rst__expandButton {
     width: 10px;
     height: 10px;
   }
-  .rst__rowContents{
+
+  .rst__rowContents {
     background-color: transparent !important;
     border: none !important;
     box-shadow: none;
     border-radius: 0;
-    .rst__rowTitle{
+
+    .rst__rowTitle {
       font-size: 12px;
     }
   }
-  .rst__rowWrapper{
+
+  .rst__rowWrapper {
     padding: 0;
   }
+
   .rstcustom__node {
     height: 100% !important;
   }
 
+}
+
+.leaflet-control-container {
+
+  .leaflet-routing-container {
+    background-color: transparent;
+  }
+
+  .leaflet-bar {
+    border: none !important;
+  }
+
+  .leaflet-routing-alternatives-container {
+    background-color: rgb(255 255 255 / 90%);;
+    padding: 1em;
+    border-radius: 10px;
+    overflow-y: hidden;
+    box-shadow: 0 10px 30px 0 rgb(4 12 12 / 5%) !important;
+
+  }
+
+  .leaflet-routing-container-hide {
+    width: auto !important;
+    height: auto !important;
+
+    .leaflet-routing-alt {
+      display: block !important;
+    }
+  }
 }
