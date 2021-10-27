@@ -147,6 +147,21 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
+  //.one,.tow,.three,.bar1,.bar2,.bar3 {
+  //  transition: all 0.4s ease-in-out !important;
+  //}
+  //.one {
+  //  transform: rotate(45deg);
+  //
+  //}
+  //.tow {
+  //  transform: rotate(-45deg);
+  //
+  //}
+  //.three {
+  //  transform: translate(-100%);
+  //  opacity: 0;
+  //}
 }
 
 .navbar-nav-scroll {
@@ -266,7 +281,7 @@
 
   .navbar-toggler {
     color: $navbar-light-color;
-    border-color: $navbar-light-toggler-border-color;
+    //border-color: $navbar-light-toggler-border-color;
   }
 
   .navbar-toggler-icon {

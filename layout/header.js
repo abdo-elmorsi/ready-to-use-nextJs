@@ -4,23 +4,23 @@ import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {useDispatch, useSelector} from "react-redux";
-import {toggle} from "../store/reducer/toggleSidebar/toggle";
-import {darkMode, changeLanguage} from "../store/reducer/config/config";
 
-import {useRouter} from "next/router"
+import {useDispatch, useSelector} from "react-redux";
+import {toggle} from "../store/reducer/toggleSidebar/toggle"
+import {toggleHead} from "../store/reducer/toggleHeader/toggle";
+import {darkMode, changeLanguage} from "../store/reducer/config/config";
 
 
 // translation
 import {useTranslation} from 'next-i18next';
+import Styles from "../styles/WidgetMenu.module.scss";
 
 const Header = () => {
-    const router = useRouter()
-    const dispatch = useDispatch()
-    const {config, toggleMenu} = useSelector((state) => state);
+    const dispatch = useDispatch();
+
+    const {config, ToggleHeader} = useSelector((state) => state);
 
     const {i18n, t} = useTranslation("main");
-    const {locale} = router;
     useEffect(_ => {
             config.darkMode
                 ? document.body.classList.add('dark')
@@ -28,47 +28,42 @@ const Header = () => {
 
         }, [config.darkMode]
     );
-
     const toggleDarkMode = () => {
-        dispatch(darkMode())
-        document.body.classList.toggle('dark')
+        dispatch(darkMode());
+        document.body.classList.toggle('dark');
     }
     const [state, setState] = useState(config.language);
-    // window.onscroll = function ()  {
-    //     if (document.getElementById('navbarSupportedContent').classList.contains('show')) {
-    //         document.querySelector('.navbar-toggler').classList.add('collapsed');
-    //         document.getElementById('navbarSupportedContent').classList.remove('show');
-    //         console.log("close");
-    //     }
-    //     console.log("close");
-    // }
-    const [icon, setIcon] = useState(false)
-    const handleToggleMenu = () => {
-        setIcon(!icon);
-        const Do = document.querySelectorAll('.iq-navbar-header, .content-inner');
-        const eve = function (e) {
-            document.querySelector('.navbar-toggler').classList.add('collapsed');
-            document.getElementById('navbarSupportedContent').classList.remove('show');
-            Do.forEach(e => {
-                setIcon(!icon);
 
-                e.removeEventListener("click", eve)
-            })
-        }
-        Do.forEach(e => {
-            e.addEventListener("click", eve)
-        })
-    }
-    const handleLanguage = async (e) => {
-        if (state == 'en') {
-            await i18n.changeLanguage("ar");
-            dispatch(changeLanguage('ar'));
-            setState("ar");
-        } else {
-            await i18n.changeLanguage("en");
-            dispatch(changeLanguage('en'));
-            setState("en");
-        }
+    // const click = () => {
+    //     if (ToggleHeader.value === true) {
+    //         const eve = function (e) {
+    //             dispatch(toggleHead())
+    //             console.log("gg")
+    //             document.querySelector('body').removeEventListener("click", eve);
+    //         }
+    //         console.log("gg")
+    //     }
+    // }
+    // useEffect(() => {
+    //     document.querySelector('body').addEventListener("click", click)
+    // }, [])
+
+    const handleLanguage = async () => {
+        console.log(state)
+        setState(state === "en" ? "ar" : "en");
+        await i18n.changeLanguage(state);
+        dispatch(changeLanguage(state === "en" ? "ar" : "en"));
+        console.log(state)
+
+        // if (state === 'en') {
+        //     setState(e.target.id);
+        //     await i18n.changeLanguage(e.target.id);
+        //     dispatch(changeLanguage(e.target.id));
+        // } else if (state == "ar") {
+        //     setState(e.target.id);
+        //     await i18n.changeLanguage(e.target.id);
+        //     dispatch(changeLanguage(e.target.id));
+        // }
     }
     return (
         <>
@@ -120,35 +115,17 @@ const Header = () => {
                             </svg>
                         </i>
                     </div>
-                    <Navbar.Toggle aria-controls="navbarSupportedContent" onClick={handleToggleMenu}>
-                        <span className="navbar-toggler-icon">
-                            {!icon ?
-                                (
-                                    <div>
-                                        <span className="navbar-toggler-bar bar1 mt-2"/>
-                                        <span className="navbar-toggler-bar bar2"/>
-                                        <span className="navbar-toggler-bar bar3"/>
-                                    </div>
-                                ) :
-                                (
-                                    <div className="d-flex justify-content-center align-items-center h-100">
-                                        <span className="navbar-toggler-bar position-absolute  one"/>
-                                        <span className="navbar-toggler-bar position-absolute  tow"/>
-                                        <style jsx>{`
-                                          .one {
-                                            transform: rotate(45deg);
-                                          }
-
-                                          .tow {
-                                            transform: rotate(-45deg);
-                                          }
-                                        `}</style>
-                                    </div>
-                                )}
-
-                        </span>
+                    <Navbar.Toggle aria-controls="navbarSupportedContent">
+                        <div
+                            onClick={() => dispatch(toggleHead())}
+                            className={`${Styles.hamburger} ${ToggleHeader.value && Styles.active} shadow-none 
+                            ${config.darkMode ? "bg-transparent" : ""}`}>
+                            <span className={`${Styles.hamburger__patty} ${config.darkMode ? "bg-white" : ""}`}/>
+                            <span className={`${Styles.hamburger__patty} ${config.darkMode ? "bg-white" : ""}`}/>
+                            <span className={`${Styles.hamburger__patty} ${config.darkMode ? "bg-white" : ""}`}/>
+                        </div>
                     </Navbar.Toggle>
-                    <Navbar.Collapse id="navbarSupportedContent">
+                    <Navbar.Collapse id="navbarSupportedContent" className={`${ToggleHeader.value && "show"}`}>
                         <Nav as="ul" className="ms-auto navbar-list my-2 my-lg-0 d-flex align-items-stretch">
                             <Dropdown as="li" className="nav-item d-flex align-items-center">
                                 <button onClick={toggleDarkMode} className="bg-transparent border-0 mx-2">
@@ -216,16 +193,13 @@ const Header = () => {
                                         </div>)}
                                 </button>
                             </Dropdown>
+
                             <Dropdown as="li" className="nav-item d-flex align-items-center">
                                 <Dropdown.Toggle variant="nav-link d-flex align-items-center" id="mail-drop"
                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <svg width="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path opacity="0.4"
-                                              d="M22 15.94C22 18.73 19.76 20.99 16.97 21H16.96H7.05C4.27 21 2 18.75 2 15.96V15.95C2 15.95 2.006 11.524 2.014 9.298C2.015 8.88 2.495 8.646 2.822 8.906C5.198 10.791 9.447 14.228 9.5 14.273C10.21 14.842 11.11 15.163 12.03 15.163C12.95 15.163 13.85 14.842 14.56 14.262C14.613 14.227 18.767 10.893 21.179 8.977C21.507 8.716 21.989 8.95 21.99 9.367C22 11.576 22 15.94 22 15.94Z"
-                                              fill="currentColor"/>
-                                        <path
-                                            d="M21.4759 5.67351C20.6099 4.04151 18.9059 2.99951 17.0299 2.99951H7.04988C5.17388 2.99951 3.46988 4.04151 2.60388 5.67351C2.40988 6.03851 2.50188 6.49351 2.82488 6.75151L10.2499 12.6905C10.7699 13.1105 11.3999 13.3195 12.0299 13.3195C12.0339 13.3195 12.0369 13.3195 12.0399 13.3195C12.0429 13.3195 12.0469 13.3195 12.0499 13.3195C12.6799 13.3195 13.3099 13.1105 13.8299 12.6905L21.2549 6.75151C21.5779 6.49351 21.6699 6.03851 21.4759 5.67351Z"
-                                            fill="currentColor"/>
+                                    <svg width="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19.7695 11.6453C19.039 10.7923 18.7071 10.0531 18.7071 8.79716V8.37013C18.7071 6.73354 18.3304 5.67907 17.5115 4.62459C16.2493 2.98699 14.1244 2 12.0442 2H11.9558C9.91935 2 7.86106 2.94167 6.577 4.5128C5.71333 5.58842 5.29293 6.68822 5.29293 8.37013V8.79716C5.29293 10.0531 4.98284 10.7923 4.23049 11.6453C3.67691 12.2738 3.5 13.0815 3.5 13.9557C3.5 14.8309 3.78723 15.6598 4.36367 16.3336C5.11602 17.1413 6.17846 17.6569 7.26375 17.7466C8.83505 17.9258 10.4063 17.9933 12.0005 17.9933C13.5937 17.9933 15.165 17.8805 16.7372 17.7466C17.8215 17.6569 18.884 17.1413 19.6363 16.3336C20.2118 15.6598 20.5 14.8309 20.5 13.9557C20.5 13.0815 20.3231 12.2738 19.7695 11.6453Z" fill="currentColor"/>
+                                        <path opacity="0.4" d="M14.0088 19.2283C13.5088 19.1215 10.4627 19.1215 9.96275 19.2283C9.53539 19.327 9.07324 19.5566 9.07324 20.0602C9.09809 20.5406 9.37935 20.9646 9.76895 21.2335L9.76795 21.2345C10.2718 21.6273 10.8632 21.877 11.4824 21.9667C11.8123 22.012 12.1482 22.01 12.4901 21.9667C13.1083 21.877 13.6997 21.6273 14.2036 21.2345L14.2026 21.2335C14.5922 20.9646 14.8734 20.5406 14.8983 20.0602C14.8983 19.5566 14.4361 19.327 14.0088 19.2283Z" fill="currentColor"/>
                                     </svg>
                                     {/*<span className="bg-primary count-mail">1</span>*/}
                                 </Dropdown.Toggle>
@@ -272,14 +246,16 @@ const Header = () => {
                             {/*    </Link>*/}
                             {/*</Dropdown>*/}
                             <Dropdown as="li" className="nav-item d-flex align-items-center">
-                                {state === "ar" ? (
+                                {state === "ar" && (
                                     <button className={`border-0 bg-transparent ${config.darkMode ? "text-white" : ""}`}
-                                            id={"en"} onClick={(e) => handleLanguage(e)}>
-                                        <img id="en" src={"https://flagcdn.com/us.svg"} width={"25px"} alt={"en"}/>
-                                    </button>) : (
+                                            name="en" onClick={(e) => handleLanguage(e)}>
+                                        <img name="en" src={"https://flagcdn.com/us.svg"} width={"25px"} alt="en"/>
+                                    </button>)
+                                }
+                                {state === "en" && (
                                     <button className={`border-0 bg-transparent ${config.darkMode ? "text-white" : ""}`}
-                                            id={"ar"} onClick={(e) => handleLanguage(e)}>
-                                        <img id="ar" src={"https://flagcdn.com/sa.svg"} width={"25px"} alt={"ar"}/>
+                                            name="ar" onClick={(e) => handleLanguage(e)}>
+                                        <img name="ar" src={"https://flagcdn.com/sa.svg"} width={"25px"} alt="ar"/>
                                     </button>)}
                             </Dropdown>
                             <Dropdown as="li" className="nav-item">
@@ -308,5 +284,4 @@ const Header = () => {
         </>
     )
 }
-
 export default Header

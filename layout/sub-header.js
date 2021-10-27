@@ -56,6 +56,9 @@ const SubHeader = ({pageName = ''}) => {
             case "/management/account-management/EditUser":
                 setState('Edit_User_Info');
                 break;
+            case "/management/account-management/manageDevices":
+                setState('manage_Devices');
+                break;
             case "/management/VehicleManagment":
                 setState('Vehicle_Managment');
                 break;
