@@ -50,7 +50,7 @@ const MenuTree = () => {
     }
 
     const renderNodeCheckbox = (node, setTreeData, treeData, path) => {
-        return [<input type="checkbox"  onChange={event => {
+        return [(<input type="checkbox"  onChange={event => {
             if (node.isDirectory) {
                 node.children.map(i => {
                     i.checked = !node.checked;
@@ -67,7 +67,7 @@ const MenuTree = () => {
                     newNode: {...node},
                 }),
             )
-        }}/>, node.isDirectory ? '📁' : '🚚']
+        }}/>), node.isDirectory ? '📁' : '🚚']
 
         /* const rmButton = (
              <input
