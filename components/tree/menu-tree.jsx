@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import SortableTree, {addNodeUnderParent, changeNodeAtPath} from 'react-sortable-tree';
-import FileExplorerTheme from 'react-sortable-tree-theme-file-explorer'
+import SortableTree, {changeNodeAtPath} from 'react-sortable-tree';
 import '../../styles/Tree.module.scss';
 import 'react-sortable-tree/style.css';
 
