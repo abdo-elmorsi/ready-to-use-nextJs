@@ -13,11 +13,13 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 import useWindowDimensions from "../../helpers/getWindowDimensions";
-import {useRef, useState} from "react";
+import {useEffect, useMemo, useRef, useState} from "react";
 import * as ELG from "esri-leaflet-geocoder";
 import WidgetMenu from "./widget-menu";
 import AddMarker from "./AddMarker";
 import AddMarkerRoutingMachine from "./AddMarkerRoutingMachine";
+import MenuBottom from "./menu-bottom";
+import {useSelector} from "react-redux";
 
 function LocationMarker() {
     const [position, setPosition] = useState(null)
@@ -40,11 +42,15 @@ function LocationMarker() {
     )
 }
 
+
 const Map = () => {
     const {heightWithoutNav} = useWindowDimensions();
     const [map, setMap] = useState(null);
-    const [show, setShow] = useState(true);
+    const toggleAddMarkerRoutingMachine = useSelector((state) => state.toggleAddMarkerRoutingMachine.value);
     const rMachine = useRef();
+
+    const layersControl = useRef(null);
+
 
     function Geocoder({address}) {
         const map = useMap();
@@ -78,9 +84,8 @@ const Map = () => {
                 scrollWheelZoom={true}
                 zoomControl={false}
                 style={{height: heightWithoutNav, width: "100%"}}>
-
-                <LayersControl position="bottomleft">
-                    <LayersControl.BaseLayer checked name="Saferoad">
+                <LayersControl position="bottomleft" ref={layersControl}>
+                    <LayersControl.BaseLayer  name="Saferoad">
                         <TileLayer
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">Saferoad</a>'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -94,7 +99,7 @@ const Map = () => {
                         />
                     </LayersControl.BaseLayer>
 
-                    <LayersControl.BaseLayer name="Dark">
+                    <LayersControl.BaseLayer checked name="Dark">
                         <TileLayer
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">Saferoad</a>'
                             url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
@@ -115,7 +120,6 @@ const Map = () => {
                         />
                     </LayersControl.BaseLayer>
                 </LayersControl>
-
                 {/*<Marker position={[24.726875, 46.710461]} draggable={true} animate={true}>
                     <Popup>Hey ! I live here
                         <button onClick={() => changePos([43.653225, -79.383186])}>change</button>
@@ -125,7 +129,7 @@ const Map = () => {
                     test Tooltip
                 </Tooltip>
                 </Marker>*/}
-               {/* {show &&
+                {/* {show &&
 
                 <RoutineMachine ref={rMachine}
                                 waypoints={[[24.726875, 46.710461], [33.50546582848033, 36.29547681726967]]}/>
@@ -135,10 +139,10 @@ const Map = () => {
                 <ZoomControl position="topleft"/>
 
                 {/*  Components  */}
-                <AddMarkerRoutingMachine/>
+                {toggleAddMarkerRoutingMachine && <AddMarkerRoutingMachine/>}
             </MapContainer>
             <WidgetMenu/>
-
+            <MenuBottom/>
         </>
     );
 };

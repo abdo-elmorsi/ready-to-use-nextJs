@@ -12,7 +12,7 @@ const Sidebar = () => {
 
     useEffect(
         () => {
-            Scrollbar.init(document.querySelector('#my-scrollbar'))
+            Scrollbar.init(document.getElementById('my-scrollbar'))
             router.events.on("routeChangeComplete", () => dispatch(sidebarMini()));
         }
         , [dispatch, router.events]
