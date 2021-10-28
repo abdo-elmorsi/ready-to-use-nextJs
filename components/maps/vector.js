@@ -85,7 +85,7 @@ const Map = () => {
                 zoomControl={false}
                 style={{height: heightWithoutNav, width: "100%"}}>
                 <LayersControl position="bottomleft" ref={layersControl}>
-                    <LayersControl.BaseLayer  name="Saferoad">
+                    <LayersControl.BaseLayer checked name="Saferoad">
                         <TileLayer
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">Saferoad</a>'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -99,7 +99,7 @@ const Map = () => {
                         />
                     </LayersControl.BaseLayer>
 
-                    <LayersControl.BaseLayer checked name="Dark">
+                    <LayersControl.BaseLayer name="Dark">
                         <TileLayer
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">Saferoad</a>'
                             url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"

@@ -23,7 +23,7 @@ const CreateRoutineMachineLayer = ({waypoints}) => {
     const instance = L.Routing.control({
         waypoints,
         lineOptions: {
-            // styles: [{ color: "#272727", weight: 3 }]
+            styles: [{color: "#246c66", weight: 3}]
         },
         createMarker: function (i, waypoint, n) {
             let marker_icon;
