@@ -18,8 +18,15 @@ $color__secondary: #575b67;
   &.active {
     right: 0;
   }
-
+  .title{
+    font-size: .9rem;
+    position: absolute;
+    left: 50%;
+    top: .3rem;
+    transform: translateX(-50%);
+  }
   .config_main {
+
   }
 }
 
@@ -27,7 +34,6 @@ $color__secondary: #575b67;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
-  position: absolute;
   top: 0;
   right: 0;
   margin: 1rem;
@@ -173,7 +179,6 @@ $color__secondary: #575b67;
     &__item {
 
       .section__one {
-
         button {
           border: 0.0625rem solid #656566;
           transition: all .8s cubic-bezier(0.86, 0, 0.07, 1);
@@ -199,6 +204,16 @@ $color__secondary: #575b67;
 
       }
     }
+
+    .config_btn, .config_btn_close {
+      color: white;
+    }
+  }
+
+  .config {
+    background-color: $color__patty;
+
+
   }
 
   .hamburger {
