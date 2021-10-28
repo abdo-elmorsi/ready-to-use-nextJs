@@ -54,12 +54,11 @@ const test2 = featuesList1.map((item, i) => {
 const CutomizePermissions = () => {
     const {t} = useTranslation("Management");
     return (
-        <Row>
             <Card>
                 <Card.Body>
                     <Row>
                         <Col lg="8">
-                            <Card>
+                            <Card className="shadow-none">
                                 <Card.Body>
                                     <div className="header-title">
                                         <h4 className="card-title">{t("User_Information")}</h4>
@@ -70,31 +69,27 @@ const CutomizePermissions = () => {
                                             <Col lg="6">
                                                 <Form.Group className="form-group">
                                                     <Form.Label htmlFor="FullName">{t("Full_Name")}</Form.Label>
-                                                    <Form.Control type="text" id="FullName" defaultValue="Full Name"
-                                                                  disabled/>
+                                                    <Form.Control type="text" id="FullName" defaultValue="Full Name" disabled/>
                                                 </Form.Group>
                                             </Col>
                                             <Col lg="6">
                                                 <Form.Group className="form-group">
                                                     <Form.Label htmlFor="userRole">{t("User_Role")}</Form.Label>
-                                                    <Form.Control type="text" id="userRole" defaultValue="1204"
-                                                                  disabled/>
+                                                    <Form.Control type="text" id="userRole" defaultValue="1204" disabled/>
                                                 </Form.Group>
                                             </Col>
 
                                             <Col lg="6">
                                                 <Form.Group className="form-group">
                                                     <Form.Label htmlFor="email">{t("E-mail")}</Form.Label>
-                                                    <Form.Control type="text" id="email"
-                                                                  defaultValue="mail@saferoad.net" disabled/>
+                                                    <Form.Control type="text" id="email" defaultValue="mail@saferoad.net" disabled/>
                                                 </Form.Group>
                                             </Col>
 
                                             <Col lg="6">
                                                 <Form.Group className="form-group">
                                                     <Form.Label htmlFor="status">{t("Status")}</Form.Label>
-                                                    <Form.Control type="text" id="status" defaultValue="Active"
-                                                                  disabled/>
+                                                    <Form.Control type="text" id="status" defaultValue="Active" disabled/>
                                                 </Form.Group>
                                             </Col>
 
@@ -105,24 +100,21 @@ const CutomizePermissions = () => {
                                             <hr className="my-3 mx-auto"/>
 
                                             <Form.Check className="d-block form-group">
-                                                <Form.Check.Input className="me-2" type="checkbox" defaultValue=""
-                                                                  id="emails"/>
+                                                <Form.Check.Input className="me-2" type="checkbox" defaultValue="" id="emails"/>
                                                 <Form.Check.Label htmlFor="emails">
                                                     {t("Recieve_Emails")}
                                                 </Form.Check.Label>
                                             </Form.Check>
 
                                             <Form.Check className="d-block form-group">
-                                                <Form.Check.Input className="me-2" type="checkbox" defaultValue=""
-                                                                  id="alerts"/>
+                                                <Form.Check.Input className="me-2" type="checkbox" defaultValue="" id="alerts"/>
                                                 <Form.Check.Label htmlFor="alerts">
                                                     {t("Recieve_Alerts_Notifications")}
                                                 </Form.Check.Label>
                                             </Form.Check>
 
                                             <Form.Check className="d-block form-group">
-                                                <Form.Check.Input className="me-2" type="checkbox" defaultValue=""
-                                                                  id="pushMsg"/>
+                                                <Form.Check.Input className="me-2" type="checkbox" defaultValue="" id="pushMsg"/>
                                                 <Form.Check.Label htmlFor="pushMsg">
                                                     {t("Recieve_Push_Messages")}
                                                 </Form.Check.Label>
@@ -140,7 +132,7 @@ const CutomizePermissions = () => {
                                                     </ul>
                                                 </Col>
                                                 <Col xm="6" className="">
-                                                    <Card>
+                                                    <Card className="shadow-none">
                                                         <Card.Body>
                                                             <h5 className="mb-3">{t("Functions")}</h5>
                                                             <Form>
@@ -165,7 +157,7 @@ const CutomizePermissions = () => {
                         </Col>
                         {/* aside features section */}
                         <Col lg="4">
-                            <Card>
+                            <Card className="shadow-none">
                                 <Card.Body>
                                     <div className="card-title">
                                         <h4 className="mb-4">{t("Selected_User_Permissions")}</h4>
@@ -204,7 +196,6 @@ const CutomizePermissions = () => {
                 </Card.Body>
             </Card>
 
-        </Row>
     )
 }
 

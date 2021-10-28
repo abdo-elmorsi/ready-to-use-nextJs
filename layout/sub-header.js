@@ -59,6 +59,9 @@ const SubHeader = ({pageName = ''}) => {
             case "/management/VehicleManagment":
                 setState('Vehicle_Managment');
                 break;
+            case "/management/AddVehicleInfo":
+                setState('Add_Vehicle');
+                break;
             default:
                 setState('');
                 break;
