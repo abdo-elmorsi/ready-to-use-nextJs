@@ -4,19 +4,6 @@ import Select from 'react-select'
 import { Provider } from 'react-redux';
 
 
-
-const ManufactCompanyName = [
-  { value:"Acura", label:"Acura" },
-  { value:"Alfa Romeo", label:"Alfa Romeo" },
-  { value:"AM General", label:"AM General" },
-  { value:"AMC", label:"AMC" },
-  { value:"Ariel", label:"Ariel" },
-  { value:"Aston Martin", label:"Aston Martin" },
-  { value:"Asuna", label:"Asuna" },
-  { value:"Audi", label:"Audi" },
-  { value:"Austin", label:"Austin" }
-]
-
 const model = [
   { value:"CL", label:"CL" },
   { value:"CSX", label:"CSX" },
@@ -40,7 +27,7 @@ const vehicleType = [
   { value:"Sport", label:"Sport" },
 ]
 
-const EditDeviceInfo = () =>{
+const AddNewDevice = () =>{
   return(
     <>
       <Row>
@@ -52,13 +39,13 @@ const EditDeviceInfo = () =>{
                     <Card.Body>
                         <Form className="mt-5">
                         <Row className=" rounded p-3 mb-3">
-                        <h4 className="card-title mb-5 mt-3">Edit Device Information</h4>
+                        <h4 className="card-title mb-5 mt-3">Add New Device</h4>
                               
                               
                               <Col lg="12">
                               <Form.Group className="form-group">
-                                <Form.Label  htmlFor="plate number">Plate Number </Form.Label>
-                                <Form.Control type="number"  id="plateNnpm" defaultValue="0304684068"/>
+                                <Form.Label  htmlFor="Serialnumber">Serial Number </Form.Label>
+                                <Form.Control type="number"  id="Serialnumber"/>
                               </Form.Group>
                               </Col>
                               <Col lg="6">
@@ -66,7 +53,7 @@ const EditDeviceInfo = () =>{
                                   <Form.Group className="form-group">
                                     <Form.Label  htmlFor="ManufactCompanyName">Manufacturing company</Form.Label>
                                         
-                                          <Select options={ManufactCompanyName} />
+                                          <Select options={model} />
                                   </Form.Group>
                                 </div>
                               </Col>
@@ -135,4 +122,4 @@ const EditDeviceInfo = () =>{
   )
 }
 
-export default EditDeviceInfo
+export default AddNewDevice
