@@ -1,15 +1,15 @@
 import React, {useState} from 'react'
 import Layout from "../layout";
 import useUser from "../lib/useUser";
+import Router from "next/router";
 
 const AuthGuard = ({children}) => {
     const { user } = useUser({ redirectTo: '/sginin' })
-
     const [state, setState] = useState(false);
 
-   /* if (!user || user.isLoggedIn === false) {
-        return <span>loading...</span>
-    }*/
+    if (!user || user.isLoggedIn === false) {
+        Router.push('/sginin')
+    }
     return (user ? <Layout>{children}</Layout> : children)
 }
 /*
