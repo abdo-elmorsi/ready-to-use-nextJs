@@ -1,3 +1,4 @@
+/*
 import React, {useEffect, useState} from 'react';
 import SortableTree, {changeNodeAtPath} from 'react-sortable-tree';
 import '../../styles/Tree.module.scss';
@@ -68,7 +69,7 @@ const MenuTree = () => {
             )
         }}/>), node.isDirectory ? '📁' : '🚚']
 
-        /* const rmButton = (
+        /!* const rmButton = (
              <input
                  key="select"
                  type="checkbox"
@@ -83,7 +84,7 @@ const MenuTree = () => {
                      )
                  }}
              />
-         )*/
+         )*!/
     }
 
     return (
@@ -110,4 +111,4 @@ const MenuTree = () => {
         </div>
     );
 }
-export default MenuTree;
+export default MenuTree;*/
