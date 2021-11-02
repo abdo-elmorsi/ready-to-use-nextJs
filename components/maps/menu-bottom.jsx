@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import Styles from '../../styles/MenuBottom.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import Scrollbar from "smooth-scrollbar";
-import {toggle} from '../../store/reducer/Maps/toggleAddMarkerRoutingMachine'
+import {toggle} from '../../lib/slices/toggleAddMarkerRoutingMachine'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons'
 import {OverlayTrigger, Tooltip} from "react-bootstrap";

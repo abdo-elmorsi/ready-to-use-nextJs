@@ -1,22 +1,19 @@
-// pages/api/login.js
+import withSession from '../../lib/session'
+import config from "../../config/config";
+import axios from "axios";
 
-import { withIronSession } from "next-iron-session";
+export default withSession(async (req, res) => {
 
-async function handler(req, res) {
-    // get user from database then:
-    req.session.set("user", {
-        id: 230,
-        admin: true,
-    });
-    await req.session.save();
-    res.send("Logged in");
-}
-
-export default withIronSession(handler, {
-    password: "complex_password_at_least_32_characters_long",
-    cookieName: "myapp_cookiename",
-    // if your localhost is served on http:// then disable the secure flag
-    cookieOptions: {
-        secure: process.env.NODE_ENV === "production",
-    },
-});
+    const url = config.apiGateway.URL + 'signin'
+    const body = await req.body
+    try {
+        const response = await axios.post(url, body)
+        const user = {isLoggedIn: true, data: response.data}
+        req.session.set('user', user)
+        await req.session.save()
+        res.json(user)
+    } catch (error) {
+        const {response: fetchResponse} = error
+        res.status(fetchResponse?.status || 500).json(error.data)
+    }
+})

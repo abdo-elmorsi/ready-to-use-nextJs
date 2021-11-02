@@ -9,15 +9,16 @@ import Sidebar from './sidebar'
 //footer
 // import Footer from './footer'
 
-import {useRouter} from "next/router";
+import Router, {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
 import {encryptName} from "../helpers/encryptions";
-import {setConfig} from "../store/reducer/config/config";
+import {setConfig} from "../lib/slices/config";
+import useUser from "../lib/useUser";
 
 const Layout = ({children}) => {
     let router = useRouter();
     const config = useSelector((state) => state.config);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(_ => {
         const getConfig = sessionStorage.getItem(encryptName('config'))
@@ -25,6 +26,7 @@ const Layout = ({children}) => {
             dispatch(setConfig(JSON.parse(getConfig)));
         }
     }, [config, dispatch]);
+
 
     return (
         <>

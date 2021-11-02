@@ -3,12 +3,9 @@ import {Navbar, Container, Nav, Dropdown} from 'react-bootstrap'
 import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
 import Image from 'next/image'
 import Link from 'next/link'
-
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faGlobe} from '@fortawesome/free-solid-svg-icons'
 import {useDispatch, useSelector} from "react-redux";
-import {toggle} from "../store/reducer/toggleSidebar/toggle";
-import {darkMode, changeLanguage} from "../store/reducer/config/config";
+import {toggle} from "../lib/slices/toggleSidebar";
+import {darkMode, changeLanguage} from "../lib/slices/config";
 
 import {useRouter} from "next/router"
 

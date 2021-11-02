@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import VerticalNav from './vertical-nav'
 import Scrollbar from 'smooth-scrollbar'
 import {useSelector, useDispatch} from 'react-redux'
-import {sidebarMini, toggle} from '../store/reducer/toggleSidebar/toggle'
+import {sidebarMini, toggle} from '../lib/slices/toggleSidebar'
 import {useRouter} from "next/router";
 
 const Sidebar = () => {

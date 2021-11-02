@@ -5,7 +5,7 @@ import Scrollbar from "smooth-scrollbar";
 import MenuTree from "../tree/menu-tree";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSlidersH, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
-import {toggle} from "../../store/reducer/Maps/toggleAddMarkerRoutingMachine";
+import {toggle} from "../../lib/slices/toggleAddMarkerRoutingMachine";
 
 const WidgetMenu = () => {
     const [state, setState] = useState(false);

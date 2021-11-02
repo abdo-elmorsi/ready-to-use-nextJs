@@ -1,28 +1,18 @@
 import React, {useEffect} from 'react'
-import {Row, Col, Card} from 'react-bootstrap'
-import Image from "next/image"
+import {Card, Col, Row} from 'react-bootstrap'
 import Styles from '../styles/Dashboard.module.scss'
-//progressbar
-import Progress from '../components/progress.js'
-//Count-up
-import CountUp from 'react-countup';
 import Google from "../components/maps/google";
-//Chart
 import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
 import dynamic from "next/dynamic";
-
-// stars component
 import Stars from "../components/Stars"
-// dashboardProgress component
 import DashboardProgress from "../components/dashboardProgress"
-// translation
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
-// import Vector from "../components/maps/vector";
-export default function Home() {
+const Index = () => {
     const {t} = useTranslation("Dashboard");
+
     const chart1 = {
         series: [{
             name: 'Fuel Consumption',
@@ -444,7 +434,6 @@ export default function Home() {
             date: '2008/11/28',
         },
     ];
-
     return (
         <div>
             <Row>
@@ -652,14 +641,22 @@ export default function Home() {
         </div>
     )
 }
-
 // translation ##################################
-export async function getStaticProps({locale}) {
+export const getStaticProps = async ({locale}) => {
+    /*if (!user) {
+        return {
+            redirect: {
+                destination: '/sginin',
+                permanent: false,
+            },
+        }
+    }*/
     return {
         props: {
             ...(await serverSideTranslations(locale, ['Dashboard', 'main'])),
         },
     };
 }
+export default Index;
 
 // translation ##################################

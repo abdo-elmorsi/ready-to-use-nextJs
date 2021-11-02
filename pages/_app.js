@@ -1,13 +1,13 @@
 import '../styles/globals.scss'
-import store from '../store'
+import store from '../lib'
 import {Provider} from 'react-redux'
-import Layout from "../layout";
 import React, {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import SSRProvider from 'react-bootstrap/SSRProvider';
 import NextNprogress from 'nextjs-progressbar';
-import { appWithTranslation } from 'next-i18next';
+import {appWithTranslation} from 'next-i18next';
 import {ThemeProvider} from "react-bootstrap";
+import AuthGuard from "../components/authGuard";
 
 function MyApp({Component, pageProps}) {
     const router = useRouter();
@@ -35,21 +35,22 @@ function MyApp({Component, pageProps}) {
     }, [router]);
     return (
         <ThemeProvider>
-        <SSRProvider>
-            <Provider store={store}>
-                <NextNprogress
-                    color="#246c66"
-                    startPosition={0.3}
-                    stopDelayMs={200}
-                    height={3}
-                    showOnShallow={true}
-                />
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
-            </Provider>
-        </SSRProvider>
+            <SSRProvider>
+                <Provider store={store}>
+                    <NextNprogress
+                        color="#246c66"
+                        startPosition={0.3}
+                        stopDelayMs={200}
+                        height={3}
+                        showOnShallow={true}
+                    />
+                    <AuthGuard>
+                        <Component {...pageProps} />
+                    </AuthGuard>
+                </Provider>
+            </SSRProvider>
         </ThemeProvider>
+
     )
 }
 
