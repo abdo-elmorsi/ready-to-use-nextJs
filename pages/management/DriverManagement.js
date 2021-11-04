@@ -1,21 +1,110 @@
-import {Row,Col,Card,Form,Button} from "react-bootstrap"
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faEdit, faCar, faTrash,faStreetView,faEye} from '@fortawesome/free-solid-svg-icons'
+import React from "react";
+import {Row,Col,Card,Form,Button,Modal} from "react-bootstrap";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faEdit, faCar, faTrash,faStreetView,faEye} from '@fortawesome/free-solid-svg-icons';
 
+// Modal Table Data for Assigned Vehicles
+const Modal_table = [
+  {
+     GroupName: 'TM Group',
+     plateNumber: '9311',
+     vehicleName: 'Fares FMB920',
+     color: 'Black',
+     ManfacturingYear: '2008/11/28',
+     vehicleType: '4X4',
+     modal: 'model',
+     actions:"Unassign Vehicle"
+  },
+  {
+     GroupName: 'TM Group',
+     plateNumber: '9319',
+     vehicleName: 'Fares FMB920',
+     color: 'Black',
+     ManfacturingYear: '2008/11/28',
+     vehicleType: '4X4',
+     modal: 'model',
+     actions:"Unassign Vehicle"
+  },
+]
 
+// Modal Function Define for Assigned Vehicles
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="xl"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Assigned Vehicles</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <div className="table-responsive">
+            <table id="datatable" className="table table-striped" data-toggle="data-table">
+              <thead>
+                  <tr>
+                    <th>Group Name</th>
+                    <th>Plate Number</th>
+                    <th>Vehicle Name</th>
+                    <th>Color</th>
+                    <th>Manufacturing Year</th>
+                    <th>Vehicle type</th>
+                    <th>Model</th>
+                    <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+              { 
+                    Modal_table.map((item) => (
+                  <tr key={item.plateNumber}>
+                    <td>{item.GroupName}</td>
+                    <td>{item.plateNumber}</td>
+                    <td>{item.vehicleName}</td>
+                    <td>{item.color}</td>
+                    <td>{item.ManfacturingYear}</td>
+                    <td>{item.vehicleType}</td>
+                    <td>{item.modal}</td>
+                    <td>{item.actions}</td>
+                  </tr>
+                    ))}
+              </tbody>
+            </table>
+        </div>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button className="py-2 px-3" onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+    
+  function ModalBtn() {
+    const [modalShow, setModalShow] = React.useState(false);
+
+    return (
+      <>
+        <Button className="btn btn-primary  px-2 py-1 me-3" onClick={() => setModalShow(true)}>
+        <FontAwesomeIcon className="pe-2" icon={faCar} size="lg"/>Show Assign Vehicles 
+        </Button>
+
+        <MyVerticallyCenteredModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
+      </>
+    )
+}
 const TableLinks = function () {
   return (
       <div>
-          <button className="btn btn-outline-primary m-1">
-              <FontAwesomeIcon className="pe-2" icon={faEdit} size="lg"/>Edit</button>
-          <button className="btn btn-outline-primary m-1">
-              <FontAwesomeIcon className="pe-2" icon={faTrash} size="lg"/>Delete </button>
-          <button className="btn btn-outline-primary m-1">
-              <FontAwesomeIcon className="pe-2" icon={faStreetView} size="lg"/>Locate Driver </button>
-          <button className="btn btn-outline-primary m-1">
-              <FontAwesomeIcon className="pe-2" icon={faEye} size="lg"/>Show </button>
-          <button className="btn btn-outline-primary m-1">
-              <FontAwesomeIcon className="pe-2" icon={faCar} size="lg"/>Assign Vehicles </button>
+          <Button className="btn btn-primary  px-2 py-1 me-3">
+              <FontAwesomeIcon className="pe-2" icon={faEdit} size="lg"/>Edit</Button>
+          <Button className="btn btn-primary  px-2 py-1 me-3">
+              <FontAwesomeIcon className="pe-2" icon={faTrash} size="lg"/>Delete </Button>
+          <Button className="btn btn-primary  px-2 py-1 me-3">
+              <FontAwesomeIcon className="pe-2" icon={faStreetView} size="lg"/>Locate Driver </Button>
+            <ModalBtn />
           
       </div>
   )
@@ -70,7 +159,7 @@ const DriverManagement = () => {
                       {["Add New Driver","Add Drivers Bulk"].map(el =>{
                         return(
                           <>
-                          <button type="button" className="btn btn-primary  px-3 py-2 me-3 "key={el}>{el} </button>
+                          <Button type="Button" className="btn btn-primary  px-3 py-2 me-3 "key={el}>{el} </Button>
                           </>
                         )
                       }) }

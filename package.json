@@ -26,6 +26,7 @@
     "next": "11.1.2",
     "next-i18next": "^8.8.0",
     "next-iron-session": "^4.2.0",
+    "nextjs": "^0.0.3",
     "nextjs-progressbar": "^0.0.11",
     "npm": "^8.0.0",
     "react": "^16.14.0",
