@@ -25,7 +25,7 @@ const AuthGuard = ({children}) => {
             }}
             session={session}
         >
-            {!loading && hasUser ? <Layout>{children}</Layout> : children}
+            {!loading && hasUser && router.pathname !== '/auth/signin' ? <Layout>{children}</Layout> : children}
 
 
         </Provider>
