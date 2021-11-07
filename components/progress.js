@@ -7,8 +7,10 @@ const Progress = (props) => {
             const progressBarInit = (elem) => {
                 const currentValue = elem.getAttribute('aria-valuenow')
                 elem.style.width = '0%'
-                elem.style.transition = 'width 2s'
-                elem.style.width = currentValue + '%'
+                elem.style.transition = 'width 1s'
+                setTimeout(_ => {
+                    elem.style.width = currentValue + '%'
+                }, 50)
             }
             const customProgressBar = document.querySelectorAll('[data-toggle="progress-bar"]')
             Array.from(customProgressBar, (elem) => {
