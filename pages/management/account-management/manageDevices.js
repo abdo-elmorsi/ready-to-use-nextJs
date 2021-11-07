@@ -12,19 +12,15 @@ const TableLinks = function () {
         <div>
             <button className="btn btn-outline-primary m-1">
                 <FontAwesomeIcon className="pe-2" icon={faUserEdit} size="lg"/>
-                {t("user_role")}
+                {t("Edit")}
             </button>
             <button className="btn btn-outline-primary m-1">
                 <FontAwesomeIcon className="pe-2" icon={faPen} size="lg"/>
-                {t("user_info")}
+                {t("Unassign_SimCards")}
             </button>
             <button className="btn btn-outline-primary m-1">
                 <FontAwesomeIcon className="pe-2" icon={faCar} size="lg"/>
-                {t("manage_vehicles")}
-            </button>
-            <button className="btn btn-outline-primary m-1">
-                <FontAwesomeIcon className="pe-2" icon={faLock} size="lg"/>
-                {t("reset_password")}
+                {t("Unassign_Device")}
             </button>
         </div>
     )
@@ -104,7 +100,7 @@ const Data_table2 = [
 ];
 
 
-const manageUsers = () => {
+const manageDevices = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const {t} = useTranslation("Management")
     return (
@@ -115,10 +111,16 @@ const manageUsers = () => {
                         <Card className="h-100">
                             <Card.Header className="d-flex justify-content-between">
                                 <div
-                                    className="w-100 header-title d-flex justify-content-between align-items-center p-3">
+                                    className="w-100 header-title d-flex justify-content-between align-items-center p-3 flex-column flex-md-row">
                                     <div>
                                         <button type="button"
-                                                className="btn btn-primary  px-3 py-2 me-3 ">{t("Add_Account")}
+                                                className="btn btn-primary  px-3 py-2 me-3 mb-2">{t("Add_Device")}
+                                        </button>
+                                        <button type="button"
+                                                className="btn btn-primary  px-3 py-2 me-3 mb-2">{t("Add_Bulk_of_Devices")}
+                                        </button>
+                                        <button type="button"
+                                                className="btn btn-primary  px-3 py-2 me-3 mb-2">{t("Export_Assigned_Devices")}
                                         </button>
                                     </div>
                                     <Form.Floating className=" custom-form-floating-sm form-group m-0">
@@ -135,7 +137,7 @@ const manageUsers = () => {
                                            data-toggle="data-table">
                                         <thead>
                                         <tr>
-                                            {["Full_Name", "User_Name", "E-mail", "Status", "Actions"].map((ele) => {
+                                            {["Device_Serial_Number", "Device_Type", "Vehicle_Plate_Number", "Actions"].map((ele) => {
                                                 return (
                                                     <th key={ele}>{t(ele)}</th>
                                                 )
@@ -149,7 +151,6 @@ const manageUsers = () => {
                                                     <td>{item.fullName}</td>
                                                     <td>{item.username}</td>
                                                     <td>{item.email}</td>
-                                                    <td>{item.status}</td>
                                                     <td>{item.action}</td>
                                                 </tr>
                                             ))}
@@ -164,18 +165,25 @@ const manageUsers = () => {
                     {/* ================== second table  ===================== */}
                     <Col sm="12">
                         <Card className="h-100">
+                            <nav className="navbar navbar-dark navbar-lg shadow rounded p-3">
+                                <h3>{t("Unassigned_Devices")}</h3>
+                            </nav>
                             <Card.Header className="d-flex justify-content-between">
                                 <div
                                     className="w-100 header-title d-flex justify-content-between align-items-center p-3">
                                     <div>
-                                        <h3>{t("Manage_Incompleted_Users")}</h3>
+                                        <button type="button"
+                                                className="btn btn-primary  px-3 py-2 me-3 mb-2">{t("Transfer_Device_to_Account")}
+                                        </button>
+                                        <button type="button"
+                                                className="btn btn-primary  px-3 py-2 me-3 mb-2">{t("Export_Unassigned_Devices")}
+                                        </button>
                                     </div>
                                     <Form.Floating className=" custom-form-floating-sm form-group m-0">
                                         <Form.Control type="email" className="" id="floatingInput6"
                                                       placeholder="Place Holder"/>
                                         <label htmlFor="floatingInput">{t("main:search")}</label>
                                     </Form.Floating>
-
                                 </div>
                             </Card.Header>
                             <Card.Body>
@@ -184,7 +192,7 @@ const manageUsers = () => {
                                            data-toggle="data-table">
                                         <thead>
                                         <tr>
-                                            {["Account_Name", "User_Name", "E-mail", "Status", "Actions"].map((ele) => {
+                                            {["Device_Serial_Number", "Device_Type", "Actions"].map((ele) => {
                                                 return (
                                                     <th key={ele}>{t(ele)}</th>
                                                 )
@@ -197,8 +205,6 @@ const manageUsers = () => {
                                                 <tr key={i}>
                                                     <td>{item.fullName}</td>
                                                     <td>{item.username}</td>
-                                                    <td>{item.email}</td>
-                                                    <td>{item.status}</td>
                                                     <td>{item.action}</td>
                                                 </tr>
                                             ))}
@@ -215,7 +221,7 @@ const manageUsers = () => {
     );
 };
 
-export default manageUsers;
+export default manageDevices;
 
 // translation ##################################
 export async function getStaticProps({locale}) {

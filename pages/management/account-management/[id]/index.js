@@ -1,5 +1,6 @@
-import { Row, Col, Card, Button, Form } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, {useState, useEffect} from "react";
+import {Row, Col, Card, Form} from "react-bootstrap";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faUsers,
     faPlug,
@@ -14,40 +15,43 @@ import {
 import CardCountStart from "../../../../components/CardCountStart";
 
 // translation
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import {useTranslation} from "next-i18next";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 // function returns buttons for table actions
-const tableLinks = function () {
+const TableLinks = () => {
+    const {t} = useTranslation("Management");
     return (
         <div>
-            <button className="btn btn-outline-light m-1">
-                <FontAwesomeIcon className="pe-2" icon={faCar} size="lg" />
-                Manage Vehicles
+            <button className="btn btn-outline-primary m-1">
+                <FontAwesomeIcon className="pe-2" icon={faCar} size="lg"/>
+                {t("Manage_Vehicles")}
             </button>
-            <button className="btn btn-outline-light m-1">
-                <FontAwesomeIcon className="pe-2" icon={faUsers} size="lg" />
-                Manage users
+            <button className="btn btn-outline-primary m-1">
+                <FontAwesomeIcon className="pe-2" icon={faUsers} size="lg"/>
+                {t("Manage_users")}
             </button>
-            <button className="btn btn-outline-light m-1">
-                <FontAwesomeIcon className="pe-2" icon={faPen} size="lg" />
-                Edit supscirption
+            <button className="btn btn-outline-primary m-1">
+                <FontAwesomeIcon className="pe-2" icon={faPen} size="lg"/>
+                {t("Edit_supscirption")}
             </button>
-            <button className="btn btn-outline-light m-1">
-                <FontAwesomeIcon className="pe-2" icon={faSquare} size="lg" />
-                suspend
+            <button className="btn btn-outline-primary m-1">
+                <FontAwesomeIcon className="pe-2" icon={faSquare} size="lg"/>
+                {t("suspend")}
             </button>
         </div>
     );
 };
 
 //  second table action btn
-const completeBtn = (
-    <button className="btn btn-outline-light m-1">
-        <FontAwesomeIcon className="pe-2" icon={faUserEdit} size="lg" />{" "}
-        Complete Account{" "}
-    </button>
-);
+export const CompleteBtn = () => {
+    const {t} = useTranslation("Management");
+    return (
+        <button className="btn btn-outline-primary m-1">
+            <FontAwesomeIcon className="pe-2" icon={faUserEdit} size="lg"/>{" "}
+            {t("Complete_Account")}
+        </button>)
+};
 
 // first date Table
 const Data_table = [
@@ -57,7 +61,7 @@ const Data_table = [
         parent: "SafeRoad All",
         status: "active",
         reseller: "Undistributed",
-        action: tableLinks(),
+        action: <TableLinks/>,
     },
     {
         accName: "Demo Moaz",
@@ -65,7 +69,7 @@ const Data_table = [
         parent: "SafeRoad All",
         status: "active",
         reseller: "Undistributed",
-        action: tableLinks(),
+        action: <TableLinks/>,
     },
     {
         accName: "Demo Moaz",
@@ -73,7 +77,7 @@ const Data_table = [
         parent: "SafeRoad All",
         status: "active",
         reseller: "Undistributed",
-        action: tableLinks(),
+        action: <TableLinks/>,
     },
     {
         accName: "Demo Moaz",
@@ -81,7 +85,7 @@ const Data_table = [
         parent: "SafeRoad All",
         status: "active",
         reseller: "Undistributed",
-        action: tableLinks(),
+        action: <TableLinks/>,
     },
 ];
 // second date Table
@@ -92,7 +96,7 @@ const Data_table2 = [
         parent: "SafeRoad All",
         status: "active",
         reseller: "Undistributed",
-        action: completeBtn,
+        action: <CompleteBtn/>,
     },
     {
         accName: "Demo Moaz",
@@ -100,7 +104,7 @@ const Data_table2 = [
         parent: "SafeRoad All",
         status: "active",
         reseller: "Undistributed",
-        action: completeBtn,
+        action: <CompleteBtn/>,
     },
     {
         accName: "Demo Moaz",
@@ -108,7 +112,7 @@ const Data_table2 = [
         parent: "SafeRoad All",
         status: "active",
         reseller: "Undistributed",
-        action: completeBtn,
+        action: <CompleteBtn/>,
     },
     {
         accName: "Demo Moaz",
@@ -116,12 +120,12 @@ const Data_table2 = [
         parent: "SafeRoad All",
         status: "active",
         reseller: "Undistributed",
-        action: completeBtn,
+        action: <CompleteBtn/>,
     },
 ];
 
 const AccountManagement = () => {
-    const { t } = useTranslation("Management");
+    const {t} = useTranslation("Management");
 
     return (
         <>
@@ -159,7 +163,8 @@ const AccountManagement = () => {
                                 <h3>{t("Manage_Accounts")}</h3>
                             </nav>
                             <Card.Header className="d-flex justify-content-between">
-                                <div className="w-100 header-title d-flex justify-content-between align-items-center p-3">
+                                <div
+                                    className="w-100 header-title d-flex justify-content-between align-items-center p-3">
                                     <div>
                                         <button
                                             type="button"
@@ -189,26 +194,26 @@ const AccountManagement = () => {
                                         data-toggle="data-table"
                                     >
                                         <thead>
-                                            <tr>
-                                                <th>Account Name</th>
-                                                <th>Next Billing Date</th>
-                                                <th>Parent Account</th>
-                                                <th>Status</th>
-                                                <th>Reseller</th>
-                                                <th>Action</th>
-                                            </tr>
+                                        <tr>
+                                            <th>Account Name</th>
+                                            <th>Next Billing Date</th>
+                                            <th>Parent Account</th>
+                                            <th>Status</th>
+                                            <th>Reseller</th>
+                                            <th>Action</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            {Data_table.map((item, i) => (
-                                                <tr key={i}>
-                                                    <td>{item.accName}</td>
-                                                    <td>{item.billing}</td>
-                                                    <td>{item.parent}</td>
-                                                    <td>{item.status}</td>
-                                                    <td>{item.reseller}</td>
-                                                    <td>{item.action}</td>
-                                                </tr>
-                                            ))}
+                                        {Data_table.map((item, i) => (
+                                            <tr key={i}>
+                                                <td>{item.accName}</td>
+                                                <td>{item.billing}</td>
+                                                <td>{item.parent}</td>
+                                                <td>{item.status}</td>
+                                                <td>{item.reseller}</td>
+                                                <td>{item.action}</td>
+                                            </tr>
+                                        ))}
                                         </tbody>
                                     </table>
                                     <p className="lead text-warning text-end">
@@ -223,7 +228,8 @@ const AccountManagement = () => {
                     <Col sm="12">
                         <Card className="h-100">
                             <Card.Header className="d-flex justify-content-between">
-                                <div className="w-100 header-title d-flex justify-content-between align-items-center p-3">
+                                <div
+                                    className="w-100 header-title d-flex justify-content-between align-items-center p-3">
                                     <div>
                                         <h3>{t("Incompleted_Accounts")}</h3>
                                     </div>
@@ -248,26 +254,26 @@ const AccountManagement = () => {
                                         data-toggle="data-table"
                                     >
                                         <thead>
-                                            <tr>
-                                                <th>Account Name</th>
-                                                <th>Next Billing Date</th>
-                                                <th>Parent Account</th>
-                                                <th>Status</th>
-                                                <th>Reseller</th>
-                                                <th>Action</th>
-                                            </tr>
+                                        <tr>
+                                            <th>Account Name</th>
+                                            <th>Next Billing Date</th>
+                                            <th>Parent Account</th>
+                                            <th>Status</th>
+                                            <th>Reseller</th>
+                                            <th>Action</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            {Data_table2.map((item, i) => (
-                                                <tr key={i}>
-                                                    <td>{item.accName}</td>
-                                                    <td>{item.billing}</td>
-                                                    <td>{item.parent}</td>
-                                                    <td>{item.status}</td>
-                                                    <td>{item.reseller}</td>
-                                                    <td>{item.action}</td>
-                                                </tr>
-                                            ))}
+                                        {Data_table2.map((item, i) => (
+                                            <tr key={i}>
+                                                <td>{item.accName}</td>
+                                                <td>{item.billing}</td>
+                                                <td>{item.parent}</td>
+                                                <td>{item.status}</td>
+                                                <td>{item.reseller}</td>
+                                                <td>{item.action}</td>
+                                            </tr>
+                                        ))}
                                         </tbody>
                                     </table>
                                     <p className="lead text-warning text-end">
@@ -283,19 +289,24 @@ const AccountManagement = () => {
     );
 };
 
-export default AccountManagement;
 // translation ##################################
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({locale}) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ["Management", "main"])),
         },
     };
 }
+
 // translation ##################################
-export const getStaticPaths = async () => {
+export const getStaticPaths = () => {
     return {
-        paths: ["/management/account-management/id"],
+        // paths: ["/management/account-management/id"],
+        paths: ['/management/account-management/[id]', {params: {name: '', id: ''}}],
+
         fallback: true,
     };
 };
+
+
+export default AccountManagement;
