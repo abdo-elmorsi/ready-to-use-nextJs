@@ -1,19 +1,23 @@
 import React, {useEffect} from 'react'
-import {useSession} from "next-auth/client";
+import {Provider, useSession} from "next-auth/client";
 import Router, {useRouter} from "next/router";
 import Layout from "../layout";
-import {Provider} from "next-auth/client";
+import {useDispatch} from "react-redux";
+import {getUser} from "../lib/slices/auth";
 
 const AuthGuard = ({children}) => {
     const [session, loading] = useSession();
     const hasUser = !!session?.user;
     const router = useRouter();
+    const dispatch = useDispatch();
     useEffect(() => {
         if (!loading && !hasUser) {
             Router.push("/auth/signin");
         }
-        return null;
-    }, [loading, hasUser]);
+        return () => {
+            dispatch(getUser(session?.user))
+        };
+    }, [loading, hasUser, session, dispatch]);
     if ((loading || !hasUser) && router.pathname !== '/auth/signin') {
         return <div>Waiting for session...</div>;
     }
@@ -26,8 +30,6 @@ const AuthGuard = ({children}) => {
             session={session}
         >
             {!loading && hasUser && router.pathname !== '/auth/signin' ? <Layout>{children}</Layout> : children}
-
-
         </Provider>
             )
 }

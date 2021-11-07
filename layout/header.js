@@ -15,7 +15,7 @@ import {signOut} from "next-auth/client";
 
 const Header = () => {
     const dispatch = useDispatch();
-    const {config, ToggleHeader} = useSelector((state) => state);
+    const {config, ToggleHeader, auth} = useSelector((state) => state);
     const handleSignOut = (e) => {
         e.preventDefault()
         signOut()
@@ -243,16 +243,16 @@ const Header = () => {
                                            alt="User-Profile"
                                            className="img-fluid avatar avatar-rounded avatar-rounded"/>
                                     <div className="caption ms-3 d-none d-md-block text-start">
-                                        <h6 className="mb-0 caption-title">ammar Hantash</h6>
+                                        <h6 className="mb-0 caption-title">{auth.user?.user?.username}</h6>
                                         <p className="mb-0 caption-sub-title">Saferoad Team</p>
                                     </div>
                                 </Dropdown.Toggle>
-                                <Dropdown.Menu className="dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <Dropdown.Menu className="dropdown-menu-end shadow" aria-labelledby="navbarDropdown">
                                     <Dropdown.Item as={Link} href="/Setting" className="p-2"><a
-                                        className="d-block px-3">{t("Setting")}</a></Dropdown.Item>
+                                        className="d-block dropdown-item">{t("Setting")}</a></Dropdown.Item>
                                     <Dropdown.Divider/>
                                     <Dropdown.Item as={"button"} onClick={handleSignOut} className="px-0"><a
-                                        className="d-block px-3">{t("Logout")}</a></Dropdown.Item>
+                                        className="d-block dropdown-item">{t("Logout")}</a></Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </Nav>

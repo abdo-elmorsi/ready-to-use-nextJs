@@ -30,18 +30,14 @@ export default NextAuth({
         redirect: async (url, baseUrl) => {
             return baseUrl
         },
-        /*jwt(token, user) {
-            if (user) {
-                token.accessToken = user.token
-                // token.user = user
-            }
-            return token
+        async session(session, token) {
+            session.user = token.user
+            return {...session};
         },
-        session(session, token) {
-            session.user.accessToken = token.accessToken
-            // session.username = token.username
-            return {...session}
-        }*/
+        async jwt(token, user) {
+            if (user) token.user = user;
+            return token;
+        },
     },
     secret: "test",
     jwt: {

@@ -2,7 +2,6 @@ import {Button, Card, Col, Form, FormLabel, Row, Spinner} from 'react-bootstrap'
 import Image from 'next/image';
 import {Formik} from 'formik';
 import * as yup from 'yup'
-// import {useDispatch} from "react-redux";
 import {toast, ToastContainer} from "react-toastify";
 import {useRouter} from "next/router";
 import {getSession, signIn} from "next-auth/client";
@@ -19,7 +18,6 @@ const initialValues = {
 }
 
 const Signin = () => {
-    // const dispatch = useDispatch();
     const router = useRouter();
     return (
         <>
