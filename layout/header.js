@@ -5,11 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {useDispatch, useSelector} from "react-redux";
 import {toggle} from "../lib/slices/toggleSidebar";
-import {darkMode, changeLanguage} from "../lib/slices/config";
-import {toggle} from "../store/reducer/toggleSidebar/toggle"
 import {toggleHead} from "../store/reducer/toggleHeader/toggle";
-import {darkMode, changeLanguage} from "../store/reducer/config/config";
-
+import {darkMode, changeLanguage} from "../lib/slices/config";
 
 // translation
 import {useTranslation} from 'next-i18next';
@@ -18,7 +15,6 @@ import {signOut} from "next-auth/client";
 
 const Header = () => {
     const dispatch = useDispatch();
-    const router = useRouter()
     const {config, ToggleHeader} = useSelector((state) => state);
     const handleSignOut = (e) => {
         e.preventDefault()
