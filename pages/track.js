@@ -1,5 +1,7 @@
 import dynamic from "next/dynamic";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import {useEffect} from "react";
+import {useSession} from "next-auth/client";
 
 const MapWithNoSSR = dynamic(() => import("../components/maps/vector"), {
     ssr: false,

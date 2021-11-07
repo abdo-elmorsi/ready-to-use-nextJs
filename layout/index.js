@@ -13,7 +13,6 @@ import Router, {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
 import {encryptName} from "../helpers/encryptions";
 import {setConfig} from "../lib/slices/config";
-import useUser from "../lib/useUser";
 
 const Layout = ({children}) => {
     let router = useRouter();

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {Navbar, Container, Nav, Dropdown} from 'react-bootstrap'
+import {Navbar, Container, Nav, Dropdown, Button} from 'react-bootstrap'
 import avatars1 from "../public/assets/images/saferoad_logo_icon.svg";
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,12 +12,16 @@ import {useRouter} from "next/router"
 
 // translation
 import {useTranslation} from 'next-i18next';
+import {signOut} from "next-auth/client";
 
 const Header = () => {
     const router = useRouter()
     const dispatch = useDispatch()
     const config = useSelector((state) => state.config);
-
+    const handleSignOut = (e) => {
+        e.preventDefault()
+        signOut()
+    }
     const {t} = useTranslation("main");
     useEffect(_ => {
             config.darkMode
@@ -246,7 +250,7 @@ const Header = () => {
                                     <Dropdown.Item as={Link} href="/Setting" className="p-2"><a
                                         className="d-block px-3">{t("Setting")}</a></Dropdown.Item>
                                     <Dropdown.Divider/>
-                                    <Dropdown.Item as={Link} href="/" className="p-2"><a
+                                    <Dropdown.Item as={"button"} onClick={handleSignOut} className="px-0"><a
                                         className="d-block px-3">{t("Logout")}</a></Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>

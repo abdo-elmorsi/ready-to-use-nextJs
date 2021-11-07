@@ -10,7 +10,7 @@ const CardCountStart = ({ icon, iconColor, title, countEnd, desc }) => {
         <Col md="6" xl="3" className="mb-3">
             <Card className="h-100 w-100 border rounded">
                 <Card.Body className="d-flex flex-column justify-content-center align-items-center">
-                    <div className="d-flex justify-content-between align-itmes-center w-100 mb-3">
+                    <div className="d-flex justify-content-between align-items-center w-100 mb-3">
                         <div className="d-flex justify-content-center align-items-center">
                             <div className={`p-3 rounded bg-soft-${iconColor}`}>
                                 <FontAwesomeIcon

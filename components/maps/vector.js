@@ -13,7 +13,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 import useWindowDimensions from "../../helpers/getWindowDimensions";
-import {useEffect, useMemo, useRef, useState} from "react";
+import {useRef, useState} from "react";
 import * as ELG from "esri-leaflet-geocoder";
 import WidgetMenu from "./widget-menu";
 import AddMarker from "./AddMarker";
@@ -146,4 +146,5 @@ const Map = () => {
         </>
     );
 };
+
 export default Map;

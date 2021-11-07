@@ -2,10 +2,10 @@ import {Button, Card, Col, Form, FormLabel, Row, Spinner} from 'react-bootstrap'
 import Image from 'next/image';
 import {Formik} from 'formik';
 import * as yup from 'yup'
-import {useDispatch} from "react-redux";
-import {ToastContainer} from "react-toastify";
-import fetchJson from '../lib/fetchJson'
-import useUser from "../lib/useUser";
+// import {useDispatch} from "react-redux";
+import {toast, ToastContainer} from "react-toastify";
+import {useRouter} from "next/router";
+import {getSession, signIn} from "next-auth/client";
 
 const loginSchema = yup.object({
     username: yup.string().required('Required'),
@@ -17,29 +17,10 @@ const initialValues = {
     password: '',
     remember_me: false,
 }
-const Sginin = () => {
-    const dispatch = useDispatch();
-    const {mutateUser} = useUser({
-        redirectTo: '/',
-        redirectIfFound: true,
-    })
 
-
-     function handleSubmit(username, password) {
-        try {
-            mutateUser(
-                 fetchJson('/api/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({username, password}),
-                })
-            )
-        } catch (error) {
-            console.error('An unexpected error happened:', error)
-        }
-    }
-
-
+const Signin = () => {
+    // const dispatch = useDispatch();
+    const router = useRouter();
     return (
         <>
             <section className="login-content">
@@ -85,11 +66,48 @@ const Sginin = () => {
                                         <Formik
                                             initialValues={initialValues}
                                             validationSchema={loginSchema}
-                                            onSubmit={({username, password}, {setSubmitting}) => {
+                                            onSubmit={({username, password, remember_me}, {setSubmitting}) => {
                                                 // dispatch(login({username, password}));
-                                                setSubmitting(false);
-                                                // toast.error("Wow so easy!");
-                                                handleSubmit(username, password)
+                                                setSubmitting(true);
+                                                /* fetch("/api/sessions", {
+                                                     method: "POST",
+                                                     headers: {"Content-Type": "application/json"},
+                                                     body: JSON.stringify({username, password, remember_me})
+                                                 }).then(response => {
+                                                     const data = response.json();
+                                                     if (response.ok && response.status === 200 && data) {
+                                                         router.push("/");
+                                                         dispatch(getUser(data))
+                                                     } else if (response.statusText === "Unauthorized") {
+                                                         toast.error("Unauthorized!");
+                                                     }
+                                                     setSubmitting(false);
+                                                 }).catch(error => {
+                                                     console.error('An unexpected error happened:', error)
+                                                 });*/
+
+                                                signIn(
+                                                    'credentials',
+                                                    {
+                                                        username,
+                                                        password,
+                                                        // callbackUrl: `${window.location.origin}/`,
+                                                        redirect: false,
+                                                    },).then(value => {
+                                                    if (value.ok && value.status === 200) {
+                                                        router.push("/", router.asPath).catch(console.error);
+                                                        location.reload()
+                                                        console.log(value)
+                                                    } else {
+                                                        toast.error("Unauthorized!");
+                                                        console.error(value)
+                                                    }
+                                                    setSubmitting(false);
+                                                }).catch((error) => {
+                                                    setSubmitting(false);
+                                                    console.error(error)
+                                                });
+
                                             }}>
                                             {({
                                                   values,
@@ -97,6 +115,7 @@ const Sginin = () => {
                                                   handleChange,
                                                   handleBlur,
                                                   handleSubmit,
+                                                  touched,
                                                   isSubmitting
                                               }) => (<Form onSubmit={handleSubmit} noValidate>
                                                 <Row>
@@ -112,10 +131,10 @@ const Sginin = () => {
                                                                 onBlur={handleBlur}
                                                                 value={values.username}
                                                                 aria-describedby="username"
-                                                                isInvalid={!!errors.username}
+                                                                isInvalid={errors.username && touched.username}
                                                                 placeholder=" "/>
                                                             <Form.Control.Feedback type="invalid">
-                                                                {errors.username}
+                                                                {errors.username && touched.username}
                                                             </Form.Control.Feedback>
                                                         </Form.Group>
                                                     </Col>
@@ -131,10 +150,10 @@ const Sginin = () => {
                                                                 onBlur={handleBlur}
                                                                 value={values.password}
                                                                 aria-describedby="password"
-                                                                isInvalid={!!errors.password}
+                                                                isInvalid={errors.password && touched.password}
                                                                 placeholder=" "/>
                                                             <Form.Control.Feedback type="invalid">
-                                                                {errors.password}
+                                                                {errors.password && touched.password}
                                                             </Form.Control.Feedback>
                                                         </Form.Group>
                                                     </Col>
@@ -155,12 +174,13 @@ const Sginin = () => {
                                                     <Button type="submit" disabled={isSubmitting}
                                                             variant="d-flex justify-content-center align-items-end btn btn-primary px-4 py-2 mt-4">
                                                         <span>Sign In</span>
-                                                        <Spinner
+                                                        {isSubmitting && <Spinner
                                                             as="span"
                                                             role="status"
                                                             style={{verticalAlign: 'sub'}}
                                                             className="mx-1"
-                                                            aria-hidden="true" size="sm" animation="border"/></Button>
+                                                            aria-hidden="true" size="sm" animation="border"/>}
+                                                    </Button>
                                                 </div>
                                             </Form>)}
                                         </Formik>
@@ -196,9 +216,25 @@ const Sginin = () => {
                 pauseOnFocusLoss={false}
                 pauseOnHover={false}
             />
-
         </>
     )
 }
 
-export default Sginin
+export default Signin
+
+export async function getServerSideProps(context) {
+    const session = await getSession(context)
+
+    if (session) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        }
+    }
+
+    return {
+        props: {}
+    }
+}

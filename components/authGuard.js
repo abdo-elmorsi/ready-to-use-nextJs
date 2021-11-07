@@ -1,34 +1,35 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
+import {useSession} from "next-auth/client";
+import Router, {useRouter} from "next/router";
 import Layout from "../layout";
-import useUser from "../lib/useUser";
-import Router from "next/router";
+import {Provider} from "next-auth/client";
 
 const AuthGuard = ({children}) => {
-    const { user } = useUser({ redirectTo: '/sginin' })
-    const [state, setState] = useState(false);
-    useEffect(_ => {
-        if (!user || user.isLoggedIn === false) {
-            Router.push('/sginin')
+    const [session, loading] = useSession();
+    const hasUser = !!session?.user;
+    const router = useRouter();
+    useEffect(() => {
+        if (!loading && !hasUser) {
+            Router.push("/auth/signin");
         }
+        return null;
+    }, [loading, hasUser]);
+    if ((loading || !hasUser) && router.pathname !== '/auth/signin') {
+        return <div>Waiting for session...</div>;
+    }
+    return (
+        <Provider
+            options={{
+                clientMaxAge: 0,
+                keepAlive: 0
+            }}
+            session={session}
+        >
+            {!loading && hasUser ? <Layout>{children}</Layout> : children}
 
-    }, [user])
-    return (user ? <Layout>{children}</Layout> : children)
+
+        </Provider>
+            )
 }
-/*
-export const getServerSideProps = withSession(async function ({ req, res }) {
-    const user = req.session.get('user')
-
-    if (!user) {
-        return {
-            redirect: {
-                destination: '/sginin',
-                permanent: false,
-            },
-        }
-    }
-
-    return {
-        props: { user: req.session.get('user') },
-    }
-})*/
 export default AuthGuard
+

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {Card, Col, Row} from 'react-bootstrap'
 import Styles from '../styles/Dashboard.module.scss'
 import Google from "../components/maps/google";
@@ -10,9 +10,8 @@ import {useTranslation} from 'next-i18next';
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
-const Index = () => {
+const Home = () => {
     const {t} = useTranslation("Dashboard");
-
     const chart1 = {
         series: [{
             name: 'Fuel Consumption',
@@ -657,6 +656,6 @@ export const getStaticProps = async ({locale}) => {
         },
     };
 }
-export default Index;
+export default Home;
 
 // translation ##################################

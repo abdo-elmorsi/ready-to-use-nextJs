@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Styles from '../../styles/WidgetMenu.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import Scrollbar from "smooth-scrollbar";
-// import MenuTree from "../tree/menu-tree";
+import MenuTree from "../tree/menu-tree";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSlidersH, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import {toggle} from "../../lib/slices/toggleAddMarkerRoutingMachine";
@@ -64,7 +64,7 @@ const WidgetMenu = () => {
                         </div>
                     </div>
                     <div className={`${Styles.nav__item} ${(state && !isOpenMarkerRoutingMachine) && Styles.active}`}>
-                        {/*<MenuTree/>*/}
+                        <MenuTree/>
                     </div>
                 </div>
                 <div className={`${Styles.config} ${openConfig && Styles.active}`}>
