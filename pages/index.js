@@ -640,16 +640,9 @@ const Home = () => {
         </div>
     )
 }
+
 // translation ##################################
-export const getStaticProps = async ({locale}) => {
-    /*if (!user) {
-        return {
-            redirect: {
-                destination: '/sginin',
-                permanent: false,
-            },
-        }
-    }*/
+export async function getStaticProps({locale}) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ['Dashboard', 'main'])),
