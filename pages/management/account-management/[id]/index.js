@@ -19,7 +19,7 @@ import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 // function returns buttons for table actions
-const TableLinks = () => {
+const TableLinks = ({id}) => {
     const {t} = useTranslation("Management");
     return (
         <div>
@@ -289,24 +289,25 @@ const AccountManagement = () => {
     );
 };
 
-// translation ##################################
-export async function getStaticProps({locale}) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["Management", "main"])),
-        },
-    };
-}
 
-// translation ##################################
-export const getStaticPaths = () => {
+export const getStaticPaths = async () => {
     return {
-        // paths: ["/management/account-management/id"],
-        paths: ['/management/account-management/[id]', {params: {name: '', id: ''}}],
-
+        paths: [
+            { params: { id: "id" }, locale: "ar" },
+            { params: { id: "id" }, locale: "en" },
+        ],
         fallback: true,
     };
 };
+
+export async function getStaticProps(context) {
+    return {
+        props: {
+            params: context.params,
+            ...(await serverSideTranslations(context.locale, ["Management", "main"])),
+        },
+    }
+}
 
 
 export default AccountManagement;
