@@ -1,30 +1,51 @@
 import React, {useEffect, useRef, useState} from 'react';
 import Tree from 'rc-tree';
 import 'rc-tree/assets/index.css';
+import {initializeApp,} from 'firebase/app';
+import {getDatabase, onValue, ref} from "firebase/database";
 
 const MenuTree = () => {
     const setTreeRef = useRef();
     const [treeData, setTreeData] = useState([]);
     const [treeFilter, setTreeFilter] = useState("");
+    const [vehicle, setVehicle] = useState("");
 
     useEffect(_ => {
-        const x = async () => {
-            const res = await fetch('https://saferoad-web.herokuapp.com/vehicles/settings', {
-                headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY0YTExMjA0LWQ5YmEtNGUwZi1hOTUxLTExMGRlZDE3NjIzNSIsImV4cCI6MTY0MTA0OTI5NSwiaWF0IjoxNjM1ODY1Mjk1fQ.zcKMqAaXGBXRuhBX3YVcYbAIxSgFHj8Ympq9YJVNdzU'
-                }
-            })
-            return await res.json()
-        }
-        x().then(value => {
-            const groupBy = (arr, key) => arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {});
-            let groups = groupBy(value, 'GroupName');
-            let result = []
-            for (let key in groups) if (groups.hasOwnProperty(key)) result.push({title: key, children: groups[key]})
-            console.error(result)
-            setTreeData(result);
-        })
-    }, [])
+        const firebaseConfig = {
+            databaseURL: "https://saferoad-srialfb.firebaseio.com/",
+
+            apiKey: "AIzaSyAOu55PuddxFxpVQoquD7knsfEL4GqgfpM",
+            authDomain: "saferoad-1542612714486.firebaseapp.com",
+            // databaseURL: "https://saferoad-1542612714486.firebaseio.com",
+            projectId: "saferoad-1542612714486",
+            storageBucket: "saferoad-1542612714486.appspot.com",
+            messagingSenderId: "918209348983",
+            appId: "1:918209348983:web:01f5e40b1590bd355acd72",
+            measurementId: "G-XJE2EDZQ5F"
+        };
+        const App = initializeApp(firebaseConfig, 'oncefb')
+        const db = getDatabase(App);
+
+        onValue(ref(db, '/352625697182846'), (snapshot) => {
+            // if (!snapshot.hasChildren()) return;
+            console.log(snapshot.val())
+            setVehicle(snapshot.val())
+
+        }, {
+            onlyOnce: true
+        });
+        /*
+
+                axios.get(`${config.apiGateway.URL}vehicles/settings`).then(value => {
+                    const groupBy = (arr, key) => arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {});
+                    let groups = groupBy(value.data, 'GroupName');
+                    let result = []
+                    for (let key in groups) if (groups.hasOwnProperty(key)) result.push({title: key, children: groups[key]})
+                    // console.error(result)
+                    setTreeData(result);
+                })*/
+    }, []);
+
     const onSelect = (selectedKeys, info) => {
         console.log('selected', selectedKeys, info);
         // this.selKey = info.node.props.eventKey;
@@ -475,6 +496,7 @@ const MenuTree = () => {
     return (
         <div className="tree_root pt-3"
              style={{height: 400}}>
+            {vehicle?.Longitude}
                 {/*<input aria-label="good" onChange={handleFilter}/>*/}
                 <Tree
                     ref={setTreeRef}

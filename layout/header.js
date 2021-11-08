@@ -18,7 +18,7 @@ const Header = () => {
     const {config, ToggleHeader, auth} = useSelector((state) => state);
     const handleSignOut = (e) => {
         e.preventDefault()
-        signOut()
+        signOut();
     }
     const {i18n, t} = useTranslation("main");
     useEffect(_ => {
