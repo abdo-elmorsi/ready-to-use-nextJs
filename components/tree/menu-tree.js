@@ -3,20 +3,18 @@ import Tree from 'rc-tree';
 import 'rc-tree/assets/index.css';
 import {initializeApp,} from 'firebase/app';
 import {getDatabase, onValue, ref} from "firebase/database";
+import axios from "axios";
+import config from "../../config/config";
 
 const MenuTree = () => {
     const setTreeRef = useRef();
     const [treeData, setTreeData] = useState([]);
     const [treeFilter, setTreeFilter] = useState("");
-    const [vehicle, setVehicle] = useState("");
-
-    useEffect(_ => {
+    const getVehicleById = (id) => {
         const firebaseConfig = {
-            databaseURL: "https://saferoad-srialfb.firebaseio.com/",
-
             apiKey: "AIzaSyAOu55PuddxFxpVQoquD7knsfEL4GqgfpM",
             authDomain: "saferoad-1542612714486.firebaseapp.com",
-            // databaseURL: "https://saferoad-1542612714486.firebaseio.com",
+            databaseURL: "https://saferoad-srialfb.firebaseio.com",
             projectId: "saferoad-1542612714486",
             storageBucket: "saferoad-1542612714486.appspot.com",
             messagingSenderId: "918209348983",
@@ -25,30 +23,29 @@ const MenuTree = () => {
         };
         const App = initializeApp(firebaseConfig, 'oncefb')
         const db = getDatabase(App);
-
-        onValue(ref(db, '/352625697182846'), (snapshot) => {
+        onValue(ref(db, id), (snapshot) => {
             // if (!snapshot.hasChildren()) return;
             console.log(snapshot.val())
-            setVehicle(snapshot.val())
+            // setVehicle(snapshot.val())
 
-        }, {
-            onlyOnce: true
         });
-        /*
-
-                axios.get(`${config.apiGateway.URL}vehicles/settings`).then(value => {
-                    const groupBy = (arr, key) => arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {});
-                    let groups = groupBy(value.data, 'GroupName');
-                    let result = []
-                    for (let key in groups) if (groups.hasOwnProperty(key)) result.push({title: key, children: groups[key]})
-                    // console.error(result)
-                    setTreeData(result);
-                })*/
+    }
+    useEffect(_ => {
+        axios.get(`${config.apiGateway.URL}vehicles/settings`).then(value => {
+            const groupBy = (arr, key) => arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {});
+            let groups = groupBy(value.data, 'GroupName');
+            let result = []
+            for (let key in groups) if (groups.hasOwnProperty(key)) result.push({title: key, children: groups[key]})
+            // console.error(result)
+            setTreeData(result);
+        })
     }, []);
 
     const onSelect = (selectedKeys, info) => {
-        console.log('selected', selectedKeys, info);
-        // this.selKey = info.node.props.eventKey;
+        const x = info.checkedNodes.map(i => i.SerialNumber).filter(i => i !== undefined);
+        x.map(item => {
+            getVehicleById(item)
+        });
     };
 
     const customLabel = node => (
@@ -496,7 +493,6 @@ const MenuTree = () => {
     return (
         <div className="tree_root pt-3"
              style={{height: 400}}>
-            {vehicle?.Longitude}
                 {/*<input aria-label="good" onChange={handleFilter}/>*/}
                 <Tree
                     ref={setTreeRef}
@@ -514,9 +510,7 @@ const MenuTree = () => {
                     onCheck={onSelect}
                     onActiveChange={key => console.log('Active:', key)}
                 >
-
                 </Tree>
-
         </div>
     );
 }
