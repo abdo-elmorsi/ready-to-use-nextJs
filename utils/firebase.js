@@ -1,26 +1,38 @@
-/*
-import {initializeApp,} from 'firebase/app';
-import {getDatabase, onValue, ref} from "firebase/database";
-const getVehicleById = () => {
-    const firebaseConfig = {
-        databaseURL: "https://saferoad-srialfb.firebaseio.com/",
-        apiKey: "AIzaSyBhQGeZaLQL1rNnhXfR25dzj15I6qLcIP4",
-        authDomain: "saferoad-1542612714486.firebaseapp.com",
-        projectId: "saferoad-1542612714486",
-        storageBucket: "saferoad-1542612714486.appspot.com",
-        // messagingSenderId: "617438938243",
-        // appId: "1:617438938243:web:bbf88fd29abb9e1a54c7b6",
+import {initializeApp} from "firebase/app";
+import {getDatabase, onDisconnect, onValue, ref} from "firebase/database";
 
-    };
-    const App = initializeApp(firebaseConfig, 'updatefb')
+const firebaseConfig = {
+    databaseURL: "https://saferoad-srialfb.firebaseio.com",
+};
+const firebaseConfigDues = {
+    databaseURL: "https://saferoad-dues.firebaseio.com",
+};
+
+export const getVehicleById = (id) => {
+    const App = initializeApp(firebaseConfig, 'oncefb')
     const db = getDatabase(App);
-
-    onValue(ref(db, '/352625695568137'), (snapshot) => {
-        if (!snapshot.hasChildren()) return;
-        console.log(snapshot.val())
-        // snapshot.val()
-    }, {
-        onlyOnce: true
-    });
+    onValue(ref(db, id), (snapshot) => snapshot.val(),
+        {onlyOnce: true});
 }
-*/
+export const getVehiclesByAccount = (accountId) => {
+    const App = initializeApp(firebaseConfigDues, 'dueoncefb')
+    const db = getDatabase(App);
+    onValue(ref(db, 'dues/' + accountId), (snapshot) => snapshot.val(), {onlyOnce: true});
+}
+export const onDisconnectState = (id) => {
+    const App = initializeApp(firebaseConfig, 'oncefb')
+    const db = getDatabase(App);
+    const connectedRef = ref(db, id);
+    /*
+            onValue(connectedRef, (snap) => {
+                // if (!snap.hasChildren()) return;
+                console.log('DetectingConnectionState: ', snap.val())
+                // setVehicle(snapshot.val())
+            });
+
+    */
+    const onDisconnectRef = onDisconnect(connectedRef);
+    onDisconnectRef.cancel().then(value => {
+        console.log(value)
+    })
+}

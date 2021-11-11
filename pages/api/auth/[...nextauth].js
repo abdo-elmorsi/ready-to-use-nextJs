@@ -39,9 +39,9 @@ export default NextAuth({
             return token;
         },
     },
-    secret: "test",
+    secret: process.env.JWT_SIGNING_PRIVATE_KEY,
     jwt: {
-        secret: "test",
+        secret: process.env.JWT_SIGNING_PRIVATE_KEY,
         encryption: true,
     },
     pages: {
