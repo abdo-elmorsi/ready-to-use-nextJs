@@ -3,55 +3,31 @@ import Tree, {TreeNode} from 'rc-tree';
 import 'rc-tree/assets/index.css';
 import Styles from '../../styles/Tree.module.scss';
 import Scrollbar from "smooth-scrollbar";
-import {useSelector} from "react-redux";
-import axios from "axios";
-import config from "../../config/config";
-import {initializeApp} from "firebase/app";
-import {getDatabase, onValue, ref} from "firebase/database";
+import {useDispatch, useSelector} from "react-redux";
+import {SyncOnCheck, SyncOnExpand} from "../../lib/slices/vehicleProcessStatus";
 
 const MenuTree = () => {
     const setTreeRef = useRef();
-    const [treeData, setTreeData] = useState([]);
-    const [checkedKeys, setCheckedKeys] = useState([]);
+    const [All, setAll] = useState(0);
     const [treeFilter, setTreeFilter] = useState("");
     const [treeStyle, setTreeStyle] = useState({});
     const [loading, setLoading] = useState(false);
     const [OverSpeedingStatus, setOverSpeedingStatus] = useState(false);
     const stateReducer = useSelector((state) => state);
+    const dispatch = useDispatch();
 
     useEffect(_ => {
         Scrollbar.init(document.getElementById('menu-scrollbar'));
         const ele = document.getElementById('widget_menu');
         const setSize = () => {
-            if (ele) {
-                setTreeStyle({height: ele.clientHeight / 1.3})
-            }
+            if (ele) setTreeStyle({height: ele.clientHeight / 1.3})
         }
+        console.log(stateReducer.firebase)
         window.addEventListener('resize', setSize);
         setLoading(true)
-        axios.get(`${config.apiGateway.URL}vehicles/settings`).then(value => {
-            const groupBy = (arr, key) => arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {});
-            let groups = groupBy(value.data, 'GroupName');
-            let result = []
-            for (let key in groups) if (groups.hasOwnProperty(key)) result.push({title: key, children: groups[key]})
-            console.error(result)
-            setTreeData(result);
-            setLoading(false)
-            setSize()
-        })
-    }, []);
+        setSize()
+    }, [stateReducer.firebase]);
 
-    const SyncVehicleFB = (id) => {
-        const App = initializeApp({
-            databaseURL: "https://saferoad-srialfb.firebaseio.com"
-        }, 'oncefb')
-        const db = getDatabase(App);
-        onValue(ref(db, id), (snapshot) => {
-            if (!snapshot.hasChildren()) return;
-            console.warn(GetStatusString(snapshot.val()?.VehicleStatus))
-            console.warn(snapshot.val())
-        });
-    }
 
     const GetStatusString = (vehicleStatus) => {
         switch (vehicleStatus) {
@@ -73,18 +49,24 @@ const MenuTree = () => {
     }
 
     const onCheck = (selectedKeys, info) => {
-        // console.log(selectedKeys)
-        setCheckedKeys(selectedKeys);
-        const getIds = info.checkedNodes.map(i => {
-            return {SerialNumber: i.SerialNumber, AccountID: i.AccountID}
-        }).filter(i => i.SerialNumber !== undefined || i.AccountID !== undefined);
-        getIds.map(item => {
-            // SyncVehicleFB(item.SerialNumber)
-        });
+        console.log(info.node?.children)
+        if (selectedKeys.length > 0) {
+            if (info.node?.children) {
+                dispatch(SyncOnCheck(info.node?.children))
+            } else {
+                dispatch(SyncOnCheck(info?.checkedNodes))
+            }
+        } else {
+            dispatch(SyncOnCheck([]))
+        }
     };
 
     const onExpand = (expandedKeys, info) => {
-        // console.log(expandedKeys, info)
+        if (expandedKeys.length > 0) {
+            dispatch(SyncOnExpand(info.node.children))
+        } else {
+            dispatch(SyncOnExpand([]))
+        }
     };
 
     const customLabel = node => (<span className="cus-label">
@@ -135,7 +117,9 @@ const MenuTree = () => {
                     </TreeNode>
                 );
             }
-            return <TreeNode key={`${item?.DisplayName}_${index}`} icon={<i className={OverSpeedingStatus? Styles.car__running : Styles.car__over_speed}/>} title={item?.DisplayName} />;
+            return <TreeNode key={item?.SerialNumber}
+                             icon={<i className={OverSpeedingStatus ? Styles.car__running : Styles.car__over_speed}/>}
+                             title={item?.DisplayName}/>;
         });
     // const s = Date.now();
     // const treeNodes = loop(this.state.gData);
@@ -172,10 +156,6 @@ const MenuTree = () => {
                         checkable
                         onCheck={onCheck}
                         onExpand={onExpand}
-                        /*loadData={treeNode => {
-                            console.log(treeNode)
-                        }}*/
-
                     >
                         {/*{treeData?.map((group, indexParent) => (*/}
                         {/*    <TreeNode*/}
@@ -188,7 +168,7 @@ const MenuTree = () => {
                         {/*        ))}*!/*/}
                         {/*    </TreeNode>*/}
                         {/*))}*/}
-                        {loop(treeData)}
+                        {loop(stateReducer?.firebase?.Vehicles)}
                     </Tree>
 
                 </div>
