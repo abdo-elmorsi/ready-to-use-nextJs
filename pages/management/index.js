@@ -59,7 +59,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -67,7 +67,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512"
-                        className="svg-inline--fa fa-users fa-w-20 fa-4x m-auto"
+                        className="svg-inline--fa fa-users fa-w-20 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -84,7 +84,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -92,7 +92,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512"
-                        className="svg-inline--fa fa-users-cog fa-w-20 fa-4x m-auto"
+                        className="svg-inline--fa fa-users-cog fa-w-20 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -109,7 +109,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -117,7 +117,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"
-                        className="svg-inline--fa fa-car fa-w-16 fa-4x m-auto"
+                        className="svg-inline--fa fa-car fa-w-16 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -134,7 +134,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -142,7 +142,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 576 512"
-                        className="svg-inline--fa fa-router fa-w-18 fa-4x m-auto"
+                        className="svg-inline--fa fa-router fa-w-18 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -159,7 +159,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="40%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -167,7 +167,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 384 512"
-                        className="svg-inline--fa fa-sim-card fa-w-12 fa-4x m-auto"
+                        className="svg-inline--fa fa-sim-card fa-w-12 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -184,7 +184,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -192,7 +192,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512"
-                        className="svg-inline--fa fa-user-edit fa-w-20 fa-4x m-auto"
+                        className="svg-inline--fa fa-user-edit fa-w-20 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -209,7 +209,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -217,7 +217,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512"
-                        className="svg-inline--fa fa-users-class fa-w-20 fa-4x m-auto"
+                        className="svg-inline--fa fa-users-class fa-w-20 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -234,7 +234,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -242,7 +242,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512"
-                        className="svg-inline--fa fa-users-class fa-w-20 fa-4x m-auto"
+                        className="svg-inline--fa fa-users-class fa-w-20 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
