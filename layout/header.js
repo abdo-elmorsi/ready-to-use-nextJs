@@ -19,6 +19,7 @@ const Header = () => {
     const handleSignOut = (e) => {
         e.preventDefault()
         signOut();
+        localStorage.clear();
     }
     const {i18n, t} = useTranslation("main");
     useEffect(_ => {

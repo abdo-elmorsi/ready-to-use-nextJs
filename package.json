@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -25,6 +25,7 @@
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "leaflet-geosearch": "^3.5.1",
     "leaflet-routing-machine": "^3.2.12",
+    "moment": "^2.29.1",
     "next": "^12.0.2",
     "next-i18next": "^8.8.0",
     "nextjs-progressbar": "^0.0.11",
@@ -38,6 +39,7 @@
     "react-data-table-component": "^7.4.1",
     "react-dom": "^17.0.2",
     "react-leaflet": "^3.2.1",
+    "react-moment": "^1.1.1",
     "react-redux": "^7.2.5",
     "react-select": "^5.2.1",
     "react-toastify": "^8.0.3",

@@ -1,14 +1,4 @@
-import {
-    MapContainer,
-    TileLayer,
-    Marker,
-    Popup,
-    LayersControl,
-    Tooltip,
-    useMap,
-    useMapEvents,
-    GeoJSON, ZoomControl
-} from "react-leaflet";
+import {LayersControl, MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents, ZoomControl} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
@@ -16,7 +6,6 @@ import useWindowDimensions from "../../helpers/getWindowDimensions";
 import {useRef, useState} from "react";
 import * as ELG from "esri-leaflet-geocoder";
 import WidgetMenu from "./widget-menu";
-import AddMarker from "./AddMarker";
 import AddMarkerRoutingMachine from "./AddMarkerRoutingMachine";
 import MenuBottom from "./menu-bottom";
 import {useSelector} from "react-redux";
@@ -42,7 +31,6 @@ function LocationMarker() {
     )
 }
 
-
 const Map = () => {
     const {heightWithoutNav} = useWindowDimensions();
     const [map, setMap] = useState(null);
@@ -50,7 +38,6 @@ const Map = () => {
     const rMachine = useRef();
 
     const layersControl = useRef(null);
-
 
     function Geocoder({address}) {
         const map = useMap();
@@ -120,20 +107,15 @@ const Map = () => {
                         />
                     </LayersControl.BaseLayer>
                 </LayersControl>
-                {/*<Marker position={[24.726875, 46.710461]} draggable={true} animate={true}>
+                {/*  <Marker position={[24.726875, 46.710461]} draggable={true} animate={true}>
                     <Popup>Hey ! I live here
                         <button onClick={() => changePos([43.653225, -79.383186])}>change</button>
-                        <button onClick={() => setShow(!show)}>show</button>
                     </Popup>
                     <Tooltip>
                     test Tooltip
                 </Tooltip>
                 </Marker>*/}
-                {/* {show &&
-
-                <RoutineMachine ref={rMachine}
-                                waypoints={[[24.726875, 46.710461], [33.50546582848033, 36.29547681726967]]}/>
-                }*/}
+                {/*<AddMarkerCar />*/}
                 <Geocoder address="giza"/>
                 {/*<LocationMarker/>*/}
                 <ZoomControl position="topleft"/>
