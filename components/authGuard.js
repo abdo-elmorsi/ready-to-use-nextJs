@@ -5,6 +5,7 @@ import Layout from "../layout";
 import {useDispatch} from "react-redux";
 import {getUser} from "../lib/slices/auth";
 import axiosInstance from "axios";
+import Loader from "./loader";
 
 const AuthGuard = ({children}) => {
     const [session, loading] = useSession();
@@ -22,7 +23,7 @@ const AuthGuard = ({children}) => {
         };
     }, [loading, hasUser, session, dispatch]);
     if ((loading || !hasUser) && router.pathname !== '/auth/signin') {
-        return <div>Waiting for session...</div>;
+        return <Loader/>;
     }
     return (
         <Provider

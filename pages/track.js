@@ -47,7 +47,6 @@ const onDisconnectState = (id) => {
 
 const Track = () => {
     const dispatch = useDispatch();
-    // const stateReducer = useSelector((state) => state);
     const fbtolocInfo = (_message, _USER_VEHICLES, _initial = false) => {
         const {latLng} = require('leaflet');
 

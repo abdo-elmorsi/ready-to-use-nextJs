@@ -6,9 +6,8 @@ import Scrollbar from "smooth-scrollbar";
 import {useDispatch, useSelector} from "react-redux";
 import {SyncOnCheck, SyncOnExpand} from "../../lib/slices/vehicleProcessStatus";
 import {GetStatusString} from "../../helpers/helpers";
-import {Spinner} from "react-bootstrap";
 
-const MenuTree = () => {
+const MenuTree = ({Vehicles}) => {
     const [All, setAll] = useState(0);
     const [lists, setLists] = useState([]);
     const [treeFilter, setTreeFilter] = useState("");
@@ -30,7 +29,7 @@ const MenuTree = () => {
 
         const groupBy = (arr, key) => arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {});
 
-        let groups = groupBy(stateReducer?.firebase?.Vehicles, 'GroupName');
+        let groups = groupBy(Vehicles, 'GroupName');
         if (groups['null'] && groups['Default']) {
             groups['Default'] = [...groups['null'], ...groups['Default']];
         } else if (groups['null']) {
@@ -42,7 +41,7 @@ const MenuTree = () => {
 
         setLists(result)
 
-    }, [stateReducer?.firebase?.Vehicles]);
+    }, [Vehicles]);
 
 
     const onCheck = (selectedKeys, info) => {
