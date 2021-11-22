@@ -2,12 +2,11 @@ import React, {useEffect, useState} from 'react';
 import Tree, {TreeNode} from 'rc-tree';
 import 'rc-tree/assets/index.css';
 import Styles from '../../styles/Tree.module.scss';
-import Scrollbar from "smooth-scrollbar";
 import {useDispatch, useSelector} from "react-redux";
 import {SyncOnCheck, SyncOnExpand} from "../../lib/slices/vehicleProcessStatus";
-import {GetStatusString} from "../../helpers/helpers";
+import {GetStatusString, iconUrl} from "../../helpers/helpers";
 
-const MenuTree = ({Vehicles}) => {
+const MenuTree = () => {
     const [All, setAll] = useState(0);
     const [lists, setLists] = useState([]);
     const [treeFilter, setTreeFilter] = useState("");
@@ -18,7 +17,7 @@ const MenuTree = ({Vehicles}) => {
     const dispatch = useDispatch();
 
     useEffect(_ => {
-        Scrollbar.init(document.getElementById('menu-scrollbar'));
+        // Scrollbar.init(document.getElementById('menu-scrollbar'));
         const ele = document.getElementById('widget_menu');
         const setSize = () => {
             if (ele) setTreeStyle({height: ele.clientHeight / 1.3})
@@ -29,7 +28,7 @@ const MenuTree = ({Vehicles}) => {
 
         const groupBy = (arr, key) => arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {});
 
-        let groups = groupBy(Vehicles, 'GroupName');
+        let groups = groupBy(stateReducer?.firebase?.Vehicles, 'GroupName');
         if (groups['null'] && groups['Default']) {
             groups['Default'] = [...groups['null'], ...groups['Default']];
         } else if (groups['null']) {
@@ -41,12 +40,12 @@ const MenuTree = ({Vehicles}) => {
 
         setLists(result)
 
-    }, [Vehicles]);
+    }, [stateReducer?.firebase?.Vehicles]);
 
 
     const onCheck = (selectedKeys, info) => {
         const byGroup = info.checkedNodesPositions.filter(i => i.pos.split('-').length === 2);
-
+        console.log('onCheck', info)
         if (byGroup.length > 0) {
             dispatch(SyncOnCheck(byGroup[0].node.children))
         } else if (info.checkedNodes.length > 0) {
@@ -120,7 +119,7 @@ const MenuTree = ({Vehicles}) => {
             return <TreeNode key={item?.SerialNumber}
                              data={item}
                              icon={(<div className="position-relative">{<img
-                                 src={`/assets/images/cars/${item?.VehicleStatus}.png`} width={11} height={20}
+                                 src={iconUrl(item?.VehicleStatus)} width={11} height={20}
                                  alt={GetStatusString(item?.VehicleStatus)}
                                  title={GetStatusString(item?.VehicleStatus)}/>}</div>)}
                              title={(<span className="d-flex align-items-center" title={item?.DisplayName}
@@ -132,50 +131,19 @@ const MenuTree = ({Vehicles}) => {
 
     return (
         <div className="position-relative">
-            <div className="sidebar-body mt-3 data-scrollbar" data-scroll="1" id="menu-scrollbar">
+            <div  id="menu-scrollbar">
                 <div className={`tree_root ${stateReducer.config.darkMode && Styles.dark}`} style={{...treeStyle}}>
-                    {/*<input aria-label="good" onChange={handleFilter}/>*/}
-                    {/*<button type="button" onClick={()=>dispatch(VehiclesSettings(JSON.parse(localStorage.getItem(encryptName('uservehs')))))}>change icon</button>*/}
-                    {/*   <Tree
-                        ref={setTreeRef}
-                        className="myCls"
-                        showLine
-                        // filterTreeNode={handleFilterTree}
-                        selectable={false}
-                        // fieldNames={{key: 'title'}}
-                        defaultExpandedKeys={['0-0-0', '0-0-1']}
-                        defaultSelectedKeys={['0-0-0', '0-0-1']}
-                        defaultCheckedKeys={['0-0-0', '0-0-1']}
-                        checkable
-                        titleRender={titleRender}
-                        treeData={treeData}
-                        icon={Icon}
-                        onCheck={onCheck}
-                        onExpand={onExpand}
-                        onActiveChange={key => console.log('Active:', key)}>
-                    </Tree>
-*/}
                     <Tree
                         selectable={false}
                         showLine
                         checkable
                         onCheck={onCheck}
+                        onActiveChange={key => console.log(key)}
                         defaultExpandedKeys={['0-0-0', '0-0-1']}
                         defaultSelectedKeys={['0-0-0', '0-0-1']}
                         defaultCheckedKeys={['0-0-0', '0-0-1']}
                         onExpand={onExpand}
                     >
-                        {/*{treeData?.map((group, indexParent) => (
-                            <TreeNode
-                                key={`${group?.title}_${indexParent}`}
-                                icon={<i className={Styles.cars__icon}/>}
-                                title={group?.title}
-                            >
-                                {group?.children.map((child, indexChild) => (
-                                    <TreeNode key={`${child?.DisplayName}_${indexChild}`} icon={<i className={OverSpeedingStatus? Styles.car__running : Styles.car__over_speed}/>} title={child?.DisplayName} />
-                                ))}
-                            </TreeNode>
-                        ))}*/}
                         {loop(lists)}
                     </Tree>
 

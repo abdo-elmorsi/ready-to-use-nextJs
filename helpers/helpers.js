@@ -130,3 +130,12 @@ export const WeightVoltToKG = (_locInfo, _settings) => {
     return weight.toFixed(1);
 }
 
+export const iconUrl = VehicleStatus => {
+    let iconUrl = "/assets/images/cars/";
+    switch (VehicleStatus) {
+        case 0: case 1: case 2: case 5: case 100: case 101: iconUrl += VehicleStatus + ".png"; break;
+        case 600: iconUrl += "5.png"; break;
+        default: iconUrl += "201.png";
+    }
+    return iconUrl;
+}
