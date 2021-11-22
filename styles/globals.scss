@@ -95,13 +95,15 @@ input[type=number] {
 .tree_root {
   .rc-tree .rc-tree-treenode{
     .rc-tree-title{
-      //color: red;
+      color: #232D42;
     }
+  }
+  .rc-tree-icon__customize{
+    position: relative;
   }
 }
 
 .leaflet-control-container {
-
 
   .leaflet-routing-container {
     background-color: transparent;
@@ -154,5 +156,13 @@ input[type=number] {
   .leaflet-control-layers-toggle {
     width: 36px !important;
     height: 36px !important;
+  }
+}
+
+#menu-scrollbar{
+  overflow-x: hidden;
+  .scrollbar-track{
+    border-radius: 4px;
+    opacity: 1 !important;
   }
 }

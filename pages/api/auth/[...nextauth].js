@@ -18,7 +18,7 @@ export default NextAuth({
 
                 // If no error and we have user data, return it
                 if (response.ok && user) {
-                    // req.headers.authorization = user.token
+                    // req.headers.Authorization =  `Bearer ${user.token}`
                     return user
                 }
                 // Return null if user data could not be retrieved
@@ -39,9 +39,9 @@ export default NextAuth({
             return token;
         },
     },
-    secret: "test",
+    secret: process.env.JWT_SIGNING_PRIVATE_KEY,
     jwt: {
-        secret: "test",
+        secret: process.env.JWT_SIGNING_PRIVATE_KEY,
         encryption: true,
     },
     pages: {

@@ -17,9 +17,10 @@ import CardCountStart from "../../../../components/CardCountStart";
 // translation
 import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {getSession} from "next-auth/client";
 
 // function returns buttons for table actions
-const TableLinks = () => {
+const TableLinks = ({id}) => {
     const {t} = useTranslation("Management");
     return (
         <div>
@@ -289,24 +290,12 @@ const AccountManagement = () => {
     );
 };
 
-// translation ##################################
-export async function getStaticProps({locale}) {
+export async function getServerSideProps({locale}) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ["Management", "main"])),
         },
-    };
+    }
 }
-
-// translation ##################################
-export const getStaticPaths = () => {
-    return {
-        // paths: ["/management/account-management/id"],
-        paths: ['/management/account-management/[id]', {params: {name: '', id: ''}}],
-
-        fallback: true,
-    };
-};
-
 
 export default AccountManagement;

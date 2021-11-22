@@ -49,10 +49,6 @@ $color__secondary: #575b67;
     clip-path: circle(81% at #{$navWidth / 2} 50vh);
   }
 
-  #menu-scrollbar {
-    overflow-x: hidden;
-  }
-
 
   &__item {
     transition: all 0.8s cubic-bezier(0.86, 0, 0.07, 1);

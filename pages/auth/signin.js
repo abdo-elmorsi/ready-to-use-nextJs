@@ -93,7 +93,7 @@ const Signin = () => {
                                                         redirect: false,
                                                     },).then(value => {
                                                     if (value.ok && value.status === 200) {
-                                                        router.push("/", router.asPath).catch(console.error);
+                                                        router.push("/").catch(console.error);
                                                         location.reload()
                                                         console.log(value)
                                                     } else {
