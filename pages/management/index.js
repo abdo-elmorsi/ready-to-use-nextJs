@@ -7,48 +7,44 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 // import Card from "../components/Card";
 const Component = ({
-    head = "Manage",
-    desc = "To Manage",
-    link = "/management/account-management/",
-    id = 2,
-    children,
+  head = "Manage",
+  desc = "To Manage",
+  link = "/management/account-management/",
+  id = 2,
+  children,
 }) => {
-    const { t } = useTranslation("Management");
-    return (
-        <Col lg="6" className="mb-3">
-            <Card className="h-100">
-                <Card.Body className="py-1">
-                    <Row className="align-items-center justify-content-center h-100">
-                        <Col
-                            xs="3"
-                            className="d-flex align-items-center justify-item-center"
-                        >
-                            {children}
-                        </Col>
-                        <Col xs="9">
-                            <h5 className="mb-2">{t(head)}</h5>
-                            <p className="mb-3 fs-6">{t(desc)}</p>
-                            <Link href={`${link}/${id}`} as={`${link}/${id}`}>
-                                <a>
-                                    <Button variant="primary" className="p-2">
-                                        {t(
-                                            `${head
-                                                .split("_")
-                                                .slice(0, 1)} ${head
-                                                ?.split("_")
-                                                .slice(2, 3)} ${head
-                                                ?.split("_")
-                                                .slice(3, 4)}`
-                                        )}
-                                    </Button>
-                                </a>
-                            </Link>
-                        </Col>
-                    </Row>
-                </Card.Body>
-            </Card>
-        </Col>
-    );
+  const { t } = useTranslation("Management");
+  return (
+    <Col lg="6" className="mb-3">
+      <Card className="h-100">
+        <Card.Body className="py-1">
+          <Row className="align-items-center justify-content-center h-100">
+            <Col
+              xs="3"
+              className="d-flex align-items-center justify-item-center"
+            >
+              {children}
+            </Col>
+            <Col xs="9">
+              <h5 className="mb-2">{t(head)}</h5>
+              <p className="mb-3 fs-6">{t(desc)}</p>
+              <Link href={`${link}/${id}`} as={`${link}/${id}`}>
+                <a>
+                  <Button variant="primary" className="p-2">
+                    {t(
+                      `${head.split("_").slice(0, 1)} ${head
+                        ?.split("_")
+                        .slice(2, 3)} ${head?.split("_").slice(3, 4)}`
+                    )}
+                  </Button>
+                </a>
+              </Link>
+            </Col>
+          </Row>
+        </Card.Body>
+      </Card>
+    </Col>
+  );
 };
 export default function Management() {
     const data = [
@@ -275,11 +271,11 @@ export default function Management() {
 }
 // translation ##################################
 export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["Management", "main"])),
-        },
-    };
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["Management", "main"])),
+    },
+  };
 }
 
 // translation ##################################

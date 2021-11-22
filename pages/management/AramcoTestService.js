@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 import React from "react";
 import { Col, Row, Modal, Button, Card, Form } from "react-bootstrap";
 import Select from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 
+=======
+import React, { useState } from "react";
+import { Col, Row, Modal, Button, Card, Form } from "react-bootstrap";
+import Select from "react-select";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faTimes, faEdit } from "@fortawesome/free-solid-svg-icons";
+>>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
 // options for select menu
 const options = [
   { value: "STC", label: "STC" },
@@ -21,6 +29,20 @@ const Data_table = [
 ];
 
 const AramcoTestService = () => {
+<<<<<<< HEAD
+=======
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+  };
+>>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -37,7 +59,11 @@ const AramcoTestService = () => {
         <Modal.Body>
           <Row className="d-flex justify-content-center">
             <Col md="12">
+<<<<<<< HEAD
               <Form className="was-validated" validated>
+=======
+              <Form noValidate validated={validated} onSubmit={handleSubmit}>
+>>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
                 <Row className="p-3 mb-3">
                   <Col lg="12">
                     <Form.Group
@@ -48,7 +74,11 @@ const AramcoTestService = () => {
                         {" "}
                         Serial Number
                       </Form.Label>
+<<<<<<< HEAD
                       <Form.Control type="number" id="SerialNumber" />
+=======
+                      <Form.Control type="number" id="SerialNumber" required />
+>>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
                     </Form.Group>
                   </Col>
                   <Col lg="12">
@@ -68,6 +98,7 @@ const AramcoTestService = () => {
                     </Form.Group>
                   </Col>
                 </Row>
+<<<<<<< HEAD
                 <div className="mt-5 d-flex justify-content-end">
                   <button
                     className="btn btn-primary px-3 py-2 ms-3"
@@ -93,11 +124,31 @@ const AramcoTestService = () => {
                     Cancel
                   </button>
                 </div>
+=======
+>>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
               </Form>
             </Col>
           </Row>
         </Modal.Body>
+<<<<<<< HEAD
         <Modal.Footer></Modal.Footer>
+=======
+        <Modal.Footer>
+          <div className="mt-5 d-flex justify-content-end">
+            <button className="btn btn-primary px-3 py-2 ms-3" type="submit">
+              <FontAwesomeIcon className="mx-2" icon={faCheck} size="sm" />
+              Submit
+            </button>
+            <button
+              className="btn btn-primary px-3 py-2 ms-3"
+              onClick={props.onHide}
+            >
+              <FontAwesomeIcon className="mx-2" icon={faTimes} size="sm" />
+              Cancel
+            </button>
+          </div>
+        </Modal.Footer>
+>>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
       </Modal>
     );
   }
@@ -112,8 +163,13 @@ const AramcoTestService = () => {
           className="btn btn-primary  px-3 py-2 me-3 "
           onClick={() => setModalShow(true)}
         >
+<<<<<<< HEAD
           <FontAwesomeIcon size="sm" className="me-2" icon={faCheck} />
           Submit Device{" "}
+=======
+          <FontAwesomeIcon className="me-2" icon={faEdit} size="sm" />
+          Submit Device
+>>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
         </Button>
 
         <MyVerticallyCenteredModal

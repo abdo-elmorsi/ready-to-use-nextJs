@@ -1,9 +1,19 @@
 import React from "react";
 import { Row, Col, Card, Form, FormCheck } from "react-bootstrap";
+<<<<<<< HEAD
 
+=======
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowLeft,
+  faCheck,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
+>>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
 // translation
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 const CreateAdminUser = () => {
   const { t } = useTranslation("Management");
 
@@ -77,12 +87,31 @@ const CreateAdminUser = () => {
               </Form>
               <div className="mt-5 d-flex justify-content-end">
                 <button className="btn btn-primary px-3 py-2 ms-3">
+<<<<<<< HEAD
                   {t("Back")}
                 </button>
                 <button className="btn btn-primary px-3 py-2 ms-3">
                   {t("Next")}
                 </button>
                 <button className="btn btn-primary px-3 py-2 ms-3">
+=======
+                  <FontAwesomeIcon
+                    className="me-2"
+                    icon={faArrowLeft}
+                    size="sm"
+                  />
+
+                  {t("Back")}
+                </button>
+                <button className="btn btn-primary px-3 py-2 ms-3">
+                  <FontAwesomeIcon className="me-2" icon={faCheck} size="sm" />
+
+                  {t("Finish")}
+                </button>
+                <button className="btn btn-primary px-3 py-2 ms-3">
+                  <FontAwesomeIcon className="me-2" icon={faTimes} size="sm" />
+
+>>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
                   {t("Cancel")}
                 </button>
               </div>
