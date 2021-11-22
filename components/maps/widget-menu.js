@@ -3,7 +3,7 @@ import Styles from '../../styles/WidgetMenu.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import MenuTree from "../tree/menu-tree";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faSlidersH, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import {faArrowLeft, faSlidersH} from '@fortawesome/free-solid-svg-icons'
 import {toggle} from "../../lib/slices/toggleAddMarkerRoutingMachine";
 
 const WidgetMenu = () => {
@@ -13,12 +13,11 @@ const WidgetMenu = () => {
     const isOpenMarkerRoutingMachine = stateReducer.toggleAddMarkerRoutingMachine.value;
     const dispatch = useDispatch()
 
-    useEffect(
-        () => {
+    useEffect(() => {
             if (isOpenMarkerRoutingMachine) {
                 setState(true);
             }
-
+            return false;
         }, [isOpenMarkerRoutingMachine]
     )
 
@@ -46,17 +45,17 @@ const WidgetMenu = () => {
                             <button type="button"
                                     className="mx-2 rounded d-flex align-items-center justify-content-between">
                                 <span>All</span>
-                                <span>100</span>
+                                <span>{stateReducer.firebase.all}</span>
                             </button>
                             <button type="button"
                                     className="mx-2 rounded d-flex align-items-center justify-content-between">
                                 <span>Active</span>
-                                <span>80</span>
+                                <span>{stateReducer.firebase.online}</span>
                             </button>
                             <button type="button"
                                     className="mx-2 rounded d-flex align-items-center justify-content-between">
                                 <span>Stopped</span>
-                                <span>20</span>
+                                <span>{stateReducer.firebase.offline}</span>
                             </button>
                         </div>
                     </div>

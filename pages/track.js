@@ -6,7 +6,7 @@ import axios from "axios";
 import config from "../config/config";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {Loading, UpdateStatus, VehiclesSettings} from "../lib/slices/vehicleProcessStatus";
+import {Loading, UpdateStatus, UpdateStatusOnce, VehiclesSettings} from "../lib/slices/vehicleProcessStatus";
 import {encryptName} from "../helpers/encryptions";
 import {Date2KSA, getAddress, isDateExpired, isValidAddress, locDataModel, WeightVoltToKG} from "../helpers/helpers";
 
@@ -198,7 +198,7 @@ const Track = () => {
             const db = getDatabase(App);
             await onValue(ref(db, id), (snapshot) => {
                 const locInfo = fbtolocInfo(snapshot, _USER_VEHICLES, true).locInfo;
-                dispatch(UpdateStatus(locInfo))
+                dispatch(UpdateStatusOnce(locInfo))
                 if (!locInfo?.SerialNumber) {
                     console.log(locInfo?.SerialNumber, locInfo)
                 }

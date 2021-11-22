@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {useDispatch, useSelector} from "react-redux";
 import {toggle} from "../lib/slices/toggleSidebar";
-import {toggleHead} from "../store/reducer/toggleHeader/toggle";
+import {toggleHead} from "../lib/slices/toggle-header";
 import {darkMode, changeLanguage} from "../lib/slices/config";
 
 // translation
