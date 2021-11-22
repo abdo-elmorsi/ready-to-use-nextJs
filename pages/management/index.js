@@ -7,48 +7,44 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 // import Card from "../components/Card";
 const Component = ({
-    head = "Manage",
-    desc = "To Manage",
-    link = "/management/account-management/",
-    id = 2,
-    children,
+  head = "Manage",
+  desc = "To Manage",
+  link = "/management/account-management/",
+  id = 2,
+  children,
 }) => {
-    const { t } = useTranslation("Management");
-    return (
-        <Col lg="6" className="mb-3">
-            <Card className="h-100">
-                <Card.Body className="py-1">
-                    <Row className="align-items-center justify-content-center h-100">
-                        <Col
-                            xs="3"
-                            className="d-flex align-items-center justify-item-center"
-                        >
-                            {children}
-                        </Col>
-                        <Col xs="9">
-                            <h5 className="mb-2">{t(head)}</h5>
-                            <p className="mb-3 fs-6">{t(desc)}</p>
-                            <Link href={`${link}/${id}`} as={`${link}/${id}`}>
-                                <a>
-                                    <Button variant="primary" className="p-2">
-                                        {t(
-                                            `${head
-                                                .split("_")
-                                                .slice(0, 1)} ${head
-                                                ?.split("_")
-                                                .slice(2, 3)} ${head
-                                                ?.split("_")
-                                                .slice(3, 4)}`
-                                        )}
-                                    </Button>
-                                </a>
-                            </Link>
-                        </Col>
-                    </Row>
-                </Card.Body>
-            </Card>
-        </Col>
-    );
+  const { t } = useTranslation("Management");
+  return (
+    <Col lg="6" className="mb-3">
+      <Card className="h-100">
+        <Card.Body className="py-1">
+          <Row className="align-items-center justify-content-center h-100">
+            <Col
+              xs="3"
+              className="d-flex align-items-center justify-item-center"
+            >
+              {children}
+            </Col>
+            <Col xs="9">
+              <h5 className="mb-2">{t(head)}</h5>
+              <p className="mb-3 fs-6">{t(desc)}</p>
+              <Link href={`${link}/${id}`} as={`${link}/${id}`}>
+                <a>
+                  <Button variant="primary" className="p-2">
+                    {t(
+                      `${head.split("_").slice(0, 1)} ${head
+                        ?.split("_")
+                        .slice(2, 3)} ${head?.split("_").slice(3, 4)}`
+                    )}
+                  </Button>
+                </a>
+              </Link>
+            </Col>
+          </Row>
+        </Card.Body>
+      </Card>
+    </Col>
+  );
 };
 export default function Management() {
     const data = [
@@ -59,7 +55,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -67,7 +63,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512"
-                        className="svg-inline--fa fa-users fa-w-20 fa-4x m-auto"
+                        className="svg-inline--fa fa-users fa-w-20 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -84,7 +80,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -92,7 +88,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512"
-                        className="svg-inline--fa fa-users-cog fa-w-20 fa-4x m-auto"
+                        className="svg-inline--fa fa-users-cog fa-w-20 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -109,7 +105,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -117,7 +113,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"
-                        className="svg-inline--fa fa-car fa-w-16 fa-4x m-auto"
+                        className="svg-inline--fa fa-car fa-w-16 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -134,7 +130,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -142,7 +138,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 576 512"
-                        className="svg-inline--fa fa-router fa-w-18 fa-4x m-auto"
+                        className="svg-inline--fa fa-router fa-w-18 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -159,7 +155,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="40%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -167,7 +163,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 384 512"
-                        className="svg-inline--fa fa-sim-card fa-w-12 fa-4x m-auto"
+                        className="svg-inline--fa fa-sim-card fa-w-12 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -184,7 +180,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -192,7 +188,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512"
-                        className="svg-inline--fa fa-user-edit fa-w-20 fa-4x m-auto"
+                        className="svg-inline--fa fa-user-edit fa-w-20 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -209,7 +205,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -217,7 +213,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512"
-                        className="svg-inline--fa fa-users-class fa-w-20 fa-4x m-auto"
+                        className="svg-inline--fa fa-users-class fa-w-20 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -234,7 +230,7 @@ export default function Management() {
             id: 22,
             icon: () => {
                 return (
-                    <svg
+                    <svg width="60%"
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -242,7 +238,7 @@ export default function Management() {
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512"
-                        className="svg-inline--fa fa-users-class fa-w-20 fa-4x m-auto"
+                        className="svg-inline--fa fa-users-class fa-w-20 fa-2x m-auto"
                     >
                         <path
                             fill="currentColor"
@@ -275,11 +271,11 @@ export default function Management() {
 }
 // translation ##################################
 export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["Management", "main"])),
-        },
-    };
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["Management", "main"])),
+    },
+  };
 }
 
 // translation ##################################
