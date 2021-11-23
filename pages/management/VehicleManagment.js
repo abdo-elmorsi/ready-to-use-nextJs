@@ -8,23 +8,11 @@ import {
   faUsersCog,
   faPen,
   faCar,
-<<<<<<< HEAD
   faExchangeAlt,
-  faFileExport,
-  faUserEdit,
-  faTrash,
   faTimes,
   faDownload,
-  faFileCsv,
-=======
-  faFileCsv,
-  faRandom,
-  faFileExport,
-  faUserEdit,
-  faTrash,
->>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
+  faRandom, faFileExport, faTrash, faUserEdit, faFileCsv,
 } from "@fortawesome/free-solid-svg-icons";
-import CountUp from "react-countup";
 // translation
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -152,8 +140,6 @@ const Data_table2 = [
 
 const VehicleManagment = () => {
   const { t } = useTranslation("Management");
-<<<<<<< HEAD
-  // ===========================================| Modals code |===================================================
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -175,7 +161,6 @@ const VehicleManagment = () => {
                   <Col lg="12">
                     <Form.Group
                       className="form-group"
-                      controlId="validationCustom01"
                     >
                       <Form.Label htmlFor="addVehicleBulk">
                         {" "}
@@ -186,6 +171,7 @@ const VehicleManagment = () => {
                   </Col>
                 </Row>
                 <div className="mt-5 d-flex justify-content-end">
+
                   <button
                     className="btn btn-primary px-3 py-2 ms-3"
                     type="button"
@@ -197,6 +183,7 @@ const VehicleManagment = () => {
                     />{" "}
                     Download Templete{" "}
                   </button>
+
                   <button
                     className="btn btn-primary px-3 py-2 ms-3"
                     type="button"
@@ -208,6 +195,7 @@ const VehicleManagment = () => {
                     />{" "}
                     Add Bulk{" "}
                   </button>
+
                   <button
                     className="btn btn-primary px-3 py-2 ms-3"
                     type="button"
@@ -254,8 +242,6 @@ const VehicleManagment = () => {
   }
 
   // =======================|Modal Number 2|==============================
-=======
->>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
   return (
     <>
       <Row>
@@ -305,7 +291,6 @@ const VehicleManagment = () => {
                           style={{ fontSize: "13px" }}
                         >
                           <FontAwesomeIcon
-<<<<<<< HEAD
                             size="sm"
                             className="me-2"
                             icon={faCar}
@@ -313,25 +298,26 @@ const VehicleManagment = () => {
                           Add Vehicle{" "}
                         </Button>
                         <AddVehiclesBulkBtn />
-=======
-                            className="me-2"
-                            icon={faCar}
-                            size="sm"
+
+                        <button
+                            className="btn btn-primary px-3 py-2 ms-3"
+                            type="button"
+                        >
+
+                          <FontAwesomeIcon
+                              className="me-2"
+                              icon={faCar}
+                              size="sm"
                           />{" "}
                           Add Vehicle{" "}
-                        </Button>
->>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
+                        </button>
+
                         <Button
                           variant="primary p-2 ms-2"
                           className="mb-2 mb-md-0"
                           style={{ fontSize: "13px" }}
                         >
                           <FontAwesomeIcon
-<<<<<<< HEAD
-                            size="sm"
-                            className="me-2"
-                            icon={faExchangeAlt}
-=======
                             className="me-2"
                             icon={faFileCsv}
                             size="sm"
@@ -347,7 +333,6 @@ const VehicleManagment = () => {
                             className="me-2"
                             icon={faRandom}
                             size="sm"
->>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
                           />{" "}
                           Transfer Device to account
                         </Button>
@@ -357,15 +342,9 @@ const VehicleManagment = () => {
                           style={{ fontSize: "13px" }}
                         >
                           <FontAwesomeIcon
-<<<<<<< HEAD
-                            size="sm"
-                            className="me-2"
-                            icon={faFileExport}
-=======
                             className="me-2"
                             icon={faFileExport}
                             size="sm"
->>>>>>> 1b62e6d014ae8756c4900b3a87ad46a5d6f11999
                           />{" "}
                           Export
                         </Button>

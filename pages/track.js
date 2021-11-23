@@ -148,6 +148,8 @@ const Track = () => {
                         console.error(`VehicleID: ${x.VehicleID} - (${x.DisplayName}), has invalid SerialNumber: ${x.SerialNumber}`);
                         x.SerialNumber = '0';
                     }
+                    Object.assign(x, locDataModel)
+
                 });
 
                 let NEW_SERIAL_NUMBER = value.data?.map(x => x.SerialNumber);
@@ -168,7 +170,6 @@ const Track = () => {
                     x.RecordDateTime = x.RecordDateTime ?? START_DATE;
                 });
 
-                value.data = Object.assign(value.data, locDataModel);
 
                 dispatch(VehiclesSettings(value.data));
                 dispatch(Loading(false));
