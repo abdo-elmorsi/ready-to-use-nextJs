@@ -7,17 +7,13 @@ import {SyncOnCheck, SyncOnExpand} from "../../lib/slices/vehicleProcessStatus";
 import {GetStatusString, iconUrl} from "../../helpers/helpers";
 
 const MenuTree = () => {
-    const [All, setAll] = useState(0);
-    const [lists, setLists] = useState([]);
     const [treeFilter, setTreeFilter] = useState("");
     const [treeStyle, setTreeStyle] = useState({});
     const [loading, setLoading] = useState(false);
-    const [OverSpeedingStatus, setOverSpeedingStatus] = useState(false);
     const stateReducer = useSelector((state) => state);
     const dispatch = useDispatch();
 
     useEffect(_ => {
-        // Scrollbar.init(document.getElementById('menu-scrollbar'));
         const ele = document.getElementById('widget_menu');
         const setSize = () => {
             if (ele) setTreeStyle({height: ele.clientHeight / 1.3})
@@ -25,23 +21,7 @@ const MenuTree = () => {
         window.addEventListener('resize', setSize);
         setLoading(true)
         setSize()
-
-        const groupBy = (arr, key) => arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {});
-
-        let groups = groupBy(stateReducer?.firebase?.Vehicles, 'GroupName');
-        if (groups['null'] && groups['Default']) {
-            groups['Default'] = [...groups['null'], ...groups['Default']];
-        } else if (groups['null']) {
-            groups['Default'] = [...groups['null']];
-        }
-        delete groups['null']
-        let result = []
-        for (let key in groups) if (groups.hasOwnProperty(key)) result.push({title: key, children: groups[key]})
-
-        setLists(result)
-
-    }, [stateReducer?.firebase?.Vehicles]);
-
+    }, []);
 
     const onCheck = (selectedKeys, info) => {
         const byGroup = info.checkedNodesPositions.filter(i => i.pos.split('-').length === 2);
@@ -144,7 +124,7 @@ const MenuTree = () => {
                         defaultCheckedKeys={['0-0-0', '0-0-1']}
                         onExpand={onExpand}
                     >
-                        {loop(lists)}
+                        {loop(stateReducer?.firebase?.lists)}
                     </Tree>
 
                 </div>
