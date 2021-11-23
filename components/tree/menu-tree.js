@@ -7,6 +7,8 @@ import {SyncOnCheck, SyncOnExpand} from "../../lib/slices/vehicleProcessStatus";
 import {GetStatusString, iconUrl} from "../../helpers/helpers";
 
 const MenuTree = () => {
+    const [All, setAll] = useState(0);
+    const [lists, setLists] = useState([]);
     const [treeFilter, setTreeFilter] = useState("");
     const [treeStyle, setTreeStyle] = useState({});
     const [loading, setLoading] = useState(false);
@@ -21,7 +23,23 @@ const MenuTree = () => {
         window.addEventListener('resize', setSize);
         setLoading(true)
         setSize()
-    }, []);
+
+        const groupBy = (arr, key) => arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {});
+
+        let groups = groupBy(stateReducer?.firebase?.Vehicles, 'GroupName');
+        if (groups['null'] && groups['Default']) {
+            groups['Default'] = [...groups['null'], ...groups['Default']];
+        } else if (groups['null']) {
+            groups['Default'] = [...groups['null']];
+        }
+        delete groups['null']
+        let result = []
+        for (let key in groups) if (groups.hasOwnProperty(key)) result.push({title: key, children: groups[key]})
+
+        setLists(result)
+
+    }, [stateReducer?.firebase?.Vehicles]);
+
 
     const onCheck = (selectedKeys, info) => {
         const byGroup = info.checkedNodesPositions.filter(i => i.pos.split('-').length === 2);
@@ -110,7 +128,7 @@ const MenuTree = () => {
 
 
     return (
-        <div className="position-relative">
+        <div className="position-relative mt-3">
             <div  id="menu-scrollbar">
                 <div className={`tree_root ${stateReducer.config.darkMode && Styles.dark}`} style={{...treeStyle}}>
                     <Tree
@@ -124,7 +142,7 @@ const MenuTree = () => {
                         defaultCheckedKeys={['0-0-0', '0-0-1']}
                         onExpand={onExpand}
                     >
-                        {loop(stateReducer?.firebase?.lists)}
+                        {loop(lists)}
                     </Tree>
 
                 </div>
