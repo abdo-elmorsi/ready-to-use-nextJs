@@ -4,11 +4,11 @@ import {initializeApp} from "firebase/app";
 import {getDatabase, onDisconnect, onValue, ref} from "firebase/database";
 import axios from "axios";
 import config from "../config/config";
-import {useEffect} from "react";
-import {useDispatch} from "react-redux";
+import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Loading, UpdateStatus, UpdateStatusOnce, VehiclesSettings} from "../lib/slices/vehicleProcessStatus";
-import {encryptName} from "../helpers/encryptions";
 import {Date2KSA, getAddress, isDateExpired, isValidAddress, locDataModel, WeightVoltToKG} from "../helpers/helpers";
+import {encryptName} from "../helpers/encryptions";
 
 const MapWithNoSSR = dynamic(() => import("../components/maps/vector"), {
     ssr: false,
@@ -39,8 +39,11 @@ const onDisconnectState = (id) => {
 
 const Track = () => {
     const dispatch = useDispatch();
-    const fbtolocInfo = (_message, _USER_VEHICLES, _initial = false) => {
+    const stateReducer = useSelector((state) => state);
+
+    const fbtolocInfo = (_message, _initial = false) => {
         const {latLng} = require('leaflet');
+        let _USER_VEHICLES = JSON.parse(localStorage.getItem(encryptName('uservehs'))) ?? [];
 
         const holdStatus = [600, 5, 0, 2];
         const CalcMileage = (Mileage) => ((Mileage ?? 0) / 1000).toFixed(1);
@@ -102,13 +105,10 @@ const Track = () => {
 
         if (isDateExpired(_newInfo)) _newInfo.VehicleStatus = 5;
         delete _newInfo.Serial;
-
-        let _oldInfo = {}
-        if (_USER_VEHICLES.length > 0) {
-            _oldInfo = {..._USER_VEHICLES.filter(x => x.SerialNumber == _newInfo.SerialNumber)[0]};
-            if (Object.keys(_oldInfo).length === 0) {
-                return {locInfo: null, updated: false};
-            }
+        let _oldInfo = Object.assign({}, _USER_VEHICLES?.find(x => x.SerialNumber == _newInfo.SerialNumber));
+        console.log('_oldInfo', _oldInfo)
+        if (Object.keys(_oldInfo).length === 0) {
+            return {locInfo: _newInfo, updated: false};
         }
 
         if (_oldInfo.Latitude > 0 && _newInfo.RecordDateTime != null && new Date(_newInfo.RecordDateTime) < new Date(_oldInfo.RecordDateTime)) return {
@@ -120,85 +120,30 @@ const Track = () => {
 
         _newInfo = aggregate(_newInfo, _oldInfo, _initial);
 
-        Object.assign(_oldInfo, _newInfo); //_oldInfo = { ..._oldInfo, ...locInfo };//join fix and updated data
-        // let VEHICLES = [..._USER_VEHICLES];
-        // VEHICLES.splice(VEHICLES.findIndex(x => x.SerialNumber == _newInfo.SerialNumber), 1, _oldInfo); //update uservehs list
-        // localStorage.setItem(encryptName('uservehs'), JSON.stringify(VEHICLES));
+        _oldInfo = Object.assign(_oldInfo, _newInfo); //_oldInfo = { ..._oldInfo, ...locInfo }; //join fix and updated data
         return {locInfo: _oldInfo, updated: true};
     }
+
     useEffect(_ => {
+
+        // let _USER_VEHICLES = [];
         let _USER_VEHICLES = JSON.parse(localStorage.getItem(encryptName('uservehs'))) ?? [];
-        dispatch(VehiclesSettings(Array.isArray(_USER_VEHICLES) ? _USER_VEHICLES : []))
+        /*
 
-        if (_USER_VEHICLES.length === 0)
-            dispatch(Loading(true));
-
-        axios.get(`${config.apiGateway.URL}vehicles/settings`).then(value => {
-            /*console.log('value', value)
-            dispatch(VehiclesSettings(value.data));
-            value.data.map(i => {
-                // SyncVehicleFBOnce(i?.SerialNumber);
-                setInterval(SyncVehicleFB(i?.SerialNumber), 36e5 / 2);
-            })*/
-            if (value.status === 200 && value.data?.length > 0) {
-
-                value.data?.map(x => {
-                    let sn = x.SerialNumber;
-                    if (sn == null || sn == '' || sn.includes('.') || sn.includes('#') || sn.includes('$') || sn.includes('[') || sn.includes(']')) {
-                        console.error(`VehicleID: ${x.VehicleID} - (${x.DisplayName}), has invalid SerialNumber: ${x.SerialNumber}`);
-                        x.SerialNumber = '0';
-                    }
-                    Object.assign(x, locDataModel)
-
-                });
-
-                let NEW_SERIAL_NUMBER = value.data?.map(x => x.SerialNumber);
-                let OLD_DATA = [..._USER_VEHICLES.filter(x => NEW_SERIAL_NUMBER.includes(x.SerialNumber))];
-                let OLD_SERIAL_NUMBER = OLD_DATA.map(x => x.SerialNumber);
-
-                value.data?.filter(x => OLD_SERIAL_NUMBER.includes(x.SerialNumber)).forEach(x => Object.assign(x, Object.assign({...OLD_DATA.find(d => d.SerialNumber == x.SerialNumber)}, x)));
-
-                value.data?.filter(x => !OLD_SERIAL_NUMBER.includes(x.SerialNumber)).forEach((x) => Object.assign(x, locDataModel));
-
-                const START_DATE = Date2KSA(new Date((new Date()).getFullYear(), 0, 1));
-
-                value.data?.filter(x => x.RecordDateTime != null).forEach(x => {
-                    x.RecordDateTime = Date2KSA(x.RecordDateTime);
-                });
-
-                value.data?.filter(x => x.RecordDateTime == null).forEach(x => {
-                    x.RecordDateTime = x.RecordDateTime ?? START_DATE;
-                });
-
-
-                dispatch(VehiclesSettings(value.data));
-                dispatch(Loading(false));
-
-                // dispatch(Loading(false));
-                value.data.map(i => {
-                    SyncVehicleFBOnce(i?.SerialNumber);
-                    setInterval(SyncVehicleFB(i?.SerialNumber), 36e5 / 2);
-                })
-                console.log(value.data)
-
-            } else {
-                dispatch(Loading(false));
-            }
-
-        }, (error) => {
-            console.error(error);
-            dispatch(Loading(false));
-        });
+                if (_USER_VEHICLES.length === 0) {
+                    dispatch(Loading(true));
+                } else {
+                    dispatch(VehiclesSettings(_USER_VEHICLES))
+                    setUSER_VEHICLES_STATE(_USER_VEHICLES);
+                }
+        */
 
         const SyncVehicleFBOnce = async (id) => {
             const App = initializeApp(firebaseConfig, 'oncefb')
             const db = getDatabase(App);
             await onValue(ref(db, id), (snapshot) => {
-                const locInfo = fbtolocInfo(snapshot, _USER_VEHICLES, true).locInfo;
+                const locInfo = fbtolocInfo(snapshot, true).locInfo;
                 dispatch(UpdateStatusOnce(locInfo))
-                if (!locInfo?.SerialNumber) {
-                    console.log(locInfo?.SerialNumber, locInfo)
-                }
 
             }, (error) => {
                 console.error('error : ', error)
@@ -214,6 +159,55 @@ const Track = () => {
                 dispatch(UpdateStatus(locInfo.locInfo))
             }, (error) => console.error('error : ', error));
         }
+
+        const fetchData = async () => {
+            const result = await axios.get(`${config.apiGateway.URL}vehicles/settings`)
+
+            if (result.status === 200 && result.data?.length > 0) {
+
+                result.data?.map(x => {
+                    let sn = x.SerialNumber;
+                    if (sn == null || sn == '' || sn.includes('.') || sn.includes('#') || sn.includes('$') || sn.includes('[') || sn.includes(']')) {
+                        console.error(`VehicleID: ${x.VehicleID} - (${x.DisplayName}), has invalid SerialNumber: ${x.SerialNumber}`);
+                        x.SerialNumber = '0';
+                    }
+                    // Object.assign(x, locDataModel)
+                });
+
+                let NEW_SERIAL_NUMBER = result.data?.map(x => x.SerialNumber);
+                let OLD_DATA = [..._USER_VEHICLES?.filter(x => NEW_SERIAL_NUMBER.includes(x.SerialNumber))];
+                let OLD_SERIAL_NUMBER = OLD_DATA.map(x => x.SerialNumber);
+
+                result.data?.filter(x => OLD_SERIAL_NUMBER.includes(x.SerialNumber)).forEach(x => Object.assign(x, Object.assign({...OLD_DATA.find(d => d.SerialNumber == x.SerialNumber)}, x)));
+
+                result.data?.filter(x => !OLD_SERIAL_NUMBER.includes(x.SerialNumber)).forEach((x) => Object.assign(x, locDataModel));
+
+                const START_DATE = Date2KSA(new Date((new Date()).getFullYear(), 0, 1));
+
+                result.data?.filter(x => x.RecordDateTime != null).forEach(x => {
+                    x.RecordDateTime = Date2KSA(x.RecordDateTime);
+                });
+
+                result.data?.filter(x => x.RecordDateTime == null).forEach(x => {
+                    x.RecordDateTime = x.RecordDateTime ?? START_DATE;
+                });
+                dispatch(VehiclesSettings(result.data));
+                dispatch(Loading(false));
+
+                // dispatch(Loading(false));
+                result.data.map(i => {
+                    SyncVehicleFBOnce(i?.SerialNumber);
+                    // setInterval(SyncVehicleFB(i?.SerialNumber), 36e5 / 2);
+                })
+                console.log(result.data)
+
+            } else {
+                dispatch(Loading(false));
+            }
+        };
+
+        fetchData();
+
 
     }, [dispatch])
 
