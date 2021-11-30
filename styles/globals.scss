@@ -94,21 +94,16 @@ input[type=number] {
 
 .tree_root {
   .rc-tree .rc-tree-treenode{
-    display: flex;
-    align-items: center;
     .rc-tree-title{
       color: #232D42;
     }
     .rc-tree-node-content-wrapper{
-      display: flex;
-      align-items: flex-start;
       line-height: 20px;
     }
   }
   .rc-tree-icon__customize{
     position: relative;
   }
-
 }
 
 .leaflet-control-container {

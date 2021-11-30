@@ -5,6 +5,7 @@ import MenuTree from "../tree/menu-tree";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowLeft, faSlidersH} from '@fortawesome/free-solid-svg-icons'
 import {toggle} from "../../lib/slices/toggleAddMarkerRoutingMachine";
+import FilterTree from "../tree/filter-tree";
 
 const WidgetMenu = () => {
     const [state, setState] = useState(false);
@@ -39,29 +40,48 @@ const WidgetMenu = () => {
                     <FontAwesomeIcon icon={faSlidersH}/>
                 </button>
 
-                    <div className={`${Styles.nav__item} ${(state && !isOpenMarkerRoutingMachine) && Styles.active}`}>
-                        <div
-                            className={`${Styles.section__one} d-flex align-items-center justify-content-center text-center`}>
-                            <button type="button"
-                                    className="mx-2 rounded d-flex align-items-center justify-content-between">
-                                <span>All</span>
-                                <span>{stateReducer.firebase.all}</span>
-                            </button>
-                            <button type="button"
-                                    className="mx-2 rounded d-flex align-items-center justify-content-between">
-                                <span>Active</span>
-                                <span>{stateReducer.firebase.online}</span>
-                            </button>
-                            <button type="button"
-                                    className="mx-2 rounded d-flex align-items-center justify-content-between">
-                                <span>Stopped</span>
-                                <span>{stateReducer.firebase.offline}</span>
-                            </button>
-                        </div>
+                <div className={`${Styles.nav__item} ${(state && !isOpenMarkerRoutingMachine) && Styles.active}`}>
+                    <div
+                        className={`${Styles.section__one} d-flex align-items-center justify-content-center text-center`}>
+
+                        <input type="radio" name="filterBtn" className="btn-check" id="btn-check-all"
+                               autoComplete="off"/>
+                        <label
+                            className="btn btn-outline-primary mx-2 rounded d-flex align-items-center justify-content-between"
+                            htmlFor="btn-check-all">
+                            <span>All</span>
+                            <span>{stateReducer.firebase.all}</span>
+                        </label>
+
+                        <input type="radio" name="filterBtn" className="btn-check" id="btn-check-active"
+                               autoComplete="off"/>
+                        <label
+                            className="btn btn-outline-primary mx-2 rounded d-flex align-items-center justify-content-between"
+                            htmlFor="btn-check-active">
+                            <span>Active</span>
+                            <span>{stateReducer.firebase.online}</span>
+                        </label>
+
+                        <input type="radio" name="filterBtn" className="btn-check" id="btn-check-stopped"
+                               autoComplete="off"/>
+                        <label
+                            className="btn btn-outline-primary mx-2 rounded d-flex align-items-center justify-content-between"
+                            htmlFor="btn-check-stopped">
+                            <span>Stopped</span>
+                            <span>{stateReducer.firebase.offline}</span>
+                        </label>
+
                     </div>
-                    <div className={`${Styles.nav__item} ${(state && !isOpenMarkerRoutingMachine) && Styles.active}`}>
-                        <MenuTree/>
-                    </div>
+                </div>
+
+                <div className={`${Styles.nav__item} ${(state && !isOpenMarkerRoutingMachine) && Styles.active} mb-1`}>
+                    <FilterTree active={(state && !isOpenMarkerRoutingMachine)}/>
+                </div>
+
+                <div className={`${Styles.nav__item} ${(state && !isOpenMarkerRoutingMachine) && Styles.active} border-top pt-2`}>
+                    <MenuTree/>
+                </div>
+
                 <div className={`${Styles.config} ${openConfig && Styles.active}`}>
                     <button onClick={() => setOpenConfig(!openConfig)} type="button"
                             className={Styles.config_btn_close}>
@@ -81,7 +101,6 @@ const WidgetMenu = () => {
                 <span className={Styles.hamburger__patty}/>
                 <span className={Styles.hamburger__patty}/>
             </div>
-
         </aside>
     );
 }

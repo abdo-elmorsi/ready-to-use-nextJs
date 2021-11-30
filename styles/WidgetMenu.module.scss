@@ -63,24 +63,22 @@ $color__secondary: #575b67;
     }
 
     .section__one {
-      button {
+      label {
         padding: .5rem .2rem;
         border: 0.0625rem solid #eee;
         background-color: transparent;
-        transition: all .8s cubic-bezier(0.86, 0, 0.07, 1);
 
         &:hover {
-          background-color: #eee;
+          background-color: $color__secondary;
         }
 
         span {
-          transition: all .8s cubic-bezier(0.86, 0, 0.07, 1);
 
           font-size: .8rem;
 
           &:first-child {
             padding: 0 .5rem;
-            color: $color__secondary;
+            color: #ddd;
           }
 
           &:last-child {

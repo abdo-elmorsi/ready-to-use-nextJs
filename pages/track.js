@@ -4,7 +4,7 @@ import {initializeApp} from "firebase/app";
 import {getDatabase, onDisconnect, onValue, ref} from "firebase/database";
 import axios from "axios";
 import config from "../config/config";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Loading, UpdateStatus, UpdateStatusOnce, VehiclesSettings} from "../lib/slices/vehicleProcessStatus";
 import {Date2KSA, getAddress, isDateExpired, isValidAddress, locDataModel, WeightVoltToKG} from "../helpers/helpers";
@@ -106,7 +106,6 @@ const Track = () => {
         if (isDateExpired(_newInfo)) _newInfo.VehicleStatus = 5;
         delete _newInfo.Serial;
         let _oldInfo = Object.assign({}, _USER_VEHICLES?.find(x => x.SerialNumber == _newInfo.SerialNumber));
-        console.log('_oldInfo', _oldInfo)
         if (Object.keys(_oldInfo).length === 0) {
             return {locInfo: _newInfo, updated: false};
         }
@@ -126,17 +125,7 @@ const Track = () => {
 
     useEffect(_ => {
 
-        // let _USER_VEHICLES = [];
         let _USER_VEHICLES = JSON.parse(localStorage.getItem(encryptName('uservehs'))) ?? [];
-        /*
-
-                if (_USER_VEHICLES.length === 0) {
-                    dispatch(Loading(true));
-                } else {
-                    dispatch(VehiclesSettings(_USER_VEHICLES))
-                    setUSER_VEHICLES_STATE(_USER_VEHICLES);
-                }
-        */
 
         const SyncVehicleFBOnce = async (id) => {
             const App = initializeApp(firebaseConfig, 'oncefb')
@@ -144,16 +133,15 @@ const Track = () => {
             await onValue(ref(db, id), (snapshot) => {
                 const locInfo = fbtolocInfo(snapshot, true).locInfo;
                 dispatch(UpdateStatusOnce(locInfo))
-
             }, (error) => {
                 console.error('error : ', error)
             }, {onlyOnce: true});
         }
 
-        const SyncVehicleFB = async (id) => {
+        const SyncVehicleFB = async (serialNumber) => {
             const App = initializeApp(firebaseConfig, 'updatefb')
             const db = getDatabase(App);
-            await onValue(ref(db, id), (snapshot) => {
+            await onValue(ref(db, serialNumber), (snapshot) => {
                 if (!snapshot.hasChildren()) return;
                 const locInfo = fbtolocInfo(snapshot, _USER_VEHICLES);
                 dispatch(UpdateStatus(locInfo.locInfo))
@@ -161,50 +149,50 @@ const Track = () => {
         }
 
         const fetchData = async () => {
-            const result = await axios.get(`${config.apiGateway.URL}vehicles/settings`)
-
-            if (result.status === 200 && result.data?.length > 0) {
-
-                result.data?.map(x => {
-                    let sn = x.SerialNumber;
-                    if (sn == null || sn == '' || sn.includes('.') || sn.includes('#') || sn.includes('$') || sn.includes('[') || sn.includes(']')) {
-                        console.error(`VehicleID: ${x.VehicleID} - (${x.DisplayName}), has invalid SerialNumber: ${x.SerialNumber}`);
-                        x.SerialNumber = '0';
-                    }
-                    // Object.assign(x, locDataModel)
-                });
-
-                let NEW_SERIAL_NUMBER = result.data?.map(x => x.SerialNumber);
-                let OLD_DATA = [..._USER_VEHICLES?.filter(x => NEW_SERIAL_NUMBER.includes(x.SerialNumber))];
-                let OLD_SERIAL_NUMBER = OLD_DATA.map(x => x.SerialNumber);
-
-                result.data?.filter(x => OLD_SERIAL_NUMBER.includes(x.SerialNumber)).forEach(x => Object.assign(x, Object.assign({...OLD_DATA.find(d => d.SerialNumber == x.SerialNumber)}, x)));
-
-                result.data?.filter(x => !OLD_SERIAL_NUMBER.includes(x.SerialNumber)).forEach((x) => Object.assign(x, locDataModel));
-
-                const START_DATE = Date2KSA(new Date((new Date()).getFullYear(), 0, 1));
-
-                result.data?.filter(x => x.RecordDateTime != null).forEach(x => {
-                    x.RecordDateTime = Date2KSA(x.RecordDateTime);
-                });
-
-                result.data?.filter(x => x.RecordDateTime == null).forEach(x => {
-                    x.RecordDateTime = x.RecordDateTime ?? START_DATE;
-                });
-                dispatch(VehiclesSettings(result.data));
+            const response = await axios.get(`${config.apiGateway.URL}vehicles/settings`)
+            if (response.status === 200 && response.data?.length > 0) {
+                const result = handleResponse(response.data);
+                dispatch(VehiclesSettings(result));
                 dispatch(Loading(false));
-
-                // dispatch(Loading(false));
-                result.data.map(i => {
+                result.map(i => {
                     SyncVehicleFBOnce(i?.SerialNumber);
                     // setInterval(SyncVehicleFB(i?.SerialNumber), 36e5 / 2);
+                    // SyncVehicleFB(i?.SerialNumber)
                 })
-                console.log(result.data)
-
+                console.log(result)
             } else {
                 dispatch(Loading(false));
             }
         };
+
+        const handleResponse = (data = []) => {
+            data?.map(x => {
+                let sn = x.SerialNumber;
+                if (sn == null || sn == '' || sn.includes('.') || sn.includes('#') || sn.includes('$') || sn.includes('[') || sn.includes(']')) {
+                    console.error(`VehicleID: ${x.VehicleID} - (${x.DisplayName}), has invalid SerialNumber: ${x.SerialNumber}`);
+                    x.SerialNumber = '0';
+                }
+            });
+
+            let NEW_SERIAL_NUMBER = data?.map(x => x.SerialNumber);
+            let OLD_DATA = [..._USER_VEHICLES?.filter(x => NEW_SERIAL_NUMBER.includes(x.SerialNumber))];
+            let OLD_SERIAL_NUMBER = OLD_DATA.map(x => x.SerialNumber);
+
+            data?.filter(x => OLD_SERIAL_NUMBER.includes(x.SerialNumber)).forEach(x => Object.assign(x, Object.assign({...OLD_DATA.find(d => d.SerialNumber == x.SerialNumber)}, x)));
+
+            data?.filter(x => !OLD_SERIAL_NUMBER.includes(x.SerialNumber)).forEach((x) => Object.assign(x, locDataModel));
+
+            const START_DATE = Date2KSA(new Date((new Date()).getFullYear(), 0, 1));
+
+            data?.filter(x => x.RecordDateTime != null).forEach(x => {
+                x.RecordDateTime = Date2KSA(x.RecordDateTime);
+            });
+
+            data?.filter(x => x.RecordDateTime == null).forEach(x => {
+                x.RecordDateTime = x.RecordDateTime ?? START_DATE;
+            });
+            return data
+        }
 
         fetchData();
 
