@@ -96,7 +96,7 @@ const Signin = () => {
                                                         router.push("/").catch(console.error);
                                                         setTimeout(_ => {
                                                             location.reload()
-                                                        })
+                                                        },1000)
                                                         console.log(value)
                                                     } else {
                                                         toast.error("Unauthorized!");
