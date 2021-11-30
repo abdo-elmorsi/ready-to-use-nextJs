@@ -5,14 +5,17 @@ import Styles from '../../styles/Tree.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {SyncOnCheck, SyncOnExpand} from "../../lib/slices/vehicleProcessStatus";
 import {GetStatusString, iconUrl} from "../../helpers/helpers";
+import {FormControl} from "react-bootstrap";
 
 const MenuTree = () => {
     const [All, setAll] = useState(0);
+    const [lists, setLists] = useState([]);
     const [treeFilter, setTreeFilter] = useState("");
     const [TreeStyleHeight, setTreeStyleHeight] = useState(0);
     const [loading, setLoading] = useState(false);
     const stateReducer = useSelector((state) => state);
     const dispatch = useDispatch();
+    const groupBy = (arr, key) => arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {});
 
     useEffect(_ => {
         const ele = document.getElementById('widget_menu');
@@ -20,8 +23,20 @@ const MenuTree = () => {
         window.addEventListener('resize', setSize);
         setLoading(true)
         setSize()
-        // console.log(stateReducer?.firebase?.status)
-    }, []);
+
+        let groups = groupBy(stateReducer?.firebase?.Vehicles, 'GroupName');
+        if (groups['null'] && groups['Default']) {
+            groups['Default'] = [...groups['null'], ...groups['Default']];
+        } else if (groups['null']) {
+            groups['Default'] = [...groups['null']];
+        }
+        delete groups['null']
+        let result = []
+        for (let key in groups) if (groups.hasOwnProperty(key)) result.push({title: key, children: groups[key]})
+
+        setLists(result)
+
+    }, [stateReducer?.firebase?.Vehicles]);
 
 
     const onCheck = (selectedKeys, info) => {
@@ -108,20 +123,19 @@ const MenuTree = () => {
                                  alt={GetStatusString(item?.VehicleStatus)}
                                  title={GetStatusString(item?.VehicleStatus)}/>}</div>)}
                              isLeaf={true}
-                             switcherIcon={props => {
-                                 if (stateReducer?.firebase?.status[props.eventKey]){
-                                     props.icon =
-                                         (<img
-                                             src={iconUrl(stateReducer?.firebase?.status[props.eventKey])} width={11} height={20}
+                            /* switcherIcon={props => {
+                                 // if (stateReducer?.firebase?.status[props.eventKey]){
+                                     return props.icon = <span>555</span>
+                                         /!*(<img src={iconUrl(stateReducer?.firebase?.status[props.eventKey])} width={11} height={20}
                                              alt={GetStatusString(stateReducer?.firebase?.status[props.eventKey])}
-                                             title={GetStatusString(stateReducer?.firebase?.status[props.eventKey])}/>)
-                                 }
+                                             title={GetStatusString(stateReducer?.firebase?.status[props.eventKey])}/>)*!/
+                                 // }
                                  // console.log(props.icon.props.children.props.src)
                                  // console.log(props.icon.props.children.props.alt)
                                  // console.log(props.icon.props.children.props.title)
-                                 // console.log(props.eventKey)
+                                 // console.log(iconUrl(stateReducer?.firebase?.status[props.eventKey]))
                                  console.log(props)
-                             }}
+                             }}*/
                              title={(
                                  <div className="d-flex align-items-center">
 
@@ -140,23 +154,23 @@ const MenuTree = () => {
     return (
         <div className="position-relative">
             <div id="menu-scrollbar">
-                <input type="text" onChange={handleFilter}/>
+                <FormControl size="sm" type="text" className="mb-2" placeholder="Search..." onChange={handleFilter}/>
                 <div className={`tree_root ${stateReducer.config.darkMode && Styles.dark}`}
                      style={{height: TreeStyleHeight}}>
                     <Tree
                         selectable={false}
                         showLine
                         checkable
-                        onCheck={onCheck}
+                        // onCheck={onCheck}
                         onActiveChange={key => console.log(key)}
                         defaultExpandedKeys={['0-0-0', '0-0-1']}
                         defaultSelectedKeys={['0-0-0', '0-0-1']}
                         defaultCheckedKeys={['0-0-0', '0-0-1']}
                         onExpand={onExpand}
-                        virtual={false}
+                        virtual={true}
                         filterTreeNode={handleFilterTree}
-                        height={TreeStyleHeight - 50}>
-                        {loop(stateReducer?.firebase?.Vehicles)}
+                        height={TreeStyleHeight - 80}>
+                        {loop(lists)}
                     </Tree>
 
                 </div>

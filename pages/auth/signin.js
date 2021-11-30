@@ -94,7 +94,9 @@ const Signin = () => {
                                                     },).then(value => {
                                                     if (value.ok && value.status === 200) {
                                                         router.push("/").catch(console.error);
-                                                        location.reload()
+                                                        setTimeout(_ => {
+                                                            location.reload()
+                                                        })
                                                         console.log(value)
                                                     } else {
                                                         toast.error("Unauthorized!");

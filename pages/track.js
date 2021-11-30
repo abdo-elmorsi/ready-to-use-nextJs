@@ -39,6 +39,7 @@ const onDisconnectState = (id) => {
 
 const Track = () => {
     const dispatch = useDispatch();
+
     const stateReducer = useSelector((state) => state);
 
     const fbtolocInfo = (_message, _initial = false) => {
@@ -123,8 +124,9 @@ const Track = () => {
         return {locInfo: _oldInfo, updated: true};
     }
 
-    useEffect(_ => {
 
+
+    useEffect(_ => {
         let _USER_VEHICLES = JSON.parse(localStorage.getItem(encryptName('uservehs'))) ?? [];
 
         const SyncVehicleFBOnce = async (id) => {
@@ -156,7 +158,7 @@ const Track = () => {
                 dispatch(Loading(false));
                 result.map(i => {
                     SyncVehicleFBOnce(i?.SerialNumber);
-                    // setInterval(SyncVehicleFB(i?.SerialNumber), 36e5 / 2);
+                    setInterval(SyncVehicleFB(i?.SerialNumber), 36e5 / 2);
                     // SyncVehicleFB(i?.SerialNumber)
                 })
                 console.log(result)

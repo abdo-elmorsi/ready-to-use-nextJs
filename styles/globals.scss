@@ -91,13 +91,19 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield; /* Firefox */
 }
-
 .tree_root {
   .rc-tree .rc-tree-treenode{
-    .rc-tree-title{
-      color: #232D42;
+    &.filter-node >{
+      .rc-tree-node-content-wrapper{
+        .rc-tree-title{
+          color: #de1919;
+        }
+      }
     }
     .rc-tree-node-content-wrapper{
+      .rc-tree-title{
+        color: #232D42;
+      }
       line-height: 20px;
     }
   }
