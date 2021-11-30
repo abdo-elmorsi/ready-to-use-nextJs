@@ -158,7 +158,7 @@ const Track = () => {
                 dispatch(Loading(false));
                 result.map(i => {
                     SyncVehicleFBOnce(i?.SerialNumber);
-                    setInterval(SyncVehicleFB(i?.SerialNumber), 36e5 / 2);
+                    // setInterval(SyncVehicleFB(i?.SerialNumber), 36e5 / 2);
                     // SyncVehicleFB(i?.SerialNumber)
                 })
                 console.log(result)

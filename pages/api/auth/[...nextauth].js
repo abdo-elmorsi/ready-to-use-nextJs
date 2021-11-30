@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import Providers from "next-auth/providers"
+import {signOut} from "next-auth/client";
 
 export default NextAuth({
     providers: [
@@ -46,5 +47,6 @@ export default NextAuth({
     },
     pages: {
         signIn: '/auth/signin',
+        signOut: '/auth/signin',
     },
 });
