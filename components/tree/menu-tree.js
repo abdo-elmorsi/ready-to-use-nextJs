@@ -1,15 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import Tree, {TreeNode} from 'rc-tree';
+import Image from 'next/image'
 import 'rc-tree/assets/index.css';
 import Styles from '../../styles/Tree.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {SyncOnCheck, SyncOnExpand} from "../../lib/slices/vehicleProcessStatus";
-import {GetStatusString, iconUrl} from "../../helpers/helpers";
+import {getKey, GetStatusString, iconUrl} from "../../helpers/helpers";
 import {FormControl} from "react-bootstrap";
 
 const MenuTree = () => {
-    const [All, setAll] = useState(0);
+    const [Status, setStatus] = useState({
+        stopped: 0,
+        running: 0,
+        idling: 0,
+        offline: 0,
+        over_street_speed: 0,
+        over_speed: 0,
+        invalid_location: 0
+    });
     const [lists, setLists] = useState([]);
+    const [statusIcons, setStatusIcons] = useState({});
     const [treeFilter, setTreeFilter] = useState("");
     const [TreeStyleHeight, setTreeStyleHeight] = useState(0);
     const [loading, setLoading] = useState(false);
@@ -33,10 +43,12 @@ const MenuTree = () => {
         delete groups['null']
         let result = []
         for (let key in groups) if (groups.hasOwnProperty(key)) result.push({title: key, children: groups[key]})
-
         setLists(result)
+        setStatusIcons(stateReducer?.firebase?.status)
 
-    }, [stateReducer?.firebase?.Vehicles]);
+
+        console.log(Object.values(statusIcons).map(i => {return {[getKey(i)]: i}}))
+    }, [stateReducer?.firebase?.Vehicles, stateReducer?.firebase?.status, statusIcons]);
 
 
     const onCheck = (selectedKeys, info) => {
@@ -118,24 +130,11 @@ const MenuTree = () => {
             }
             return <TreeNode key={item?.SerialNumber}
                              data={item}
-                             icon={(<div className="position-relative">{<img
-                                 src={iconUrl(item?.VehicleStatus)} width={11} height={20}
-                                 alt={GetStatusString(item?.VehicleStatus)}
-                                 title={GetStatusString(item?.VehicleStatus)}/>}</div>)}
+                             icon={(<div className="position-relative">
+                                 <Image src={iconUrl(statusIcons[item?.SerialNumber])} width={11} height={20}
+                                        alt={GetStatusString(statusIcons[item?.SerialNumber])}
+                                        title={GetStatusString(statusIcons[item?.SerialNumber])}/></div>)}
                              isLeaf={true}
-                            /* switcherIcon={props => {
-                                 // if (stateReducer?.firebase?.status[props.eventKey]){
-                                     return props.icon = <span>555</span>
-                                         /!*(<img src={iconUrl(stateReducer?.firebase?.status[props.eventKey])} width={11} height={20}
-                                             alt={GetStatusString(stateReducer?.firebase?.status[props.eventKey])}
-                                             title={GetStatusString(stateReducer?.firebase?.status[props.eventKey])}/>)*!/
-                                 // }
-                                 // console.log(props.icon.props.children.props.src)
-                                 // console.log(props.icon.props.children.props.alt)
-                                 // console.log(props.icon.props.children.props.title)
-                                 // console.log(iconUrl(stateReducer?.firebase?.status[props.eventKey]))
-                                 console.log(props)
-                             }}*/
                              title={(
                                  <div className="d-flex align-items-center">
 
@@ -172,7 +171,6 @@ const MenuTree = () => {
                         height={TreeStyleHeight - 80}>
                         {loop(lists)}
                     </Tree>
-
                 </div>
             </div>
         </div>

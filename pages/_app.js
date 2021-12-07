@@ -91,7 +91,7 @@ function MyApp({Component, pageProps}) {
                     <AuthGuard>
 
                         <Component {...pageProps} />
-                        <div id="development">{`You may find some mistakes because it's still under development`}</div>
+                        {process.env.NODE_ENV === 'production' && <div id="development">{`You may find some mistakes because it's still under development`}</div>}
                     </AuthGuard>
                 </Provider>
             </SSRProvider>

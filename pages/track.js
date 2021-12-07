@@ -6,8 +6,14 @@ import axios from "axios";
 import config from "../config/config";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Loading, UpdateStatus, UpdateStatusOnce, VehiclesSettings} from "../lib/slices/vehicleProcessStatus";
-import {Date2KSA, getAddress, isDateExpired, isValidAddress, locDataModel, WeightVoltToKG} from "../helpers/helpers";
+import {
+    Loading,
+    SetStatusOnce,
+    UpdateStatus,
+    UpdateStatusOnce,
+    VehiclesSettings
+} from "../lib/slices/vehicleProcessStatus";
+import {Date2KSA, isDateExpired, isValidAddress, locDataModel, WeightVoltToKG} from "../helpers/helpers";
 import {encryptName} from "../helpers/encryptions";
 
 const MapWithNoSSR = dynamic(() => import("../components/maps/vector"), {
@@ -44,7 +50,7 @@ const Track = () => {
 
     const fbtolocInfo = (_message, _initial = false) => {
         const {latLng} = require('leaflet');
-        let _USER_VEHICLES = JSON.parse(localStorage.getItem(encryptName('uservehs'))) ?? [];
+        let _USER_VEHICLES = JSON.parse(localStorage.getItem(encryptName('user_vehicles'))) ?? [];
 
         const holdStatus = [600, 5, 0, 2];
         const CalcMileage = (Mileage) => ((Mileage ?? 0) / 1000).toFixed(1);
@@ -116,18 +122,17 @@ const Track = () => {
             updated: false
         };
 
-        if (_initial) setTimeout(() => getAddress(_newInfo.SerialNumber, null), Math.floor(Math.random() * 5 * 6e4) + 1);
-
         _newInfo = aggregate(_newInfo, _oldInfo, _initial);
 
         _oldInfo = Object.assign(_oldInfo, _newInfo); //_oldInfo = { ..._oldInfo, ...locInfo }; //join fix and updated data
         return {locInfo: _oldInfo, updated: true};
     }
 
-
-
     useEffect(_ => {
-        let _USER_VEHICLES = JSON.parse(localStorage.getItem(encryptName('uservehs'))) ?? [];
+        let _USER_VEHICLES = JSON.parse(localStorage.getItem(encryptName('user_vehicles'))) ?? [];
+        let _USER_VEHICLES_STATUS = JSON.parse(localStorage.getItem(encryptName('vehicles_status'))) ?? {};
+
+        dispatch(SetStatusOnce(_USER_VEHICLES_STATUS));
 
         const SyncVehicleFBOnce = async (id) => {
             const App = initializeApp(firebaseConfig, 'oncefb')
@@ -159,9 +164,7 @@ const Track = () => {
                 result.map(i => {
                     SyncVehicleFBOnce(i?.SerialNumber);
                     // setInterval(SyncVehicleFB(i?.SerialNumber), 36e5 / 2);
-                    // SyncVehicleFB(i?.SerialNumber)
                 })
-                console.log(result)
             } else {
                 dispatch(Loading(false));
             }
@@ -197,7 +200,6 @@ const Track = () => {
         }
 
         fetchData();
-
 
     }, [dispatch])
 
