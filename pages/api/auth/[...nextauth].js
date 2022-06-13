@@ -1,52 +1,27 @@
-import NextAuth from "next-auth"
-import Providers from "next-auth/providers"
-import {signOut} from "next-auth/client";
+import NextAuth from "next-auth";
+import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 
 export default NextAuth({
     providers: [
-        Providers.Credentials({
-            name: "credentials",
-            async authorize(credentials, req) {
-                const {username, password} = credentials
-
-                const response = await fetch('https://saferoad-web.herokuapp.com/signin',
-                    {
-                        method: "POST",
-                        headers: {"Content-Type": "application/json"},
-                        body: JSON.stringify({username, password})
-                    })
-                const user = await response.json()
-
-                // If no error and we have user data, return it
-                if (response.ok && user) {
-                    // req.headers.Authorization =  `Bearer ${user.token}`
-                    return user
-                }
-                // Return null if user data could not be retrieved
-                return null
-            },
+        GithubProvider({
+            clientId: process.env.GITHUB_CLIENT_ID,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        }),
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         }),
     ],
     callbacks: {
-        redirect: async (url, baseUrl) => {
-            return baseUrl
+        async signIn({ account, profile }) {
+            if (account.provider === "google") {
+                return (
+                    profile.email_verified &&
+                    profile.email.startsWith("abdelrahmandiv")
+                );
+            }
+            return true; // Do different verification for other providers that don't have `email_verified`
         },
-        async session(session, token) {
-            session.user = token.user
-            return {...session};
-        },
-        async jwt(token, user) {
-            if (user) token.user = user;
-            return token;
-        },
-    },
-    secret: process.env.JWT_SIGNING_PRIVATE_KEY,
-    jwt: {
-        secret: process.env.JWT_SIGNING_PRIVATE_KEY,
-        encryption: true,
-    },
-    pages: {
-        signIn: '/auth/signin',
-        signOut: '/auth/signin',
     },
 });

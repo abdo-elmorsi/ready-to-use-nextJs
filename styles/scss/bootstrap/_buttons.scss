@@ -24,11 +24,11 @@
     text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
-/*  .btn-check:focus + &,
+  .btn-check:focus + &,
   &:focus {
     outline: 0;
     box-shadow: $btn-focus-box-shadow;
-  }*/
+  }
 
   .btn-check:checked + &,
   .btn-check:active + &,

@@ -1,12 +1,15 @@
 import React from "react";
-import Styles from '../styles/PageNotFound.module.scss'
+import Meta from "../components/meta";
 
 const PageNotFound = () => {
     return (
-        <div className="d-flex justify-content-center align-items-center fs-5 text-danger">
-            <div>404</div>
-        </div>
-    )
-}
+        <>
+            <Meta title="English Stu | 404 Page" />
+            <div className="d-flex justify-content-center align-items-center fs-5 text-danger">
+                <div>404</div>
+            </div>
+        </>
+    );
+};
 
-export default PageNotFound
+export default PageNotFound;

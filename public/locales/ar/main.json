@@ -1,1 +1,5 @@
-{"Track":"مسار","Arabic":"عربي","Logout":"تسجيل خروج","search":"بحث","English":"إنجليزي","Reports":"التقارير","Setting":"ضبط","Settings":"إعدادات","Dashboard":"لوحة القيادة","Management":"إدارة","Add_Account":"إنشاء حساب","All_Message":"كل الرسائل","Confirmation":"تأكيد","Manage_Users":"ادارة المستخدمين","Edit_User_Info":"تحرير معلومات المستخدم","Operate_Driver":"تشغيل السائق","manage_Devices":"إدارة الأجهزة","Add_Subscription":"إضافة اشتراك","Select_User_Role":"حدد دور المستخدم","Scheduled_Reports":"التقارير المجدولة","Vehicle_Managment":"إدارة المركبات","Account_Management":"ادارة الحساب","Drivers_Management":"إدارة السائقين","Cutomize_Permissions":"Cutomize الأذونات","Preventive_Maintenance":"الصيانة الوقائية","Create_Administrator_User":"إنشاء مستخدم مسؤول"}
+{
+    "Home": "صفحه البدايه",
+    "About": "عنا",
+    "Reports": "التقارير"
+}

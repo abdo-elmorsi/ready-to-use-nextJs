@@ -1,1 +1,5 @@
-{"Track":"Track","Arabic":"Arabic","Logout":"Logout","search":"search","English":"English","Reports":"Reports","Setting":"Setting","Settings":"Settings","Dashboard":"Dashboard","Management":"Management","Add_Account":"Add Account","All_Message":"All Message","Confirmation":"Confirmation","Manage_Users":"Manage Users","Edit_User_Info":"Edit User Info","Operate_Driver":"Operate Driver","manage_Devices":"manage Devices","Add_Subscription":"Add Subscription","Select_User_Role":"Select User Role","Scheduled_Reports":"Scheduled Reports","Vehicle_Managment":"Vehicle Managment","Account_Management":"Account Management","Drivers_Management":"Drivers Management","Cutomize_Permissions":"Cutomize Permissions","Preventive_Maintenance":"Preventive Maintenance","Create_Administrator_User":"Create Administrator User"}
+{
+    "Home": "Home",
+    "About": "About",
+    "Reports": "Reports"
+}
