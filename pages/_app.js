@@ -71,3 +71,4 @@ export async function getStaticProps({ locale }) {
 }
 // export default MyApp
 export default appWithTranslation(MyApp);
+
