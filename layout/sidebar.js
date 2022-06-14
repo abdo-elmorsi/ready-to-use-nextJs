@@ -98,12 +98,11 @@ const Sidebar = () => {
                     data-scroll="1"
                     id="my-scrollbar"
                 >
-                    <div className="collapse navbar-collapse" id="sidebar">
+                    <div className="navbar-collapse" id="sidebar">
                         <VerticalNav />
-                        Abdo
                     </div>
+                    <div className="sidebar-footer">footer</div>
                 </div>
-                <div className="sidebar-footer">footer</div>
             </aside>
         </>
     );
